@@ -331,3 +331,169 @@ async def get_llm_candidates(
             await asyncio.sleep(sleep_s)
 
     raise RuntimeError(f"LLM extraction failed after {max_retries} attempts.")
+
+
+# ===== Async Batch Processing =====
+
+
+async def process_case(
+    case_idx: int,
+    dialogue_text: str,
+    client: AsyncOpenAI,
+    model: str = API_MODEL,
+) -> tuple[int, list[CandidateMemory]]:
+    """Run TPPM extraction for a single D101 case. Returns (case_idx, memories)."""
+    raw_candidates = await get_llm_candidates(
+        dialogue_text, case_idx, client, model=model,
+        max_retries=MAX_RETRIES, max_tokens=MAX_TOKENS,
+    )
+    accepted: list[CandidateMemory] = []
+    for raw in raw_candidates:
+        candidate, _reason = normalize_candidate(raw)
+        if candidate is not None:
+            accepted.append(candidate)
+    return case_idx, accepted
+
+
+async def run_extraction(
+    dataset: list[dict[str, Any]],
+    model: str = API_MODEL,
+    concurrency: int = CONCURRENCY,
+) -> tuple[list[dict[str, Any]], int, int, int]:
+    """Run async concurrent extraction over all D101 cases.
+
+    Returns:
+        memories_out: list of {"case_idx": int, "tppm_memory": [...]} dicts
+        skipped: count of cases skipped (insufficient history)
+        failed: count of cases that failed after retries
+        empty_memory: count of cases where phi all below threshold
+    """
+    client = build_client()
+    sem = asyncio.Semaphore(concurrency)
+
+    skipped = 0
+    failed = [0]   # mutable container for nested function
+    empty_memory = [0]
+    tasks: list[asyncio.Task] = []
+
+    async def run_one(case_idx: int, dialogue_text: str) -> dict[str, Any] | None:
+        async with sem:
+            try:
+                _, memories = await process_case(case_idx, dialogue_text, client, model)
+                if not memories:
+                    empty_memory[0] += 1
+                return {"case_idx": case_idx, "tppm_memory": [asdict(m) for m in memories]}
+            except Exception as exc:
+                failed[0] += 1
+                DEFAULT_FAILED.parent.mkdir(parents=True, exist_ok=True)
+                record = {
+                    "timestamp": utc_now_iso(),
+                    "case_idx": case_idx,
+                    "error": repr(exc),
+                    "error_type": type(exc).__name__,
+                    "dialogue_length": len(dialogue_text),
+                    "model": model,
+                    "max_retries": MAX_RETRIES,
+                }
+                with DEFAULT_FAILED.open("a", encoding="utf-8") as f:
+                    f.write(json.dumps(record, ensure_ascii=False) + "\n")
+                return None
+
+    for case in dataset:
+        case_idx = case["idx"]
+        dialogue_text, num_msgs = format_messages_for_extraction(case)
+        if dialogue_text is None:
+            skipped += 1
+            continue
+        tasks.append(asyncio.create_task(run_one(case_idx, dialogue_text)))
+
+    print(f"[INFO] Total D101 cases: {len(dataset)}")
+    print(f"[INFO] Skipped (insufficient history, < {MIN_HISTORY_TURNS} messages): {skipped}")
+    print(f"[INFO] Extraction candidates: {len(tasks)}")
+    print(f"[INFO] Concurrency: {concurrency}")
+
+    results = []
+    progress = tqdm(asyncio.as_completed(tasks), total=len(tasks), desc="Extracting TPPM memories")
+    for coro in progress:
+        result = await coro
+        if result is not None:
+            results.append(result)
+
+    results.sort(key=lambda r: r["case_idx"])
+    return results, skipped, failed[0], empty_memory[0]
+
+
+# ===== CLI Entry Point =====
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="TPPM memory extraction for D101 BERTScore eval.")
+    parser.add_argument("--d101", type=Path, default=D101_PATH)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--failed-output", type=Path, default=DEFAULT_FAILED)
+    parser.add_argument("--model", default=API_MODEL)
+    parser.add_argument("--api-base", default=API_BASE)
+    parser.add_argument("--api-key", default=API_KEY)
+    parser.add_argument("--max-cases", type=int, default=None)
+    parser.add_argument("--concurrency", type=int, default=CONCURRENCY)
+    parser.add_argument("--max-retries", type=int, default=MAX_RETRIES)
+    parser.add_argument("--max-tokens", type=int, default=MAX_TOKENS)
+    args = parser.parse_args()
+
+    dataset = load_d101(args.d101)
+    if args.max_cases:
+        dataset = dataset[:args.max_cases]
+
+    print(f"[INFO] Input: {args.d101}")
+    print(f"[INFO] Cases: {len(dataset)}")
+    print(f"[INFO] Model: {args.model}")
+    print(f"[INFO] API base: {args.api_base}")
+    print(f"[INFO] Max tokens: {args.max_tokens}")
+    print(f"[INFO] phi = {ALPHA_1}*r + {ALPHA_2}*e + {ALPHA_3}*u + {ALPHA_4}*b")
+    print(f"[INFO] CONTEXT_THRESHOLD={CONTEXT_THRESHOLD}, "
+          f"WRITE_THRESHOLD={WRITE_THRESHOLD}, PROMOTE_THRESHOLD={PROMOTE_THRESHOLD}")
+
+    memories_out, skipped, failed, empty_memory = asyncio.run(
+        run_extraction(dataset, model=args.model, concurrency=args.concurrency)
+    )
+
+    total_memories = sum(len(m["tppm_memory"]) for m in memories_out)
+    payload = {
+        "metadata": {
+            "source": "PsyDial-D101",
+            "extraction_range": "messages[:-1]",
+            "extractor_model": args.model,
+            "alphas": {"r": ALPHA_1, "e": ALPHA_2, "u": ALPHA_3, "b": ALPHA_4},
+            "context_threshold": CONTEXT_THRESHOLD,
+            "write_threshold": WRITE_THRESHOLD,
+            "promote_threshold": PROMOTE_THRESHOLD,
+            "tier_labels": {
+                "context_only": "0.62 < phi <= 0.68",
+                "stable": "0.68 < phi <= 0.72",
+                "long_term": "phi > 0.72",
+            },
+            "total_cases": len(dataset),
+            "skipped_short_cases": skipped,
+            "failed_cases": failed,
+            "extracted_cases": len(memories_out),
+            "empty_memory_cases": empty_memory,
+            "total_memories": total_memories,
+            "min_history_turns": MIN_HISTORY_TURNS,
+        },
+        "memories": memories_out,
+    }
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+
+    print(f"\n[DONE] {args.output}")
+    print(f"[DONE] Extracted: {len(memories_out)} cases, {total_memories} memories")
+    print(f"[DONE] Skipped (short): {skipped}, Failed: {failed}, Empty memories: {empty_memory}")
+    if failed:
+        print(f"[DONE] Failure log: {args.failed_output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
