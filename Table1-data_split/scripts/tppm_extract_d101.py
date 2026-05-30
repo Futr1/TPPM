@@ -150,8 +150,8 @@ def format_messages_for_extraction(case: dict[str, Any]) -> tuple[str | None, in
     return "\n".join(lines), len(msgs)
 
 
-def build_client() -> AsyncOpenAI:
-    return AsyncOpenAI(api_key=API_KEY, base_url=API_BASE, timeout=REQUEST_TIMEOUT)
+def build_client(api_key: str = API_KEY, api_base: str = API_BASE) -> AsyncOpenAI:
+    return AsyncOpenAI(api_key=api_key, base_url=api_base, timeout=REQUEST_TIMEOUT)
 
 
 # ===== LLM Extraction Core =====
@@ -359,6 +359,8 @@ async def run_extraction(
     dataset: list[dict[str, Any]],
     model: str = API_MODEL,
     concurrency: int = CONCURRENCY,
+    api_key: str = API_KEY,
+    api_base: str = API_BASE,
 ) -> tuple[list[dict[str, Any]], int, int, int]:
     """Run async concurrent extraction over all D101 cases.
 
@@ -368,7 +370,7 @@ async def run_extraction(
         failed: count of cases that failed after retries
         empty_memory: count of cases where phi all below threshold
     """
-    client = build_client()
+    client = build_client(api_key=api_key, api_base=api_base)
     sem = asyncio.Semaphore(concurrency)
 
     skipped = 0
@@ -454,7 +456,8 @@ def main() -> int:
           f"WRITE_THRESHOLD={WRITE_THRESHOLD}, PROMOTE_THRESHOLD={PROMOTE_THRESHOLD}")
 
     memories_out, skipped, failed, empty_memory = asyncio.run(
-        run_extraction(dataset, model=args.model, concurrency=args.concurrency)
+        run_extraction(dataset, model=args.model, concurrency=args.concurrency,
+                       api_key=args.api_key, api_base=args.api_base)
     )
 
     total_memories = sum(len(m["tppm_memory"]) for m in memories_out)
