@@ -152,3 +152,182 @@ def format_messages_for_extraction(case: dict[str, Any]) -> tuple[str | None, in
 
 def build_client() -> AsyncOpenAI:
     return AsyncOpenAI(api_key=API_KEY, base_url=API_BASE, timeout=REQUEST_TIMEOUT)
+
+
+# ===== LLM Extraction Core =====
+
+
+def build_system_prompt() -> str:
+    return """
+You are a psychological profile memory extractor for a Hybrid TPPM system.
+
+Your only job is feature extraction and scoring. Python code makes the final write decision.
+
+Read the truncated mental-health support dialogue and extract candidate PPMUs for:
+- stressor: core pressure source or triggering situation
+- affective_state: emotional state or mood pattern
+- coping_style: how the user responds, copes, avoids, suppresses, seeks help, etc.
+
+For each candidate, output four scores [0.0, 1.0]:
+- r_score: relevance to psychological profile
+- e_score: explicitness of evidence
+- u_score: utility for future support
+- b_score: tendency to persist beyond fleeting utterance
+
+Constraints:
+1. Output exactly one JSON object, nothing else.
+2. No Markdown, explanations, comments, or trailing commas.
+3. Do not copy long raw dialogue. Keep evidence short.
+4. No clinical diagnosis labels.
+5. If nothing useful, return {"candidates":[]}.
+
+Required schema:
+{"candidates":[{"attribute":"stressor|affective_state|coping_style","value":"...","evidence":"...","r_score":0.0,"e_score":0.0,"u_score":0.0,"b_score":0.0}]}
+""".strip()
+
+
+def clean_json_text(content: str) -> str:
+    stripped = (content or "").lstrip("﻿").strip()
+    fence = re.fullmatch(r"```(?:json|JSON)?\s*(.*?)\s*```", stripped, flags=re.DOTALL)
+    if fence:
+        stripped = fence.group(1).strip()
+    return stripped
+
+
+def remove_trailing_commas(text: str) -> str:
+    return re.sub(r",\s*([}\]])", r"\1", text)
+
+
+def first_json_object(text: str) -> dict[str, Any]:
+    decoder = json.JSONDecoder()
+    for i, ch in enumerate(text):
+        if ch != "{":
+            continue
+        try:
+            payload, _ = decoder.raw_decode(text[i:])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, dict):
+            return payload
+    raise LLMJSONParseError("No complete JSON object found.")
+
+
+def parse_llm_json(content: str) -> dict[str, Any]:
+    stripped = clean_json_text(content)
+    if not stripped:
+        raise EmptyLLMResponseError("Empty content.")
+
+    try:
+        return json.loads(stripped)
+    except json.JSONDecodeError as e:
+        repaired = remove_trailing_commas(stripped)
+        if repaired != stripped:
+            try:
+                return json.loads(repaired)
+            except json.JSONDecodeError:
+                pass
+        try:
+            return first_json_object(repaired)
+        except Exception as e2:
+            raise LLMJSONParseError(f"Cannot parse: {str(e)[:200]}") from e2
+
+
+def normalize_candidate(raw: dict) -> tuple[CandidateMemory | None, str | None]:
+    """Validate one raw LLM candidate, compute phi, and assign tier."""
+    if not isinstance(raw, dict):
+        return None, "not an object"
+
+    attr = str(raw.get("attribute", "")).strip().lower()
+    if attr not in VALID_ATTRIBUTES:
+        return None, f"invalid attribute {attr!r}"
+
+    value = raw.get("value")
+    if not isinstance(value, str) or not value.strip():
+        return None, "value must be non-empty string"
+
+    evidence = raw.get("evidence", "")
+    if not isinstance(evidence, str):
+        return None, "evidence must be string"
+
+    try:
+        r = clamp(raw.get("r_score"))
+        e = clamp(raw.get("e_score"))
+        u = clamp(raw.get("u_score"))
+        b = clamp(raw.get("b_score"))
+    except Exception as exc:
+        return None, str(exc)
+
+    phi = round(compute_phi(r, e, u, b), 6)
+
+    if phi <= CONTEXT_THRESHOLD:
+        return None, f"phi={phi:.4f} <= CONTEXT_THRESHOLD={CONTEXT_THRESHOLD}"
+
+    tier = assign_tier(phi)
+    return CandidateMemory(attr, value.strip(), evidence.strip(), r, e, u, b, phi, tier), None
+
+
+def append_invalid_response(*, case_idx: int, model: str, attempt: int,
+                            content: str, error: Exception) -> None:
+    DEFAULT_DEBUG.parent.mkdir(parents=True, exist_ok=True)
+    record = {
+        "timestamp": utc_now_iso(),
+        "case_idx": case_idx,
+        "model": model,
+        "attempt": attempt,
+        "error": repr(error),
+        "content_preview": content[:2000],
+    }
+    with DEFAULT_DEBUG.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+async def get_llm_candidates(
+    dialogue_text: str,
+    case_idx: int,
+    client: AsyncOpenAI,
+    model: str = API_MODEL,
+    max_retries: int = MAX_RETRIES,
+    max_tokens: int = MAX_TOKENS,
+) -> list[dict[str, Any]]:
+    """Call DeepSeek API asynchronously to extract scored PPMU candidates."""
+    if not dialogue_text.strip():
+        return []
+
+    system_prompt = build_system_prompt()
+    user_prompt = (
+        "Extract scored TPPM candidate memories from the following truncated dialogue.\n"
+        "Remember: output JSON only.\n\n"
+        f"{dialogue_text}"
+    )
+
+    max_token_cap = max(max_tokens, 4096)
+    for attempt in range(1, max_retries + 1):
+        attempt_max_tokens = min(max_tokens * (2 ** (attempt - 1)), max_token_cap)
+        try:
+            resp = await client.chat.completions.create(
+                model=model,
+                temperature=0,
+                max_tokens=attempt_max_tokens,
+                response_format={"type": "json_object"},
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+            )
+            choice = resp.choices[0]
+            content = choice.message.content or ""
+            if not content.strip():
+                raise EmptyLLMResponseError("Empty response.")
+
+            payload = parse_llm_json(content)
+            if not isinstance(payload, dict) or "candidates" not in payload:
+                raise LLMSchemaError("Missing 'candidates' key.")
+            return payload["candidates"]
+        except Exception as exc:
+            if attempt >= max_retries:
+                raise
+            sleep_s = min(MAX_BACKOFF, INITIAL_BACKOFF * (2 ** (attempt - 1)))
+            sleep_s += random.uniform(0.0, 0.25 * sleep_s)
+            await asyncio.sleep(sleep_s)
+
+    raise RuntimeError(f"LLM extraction failed after {max_retries} attempts.")
