@@ -109,6 +109,8 @@
 - K敏感性分析：在K∈{1,2,3,5,7,10}范围内扫描，报告Trait Consolidation Precision/Recall（而非合并F1），展示K的Precision-Recall权衡
 - 高不稳定压力测试中的固化抑制率
 
+**对照基线**：Long-Context / Summary-Memory / RAG-Dense 在相同指标上作为参照——若 TPPM（完整）显著优于这些基线且消融后退化至基线水平，则说明动态机制正是 TPPM 相对这些替代方案的优势来源。
+
 **论证逻辑**：若Q4退化最大且K敏感性显示清晰的Precision-Recall权衡，则固化机制不可替代——它既防止了一次性波动被误固化（高Precision），又确保了稳定特质被及时积累（高Recall）。
 
 ##### 2b. 衰减机制消融验证
@@ -127,6 +129,8 @@
 
 报告Temporal F1和PersonaMem Q3在三种策略下的表现。预期差分衰减显著优于统一衰减。
 
+**对照基线**：Long-Context / Summary-Memory / RAG-Dense 在相同指标上作为参照。
+
 **论证逻辑**：若(1)移除衰减导致Temporal F1和Q3退化，(2)差分衰减优于统一衰减，则类型条件衰减的设计不可替代——不仅是"需要衰减"，更是"需要不同维度不同衰减率"。
 
 ##### 2c. 场景分支机制消融验证
@@ -138,6 +142,8 @@
 - LoCoMo QA Adversarial F1：对抗性问题需要区分不同说话人/情境，无条件更新导致错误归属
 
 **辅助验证**：矛盾信号压力测试中的False Conflict Rate。
+
+**对照基线**：Long-Context / Summary-Memory / RAG-Dense 在相同指标上作为参照。
 
 **论证逻辑**：若Q7和Adversarial F1退化，且矛盾信号测试中False Conflict Rate上升，则场景分支不可替代——它使系统能区分"情境差异"与"真实心理转折"。
 
