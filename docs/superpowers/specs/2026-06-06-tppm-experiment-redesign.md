@@ -109,8 +109,6 @@
 - K敏感性分析：在K∈{1,2,3,5,7,10}范围内扫描，报告Trait Consolidation Precision/Recall（而非合并F1），展示K的Precision-Recall权衡
 - 高不稳定压力测试中的固化抑制率
 
-**对照基线**：Long-Context / Summary-Memory / RAG-Dense 在相同指标上作为参照——若 TPPM（完整）显著优于这些基线且消融后退化至基线水平，则说明动态机制正是 TPPM 相对这些替代方案的优势来源。
-
 **论证逻辑**：若Q4退化最大且K敏感性显示清晰的Precision-Recall权衡，则固化机制不可替代——它既防止了一次性波动被误固化（高Precision），又确保了稳定特质被及时积累（高Recall）。
 
 ##### 2b. 衰减机制消融验证
@@ -129,8 +127,6 @@
 
 报告Temporal F1和PersonaMem Q3在三种策略下的表现。预期差分衰减显著优于统一衰减。
 
-**对照基线**：Long-Context / Summary-Memory / RAG-Dense 在相同指标上作为参照。
-
 **论证逻辑**：若(1)移除衰减导致Temporal F1和Q3退化，(2)差分衰减优于统一衰减，则类型条件衰减的设计不可替代——不仅是"需要衰减"，更是"需要不同维度不同衰减率"。
 
 ##### 2c. 场景分支机制消融验证
@@ -142,8 +138,6 @@
 - LoCoMo QA Adversarial F1：对抗性问题需要区分不同说话人/情境，无条件更新导致错误归属
 
 **辅助验证**：矛盾信号压力测试中的False Conflict Rate。
-
-**对照基线**：Long-Context / Summary-Memory / RAG-Dense 在相同指标上作为参照。
 
 **论证逻辑**：若Q7和Adversarial F1退化，且矛盾信号测试中False Conflict Rate上升，则场景分支不可替代——它使系统能区分"情境差异"与"真实心理转折"。
 
@@ -245,16 +239,18 @@ Layer 2 的三个消融实验构成收敛验证：
 | 人工验证 | 改为基于PersonaMem和PsyDial的验证 |
 | 讨论和结论 | 去掉TalkLife MoC相关内容 |
 
-### 5.4 基线方法的重新归属
+### 5.4 基线方法的移除
 
-去掉TalkLife MoC后，原标注为"用于实验二Layer 2和实验三"的基线需要重新归属：
+去掉TalkLife MoC后，以下基线方法不再需要，从论文中移除：
 
-| 原基线 | 新归属 |
-|--------|--------|
-| No-Memory | 实验三消融 + 对抗性压力测试 |
-| Long-Context | 实验三消融 + 实验二 Layer 2 消融对照 |
-| Summary-Memory | 实验三消融 + 实验二 Layer 2 消融对照 |
-| RAG-Dense | 实验三消融 + 实验二 Layer 2 消融对照 |
+| 移除的基线 | 原用途 | 移除原因 |
+|------------|--------|---------|
+| No-Memory | 实验二Layer 2 + 实验三 | TalkLife MoC已移除，且实验三消融已通过w/o变体覆盖 |
+| Long-Context | 实验二Layer 2 + 实验三 | 同上 |
+| Summary-Memory | 实验二Layer 2 + 实验三 | 同上 |
+| RAG-Dense | 实验二Layer 2 + 实验三 | 同上，但LoCoMo的RAG基线（RAG-Dialog/Obs./Summ.）保留因为它们是LoCoMo已评测基线 |
+
+注意：LoCoMo 自带的 RAG 基线（RAG-Dialog/RAG-Obs./RAG-Summ.，来自 Maharana et al. 2024）保留在实验一 Layer 2 中，不受此影响。
 
 ---
 
