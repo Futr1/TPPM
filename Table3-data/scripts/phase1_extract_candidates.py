@@ -40,13 +40,13 @@ CANDIDATES_DIR = ROOT / "candidates"
 
 # ===== DeepSeek API Config =====
 API_BASE = "https://api.deepseek.com"
-API_MODEL = "deepseek-v4-pro"
+API_MODEL = "deepseek-v4-flash"
 API_KEY = "REDACTED_DEEPSEEK_KEY"
 
 CONCURRENCY = 8
 MAX_RETRIES = 5
 REQUEST_TIMEOUT = 60.0
-MAX_TOKENS = 2048
+MAX_TOKENS = 4096
 INITIAL_BACKOFF = 1.0
 MAX_BACKOFF = 30.0
 
@@ -151,17 +151,22 @@ def build_extraction_payload(dialogue_text: str, scene: str = "general") -> dict
         f"Current scene: {scene}\n"
         f"Latest conversation session:\n{dialogue_text}\n\n"
         "Extraction rules:\n"
-        "1. Keep only user-related profile facts, preferences, goals, style tendencies, "
-        "identity, or stable context. Focus on information about the speakers (not the assistant).\n"
-        "2. Ignore generic conversational filler and greetings.\n"
-        "3. Use concise attribute names like identity, interest, preference, "
-        "current_goal, style, project_focus, personal_background.\n"
-        "4. profile_type must be one of: background, preference, goal, style, interest, general.\n"
-        "5. confidence, stability, recency, explicitness, user_relevance must be numbers in [0,1].\n"
-        "6. user_relevance measures how central this fact is to the user's enduring profile.\n"
-        "7. Prefer higher stability for repeated or enduring traits; "
-        "lower stability for short-term goals.\n"
-        "8. If there is no useful profile memory candidate, return {\"candidates\": []}.\n\n"
+        "1. Extract user profile facts, preferences, goals, style tendencies, identity, "
+        "or stable context from the USER speaker. Ignore assistant-only content.\n"
+        "2. Extract AT LEAST 1-2 candidates per session — every conversation reveals "
+        "something about the user's personality, habits, or situation, even if implicit. "
+        "Look for: hobbies, taste, habits, emotional patterns, life situations, values.\n"
+        "3. Attribute names MUST be compound and specific. Use domain+category format:\n"
+        "   GOOD: music_taste, food_preference, social_style, career_goal, exercise_habit\n"
+        "   BAD: interest, preference, goal, style (these are profile_types, not attributes)\n"
+        "4. profile_type MUST be one of: background, preference, goal, style, interest, general.\n"
+        "5. Score calibration (CRITICAL — use the FULL 0-1 range):\n"
+        "   confidence: 0.3-0.5=ambiguous hint, 0.5-0.7=moderate signal, 0.7-0.9=clear statement, 0.9-1.0=explicit self-description.\n"
+        "   stability: 0.2-0.4=one-time event/mood, 0.4-0.6=short-term goal, 0.6-0.8=pattern across sessions, 0.8-1.0=core identity.\n"
+        "   recency: 0.3-0.5=mentioned long ago, 0.5-0.7=mentioned earlier in session, 0.7-0.9=recently discussed, 0.9-1.0=actively being discussed.\n"
+        "   explicitness: 0.2-0.4=implied from context, 0.4-0.7=indirect expression, 0.7-0.9=stated preference, 0.9-1.0=explicitly declared.\n"
+        "   user_relevance: 0.2-0.5=minor detail, 0.5-0.7=notable trait, 0.7-0.9=central to profile, 0.9-1.0=defining characteristic.\n"
+        "6. VARY scores across candidates — not everything should be 0.8-1.0. Use lower scores for subtle or one-off observations.\n\n"
         f"Output JSON schema example:\n{json.dumps(schema_hint, ensure_ascii=False)}"
     )
     return {
