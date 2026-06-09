@@ -27,7 +27,7 @@ MEMORY_BANK_PATH = ROOT / "outputs" / "locomo_memory_bank.json"
 MODEL_PATH = "/root/autodl-tmp/wangqihao/base_model/Qwen3.5-9B"
 EVAL_DIR = ROOT / "outputs"
 
-MAX_MODEL_LEN = 4096
+MAX_MODEL_LEN = 32768
 
 EVENT_SYSTEM_PROMPT = (
     "You are a helpful assistant that extracts significant events from conversations. "
@@ -122,7 +122,7 @@ def generate_event_summaries(
     llm = LLM(
         model=MODEL_PATH,
         trust_remote_code=True,
-        tensor_parallel_size=1,
+        tensor_parallel_size=2,
         gpu_memory_utilization=0.85,
         max_model_len=MAX_MODEL_LEN,
         enforce_eager=True,

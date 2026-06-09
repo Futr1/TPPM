@@ -44,7 +44,7 @@ DEFAULT_FAILED = ROOT / "logs" / "locomo_extract_failed.jsonl"
 
 # ===== DeepSeek API Config =====
 API_BASE = "https://api.deepseek.com"
-API_MODEL = "deepseek-v4-flash"
+API_MODEL = "deepseek-v4-pro"
 API_KEY = "REDACTED_DEEPSEEK_KEY"
 
 CONCURRENCY = 8

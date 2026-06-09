@@ -1,0 +1,3320 @@
+{
+  "metadata": {
+    "source": "LoCoMo-10",
+    "extractor_model": "deepseek-v4-flash",
+    "tpm_config": {
+      "write_threshold": 0.68,
+      "context_threshold": 0.62,
+      "promote_threshold": 0.72,
+      "write_weights": [
+        0.25,
+        0.3,
+        0.25,
+        0.2
+      ],
+      "decay_lambdas": {
+        "goal": 0.1,
+        "interest": 0.07,
+        "style": 0.04,
+        "background": 0.04,
+        "preference": 0.05,
+        "general": 0.05
+      }
+    },
+    "total_conversations": 1,
+    "extracted_conversations": 1,
+    "failed_conversations": 0,
+    "total_pmus": 44
+  },
+  "conversations": [
+    {
+      "config": {
+        "write_threshold": 0.68,
+        "context_threshold": 0.62,
+        "promote_threshold": 0.72,
+        "promotion_min_sessions": 2,
+        "distill_stability_threshold": 0.82,
+        "distill_quality_threshold": 0.76,
+        "distill_session_threshold": 3,
+        "write_weights": [
+          0.25,
+          0.3,
+          0.25,
+          0.2
+        ],
+        "promote_weights": [
+          0.35,
+          0.2,
+          0.15,
+          0.25,
+          0.2
+        ],
+        "retrieve_weights": [
+          0.35,
+          0.2,
+          0.15,
+          0.2,
+          0.1
+        ],
+        "decay_lambdas": {
+          "goal": 0.1,
+          "interest": 0.07,
+          "style": 0.04,
+          "background": 0.04,
+          "preference": 0.05,
+          "general": 0.05
+        },
+        "positive_reinforcement": 0.08,
+        "negative_penalty": 0.12,
+        "working_decay": 0.015,
+        "short_term_decay": 0.03
+      },
+      "working_memory": [],
+      "short_term_memory": [
+        {
+          "attribute": "interest",
+          "value": "painting",
+          "context": "My kids and I just finished another painting",
+          "profile_type": "interest",
+          "stability_score": 0.73264,
+          "confidence_score": 0.8600000000000001,
+          "scene": "session_9",
+          "quality_score": 0.8066666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "attended LGBTQ support group and found it inspiring",
+              "scene": "session_1",
+              "evidence_id": "4adbe758647440c484ff6fe81421e1eb",
+              "timestamp": "2026-06-07T07:38:39.440899"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "painted lake sunrise and uses painting to relax and express feelings",
+              "scene": "session_1",
+              "evidence_id": "0542a2c5c9d14c379e685c3299265b8c",
+              "timestamp": "2026-06-07T07:38:39.440969"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "having an LGBTQ art show with my paintings",
+              "scene": "session_9",
+              "evidence_id": "79e30ad2ad7c4e9db9824c664d968acb",
+              "timestamp": "2026-06-07T07:41:21.329708"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "My kids and I just finished another painting",
+              "scene": "session_9",
+              "evidence_id": "9a6d82809ac64bdda841671d973d5245",
+              "timestamp": "2026-06-07T07:41:21.329784"
+            }
+          ],
+          "scene_branches": {
+            "session_1": {
+              "scene": "session_1",
+              "value": "painting",
+              "context": "painted lake sunrise and uses painting to relax and express feelings",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "attended LGBTQ support group and found it inspiring",
+                  "scene": "session_1",
+                  "evidence_id": "4adbe758647440c484ff6fe81421e1eb",
+                  "timestamp": "2026-06-07T07:38:39.440899"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "painted lake sunrise and uses painting to relax and express feelings",
+                  "scene": "session_1",
+                  "evidence_id": "0542a2c5c9d14c379e685c3299265b8c",
+                  "timestamp": "2026-06-07T07:38:39.440969"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 1,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:39.440969",
+              "last_accessed": "2026-06-07T07:38:39.440969"
+            },
+            "session_9": {
+              "scene": "session_9",
+              "value": "painting",
+              "context": "My kids and I just finished another painting",
+              "confidence_score": 0.8600000000000001,
+              "quality_score": 0.8066666666666668,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "having an LGBTQ art show with my paintings",
+                  "scene": "session_9",
+                  "evidence_id": "79e30ad2ad7c4e9db9824c664d968acb",
+                  "timestamp": "2026-06-07T07:41:21.329708"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "My kids and I just finished another painting",
+                  "scene": "session_9",
+                  "evidence_id": "9a6d82809ac64bdda841671d973d5245",
+                  "timestamp": "2026-06-07T07:41:21.329784"
+                }
+              ],
+              "reinforcement_count": 3,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:21.329784",
+              "last_accessed": "2026-06-07T07:41:21.329784"
+            }
+          },
+          "unit_id": "b2246619d2744d749b6c51215723d352",
+          "timestamp": "2026-06-07T07:38:39.441103",
+          "session_count": 2,
+          "reinforcement_count": 4,
+          "contradiction_count": 1,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_1",
+            "conv-26_session_9"
+          ],
+          "last_accessed": "2026-06-07T07:41:21.329784",
+          "last_evolved": "2026-06-07T07:41:21.329784",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "current_goal",
+          "value": "help trans people accept themselves and support mental health",
+          "context": "thinking of working with trans people",
+          "profile_type": "goal",
+          "stability_score": 0.6688,
+          "confidence_score": 0.96,
+          "scene": "session_4",
+          "quality_score": 0.9366666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "keen on counseling or working in mental health to support others",
+              "scene": "session_1",
+              "evidence_id": "cd54213119f64b82a2419932d268fe4e",
+              "timestamp": "2026-06-07T07:38:39.440937"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "looking into counseling and mental health as a career",
+              "scene": "session_4",
+              "evidence_id": "e02c345cbd834f5d933891564ce66447",
+              "timestamp": "2026-06-07T07:39:30.891514"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "thinking of working with trans people",
+              "scene": "session_4",
+              "evidence_id": "7f19805ede59412a8e8849e6ad24f4d9",
+              "timestamp": "2026-06-07T07:39:30.891530"
+            }
+          ],
+          "scene_branches": {
+            "session_1": {
+              "scene": "session_1",
+              "value": "pursue career in counseling or mental health",
+              "context": "keen on counseling or working in mental health to support others",
+              "confidence_score": 0.9,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "keen on counseling or working in mental health to support others",
+                  "scene": "session_1",
+                  "evidence_id": "cd54213119f64b82a2419932d268fe4e",
+                  "timestamp": "2026-06-07T07:38:39.440937"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:39.440937",
+              "last_accessed": "2026-06-07T07:38:39.440937"
+            },
+            "session_4": {
+              "scene": "session_4",
+              "value": "help trans people accept themselves and support mental health",
+              "context": "thinking of working with trans people",
+              "confidence_score": 0.96,
+              "quality_score": 0.9366666666666668,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "looking into counseling and mental health as a career",
+                  "scene": "session_4",
+                  "evidence_id": "e02c345cbd834f5d933891564ce66447",
+                  "timestamp": "2026-06-07T07:39:30.891514"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "thinking of working with trans people",
+                  "scene": "session_4",
+                  "evidence_id": "7f19805ede59412a8e8849e6ad24f4d9",
+                  "timestamp": "2026-06-07T07:39:30.891530"
+                }
+              ],
+              "reinforcement_count": 3,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:39:30.891530",
+              "last_accessed": "2026-06-07T07:39:30.891530"
+            }
+          },
+          "unit_id": "184d92c7fee34aba9c4d39ee0c595966",
+          "timestamp": "2026-06-07T07:38:39.442093",
+          "session_count": 2,
+          "reinforcement_count": 3,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_1",
+            "conv-26_session_4"
+          ],
+          "last_accessed": "2026-06-07T07:39:30.891530",
+          "last_evolved": "2026-06-07T07:39:30.891530",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "identity",
+          "value": "authentic and supports LGBTQ rights",
+          "context": "promoting LGBTQ rights and being true to myself",
+          "profile_type": "background",
+          "stability_score": 0.8613333333333333,
+          "confidence_score": 0.9000000000000001,
+          "scene": "session_13",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Melanie says 'your empathy and understanding will really help'",
+              "scene": "session_1",
+              "evidence_id": "5f9c87edc86d4c538b4e445b69be2265",
+              "timestamp": "2026-06-07T07:38:39.440956"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "promoting LGBTQ rights and being true to myself",
+              "scene": "session_13",
+              "evidence_id": "c8f87cab233d4de7a93cd31902e671b8",
+              "timestamp": "2026-06-07T07:42:41.938227"
+            }
+          ],
+          "scene_branches": {
+            "session_1": {
+              "scene": "session_1",
+              "value": "empathetic and supportive",
+              "context": "Melanie says 'your empathy and understanding will really help'",
+              "confidence_score": 0.8,
+              "quality_score": 0.7999999999999999,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Melanie says 'your empathy and understanding will really help'",
+                  "scene": "session_1",
+                  "evidence_id": "5f9c87edc86d4c538b4e445b69be2265",
+                  "timestamp": "2026-06-07T07:38:39.440956"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:39.440956",
+              "last_accessed": "2026-06-07T07:38:39.440956"
+            },
+            "session_13": {
+              "scene": "session_13",
+              "value": "authentic and supports LGBTQ rights",
+              "context": "promoting LGBTQ rights and being true to myself",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "promoting LGBTQ rights and being true to myself",
+                  "scene": "session_13",
+                  "evidence_id": "c8f87cab233d4de7a93cd31902e671b8",
+                  "timestamp": "2026-06-07T07:42:41.938227"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:41.938227",
+              "last_accessed": "2026-06-07T07:42:41.938227"
+            }
+          },
+          "unit_id": "f0d28da0a09944b68951e3e8aed4564b",
+          "timestamp": "2026-06-07T07:38:39.443295",
+          "session_count": 2,
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_1",
+            "conv-26_session_13"
+          ],
+          "last_accessed": "2026-06-07T07:42:41.938227",
+          "last_evolved": "2026-06-07T07:42:41.938227",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "background",
+          "value": "working mother",
+          "context": "swamped with kids and work",
+          "profile_type": "background",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_1",
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "swamped with kids and work",
+              "scene": "session_1",
+              "evidence_id": "b26926959c534d3ebbdbe21e45b66ab2",
+              "timestamp": "2026-06-07T07:38:39.440980"
+            }
+          ],
+          "scene_branches": {
+            "session_1": {
+              "scene": "session_1",
+              "value": "working mother",
+              "context": "swamped with kids and work",
+              "confidence_score": 0.9,
+              "quality_score": 0.8666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "swamped with kids and work",
+                  "scene": "session_1",
+                  "evidence_id": "b26926959c534d3ebbdbe21e45b66ab2",
+                  "timestamp": "2026-06-07T07:38:39.440980"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:39.440980",
+              "last_accessed": "2026-06-07T07:38:39.440980"
+            }
+          },
+          "unit_id": "a1f5557d52564ae1ac6b9b97f961015f",
+          "timestamp": "2026-06-07T07:38:39.446276",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_1"
+          ],
+          "last_accessed": "2026-06-07T07:38:39.446282",
+          "last_evolved": "2026-06-07T07:38:39.446286",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "preference",
+          "value": "engaging in family activities like swimming",
+          "context": "off to go swimming with the kids",
+          "profile_type": "preference",
+          "stability_score": 0.7,
+          "confidence_score": 0.8,
+          "scene": "session_1",
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "off to go swimming with the kids",
+              "scene": "session_1",
+              "evidence_id": "ce910813cab242dcab8da8efb476069a",
+              "timestamp": "2026-06-07T07:38:39.440991"
+            }
+          ],
+          "scene_branches": {
+            "session_1": {
+              "scene": "session_1",
+              "value": "engaging in family activities like swimming",
+              "context": "off to go swimming with the kids",
+              "confidence_score": 0.8,
+              "quality_score": 0.7666666666666666,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "off to go swimming with the kids",
+                  "scene": "session_1",
+                  "evidence_id": "ce910813cab242dcab8da8efb476069a",
+                  "timestamp": "2026-06-07T07:38:39.440991"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:39.440991",
+              "last_accessed": "2026-06-07T07:38:39.440991"
+            }
+          },
+          "unit_id": "4287ccb3c0de489aa4954af53eaa71f5",
+          "timestamp": "2026-06-07T07:38:39.448150",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_1"
+          ],
+          "last_accessed": "2026-06-07T07:38:39.448156",
+          "last_evolved": "2026-06-07T07:38:39.448160",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "charity running for mental health",
+          "context": "ran a charity race for mental health last Saturday",
+          "profile_type": "interest",
+          "stability_score": 0.6,
+          "confidence_score": 0.9,
+          "scene": "session_2",
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "ran a charity race for mental health last Saturday",
+              "scene": "session_2",
+              "evidence_id": "4e872c9432ab4d259532f245ee53e800",
+              "timestamp": "2026-06-07T07:38:50.009544"
+            }
+          ],
+          "scene_branches": {
+            "session_2": {
+              "scene": "session_2",
+              "value": "charity running for mental health",
+              "context": "ran a charity race for mental health last Saturday",
+              "confidence_score": 0.9,
+              "quality_score": 0.8000000000000002,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "ran a charity race for mental health last Saturday",
+                  "scene": "session_2",
+                  "evidence_id": "4e872c9432ab4d259532f245ee53e800",
+                  "timestamp": "2026-06-07T07:38:50.009544"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:50.009544",
+              "last_accessed": "2026-06-07T07:38:50.009544"
+            }
+          },
+          "unit_id": "d7307f2202094d5e800590942b03ebca",
+          "timestamp": "2026-06-07T07:38:50.014850",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_2"
+          ],
+          "last_accessed": "2026-06-07T07:38:50.014862",
+          "last_evolved": "2026-06-07T07:38:50.014868",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "preference",
+          "value": "self-care and me-time",
+          "context": "realizing self-care is important, carving out me-time daily for running, reading, playing violin",
+          "profile_type": "preference",
+          "stability_score": 0.7,
+          "confidence_score": 0.9,
+          "scene": "session_2",
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "realizing self-care is important, carving out me-time daily for running, reading, playing violin",
+              "scene": "session_2",
+              "evidence_id": "96ffd1589eb6492e8c9a675324eca352",
+              "timestamp": "2026-06-07T07:38:50.009582"
+            }
+          ],
+          "scene_branches": {
+            "session_2": {
+              "scene": "session_2",
+              "value": "self-care and me-time",
+              "context": "realizing self-care is important, carving out me-time daily for running, reading, playing violin",
+              "confidence_score": 0.9,
+              "quality_score": 0.8666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "realizing self-care is important, carving out me-time daily for running, reading, playing violin",
+                  "scene": "session_2",
+                  "evidence_id": "96ffd1589eb6492e8c9a675324eca352",
+                  "timestamp": "2026-06-07T07:38:50.009582"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:50.009582",
+              "last_accessed": "2026-06-07T07:38:50.009582"
+            }
+          },
+          "unit_id": "ec6cdf9e20d14e988ca2db415675a62c",
+          "timestamp": "2026-06-07T07:38:50.021551",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_2"
+          ],
+          "last_accessed": "2026-06-07T07:38:50.021560",
+          "last_evolved": "2026-06-07T07:38:50.021566",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "style",
+          "value": "supportive and encouraging",
+          "context": "consistently encourages Caroline's adoption plans with positive feedback",
+          "profile_type": "style",
+          "stability_score": 0.7,
+          "confidence_score": 0.8,
+          "scene": "session_2",
+          "quality_score": 0.6666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "consistently encourages Caroline's adoption plans with positive feedback",
+              "scene": "session_2",
+              "evidence_id": "cbfb776af1484cadbe9cbdf0edd85e16",
+              "timestamp": "2026-06-07T07:38:50.009601"
+            }
+          ],
+          "scene_branches": {
+            "session_2": {
+              "scene": "session_2",
+              "value": "supportive and encouraging",
+              "context": "consistently encourages Caroline's adoption plans with positive feedback",
+              "confidence_score": 0.8,
+              "quality_score": 0.6666666666666666,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "consistently encourages Caroline's adoption plans with positive feedback",
+                  "scene": "session_2",
+                  "evidence_id": "cbfb776af1484cadbe9cbdf0edd85e16",
+                  "timestamp": "2026-06-07T07:38:50.009601"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:50.009601",
+              "last_accessed": "2026-06-07T07:38:50.009601"
+            }
+          },
+          "unit_id": "8bac03ca56454614ad53eda1c6468697",
+          "timestamp": "2026-06-07T07:38:50.029178",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_2"
+          ],
+          "last_accessed": "2026-06-07T07:38:50.029187",
+          "last_evolved": "2026-06-07T07:38:50.029193",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "identity",
+          "value": "LGBTQ+ inclusive",
+          "context": "mentions it'll be tough as a single parent but up for the challenge",
+          "profile_type": "background",
+          "stability_score": 0.9011733333333334,
+          "confidence_score": 0.9000000000000001,
+          "scene": "session_2",
+          "quality_score": 0.8771291666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "mentions kids excited for summer break",
+              "scene": "session_2",
+              "evidence_id": "292c96a54c914c0db0b62442ef80aa52",
+              "timestamp": "2026-06-07T07:38:50.009634"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "chose adoption agency that helps LGBTQ+ folks",
+              "scene": "session_2",
+              "evidence_id": "39c482a226af42d9bf5d4e434169cc71",
+              "timestamp": "2026-06-07T07:38:50.009651"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "mentions it'll be tough as a single parent but up for the challenge",
+              "scene": "session_2",
+              "evidence_id": "99da072ed5eb4d34ba9f5f03afc5c391",
+              "timestamp": "2026-06-07T07:38:50.009682"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "Caroline mentions upsetting experience with religious conservatives regarding LGBTQ rights and reminiscing about Pride fest.",
+              "scene": "session_12",
+              "evidence_id": "948f10f749e4433893a1af12e276cc63",
+              "timestamp": "2026-06-07T07:42:17.501959"
+            }
+          ],
+          "scene_branches": {
+            "session_2": {
+              "scene": "session_2",
+              "value": "LGBTQ+ inclusive",
+              "context": "mentions it'll be tough as a single parent but up for the challenge",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8584166666666668,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "mentions kids excited for summer break",
+                  "scene": "session_2",
+                  "evidence_id": "292c96a54c914c0db0b62442ef80aa52",
+                  "timestamp": "2026-06-07T07:38:50.009634"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "chose adoption agency that helps LGBTQ+ folks",
+                  "scene": "session_2",
+                  "evidence_id": "39c482a226af42d9bf5d4e434169cc71",
+                  "timestamp": "2026-06-07T07:38:50.009651"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "mentions it'll be tough as a single parent but up for the challenge",
+                  "scene": "session_2",
+                  "evidence_id": "99da072ed5eb4d34ba9f5f03afc5c391",
+                  "timestamp": "2026-06-07T07:38:50.009682"
+                }
+              ],
+              "reinforcement_count": 3,
+              "contradiction_count": 2,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:50.009682",
+              "last_accessed": "2026-06-07T07:38:50.009682"
+            },
+            "session_12": {
+              "scene": "session_12",
+              "value": "LGBTQ+ community member",
+              "context": "Caroline mentions upsetting experience with religious conservatives regarding LGBTQ rights and reminiscing about Pride fest.",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.9000000000000001,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Caroline mentions upsetting experience with religious conservatives regarding LGBTQ rights and reminiscing about Pride fest.",
+                  "scene": "session_12",
+                  "evidence_id": "948f10f749e4433893a1af12e276cc63",
+                  "timestamp": "2026-06-07T07:42:17.501959"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:17.501959",
+              "last_accessed": "2026-06-07T07:42:17.501959"
+            }
+          },
+          "unit_id": "01680dd0a9194b34810b8cb6eea96f41",
+          "timestamp": "2026-06-07T07:38:50.035344",
+          "session_count": 2,
+          "reinforcement_count": 4,
+          "contradiction_count": 2,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_2",
+            "conv-26_session_12"
+          ],
+          "last_accessed": "2026-06-07T07:42:17.501959",
+          "last_evolved": "2026-06-07T07:42:17.501959",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "goal",
+          "value": "adopt children and give them a loving home",
+          "context": "researching adoption agencies, goal to give kids a loving home",
+          "profile_type": "goal",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_2",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "researching adoption agencies, goal to give kids a loving home",
+              "scene": "session_2",
+              "evidence_id": "0dc71e59f38547c48250b7699a40085d",
+              "timestamp": "2026-06-07T07:38:50.009667"
+            }
+          ],
+          "scene_branches": {
+            "session_2": {
+              "scene": "session_2",
+              "value": "adopt children and give them a loving home",
+              "context": "researching adoption agencies, goal to give kids a loving home",
+              "confidence_score": 0.9,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "researching adoption agencies, goal to give kids a loving home",
+                  "scene": "session_2",
+                  "evidence_id": "0dc71e59f38547c48250b7699a40085d",
+                  "timestamp": "2026-06-07T07:38:50.009667"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:38:50.009667",
+              "last_accessed": "2026-06-07T07:38:50.009667"
+            }
+          },
+          "unit_id": "759efeec4c8a4fed81c3720ad8ecc32c",
+          "timestamp": "2026-06-07T07:38:50.052647",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_2"
+          ],
+          "last_accessed": "2026-06-07T07:38:50.052658",
+          "last_evolved": "2026-06-07T07:38:50.052664",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "personal_background",
+          "value": "Swedish, from Sweden",
+          "context": "necklace from grandma in Sweden",
+          "profile_type": "background",
+          "stability_score": 1.0,
+          "confidence_score": 1.0,
+          "scene": "session_4",
+          "quality_score": 0.9333333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "necklace from grandma in Sweden",
+              "scene": "session_4",
+              "evidence_id": "3bc9386dc5624b719506d9d79c292c88",
+              "timestamp": "2026-06-07T07:39:30.891458"
+            }
+          ],
+          "scene_branches": {
+            "session_4": {
+              "scene": "session_4",
+              "value": "Swedish, from Sweden",
+              "context": "necklace from grandma in Sweden",
+              "confidence_score": 1.0,
+              "quality_score": 0.9333333333333332,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "necklace from grandma in Sweden",
+                  "scene": "session_4",
+                  "evidence_id": "3bc9386dc5624b719506d9d79c292c88",
+                  "timestamp": "2026-06-07T07:39:30.891458"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:39:30.891458",
+              "last_accessed": "2026-06-07T07:39:30.891458"
+            }
+          },
+          "unit_id": "73d6b8eaf1f14b2c9686b7efd2434839",
+          "timestamp": "2026-06-07T07:39:30.898713",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_4"
+          ],
+          "last_accessed": "2026-06-07T07:39:30.898725",
+          "last_evolved": "2026-06-07T07:39:30.898731",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "sentimental objects",
+          "context": "treasures necklace and hand-painted bowl with personal meaning",
+          "profile_type": "interest",
+          "stability_score": 0.6,
+          "confidence_score": 1.0,
+          "scene": "session_4",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "treasures necklace and hand-painted bowl with personal meaning",
+              "scene": "session_4",
+              "evidence_id": "0ae91b1c40b64a5399aee5fd82c1abf0",
+              "timestamp": "2026-06-07T07:39:30.891494"
+            }
+          ],
+          "scene_branches": {
+            "session_4": {
+              "scene": "session_4",
+              "value": "sentimental objects",
+              "context": "treasures necklace and hand-painted bowl with personal meaning",
+              "confidence_score": 1.0,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "treasures necklace and hand-painted bowl with personal meaning",
+                  "scene": "session_4",
+                  "evidence_id": "0ae91b1c40b64a5399aee5fd82c1abf0",
+                  "timestamp": "2026-06-07T07:39:30.891494"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:39:30.891494",
+              "last_accessed": "2026-06-07T07:39:30.891494"
+            }
+          },
+          "unit_id": "cf9992f6657a4b97ac5e501a136dac1a",
+          "timestamp": "2026-06-07T07:39:30.909183",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_4"
+          ],
+          "last_accessed": "2026-06-07T07:39:30.909193",
+          "last_evolved": "2026-06-07T07:39:30.909199",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "experience",
+          "value": "attended LGBTQ+ counseling workshop",
+          "context": "went to workshop last Friday",
+          "profile_type": "general",
+          "stability_score": 0.4,
+          "confidence_score": 1.0,
+          "scene": "session_4",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "went to workshop last Friday",
+              "scene": "session_4",
+              "evidence_id": "c807618e1c9d40abaa62c0aa9ba1377f",
+              "timestamp": "2026-06-07T07:39:30.891545"
+            }
+          ],
+          "scene_branches": {
+            "session_4": {
+              "scene": "session_4",
+              "value": "attended LGBTQ+ counseling workshop",
+              "context": "went to workshop last Friday",
+              "confidence_score": 1.0,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "went to workshop last Friday",
+                  "scene": "session_4",
+                  "evidence_id": "c807618e1c9d40abaa62c0aa9ba1377f",
+                  "timestamp": "2026-06-07T07:39:30.891545"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:39:30.891545",
+              "last_accessed": "2026-06-07T07:39:30.891545"
+            }
+          },
+          "unit_id": "54944efeea8d4f39b338d88c4af62e03",
+          "timestamp": "2026-06-07T07:39:30.940035",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_4"
+          ],
+          "last_accessed": "2026-06-07T07:39:30.940044",
+          "last_evolved": "2026-06-07T07:39:30.940049",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "motivation",
+          "value": "personal journey and support received from counseling",
+          "context": "own journey made difference; counseling improved life",
+          "profile_type": "background",
+          "stability_score": 1.0,
+          "confidence_score": 1.0,
+          "scene": "session_4",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "own journey made difference; counseling improved life",
+              "scene": "session_4",
+              "evidence_id": "98ad2021a07c4463916bbe938ae1d35f",
+              "timestamp": "2026-06-07T07:39:30.891572"
+            }
+          ],
+          "scene_branches": {
+            "session_4": {
+              "scene": "session_4",
+              "value": "personal journey and support received from counseling",
+              "context": "own journey made difference; counseling improved life",
+              "confidence_score": 1.0,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "own journey made difference; counseling improved life",
+                  "scene": "session_4",
+                  "evidence_id": "98ad2021a07c4463916bbe938ae1d35f",
+                  "timestamp": "2026-06-07T07:39:30.891572"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:39:30.891572",
+              "last_accessed": "2026-06-07T07:39:30.891572"
+            }
+          },
+          "unit_id": "2a3d77994f3d45d8a348dea02b798989",
+          "timestamp": "2026-06-07T07:39:30.950813",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_4"
+          ],
+          "last_accessed": "2026-06-07T07:39:30.950821",
+          "last_evolved": "2026-06-07T07:39:30.950825",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "passion",
+          "value": "creating safe and inviting space for people to grow",
+          "context": "passionate about creating safe place",
+          "profile_type": "preference",
+          "stability_score": 0.8,
+          "confidence_score": 1.0,
+          "scene": "session_4",
+          "quality_score": 0.9666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "passionate about creating safe place",
+              "scene": "session_4",
+              "evidence_id": "f2d4fb0d37a94d22bdf96cb0d85244b4",
+              "timestamp": "2026-06-07T07:39:30.891588"
+            }
+          ],
+          "scene_branches": {
+            "session_4": {
+              "scene": "session_4",
+              "value": "creating safe and inviting space for people to grow",
+              "context": "passionate about creating safe place",
+              "confidence_score": 1.0,
+              "quality_score": 0.9666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "passionate about creating safe place",
+                  "scene": "session_4",
+                  "evidence_id": "f2d4fb0d37a94d22bdf96cb0d85244b4",
+                  "timestamp": "2026-06-07T07:39:30.891588"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:39:30.891588",
+              "last_accessed": "2026-06-07T07:39:30.891588"
+            }
+          },
+          "unit_id": "28571a7462504cf0a4f329cae0fada28",
+          "timestamp": "2026-06-07T07:39:30.958747",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_4"
+          ],
+          "last_accessed": "2026-06-07T07:39:30.958754",
+          "last_evolved": "2026-06-07T07:39:30.958758",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "identity",
+          "value": "transgender",
+          "context": "mentor a transgender teen just like me",
+          "profile_type": "background",
+          "stability_score": 0.7773333333333333,
+          "confidence_score": 0.92,
+          "scene": "session_9",
+          "quality_score": 0.8741666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a mentorship program for LGBTQ youth",
+              "scene": "session_9",
+              "evidence_id": "e4e277e1a7bc4f79b23bd6c8c4e26b20",
+              "timestamp": "2026-06-07T07:41:21.329652"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "mentor a transgender teen just like me",
+              "scene": "session_9",
+              "evidence_id": "f9fdc54bfdea4f0d9c38e436e5c0472c",
+              "timestamp": "2026-06-07T07:41:21.329687"
+            }
+          ],
+          "scene_branches": {
+            "session_9": {
+              "scene": "session_9",
+              "value": "transgender",
+              "context": "mentor a transgender teen just like me",
+              "confidence_score": 0.92,
+              "quality_score": 0.8741666666666668,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "joined a mentorship program for LGBTQ youth",
+                  "scene": "session_9",
+                  "evidence_id": "e4e277e1a7bc4f79b23bd6c8c4e26b20",
+                  "timestamp": "2026-06-07T07:41:21.329652"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "mentor a transgender teen just like me",
+                  "scene": "session_9",
+                  "evidence_id": "f9fdc54bfdea4f0d9c38e436e5c0472c",
+                  "timestamp": "2026-06-07T07:41:21.329687"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 1,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:21.329687",
+              "last_accessed": "2026-06-07T07:41:21.329687"
+            }
+          },
+          "unit_id": "e8da7145ab8d4dbf8847a139aa0abba6",
+          "timestamp": "2026-06-07T07:41:21.340511",
+          "session_count": 1,
+          "reinforcement_count": 2,
+          "contradiction_count": 1,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_9"
+          ],
+          "last_accessed": "2026-06-07T07:41:21.329687",
+          "last_evolved": "2026-06-07T07:41:21.329687",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "current_goal",
+          "value": "organize LGBTQ art show",
+          "context": "Next month I'm having an LGBTQ art show",
+          "profile_type": "goal",
+          "stability_score": 0.3,
+          "confidence_score": 0.95,
+          "scene": "session_9",
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Next month I'm having an LGBTQ art show",
+              "scene": "session_9",
+              "evidence_id": "edb7da6798264dbf88e8edb637e4f0c7",
+              "timestamp": "2026-06-07T07:41:21.329752"
+            }
+          ],
+          "scene_branches": {
+            "session_9": {
+              "scene": "session_9",
+              "value": "organize LGBTQ art show",
+              "context": "Next month I'm having an LGBTQ art show",
+              "confidence_score": 0.95,
+              "quality_score": 0.7833333333333333,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Next month I'm having an LGBTQ art show",
+                  "scene": "session_9",
+                  "evidence_id": "edb7da6798264dbf88e8edb637e4f0c7",
+                  "timestamp": "2026-06-07T07:41:21.329752"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:21.329752",
+              "last_accessed": "2026-06-07T07:41:21.329752"
+            }
+          },
+          "unit_id": "cc8d400e72824b729bad3d90ee9c0a12",
+          "timestamp": "2026-06-07T07:41:21.371949",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_9"
+          ],
+          "last_accessed": "2026-06-07T07:41:21.371959",
+          "last_evolved": "2026-06-07T07:41:21.371965",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "background",
+          "value": "parent",
+          "context": "went camping with my fam and kids",
+          "profile_type": "background",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_9",
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "went camping with my fam and kids",
+              "scene": "session_9",
+              "evidence_id": "39d55f7c95764defa0717677eae899a6",
+              "timestamp": "2026-06-07T07:41:21.329769"
+            }
+          ],
+          "scene_branches": {
+            "session_9": {
+              "scene": "session_9",
+              "value": "parent",
+              "context": "went camping with my fam and kids",
+              "confidence_score": 0.9,
+              "quality_score": 0.8000000000000002,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "went camping with my fam and kids",
+                  "scene": "session_9",
+                  "evidence_id": "39d55f7c95764defa0717677eae899a6",
+                  "timestamp": "2026-06-07T07:41:21.329769"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:21.329769",
+              "last_accessed": "2026-06-07T07:41:21.329769"
+            }
+          },
+          "unit_id": "bad4690e447248048e2a57e719f4fcec",
+          "timestamp": "2026-06-07T07:41:21.379787",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_9"
+          ],
+          "last_accessed": "2026-06-07T07:41:21.379795",
+          "last_evolved": "2026-06-07T07:41:21.379802",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "family camping traditions",
+          "context": "We always look forward to our family camping trip ... highlight of our summer",
+          "profile_type": "interest",
+          "stability_score": 0.7173333333333334,
+          "confidence_score": 0.9000000000000001,
+          "scene": "session_10",
+          "quality_score": 0.8925000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a new LGBTQ activist group last Tues",
+              "scene": "session_10",
+              "evidence_id": "f8aa663107e24f8bbe8e47981f46d070",
+              "timestamp": "2026-06-07T07:41:34.614706"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "We always look forward to our family camping trip ... highlight of our summer",
+              "scene": "session_10",
+              "evidence_id": "679427a8ecda4ed0bf4d7a9d3d89cf76",
+              "timestamp": "2026-06-07T07:41:34.614783"
+            }
+          ],
+          "scene_branches": {
+            "session_10": {
+              "scene": "session_10",
+              "value": "family camping traditions",
+              "context": "We always look forward to our family camping trip ... highlight of our summer",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8925000000000001,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "joined a new LGBTQ activist group last Tues",
+                  "scene": "session_10",
+                  "evidence_id": "f8aa663107e24f8bbe8e47981f46d070",
+                  "timestamp": "2026-06-07T07:41:34.614706"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "We always look forward to our family camping trip ... highlight of our summer",
+                  "scene": "session_10",
+                  "evidence_id": "679427a8ecda4ed0bf4d7a9d3d89cf76",
+                  "timestamp": "2026-06-07T07:41:34.614783"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 1,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:34.614783",
+              "last_accessed": "2026-06-07T07:41:34.614783"
+            }
+          },
+          "unit_id": "5f277ba8effd47e2b32b04175d36ff55",
+          "timestamp": "2026-06-07T07:41:34.627739",
+          "session_count": 1,
+          "reinforcement_count": 2,
+          "contradiction_count": 1,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_10"
+          ],
+          "last_accessed": "2026-06-07T07:41:34.614783",
+          "last_evolved": "2026-06-07T07:41:34.614783",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "project_focus",
+          "value": "making a difference in LGBTQ rights",
+          "context": "giving my voice and making a real difference",
+          "profile_type": "goal",
+          "stability_score": 0.7,
+          "confidence_score": 0.85,
+          "scene": "session_10",
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "giving my voice and making a real difference",
+              "scene": "session_10",
+              "evidence_id": "43b492c3a12a4c2885bd0cccf3d5fe34",
+              "timestamp": "2026-06-07T07:41:34.614740"
+            }
+          ],
+          "scene_branches": {
+            "session_10": {
+              "scene": "session_10",
+              "value": "making a difference in LGBTQ rights",
+              "context": "giving my voice and making a real difference",
+              "confidence_score": 0.85,
+              "quality_score": 0.85,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "giving my voice and making a real difference",
+                  "scene": "session_10",
+                  "evidence_id": "43b492c3a12a4c2885bd0cccf3d5fe34",
+                  "timestamp": "2026-06-07T07:41:34.614740"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:34.614740",
+              "last_accessed": "2026-06-07T07:41:34.614740"
+            }
+          },
+          "unit_id": "d03abc42af134077a5e975eb31ac3600",
+          "timestamp": "2026-06-07T07:41:34.640512",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_10"
+          ],
+          "last_accessed": "2026-06-07T07:41:34.640521",
+          "last_evolved": "2026-06-07T07:41:34.640526",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "identity",
+          "value": "member of Connected LGBTQ Activists group",
+          "context": "joined a new LGBTQ activist group ... 'Connected LGBTQ Activists'",
+          "profile_type": "background",
+          "stability_score": 0.6,
+          "confidence_score": 0.95,
+          "scene": "session_10",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a new LGBTQ activist group ... 'Connected LGBTQ Activists'",
+              "scene": "session_10",
+              "evidence_id": "42d5ce8f236a4e31bae3adbab0571a5e",
+              "timestamp": "2026-06-07T07:41:34.614755"
+            }
+          ],
+          "scene_branches": {
+            "session_10": {
+              "scene": "session_10",
+              "value": "member of Connected LGBTQ Activists group",
+              "context": "joined a new LGBTQ activist group ... 'Connected LGBTQ Activists'",
+              "confidence_score": 0.95,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "joined a new LGBTQ activist group ... 'Connected LGBTQ Activists'",
+                  "scene": "session_10",
+                  "evidence_id": "42d5ce8f236a4e31bae3adbab0571a5e",
+                  "timestamp": "2026-06-07T07:41:34.614755"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:34.614755",
+              "last_accessed": "2026-06-07T07:41:34.614755"
+            }
+          },
+          "unit_id": "81a2aa6eecc343f785237d8fef3aa738",
+          "timestamp": "2026-06-07T07:41:34.657651",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_10"
+          ],
+          "last_accessed": "2026-06-07T07:41:34.657660",
+          "last_evolved": "2026-06-07T07:41:34.657666",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "preference",
+          "value": "family beach trips (once or twice a year)",
+          "context": "we went to the beach recently ... We don't go often, usually only once or twice a year",
+          "profile_type": "preference",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_10",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "we went to the beach recently ... We don't go often, usually only once or twice a year",
+              "scene": "session_10",
+              "evidence_id": "af5feb79619d4be39f64bd56b897e3c8",
+              "timestamp": "2026-06-07T07:41:34.614769"
+            }
+          ],
+          "scene_branches": {
+            "session_10": {
+              "scene": "session_10",
+              "value": "family beach trips (once or twice a year)",
+              "context": "we went to the beach recently ... We don't go often, usually only once or twice a year",
+              "confidence_score": 0.9,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "we went to the beach recently ... We don't go often, usually only once or twice a year",
+                  "scene": "session_10",
+                  "evidence_id": "af5feb79619d4be39f64bd56b897e3c8",
+                  "timestamp": "2026-06-07T07:41:34.614769"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:34.614769",
+              "last_accessed": "2026-06-07T07:41:34.614769"
+            }
+          },
+          "unit_id": "487ba768c71043d88a382504ea2f53c5",
+          "timestamp": "2026-06-07T07:41:34.677796",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_10"
+          ],
+          "last_accessed": "2026-06-07T07:41:34.677803",
+          "last_evolved": "2026-06-07T07:41:34.677807",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "personal_background",
+          "value": "mother who cherishes family moments",
+          "context": "I'll never forget the day my youngest took her first steps ... lucky to have my family",
+          "profile_type": "background",
+          "stability_score": 1.0,
+          "confidence_score": 0.95,
+          "scene": "session_10",
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I'll never forget the day my youngest took her first steps ... lucky to have my family",
+              "scene": "session_10",
+              "evidence_id": "22d9c0bb3c3b49728974fabb27cca2a1",
+              "timestamp": "2026-06-07T07:41:34.614796"
+            }
+          ],
+          "scene_branches": {
+            "session_10": {
+              "scene": "session_10",
+              "value": "mother who cherishes family moments",
+              "context": "I'll never forget the day my youngest took her first steps ... lucky to have my family",
+              "confidence_score": 0.95,
+              "quality_score": 0.9166666666666666,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I'll never forget the day my youngest took her first steps ... lucky to have my family",
+                  "scene": "session_10",
+                  "evidence_id": "22d9c0bb3c3b49728974fabb27cca2a1",
+                  "timestamp": "2026-06-07T07:41:34.614796"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:34.614796",
+              "last_accessed": "2026-06-07T07:41:34.614796"
+            }
+          },
+          "unit_id": "108ee3c0dd2c4d559fc04716bcc45f3a",
+          "timestamp": "2026-06-07T07:41:34.706565",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_10"
+          ],
+          "last_accessed": "2026-06-07T07:41:34.706570",
+          "last_evolved": "2026-06-07T07:41:34.706573",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "style",
+          "value": "appreciative of life and finds special meaning in family experiences",
+          "context": "These special moments make me appreciate life and how lucky I am",
+          "profile_type": "style",
+          "stability_score": 0.9,
+          "confidence_score": 0.85,
+          "scene": "session_10",
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "These special moments make me appreciate life and how lucky I am",
+              "scene": "session_10",
+              "evidence_id": "e1919d3d5f204bda99b9385dddd3de9b",
+              "timestamp": "2026-06-07T07:41:34.614811"
+            }
+          ],
+          "scene_branches": {
+            "session_10": {
+              "scene": "session_10",
+              "value": "appreciative of life and finds special meaning in family experiences",
+              "context": "These special moments make me appreciate life and how lucky I am",
+              "confidence_score": 0.85,
+              "quality_score": 0.8833333333333333,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "These special moments make me appreciate life and how lucky I am",
+                  "scene": "session_10",
+                  "evidence_id": "e1919d3d5f204bda99b9385dddd3de9b",
+                  "timestamp": "2026-06-07T07:41:34.614811"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:41:34.614811",
+              "last_accessed": "2026-06-07T07:41:34.614811"
+            }
+          },
+          "unit_id": "24a598008c544a5a92a27f5f7c8c8be8",
+          "timestamp": "2026-06-07T07:41:34.719607",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_10"
+          ],
+          "last_accessed": "2026-06-07T07:41:34.719612",
+          "last_evolved": "2026-06-07T07:41:34.719614",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "pottery and painting",
+          "context": "Melanie shares a pottery project and talks about painting to express feelings.",
+          "profile_type": "interest",
+          "stability_score": 0.6173333333333334,
+          "confidence_score": 0.8400000000000001,
+          "scene": "session_12",
+          "quality_score": 0.79,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Caroline mentions a recent hike experience.",
+              "scene": "session_12",
+              "evidence_id": "27144279435744d18c60f21c58a3843d",
+              "timestamp": "2026-06-07T07:42:17.501995"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "Melanie shares a pottery project and talks about painting to express feelings.",
+              "scene": "session_12",
+              "evidence_id": "104771bf1cb54679862c159340bf69dd",
+              "timestamp": "2026-06-07T07:42:17.502046"
+            }
+          ],
+          "scene_branches": {
+            "session_12": {
+              "scene": "session_12",
+              "value": "pottery and painting",
+              "context": "Melanie shares a pottery project and talks about painting to express feelings.",
+              "confidence_score": 0.8400000000000001,
+              "quality_score": 0.79,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Caroline mentions a recent hike experience.",
+                  "scene": "session_12",
+                  "evidence_id": "27144279435744d18c60f21c58a3843d",
+                  "timestamp": "2026-06-07T07:42:17.501995"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "Melanie shares a pottery project and talks about painting to express feelings.",
+                  "scene": "session_12",
+                  "evidence_id": "104771bf1cb54679862c159340bf69dd",
+                  "timestamp": "2026-06-07T07:42:17.502046"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 1,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:17.502046",
+              "last_accessed": "2026-06-07T07:42:17.502046"
+            }
+          },
+          "unit_id": "87c6920a5a5941cc87be4af8e3b4737d",
+          "timestamp": "2026-06-07T07:42:17.549472",
+          "session_count": 1,
+          "reinforcement_count": 2,
+          "contradiction_count": 1,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_12"
+          ],
+          "last_accessed": "2026-06-07T07:42:17.502046",
+          "last_evolved": "2026-06-07T07:42:17.502046",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "preference",
+          "value": "values supportive friends for LGBTQ acceptance",
+          "context": "Caroline says it's helpful to have accepting and supportive people around her.",
+          "profile_type": "preference",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_12",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Caroline says it's helpful to have accepting and supportive people around her.",
+              "scene": "session_12",
+              "evidence_id": "ffafe3bc6f2c46bcbbab8d3d01755291",
+              "timestamp": "2026-06-07T07:42:17.502014"
+            }
+          ],
+          "scene_branches": {
+            "session_12": {
+              "scene": "session_12",
+              "value": "values supportive friends for LGBTQ acceptance",
+              "context": "Caroline says it's helpful to have accepting and supportive people around her.",
+              "confidence_score": 0.9,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Caroline says it's helpful to have accepting and supportive people around her.",
+                  "scene": "session_12",
+                  "evidence_id": "ffafe3bc6f2c46bcbbab8d3d01755291",
+                  "timestamp": "2026-06-07T07:42:17.502014"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:17.502014",
+              "last_accessed": "2026-06-07T07:42:17.502014"
+            }
+          },
+          "unit_id": "4dba09143c0e442bac3b0ebe727d46a4",
+          "timestamp": "2026-06-07T07:42:17.573919",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_12"
+          ],
+          "last_accessed": "2026-06-07T07:42:17.573927",
+          "last_evolved": "2026-06-07T07:42:17.573931",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "current_goal",
+          "value": "plan a summer outing with Caroline",
+          "context": "Melanie agrees to plan something special with Caroline.",
+          "profile_type": "goal",
+          "stability_score": 0.42133333333333334,
+          "confidence_score": 0.8600000000000001,
+          "scene": "session_12",
+          "quality_score": 0.7733333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Caroline suggests planning a special trip just the two of them to create memories and explore nature.",
+              "scene": "session_12",
+              "evidence_id": "df09e3504f2c4f49b2c213c9286a3fc2",
+              "timestamp": "2026-06-07T07:42:17.502031"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "Melanie agrees to plan something special with Caroline.",
+              "scene": "session_12",
+              "evidence_id": "abc0ad42f3bd4196a4f1ed830d35c1fd",
+              "timestamp": "2026-06-07T07:42:17.502076"
+            }
+          ],
+          "scene_branches": {
+            "session_12": {
+              "scene": "session_12",
+              "value": "plan a summer outing with Caroline",
+              "context": "Melanie agrees to plan something special with Caroline.",
+              "confidence_score": 0.8600000000000001,
+              "quality_score": 0.7733333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Caroline suggests planning a special trip just the two of them to create memories and explore nature.",
+                  "scene": "session_12",
+                  "evidence_id": "df09e3504f2c4f49b2c213c9286a3fc2",
+                  "timestamp": "2026-06-07T07:42:17.502031"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "Melanie agrees to plan something special with Caroline.",
+                  "scene": "session_12",
+                  "evidence_id": "abc0ad42f3bd4196a4f1ed830d35c1fd",
+                  "timestamp": "2026-06-07T07:42:17.502076"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:17.502076",
+              "last_accessed": "2026-06-07T07:42:17.502076"
+            }
+          },
+          "unit_id": "6f8308deb44a4c3092d54e5178bb2ae6",
+          "timestamp": "2026-06-07T07:42:17.598614",
+          "session_count": 1,
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_12"
+          ],
+          "last_accessed": "2026-06-07T07:42:17.502076",
+          "last_evolved": "2026-06-07T07:42:17.502076",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "style",
+          "value": "art as expression of gender identity",
+          "context": "painting helped me explore my gender identity",
+          "profile_type": "style",
+          "stability_score": 0.8413333333333333,
+          "confidence_score": 0.8800000000000001,
+          "scene": "session_16",
+          "quality_score": 0.8475,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Melanie says painting helps express feelings and is a sanctuary.",
+              "scene": "session_12",
+              "evidence_id": "958da8cdf8244ac595c6cecfd2afb578",
+              "timestamp": "2026-06-07T07:42:17.502061"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "painting helped me explore my gender identity",
+              "scene": "session_16",
+              "evidence_id": "d0c3fd4666d746c6b1dc639f5198ac50",
+              "timestamp": "2026-06-07T07:43:33.799881"
+            }
+          ],
+          "scene_branches": {
+            "session_12": {
+              "scene": "session_12",
+              "value": "uses art for self-expression and emotional comfort",
+              "context": "Melanie says painting helps express feelings and is a sanctuary.",
+              "confidence_score": 0.9,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Melanie says painting helps express feelings and is a sanctuary.",
+                  "scene": "session_12",
+                  "evidence_id": "958da8cdf8244ac595c6cecfd2afb578",
+                  "timestamp": "2026-06-07T07:42:17.502061"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:17.502061",
+              "last_accessed": "2026-06-07T07:42:17.502061"
+            },
+            "session_16": {
+              "scene": "session_16",
+              "value": "art as expression of gender identity",
+              "context": "painting helped me explore my gender identity",
+              "confidence_score": 0.8500000000000001,
+              "quality_score": 0.7833333333333332,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "painting helped me explore my gender identity",
+                  "scene": "session_16",
+                  "evidence_id": "d0c3fd4666d746c6b1dc639f5198ac50",
+                  "timestamp": "2026-06-07T07:43:33.799881"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:43:33.799881",
+              "last_accessed": "2026-06-07T07:43:33.799881"
+            }
+          },
+          "unit_id": "1083f37da6c84834a9465e9fa99145d1",
+          "timestamp": "2026-06-07T07:42:17.627193",
+          "session_count": 2,
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_12",
+            "conv-26_session_16"
+          ],
+          "last_accessed": "2026-06-07T07:43:33.799881",
+          "last_evolved": "2026-06-07T07:43:33.799881",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "current_goal",
+          "value": "applying to adoption agencies to become a mother",
+          "context": "I took the first step towards becoming a mom - I applied to adoption agencies!",
+          "profile_type": "goal",
+          "stability_score": 0.5,
+          "confidence_score": 0.9,
+          "scene": "session_13",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I took the first step towards becoming a mom - I applied to adoption agencies!",
+              "scene": "session_13",
+              "evidence_id": "499012aefc4a46f9a3e28e21481f4e72",
+              "timestamp": "2026-06-07T07:42:41.938159"
+            }
+          ],
+          "scene_branches": {
+            "session_13": {
+              "scene": "session_13",
+              "value": "applying to adoption agencies to become a mother",
+              "context": "I took the first step towards becoming a mom - I applied to adoption agencies!",
+              "confidence_score": 0.9,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I took the first step towards becoming a mom - I applied to adoption agencies!",
+                  "scene": "session_13",
+                  "evidence_id": "499012aefc4a46f9a3e28e21481f4e72",
+                  "timestamp": "2026-06-07T07:42:41.938159"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:41.938159",
+              "last_accessed": "2026-06-07T07:42:41.938159"
+            }
+          },
+          "unit_id": "95a2f353cb834fac9e7e17e56cda9768",
+          "timestamp": "2026-06-07T07:42:41.968148",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_13"
+          ],
+          "last_accessed": "2026-06-07T07:42:41.968167",
+          "last_evolved": "2026-06-07T07:42:41.968173",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "pet",
+          "value": "has cats named Oliver and Bailey",
+          "context": "we got another cat named Bailey too",
+          "profile_type": "background",
+          "stability_score": 0.9213333333333333,
+          "confidence_score": 0.9000000000000001,
+          "scene": "session_13",
+          "quality_score": 0.8516666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I do- Oscar, my guinea pig",
+              "scene": "session_13",
+              "evidence_id": "c47ccc48ca09432c898c2a98d8ab0f40",
+              "timestamp": "2026-06-07T07:42:41.938188"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "we got another cat named Bailey too",
+              "scene": "session_13",
+              "evidence_id": "0cedfe90059947da8fc9559912a90d68",
+              "timestamp": "2026-06-07T07:42:41.938253"
+            }
+          ],
+          "scene_branches": {
+            "session_13": {
+              "scene": "session_13",
+              "value": "has cats named Oliver and Bailey",
+              "context": "we got another cat named Bailey too",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8516666666666668,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I do- Oscar, my guinea pig",
+                  "scene": "session_13",
+                  "evidence_id": "c47ccc48ca09432c898c2a98d8ab0f40",
+                  "timestamp": "2026-06-07T07:42:41.938188"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "we got another cat named Bailey too",
+                  "scene": "session_13",
+                  "evidence_id": "0cedfe90059947da8fc9559912a90d68",
+                  "timestamp": "2026-06-07T07:42:41.938253"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:41.938253",
+              "last_accessed": "2026-06-07T07:42:41.938253"
+            }
+          },
+          "unit_id": "894d1c8da14945398e8f25aa7bf7fdd0",
+          "timestamp": "2026-06-07T07:42:41.983678",
+          "session_count": 1,
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_13"
+          ],
+          "last_accessed": "2026-06-07T07:42:41.938253",
+          "last_evolved": "2026-06-07T07:42:41.938253",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "painting animals, especially horses",
+          "context": "Here's a photo of my horse painting I did recently",
+          "profile_type": "interest",
+          "stability_score": 0.8808,
+          "confidence_score": 0.9000000000000001,
+          "scene": "session_13",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I used to go horseback riding with my dad when I was a kid... I've always had a love for horses!",
+              "scene": "session_13",
+              "evidence_id": "161850cbb27840f393cf82ceffeeaac3",
+              "timestamp": "2026-06-07T07:42:41.938203"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "Painting's great for expressing myself. I love creating art!",
+              "scene": "session_13",
+              "evidence_id": "b36d2221049344839fe4cdb7ea83d8d5",
+              "timestamp": "2026-06-07T07:42:41.938215"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "Here's a photo of my horse painting I did recently",
+              "scene": "session_13",
+              "evidence_id": "adbd4663bb504fa78e21dd0f50699157",
+              "timestamp": "2026-06-07T07:42:41.938266"
+            }
+          ],
+          "scene_branches": {
+            "session_13": {
+              "scene": "session_13",
+              "value": "painting animals, especially horses",
+              "context": "Here's a photo of my horse painting I did recently",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I used to go horseback riding with my dad when I was a kid... I've always had a love for horses!",
+                  "scene": "session_13",
+                  "evidence_id": "161850cbb27840f393cf82ceffeeaac3",
+                  "timestamp": "2026-06-07T07:42:41.938203"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "Painting's great for expressing myself. I love creating art!",
+                  "scene": "session_13",
+                  "evidence_id": "b36d2221049344839fe4cdb7ea83d8d5",
+                  "timestamp": "2026-06-07T07:42:41.938215"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "Here's a photo of my horse painting I did recently",
+                  "scene": "session_13",
+                  "evidence_id": "adbd4663bb504fa78e21dd0f50699157",
+                  "timestamp": "2026-06-07T07:42:41.938266"
+                }
+              ],
+              "reinforcement_count": 3,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:41.938266",
+              "last_accessed": "2026-06-07T07:42:41.938266"
+            }
+          },
+          "unit_id": "62eadd67ca5a457ea37c9566b8ea1cb9",
+          "timestamp": "2026-06-07T07:42:42.009861",
+          "session_count": 1,
+          "reinforcement_count": 3,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_13"
+          ],
+          "last_accessed": "2026-06-07T07:42:41.938266",
+          "last_evolved": "2026-06-07T07:42:41.938266",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "goal",
+          "value": "live authentically and help others",
+          "context": "I want to live authentically and help others to do the same",
+          "profile_type": "goal",
+          "stability_score": 0.7,
+          "confidence_score": 0.8,
+          "scene": "session_13",
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I want to live authentically and help others to do the same",
+              "scene": "session_13",
+              "evidence_id": "f543736fddda4a6ca94dc5e4fc61fc71",
+              "timestamp": "2026-06-07T07:42:41.938240"
+            }
+          ],
+          "scene_branches": {
+            "session_13": {
+              "scene": "session_13",
+              "value": "live authentically and help others",
+              "context": "I want to live authentically and help others to do the same",
+              "confidence_score": 0.8,
+              "quality_score": 0.7999999999999999,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I want to live authentically and help others to do the same",
+                  "scene": "session_13",
+                  "evidence_id": "f543736fddda4a6ca94dc5e4fc61fc71",
+                  "timestamp": "2026-06-07T07:42:41.938240"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:42:41.938240",
+              "last_accessed": "2026-06-07T07:42:41.938240"
+            }
+          },
+          "unit_id": "c9d4fe6cb41f4938852bc3e955643bf1",
+          "timestamp": "2026-06-07T07:42:42.051285",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_13"
+          ],
+          "last_accessed": "2026-06-07T07:42:42.051290",
+          "last_evolved": "2026-06-07T07:42:42.051292",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "identity",
+          "value": "transgender woman",
+          "context": "Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable.",
+          "profile_type": "background",
+          "stability_score": 0.9777333333333333,
+          "confidence_score": 0.9179999999999999,
+          "scene": "session_19",
+          "quality_score": 0.8785833333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I'm finally proud of who I am as a trans woman",
+              "scene": "session_16",
+              "evidence_id": "232c0ec7eba747b6a8395bbb8210866e",
+              "timestamp": "2026-06-07T07:43:33.799808"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "went camping with the kids",
+              "scene": "session_16",
+              "evidence_id": "1a01e46f1266416c95b97ab950d37fca",
+              "timestamp": "2026-06-07T07:43:33.799914"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable.",
+              "scene": "session_19",
+              "evidence_id": "c237edb4c6b447ccabb9590ea9e38e78",
+              "timestamp": "2026-06-07T07:44:20.444493"
+            }
+          ],
+          "scene_branches": {
+            "session_16": {
+              "scene": "session_16",
+              "value": "trans woman",
+              "context": "went camping with the kids",
+              "confidence_score": 0.9299999999999999,
+              "quality_score": 0.8883333333333333,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I'm finally proud of who I am as a trans woman",
+                  "scene": "session_16",
+                  "evidence_id": "232c0ec7eba747b6a8395bbb8210866e",
+                  "timestamp": "2026-06-07T07:43:33.799808"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "went camping with the kids",
+                  "scene": "session_16",
+                  "evidence_id": "1a01e46f1266416c95b97ab950d37fca",
+                  "timestamp": "2026-06-07T07:43:33.799914"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 1,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:43:33.799914",
+              "last_accessed": "2026-06-07T07:43:33.799914"
+            },
+            "session_19": {
+              "scene": "session_19",
+              "value": "transgender woman",
+              "context": "Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable.",
+              "confidence_score": 0.9000000000000001,
+              "quality_score": 0.8666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable.",
+                  "scene": "session_19",
+                  "evidence_id": "c237edb4c6b447ccabb9590ea9e38e78",
+                  "timestamp": "2026-06-07T07:44:20.444493"
+                }
+              ],
+              "reinforcement_count": 2,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:20.444493",
+              "last_accessed": "2026-06-07T07:44:20.444493"
+            }
+          },
+          "unit_id": "eee0aa65055d42b8b908ff8de28f04e2",
+          "timestamp": "2026-06-07T07:43:33.824094",
+          "session_count": 2,
+          "reinforcement_count": 3,
+          "contradiction_count": 1,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_16",
+            "conv-26_session_19"
+          ],
+          "last_accessed": "2026-06-07T07:44:20.444493",
+          "last_evolved": "2026-06-07T07:44:20.444493",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "art (pottery and painting)",
+          "context": "seven years, found muses painting and pottery",
+          "profile_type": "interest",
+          "stability_score": 0.88064,
+          "confidence_score": 0.9152,
+          "scene": "session_16",
+          "quality_score": 0.864325,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "inspired seeing my work make a difference for the LGBTQ+ community",
+              "scene": "session_16",
+              "evidence_id": "968dadae18e644cf957d05c2964c87fc",
+              "timestamp": "2026-06-07T07:43:33.799846"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "been creating art since 17",
+              "scene": "session_16",
+              "evidence_id": "f36938ec3c17468c8247e8cec3059e09",
+              "timestamp": "2026-06-07T07:43:33.799865"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "biking sounds great, we went camping",
+              "scene": "session_16",
+              "evidence_id": "9c96b16e9da640d488d243fb62827499",
+              "timestamp": "2026-06-07T07:43:33.799929"
+            },
+            {
+              "source": "llm_deepseek",
+              "content": "seven years, found muses painting and pottery",
+              "scene": "session_16",
+              "evidence_id": "169f1fa342d84b11b033c1161f39e4f7",
+              "timestamp": "2026-06-07T07:43:33.799945"
+            }
+          ],
+          "scene_branches": {
+            "session_16": {
+              "scene": "session_16",
+              "value": "art (pottery and painting)",
+              "context": "seven years, found muses painting and pottery",
+              "confidence_score": 0.9152,
+              "quality_score": 0.864325,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "inspired seeing my work make a difference for the LGBTQ+ community",
+                  "scene": "session_16",
+                  "evidence_id": "968dadae18e644cf957d05c2964c87fc",
+                  "timestamp": "2026-06-07T07:43:33.799846"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "been creating art since 17",
+                  "scene": "session_16",
+                  "evidence_id": "f36938ec3c17468c8247e8cec3059e09",
+                  "timestamp": "2026-06-07T07:43:33.799865"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "biking sounds great, we went camping",
+                  "scene": "session_16",
+                  "evidence_id": "9c96b16e9da640d488d243fb62827499",
+                  "timestamp": "2026-06-07T07:43:33.799929"
+                },
+                {
+                  "source": "llm_deepseek",
+                  "content": "seven years, found muses painting and pottery",
+                  "scene": "session_16",
+                  "evidence_id": "169f1fa342d84b11b033c1161f39e4f7",
+                  "timestamp": "2026-06-07T07:43:33.799945"
+                }
+              ],
+              "reinforcement_count": 4,
+              "contradiction_count": 1,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:43:33.799945",
+              "last_accessed": "2026-06-07T07:43:33.799945"
+            }
+          },
+          "unit_id": "088a80657de749fd9a455e790315dafc",
+          "timestamp": "2026-06-07T07:43:33.855470",
+          "session_count": 1,
+          "reinforcement_count": 4,
+          "contradiction_count": 1,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_16"
+          ],
+          "last_accessed": "2026-06-07T07:43:33.799945",
+          "last_evolved": "2026-06-07T07:43:33.799945",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "preference",
+          "value": "authentic relationships",
+          "context": "relationships feel more genuine with those who accept me",
+          "profile_type": "preference",
+          "stability_score": 0.8,
+          "confidence_score": 0.8,
+          "scene": "session_16",
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "relationships feel more genuine with those who accept me",
+              "scene": "session_16",
+              "evidence_id": "bc6b322cf54c49eaae8524e1e9e81632",
+              "timestamp": "2026-06-07T07:43:33.799897"
+            }
+          ],
+          "scene_branches": {
+            "session_16": {
+              "scene": "session_16",
+              "value": "authentic relationships",
+              "context": "relationships feel more genuine with those who accept me",
+              "confidence_score": 0.8,
+              "quality_score": 0.7166666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "relationships feel more genuine with those who accept me",
+                  "scene": "session_16",
+                  "evidence_id": "bc6b322cf54c49eaae8524e1e9e81632",
+                  "timestamp": "2026-06-07T07:43:33.799897"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:43:33.799897",
+              "last_accessed": "2026-06-07T07:43:33.799897"
+            }
+          },
+          "unit_id": "5b1a9b276e7e4718ac620dcf60652fa6",
+          "timestamp": "2026-06-07T07:43:33.903372",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_16"
+          ],
+          "last_accessed": "2026-06-07T07:43:33.903377",
+          "last_evolved": "2026-06-07T07:43:33.903379",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "family_oriented",
+          "value": "highly values family",
+          "context": "after accident, emphasizes family's importance and support",
+          "profile_type": "background",
+          "stability_score": 0.9,
+          "confidence_score": 0.9,
+          "scene": "session_18",
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "after accident, emphasizes family's importance and support",
+              "scene": "session_18",
+              "evidence_id": "9cd4527fe0e94086888d944a08c50355",
+              "timestamp": "2026-06-07T07:44:12.935816"
+            }
+          ],
+          "scene_branches": {
+            "session_18": {
+              "scene": "session_18",
+              "value": "highly values family",
+              "context": "after accident, emphasizes family's importance and support",
+              "confidence_score": 0.9,
+              "quality_score": 0.9,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "after accident, emphasizes family's importance and support",
+                  "scene": "session_18",
+                  "evidence_id": "9cd4527fe0e94086888d944a08c50355",
+                  "timestamp": "2026-06-07T07:44:12.935816"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:12.935816",
+              "last_accessed": "2026-06-07T07:44:12.935816"
+            }
+          },
+          "unit_id": "512f52063cc24205acbf5606ed5fffeb",
+          "timestamp": "2026-06-07T07:44:12.965858",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_18"
+          ],
+          "last_accessed": "2026-06-07T07:44:12.965870",
+          "last_evolved": "2026-06-07T07:44:12.965877",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest_camping",
+          "value": "loves camping with family",
+          "context": "enjoys camping trips, nature, peace, and bonding over campfires",
+          "profile_type": "interest",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_18",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "enjoys camping trips, nature, peace, and bonding over campfires",
+              "scene": "session_18",
+              "evidence_id": "06c643e41f84491e8ee8a533a01435f3",
+              "timestamp": "2026-06-07T07:44:12.935851"
+            }
+          ],
+          "scene_branches": {
+            "session_18": {
+              "scene": "session_18",
+              "value": "loves camping with family",
+              "context": "enjoys camping trips, nature, peace, and bonding over campfires",
+              "confidence_score": 0.9,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "enjoys camping trips, nature, peace, and bonding over campfires",
+                  "scene": "session_18",
+                  "evidence_id": "06c643e41f84491e8ee8a533a01435f3",
+                  "timestamp": "2026-06-07T07:44:12.935851"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:12.935851",
+              "last_accessed": "2026-06-07T07:44:12.935851"
+            }
+          },
+          "unit_id": "ddf8899f1b40490f8cdb8b2560fad45a",
+          "timestamp": "2026-06-07T07:44:12.997630",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_18"
+          ],
+          "last_accessed": "2026-06-07T07:44:12.997638",
+          "last_evolved": "2026-06-07T07:44:12.997642",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest_nature",
+          "value": "finds nature refreshing and peaceful",
+          "context": "loves waking up to birds and fresh air, nature refreshes soul",
+          "profile_type": "interest",
+          "stability_score": 0.8,
+          "confidence_score": 0.9,
+          "scene": "session_18",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "loves waking up to birds and fresh air, nature refreshes soul",
+              "scene": "session_18",
+              "evidence_id": "87a77502c7f446afb54a726219b66b68",
+              "timestamp": "2026-06-07T07:44:12.935869"
+            }
+          ],
+          "scene_branches": {
+            "session_18": {
+              "scene": "session_18",
+              "value": "finds nature refreshing and peaceful",
+              "context": "loves waking up to birds and fresh air, nature refreshes soul",
+              "confidence_score": 0.9,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "loves waking up to birds and fresh air, nature refreshes soul",
+                  "scene": "session_18",
+                  "evidence_id": "87a77502c7f446afb54a726219b66b68",
+                  "timestamp": "2026-06-07T07:44:12.935869"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:12.935869",
+              "last_accessed": "2026-06-07T07:44:12.935869"
+            }
+          },
+          "unit_id": "2c6c9dc2c2504d11b5e6b4dc5216f865",
+          "timestamp": "2026-06-07T07:44:13.021459",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_18"
+          ],
+          "last_accessed": "2026-06-07T07:44:13.021465",
+          "last_evolved": "2026-06-07T07:44:13.021468",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "identity_mother",
+          "value": "mother of multiple children",
+          "context": "mentions her son and kids, describes their resilience",
+          "profile_type": "background",
+          "stability_score": 1.0,
+          "confidence_score": 0.9,
+          "scene": "session_18",
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "mentions her son and kids, describes their resilience",
+              "scene": "session_18",
+              "evidence_id": "f275964e8bed494aa02935ed577f871d",
+              "timestamp": "2026-06-07T07:44:12.935885"
+            }
+          ],
+          "scene_branches": {
+            "session_18": {
+              "scene": "session_18",
+              "value": "mother of multiple children",
+              "context": "mentions her son and kids, describes their resilience",
+              "confidence_score": 0.9,
+              "quality_score": 0.8333333333333334,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "mentions her son and kids, describes their resilience",
+                  "scene": "session_18",
+                  "evidence_id": "f275964e8bed494aa02935ed577f871d",
+                  "timestamp": "2026-06-07T07:44:12.935885"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:12.935885",
+              "last_accessed": "2026-06-07T07:44:12.935885"
+            }
+          },
+          "unit_id": "cf21fd395bfe4497ac6659ade5463d57",
+          "timestamp": "2026-06-07T07:44:13.037990",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_18"
+          ],
+          "last_accessed": "2026-06-07T07:44:13.037995",
+          "last_evolved": "2026-06-07T07:44:13.037998",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "preference_quality_time",
+          "value": "values quality time with family",
+          "context": "bonds over stories, campfires, and nature; family is motivation",
+          "profile_type": "preference",
+          "stability_score": 0.8,
+          "confidence_score": 0.8,
+          "scene": "session_18",
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "bonds over stories, campfires, and nature; family is motivation",
+              "scene": "session_18",
+              "evidence_id": "173814e67d6d4aa4a36b3b1965c67241",
+              "timestamp": "2026-06-07T07:44:12.935900"
+            }
+          ],
+          "scene_branches": {
+            "session_18": {
+              "scene": "session_18",
+              "value": "values quality time with family",
+              "context": "bonds over stories, campfires, and nature; family is motivation",
+              "confidence_score": 0.8,
+              "quality_score": 0.7666666666666666,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "bonds over stories, campfires, and nature; family is motivation",
+                  "scene": "session_18",
+                  "evidence_id": "173814e67d6d4aa4a36b3b1965c67241",
+                  "timestamp": "2026-06-07T07:44:12.935900"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:12.935900",
+              "last_accessed": "2026-06-07T07:44:12.935900"
+            }
+          },
+          "unit_id": "3369b007b545411da5f59bf01ae3c624",
+          "timestamp": "2026-06-07T07:44:13.054920",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_18"
+          ],
+          "last_accessed": "2026-06-07T07:44:13.054924",
+          "last_evolved": "2026-06-07T07:44:13.054927",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "current_goal",
+          "value": "adopt children",
+          "context": "passed the adoption agency interviews last Friday! I hope to build my own family and put a roof over kids who haven't had that before.",
+          "profile_type": "goal",
+          "stability_score": 0.9,
+          "confidence_score": 1.0,
+          "scene": "session_19",
+          "quality_score": 1.0,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "passed the adoption agency interviews last Friday! I hope to build my own family and put a roof over kids who haven't had that before.",
+              "scene": "session_19",
+              "evidence_id": "5500415fbccb47a8a74acdfe9825fffc",
+              "timestamp": "2026-06-07T07:44:20.444528"
+            }
+          ],
+          "scene_branches": {
+            "session_19": {
+              "scene": "session_19",
+              "value": "adopt children",
+              "context": "passed the adoption agency interviews last Friday! I hope to build my own family and put a roof over kids who haven't had that before.",
+              "confidence_score": 1.0,
+              "quality_score": 1.0,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "passed the adoption agency interviews last Friday! I hope to build my own family and put a roof over kids who haven't had that before.",
+                  "scene": "session_19",
+                  "evidence_id": "5500415fbccb47a8a74acdfe9825fffc",
+                  "timestamp": "2026-06-07T07:44:20.444528"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:20.444528",
+              "last_accessed": "2026-06-07T07:44:20.444528"
+            }
+          },
+          "unit_id": "b2ba9a4a23e0485684960fc21bcd62a4",
+          "timestamp": "2026-06-07T07:44:20.508001",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_19"
+          ],
+          "last_accessed": "2026-06-07T07:44:20.508006",
+          "last_evolved": "2026-06-07T07:44:20.508009",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "personal_background",
+          "value": "received support from friends and family during transition",
+          "context": "the help I got from friends, family and people I looked up to was invaluable.",
+          "profile_type": "background",
+          "stability_score": 1.0,
+          "confidence_score": 1.0,
+          "scene": "session_19",
+          "quality_score": 0.9333333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "the help I got from friends, family and people I looked up to was invaluable.",
+              "scene": "session_19",
+              "evidence_id": "02943641c6204c92b067552f5c8cac1c",
+              "timestamp": "2026-06-07T07:44:20.444547"
+            }
+          ],
+          "scene_branches": {
+            "session_19": {
+              "scene": "session_19",
+              "value": "received support from friends and family during transition",
+              "context": "the help I got from friends, family and people I looked up to was invaluable.",
+              "confidence_score": 1.0,
+              "quality_score": 0.9333333333333332,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "the help I got from friends, family and people I looked up to was invaluable.",
+                  "scene": "session_19",
+                  "evidence_id": "02943641c6204c92b067552f5c8cac1c",
+                  "timestamp": "2026-06-07T07:44:20.444547"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:20.444547",
+              "last_accessed": "2026-06-07T07:44:20.444547"
+            }
+          },
+          "unit_id": "c113b30233c74ea39350bf7cfa96de5c",
+          "timestamp": "2026-06-07T07:44:20.531391",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_19"
+          ],
+          "last_accessed": "2026-06-07T07:44:20.531395",
+          "last_evolved": "2026-06-07T07:44:20.531397",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "value",
+          "value": "love and acceptance",
+          "context": "Love and acceptance should be everyone's right, and I want them to experience it.",
+          "profile_type": "general",
+          "stability_score": 1.0,
+          "confidence_score": 1.0,
+          "scene": "session_19",
+          "quality_score": 0.9666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Love and acceptance should be everyone's right, and I want them to experience it.",
+              "scene": "session_19",
+              "evidence_id": "2c7a3f9a56a24346964dfbf2f9aa85e1",
+              "timestamp": "2026-06-07T07:44:20.444563"
+            }
+          ],
+          "scene_branches": {
+            "session_19": {
+              "scene": "session_19",
+              "value": "love and acceptance",
+              "context": "Love and acceptance should be everyone's right, and I want them to experience it.",
+              "confidence_score": 1.0,
+              "quality_score": 0.9666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "Love and acceptance should be everyone's right, and I want them to experience it.",
+                  "scene": "session_19",
+                  "evidence_id": "2c7a3f9a56a24346964dfbf2f9aa85e1",
+                  "timestamp": "2026-06-07T07:44:20.444563"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:20.444563",
+              "last_accessed": "2026-06-07T07:44:20.444563"
+            }
+          },
+          "unit_id": "3391599d0f1b49aab0bef03cc1772a4d",
+          "timestamp": "2026-06-07T07:44:20.549996",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_19"
+          ],
+          "last_accessed": "2026-06-07T07:44:20.550000",
+          "last_evolved": "2026-06-07T07:44:20.550003",
+          "memory_level": "short_term"
+        },
+        {
+          "attribute": "interest",
+          "value": "helping others who need support",
+          "context": "I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+          "profile_type": "interest",
+          "stability_score": 0.9,
+          "confidence_score": 1.0,
+          "scene": "session_19",
+          "quality_score": 0.9666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+              "scene": "session_19",
+              "evidence_id": "f1c79669daf947b9bf5bec20fc38854c",
+              "timestamp": "2026-06-07T07:44:20.444579"
+            }
+          ],
+          "scene_branches": {
+            "session_19": {
+              "scene": "session_19",
+              "value": "helping others who need support",
+              "context": "I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+              "confidence_score": 1.0,
+              "quality_score": 0.9666666666666667,
+              "evidence": [
+                {
+                  "source": "llm_deepseek",
+                  "content": "I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+                  "scene": "session_19",
+                  "evidence_id": "f1c79669daf947b9bf5bec20fc38854c",
+                  "timestamp": "2026-06-07T07:44:20.444579"
+                }
+              ],
+              "reinforcement_count": 1,
+              "contradiction_count": 0,
+              "access_count": 0,
+              "last_seen": "2026-06-07T07:44:20.444579",
+              "last_accessed": "2026-06-07T07:44:20.444579"
+            }
+          },
+          "unit_id": "0824462741ee419997de24299040eb05",
+          "timestamp": "2026-06-07T07:44:20.576154",
+          "session_count": 1,
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 0,
+          "seen_session_ids": [
+            "conv-26_session_19"
+          ],
+          "last_accessed": "2026-06-07T07:44:20.576159",
+          "last_evolved": "2026-06-07T07:44:20.576161",
+          "memory_level": "short_term"
+        }
+      ],
+      "long_term_memory": [],
+      "evidence_store": {
+        "4adbe758647440c484ff6fe81421e1eb": {
+          "source": "llm_deepseek",
+          "content": "attended LGBTQ support group and found it inspiring",
+          "scene": "session_1",
+          "evidence_id": "4adbe758647440c484ff6fe81421e1eb",
+          "timestamp": "2026-06-07T07:38:39.440899"
+        },
+        "cd54213119f64b82a2419932d268fe4e": {
+          "source": "llm_deepseek",
+          "content": "keen on counseling or working in mental health to support others",
+          "scene": "session_1",
+          "evidence_id": "cd54213119f64b82a2419932d268fe4e",
+          "timestamp": "2026-06-07T07:38:39.440937"
+        },
+        "5f9c87edc86d4c538b4e445b69be2265": {
+          "source": "llm_deepseek",
+          "content": "Melanie says 'your empathy and understanding will really help'",
+          "scene": "session_1",
+          "evidence_id": "5f9c87edc86d4c538b4e445b69be2265",
+          "timestamp": "2026-06-07T07:38:39.440956"
+        },
+        "0542a2c5c9d14c379e685c3299265b8c": {
+          "source": "llm_deepseek",
+          "content": "painted lake sunrise and uses painting to relax and express feelings",
+          "scene": "session_1",
+          "evidence_id": "0542a2c5c9d14c379e685c3299265b8c",
+          "timestamp": "2026-06-07T07:38:39.440969"
+        },
+        "b26926959c534d3ebbdbe21e45b66ab2": {
+          "source": "llm_deepseek",
+          "content": "swamped with kids and work",
+          "scene": "session_1",
+          "evidence_id": "b26926959c534d3ebbdbe21e45b66ab2",
+          "timestamp": "2026-06-07T07:38:39.440980"
+        },
+        "ce910813cab242dcab8da8efb476069a": {
+          "source": "llm_deepseek",
+          "content": "off to go swimming with the kids",
+          "scene": "session_1",
+          "evidence_id": "ce910813cab242dcab8da8efb476069a",
+          "timestamp": "2026-06-07T07:38:39.440991"
+        },
+        "4e872c9432ab4d259532f245ee53e800": {
+          "source": "llm_deepseek",
+          "content": "ran a charity race for mental health last Saturday",
+          "scene": "session_2",
+          "evidence_id": "4e872c9432ab4d259532f245ee53e800",
+          "timestamp": "2026-06-07T07:38:50.009544"
+        },
+        "96ffd1589eb6492e8c9a675324eca352": {
+          "source": "llm_deepseek",
+          "content": "realizing self-care is important, carving out me-time daily for running, reading, playing violin",
+          "scene": "session_2",
+          "evidence_id": "96ffd1589eb6492e8c9a675324eca352",
+          "timestamp": "2026-06-07T07:38:50.009582"
+        },
+        "cbfb776af1484cadbe9cbdf0edd85e16": {
+          "source": "llm_deepseek",
+          "content": "consistently encourages Caroline's adoption plans with positive feedback",
+          "scene": "session_2",
+          "evidence_id": "cbfb776af1484cadbe9cbdf0edd85e16",
+          "timestamp": "2026-06-07T07:38:50.009601"
+        },
+        "292c96a54c914c0db0b62442ef80aa52": {
+          "source": "llm_deepseek",
+          "content": "mentions kids excited for summer break",
+          "scene": "session_2",
+          "evidence_id": "292c96a54c914c0db0b62442ef80aa52",
+          "timestamp": "2026-06-07T07:38:50.009634"
+        },
+        "39c482a226af42d9bf5d4e434169cc71": {
+          "source": "llm_deepseek",
+          "content": "chose adoption agency that helps LGBTQ+ folks",
+          "scene": "session_2",
+          "evidence_id": "39c482a226af42d9bf5d4e434169cc71",
+          "timestamp": "2026-06-07T07:38:50.009651"
+        },
+        "0dc71e59f38547c48250b7699a40085d": {
+          "source": "llm_deepseek",
+          "content": "researching adoption agencies, goal to give kids a loving home",
+          "scene": "session_2",
+          "evidence_id": "0dc71e59f38547c48250b7699a40085d",
+          "timestamp": "2026-06-07T07:38:50.009667"
+        },
+        "99da072ed5eb4d34ba9f5f03afc5c391": {
+          "source": "llm_deepseek",
+          "content": "mentions it'll be tough as a single parent but up for the challenge",
+          "scene": "session_2",
+          "evidence_id": "99da072ed5eb4d34ba9f5f03afc5c391",
+          "timestamp": "2026-06-07T07:38:50.009682"
+        },
+        "3bc9386dc5624b719506d9d79c292c88": {
+          "source": "llm_deepseek",
+          "content": "necklace from grandma in Sweden",
+          "scene": "session_4",
+          "evidence_id": "3bc9386dc5624b719506d9d79c292c88",
+          "timestamp": "2026-06-07T07:39:30.891458"
+        },
+        "0ae91b1c40b64a5399aee5fd82c1abf0": {
+          "source": "llm_deepseek",
+          "content": "treasures necklace and hand-painted bowl with personal meaning",
+          "scene": "session_4",
+          "evidence_id": "0ae91b1c40b64a5399aee5fd82c1abf0",
+          "timestamp": "2026-06-07T07:39:30.891494"
+        },
+        "e02c345cbd834f5d933891564ce66447": {
+          "source": "llm_deepseek",
+          "content": "looking into counseling and mental health as a career",
+          "scene": "session_4",
+          "evidence_id": "e02c345cbd834f5d933891564ce66447",
+          "timestamp": "2026-06-07T07:39:30.891514"
+        },
+        "7f19805ede59412a8e8849e6ad24f4d9": {
+          "source": "llm_deepseek",
+          "content": "thinking of working with trans people",
+          "scene": "session_4",
+          "evidence_id": "7f19805ede59412a8e8849e6ad24f4d9",
+          "timestamp": "2026-06-07T07:39:30.891530"
+        },
+        "c807618e1c9d40abaa62c0aa9ba1377f": {
+          "source": "llm_deepseek",
+          "content": "went to workshop last Friday",
+          "scene": "session_4",
+          "evidence_id": "c807618e1c9d40abaa62c0aa9ba1377f",
+          "timestamp": "2026-06-07T07:39:30.891545"
+        },
+        "98ad2021a07c4463916bbe938ae1d35f": {
+          "source": "llm_deepseek",
+          "content": "own journey made difference; counseling improved life",
+          "scene": "session_4",
+          "evidence_id": "98ad2021a07c4463916bbe938ae1d35f",
+          "timestamp": "2026-06-07T07:39:30.891572"
+        },
+        "f2d4fb0d37a94d22bdf96cb0d85244b4": {
+          "source": "llm_deepseek",
+          "content": "passionate about creating safe place",
+          "scene": "session_4",
+          "evidence_id": "f2d4fb0d37a94d22bdf96cb0d85244b4",
+          "timestamp": "2026-06-07T07:39:30.891588"
+        },
+        "e4e277e1a7bc4f79b23bd6c8c4e26b20": {
+          "source": "llm_deepseek",
+          "content": "joined a mentorship program for LGBTQ youth",
+          "scene": "session_9",
+          "evidence_id": "e4e277e1a7bc4f79b23bd6c8c4e26b20",
+          "timestamp": "2026-06-07T07:41:21.329652"
+        },
+        "f9fdc54bfdea4f0d9c38e436e5c0472c": {
+          "source": "llm_deepseek",
+          "content": "mentor a transgender teen just like me",
+          "scene": "session_9",
+          "evidence_id": "f9fdc54bfdea4f0d9c38e436e5c0472c",
+          "timestamp": "2026-06-07T07:41:21.329687"
+        },
+        "79e30ad2ad7c4e9db9824c664d968acb": {
+          "source": "llm_deepseek",
+          "content": "having an LGBTQ art show with my paintings",
+          "scene": "session_9",
+          "evidence_id": "79e30ad2ad7c4e9db9824c664d968acb",
+          "timestamp": "2026-06-07T07:41:21.329708"
+        },
+        "edb7da6798264dbf88e8edb637e4f0c7": {
+          "source": "llm_deepseek",
+          "content": "Next month I'm having an LGBTQ art show",
+          "scene": "session_9",
+          "evidence_id": "edb7da6798264dbf88e8edb637e4f0c7",
+          "timestamp": "2026-06-07T07:41:21.329752"
+        },
+        "39d55f7c95764defa0717677eae899a6": {
+          "source": "llm_deepseek",
+          "content": "went camping with my fam and kids",
+          "scene": "session_9",
+          "evidence_id": "39d55f7c95764defa0717677eae899a6",
+          "timestamp": "2026-06-07T07:41:21.329769"
+        },
+        "9a6d82809ac64bdda841671d973d5245": {
+          "source": "llm_deepseek",
+          "content": "My kids and I just finished another painting",
+          "scene": "session_9",
+          "evidence_id": "9a6d82809ac64bdda841671d973d5245",
+          "timestamp": "2026-06-07T07:41:21.329784"
+        },
+        "f8aa663107e24f8bbe8e47981f46d070": {
+          "source": "llm_deepseek",
+          "content": "joined a new LGBTQ activist group last Tues",
+          "scene": "session_10",
+          "evidence_id": "f8aa663107e24f8bbe8e47981f46d070",
+          "timestamp": "2026-06-07T07:41:34.614706"
+        },
+        "43b492c3a12a4c2885bd0cccf3d5fe34": {
+          "source": "llm_deepseek",
+          "content": "giving my voice and making a real difference",
+          "scene": "session_10",
+          "evidence_id": "43b492c3a12a4c2885bd0cccf3d5fe34",
+          "timestamp": "2026-06-07T07:41:34.614740"
+        },
+        "42d5ce8f236a4e31bae3adbab0571a5e": {
+          "source": "llm_deepseek",
+          "content": "joined a new LGBTQ activist group ... 'Connected LGBTQ Activists'",
+          "scene": "session_10",
+          "evidence_id": "42d5ce8f236a4e31bae3adbab0571a5e",
+          "timestamp": "2026-06-07T07:41:34.614755"
+        },
+        "af5feb79619d4be39f64bd56b897e3c8": {
+          "source": "llm_deepseek",
+          "content": "we went to the beach recently ... We don't go often, usually only once or twice a year",
+          "scene": "session_10",
+          "evidence_id": "af5feb79619d4be39f64bd56b897e3c8",
+          "timestamp": "2026-06-07T07:41:34.614769"
+        },
+        "679427a8ecda4ed0bf4d7a9d3d89cf76": {
+          "source": "llm_deepseek",
+          "content": "We always look forward to our family camping trip ... highlight of our summer",
+          "scene": "session_10",
+          "evidence_id": "679427a8ecda4ed0bf4d7a9d3d89cf76",
+          "timestamp": "2026-06-07T07:41:34.614783"
+        },
+        "22d9c0bb3c3b49728974fabb27cca2a1": {
+          "source": "llm_deepseek",
+          "content": "I'll never forget the day my youngest took her first steps ... lucky to have my family",
+          "scene": "session_10",
+          "evidence_id": "22d9c0bb3c3b49728974fabb27cca2a1",
+          "timestamp": "2026-06-07T07:41:34.614796"
+        },
+        "e1919d3d5f204bda99b9385dddd3de9b": {
+          "source": "llm_deepseek",
+          "content": "These special moments make me appreciate life and how lucky I am",
+          "scene": "session_10",
+          "evidence_id": "e1919d3d5f204bda99b9385dddd3de9b",
+          "timestamp": "2026-06-07T07:41:34.614811"
+        },
+        "948f10f749e4433893a1af12e276cc63": {
+          "source": "llm_deepseek",
+          "content": "Caroline mentions upsetting experience with religious conservatives regarding LGBTQ rights and reminiscing about Pride fest.",
+          "scene": "session_12",
+          "evidence_id": "948f10f749e4433893a1af12e276cc63",
+          "timestamp": "2026-06-07T07:42:17.501959"
+        },
+        "27144279435744d18c60f21c58a3843d": {
+          "source": "llm_deepseek",
+          "content": "Caroline mentions a recent hike experience.",
+          "scene": "session_12",
+          "evidence_id": "27144279435744d18c60f21c58a3843d",
+          "timestamp": "2026-06-07T07:42:17.501995"
+        },
+        "ffafe3bc6f2c46bcbbab8d3d01755291": {
+          "source": "llm_deepseek",
+          "content": "Caroline says it's helpful to have accepting and supportive people around her.",
+          "scene": "session_12",
+          "evidence_id": "ffafe3bc6f2c46bcbbab8d3d01755291",
+          "timestamp": "2026-06-07T07:42:17.502014"
+        },
+        "df09e3504f2c4f49b2c213c9286a3fc2": {
+          "source": "llm_deepseek",
+          "content": "Caroline suggests planning a special trip just the two of them to create memories and explore nature.",
+          "scene": "session_12",
+          "evidence_id": "df09e3504f2c4f49b2c213c9286a3fc2",
+          "timestamp": "2026-06-07T07:42:17.502031"
+        },
+        "104771bf1cb54679862c159340bf69dd": {
+          "source": "llm_deepseek",
+          "content": "Melanie shares a pottery project and talks about painting to express feelings.",
+          "scene": "session_12",
+          "evidence_id": "104771bf1cb54679862c159340bf69dd",
+          "timestamp": "2026-06-07T07:42:17.502046"
+        },
+        "958da8cdf8244ac595c6cecfd2afb578": {
+          "source": "llm_deepseek",
+          "content": "Melanie says painting helps express feelings and is a sanctuary.",
+          "scene": "session_12",
+          "evidence_id": "958da8cdf8244ac595c6cecfd2afb578",
+          "timestamp": "2026-06-07T07:42:17.502061"
+        },
+        "abc0ad42f3bd4196a4f1ed830d35c1fd": {
+          "source": "llm_deepseek",
+          "content": "Melanie agrees to plan something special with Caroline.",
+          "scene": "session_12",
+          "evidence_id": "abc0ad42f3bd4196a4f1ed830d35c1fd",
+          "timestamp": "2026-06-07T07:42:17.502076"
+        },
+        "499012aefc4a46f9a3e28e21481f4e72": {
+          "source": "llm_deepseek",
+          "content": "I took the first step towards becoming a mom - I applied to adoption agencies!",
+          "scene": "session_13",
+          "evidence_id": "499012aefc4a46f9a3e28e21481f4e72",
+          "timestamp": "2026-06-07T07:42:41.938159"
+        },
+        "c47ccc48ca09432c898c2a98d8ab0f40": {
+          "source": "llm_deepseek",
+          "content": "I do- Oscar, my guinea pig",
+          "scene": "session_13",
+          "evidence_id": "c47ccc48ca09432c898c2a98d8ab0f40",
+          "timestamp": "2026-06-07T07:42:41.938188"
+        },
+        "161850cbb27840f393cf82ceffeeaac3": {
+          "source": "llm_deepseek",
+          "content": "I used to go horseback riding with my dad when I was a kid... I've always had a love for horses!",
+          "scene": "session_13",
+          "evidence_id": "161850cbb27840f393cf82ceffeeaac3",
+          "timestamp": "2026-06-07T07:42:41.938203"
+        },
+        "b36d2221049344839fe4cdb7ea83d8d5": {
+          "source": "llm_deepseek",
+          "content": "Painting's great for expressing myself. I love creating art!",
+          "scene": "session_13",
+          "evidence_id": "b36d2221049344839fe4cdb7ea83d8d5",
+          "timestamp": "2026-06-07T07:42:41.938215"
+        },
+        "c8f87cab233d4de7a93cd31902e671b8": {
+          "source": "llm_deepseek",
+          "content": "promoting LGBTQ rights and being true to myself",
+          "scene": "session_13",
+          "evidence_id": "c8f87cab233d4de7a93cd31902e671b8",
+          "timestamp": "2026-06-07T07:42:41.938227"
+        },
+        "f543736fddda4a6ca94dc5e4fc61fc71": {
+          "source": "llm_deepseek",
+          "content": "I want to live authentically and help others to do the same",
+          "scene": "session_13",
+          "evidence_id": "f543736fddda4a6ca94dc5e4fc61fc71",
+          "timestamp": "2026-06-07T07:42:41.938240"
+        },
+        "0cedfe90059947da8fc9559912a90d68": {
+          "source": "llm_deepseek",
+          "content": "we got another cat named Bailey too",
+          "scene": "session_13",
+          "evidence_id": "0cedfe90059947da8fc9559912a90d68",
+          "timestamp": "2026-06-07T07:42:41.938253"
+        },
+        "adbd4663bb504fa78e21dd0f50699157": {
+          "source": "llm_deepseek",
+          "content": "Here's a photo of my horse painting I did recently",
+          "scene": "session_13",
+          "evidence_id": "adbd4663bb504fa78e21dd0f50699157",
+          "timestamp": "2026-06-07T07:42:41.938266"
+        },
+        "232c0ec7eba747b6a8395bbb8210866e": {
+          "source": "llm_deepseek",
+          "content": "I'm finally proud of who I am as a trans woman",
+          "scene": "session_16",
+          "evidence_id": "232c0ec7eba747b6a8395bbb8210866e",
+          "timestamp": "2026-06-07T07:43:33.799808"
+        },
+        "968dadae18e644cf957d05c2964c87fc": {
+          "source": "llm_deepseek",
+          "content": "inspired seeing my work make a difference for the LGBTQ+ community",
+          "scene": "session_16",
+          "evidence_id": "968dadae18e644cf957d05c2964c87fc",
+          "timestamp": "2026-06-07T07:43:33.799846"
+        },
+        "f36938ec3c17468c8247e8cec3059e09": {
+          "source": "llm_deepseek",
+          "content": "been creating art since 17",
+          "scene": "session_16",
+          "evidence_id": "f36938ec3c17468c8247e8cec3059e09",
+          "timestamp": "2026-06-07T07:43:33.799865"
+        },
+        "d0c3fd4666d746c6b1dc639f5198ac50": {
+          "source": "llm_deepseek",
+          "content": "painting helped me explore my gender identity",
+          "scene": "session_16",
+          "evidence_id": "d0c3fd4666d746c6b1dc639f5198ac50",
+          "timestamp": "2026-06-07T07:43:33.799881"
+        },
+        "bc6b322cf54c49eaae8524e1e9e81632": {
+          "source": "llm_deepseek",
+          "content": "relationships feel more genuine with those who accept me",
+          "scene": "session_16",
+          "evidence_id": "bc6b322cf54c49eaae8524e1e9e81632",
+          "timestamp": "2026-06-07T07:43:33.799897"
+        },
+        "1a01e46f1266416c95b97ab950d37fca": {
+          "source": "llm_deepseek",
+          "content": "went camping with the kids",
+          "scene": "session_16",
+          "evidence_id": "1a01e46f1266416c95b97ab950d37fca",
+          "timestamp": "2026-06-07T07:43:33.799914"
+        },
+        "9c96b16e9da640d488d243fb62827499": {
+          "source": "llm_deepseek",
+          "content": "biking sounds great, we went camping",
+          "scene": "session_16",
+          "evidence_id": "9c96b16e9da640d488d243fb62827499",
+          "timestamp": "2026-06-07T07:43:33.799929"
+        },
+        "169f1fa342d84b11b033c1161f39e4f7": {
+          "source": "llm_deepseek",
+          "content": "seven years, found muses painting and pottery",
+          "scene": "session_16",
+          "evidence_id": "169f1fa342d84b11b033c1161f39e4f7",
+          "timestamp": "2026-06-07T07:43:33.799945"
+        },
+        "9cd4527fe0e94086888d944a08c50355": {
+          "source": "llm_deepseek",
+          "content": "after accident, emphasizes family's importance and support",
+          "scene": "session_18",
+          "evidence_id": "9cd4527fe0e94086888d944a08c50355",
+          "timestamp": "2026-06-07T07:44:12.935816"
+        },
+        "06c643e41f84491e8ee8a533a01435f3": {
+          "source": "llm_deepseek",
+          "content": "enjoys camping trips, nature, peace, and bonding over campfires",
+          "scene": "session_18",
+          "evidence_id": "06c643e41f84491e8ee8a533a01435f3",
+          "timestamp": "2026-06-07T07:44:12.935851"
+        },
+        "87a77502c7f446afb54a726219b66b68": {
+          "source": "llm_deepseek",
+          "content": "loves waking up to birds and fresh air, nature refreshes soul",
+          "scene": "session_18",
+          "evidence_id": "87a77502c7f446afb54a726219b66b68",
+          "timestamp": "2026-06-07T07:44:12.935869"
+        },
+        "f275964e8bed494aa02935ed577f871d": {
+          "source": "llm_deepseek",
+          "content": "mentions her son and kids, describes their resilience",
+          "scene": "session_18",
+          "evidence_id": "f275964e8bed494aa02935ed577f871d",
+          "timestamp": "2026-06-07T07:44:12.935885"
+        },
+        "173814e67d6d4aa4a36b3b1965c67241": {
+          "source": "llm_deepseek",
+          "content": "bonds over stories, campfires, and nature; family is motivation",
+          "scene": "session_18",
+          "evidence_id": "173814e67d6d4aa4a36b3b1965c67241",
+          "timestamp": "2026-06-07T07:44:12.935900"
+        },
+        "c237edb4c6b447ccabb9590ea9e38e78": {
+          "source": "llm_deepseek",
+          "content": "Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable.",
+          "scene": "session_19",
+          "evidence_id": "c237edb4c6b447ccabb9590ea9e38e78",
+          "timestamp": "2026-06-07T07:44:20.444493"
+        },
+        "5500415fbccb47a8a74acdfe9825fffc": {
+          "source": "llm_deepseek",
+          "content": "passed the adoption agency interviews last Friday! I hope to build my own family and put a roof over kids who haven't had that before.",
+          "scene": "session_19",
+          "evidence_id": "5500415fbccb47a8a74acdfe9825fffc",
+          "timestamp": "2026-06-07T07:44:20.444528"
+        },
+        "02943641c6204c92b067552f5c8cac1c": {
+          "source": "llm_deepseek",
+          "content": "the help I got from friends, family and people I looked up to was invaluable.",
+          "scene": "session_19",
+          "evidence_id": "02943641c6204c92b067552f5c8cac1c",
+          "timestamp": "2026-06-07T07:44:20.444547"
+        },
+        "2c7a3f9a56a24346964dfbf2f9aa85e1": {
+          "source": "llm_deepseek",
+          "content": "Love and acceptance should be everyone's right, and I want them to experience it.",
+          "scene": "session_19",
+          "evidence_id": "2c7a3f9a56a24346964dfbf2f9aa85e1",
+          "timestamp": "2026-06-07T07:44:20.444563"
+        },
+        "f1c79669daf947b9bf5bec20fc38854c": {
+          "source": "llm_deepseek",
+          "content": "I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+          "scene": "session_19",
+          "evidence_id": "f1c79669daf947b9bf5bec20fc38854c",
+          "timestamp": "2026-06-07T07:44:20.444579"
+        }
+      },
+      "current_session": "session_19",
+      "current_session_id": "conv-26_session_19",
+      "conv_id": "conv-26",
+      "num_sessions": 19
+    }
+  ]
+}

@@ -36,7 +36,7 @@ EVAL_DIR = ROOT / "outputs"
 
 # ===== Hybrid context config =====
 RECENT_SESSION_COUNT = 3
-MAX_MODEL_LEN = 4096
+MAX_MODEL_LEN = 32768
 
 QA_SYSTEM_PROMPT = (
     "You are a helpful, respectful and honest assistant. "
@@ -201,7 +201,7 @@ def generate_qa_answers(
     llm = LLM(
         model=MODEL_PATH,
         trust_remote_code=True,
-        tensor_parallel_size=1,
+        tensor_parallel_size=2,
         gpu_memory_utilization=0.85,
         max_model_len=MAX_MODEL_LEN,
         enforce_eager=True,
