@@ -185,7 +185,12 @@ def replay_context(
 
         tpm.finish_session(scene=scene)
 
-    # Run long-term decay after all sessions
+        # Run evolution engine after each session:
+        # - Integrate scene views (refresh canonical view per branch)
+        # - Decay working memory (0.015) and short-term memory (0.03)
+        tpm.run_evolution_engine(scene=scene, include_long_term_decay=False)
+
+    # Run long-term decay after all sessions (type-conditional exponential decay)
     tpm.decay_long_term()
 
     snapshot = tpm.to_dict()

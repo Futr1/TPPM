@@ -40,7 +40,7 @@ CANDIDATES_DIR = ROOT / "candidates"
 
 # ===== DeepSeek API Config =====
 API_BASE = "https://api.deepseek.com"
-API_MODEL = "deepseek-v4-flash"
+API_MODEL = "deepseek-v4-pro"
 API_KEY = "REDACTED_DEEPSEEK_KEY"
 
 CONCURRENCY = 8
