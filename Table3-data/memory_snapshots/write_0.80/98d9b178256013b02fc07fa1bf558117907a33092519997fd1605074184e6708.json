@@ -1,0 +1,543 @@
+{
+  "config": {
+    "write_threshold": 0.8,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "study_improvement_goal",
+      "value": "actively seeking effective study techniques",
+      "context": "I've been trying to find effective ways to improve my study habits lately",
+      "profile_type": "goal",
+      "stability_score": 0.59999999387625,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been trying to find effective ways to improve my study habits lately",
+          "scene": "session_0",
+          "evidence_id": "e0e5e7287f734c558663b1a901bc8ef8",
+          "timestamp": "2026-06-09T02:20:29.487459"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "actively seeking effective study techniques",
+          "context": "I've been trying to find effective ways to improve my study habits lately",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been trying to find effective ways to improve my study habits lately",
+              "scene": "session_0",
+              "evidence_id": "e0e5e7287f734c558663b1a901bc8ef8",
+              "timestamp": "2026-06-09T02:20:29.487459"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:29.487459",
+          "last_accessed": "2026-06-09T02:20:29.515925"
+        }
+      },
+      "unit_id": "5751248e1b1c457eba07100b28768d0c",
+      "timestamp": "2026-06-09T02:20:29.487490",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.515922",
+      "last_evolved": "2026-06-09T02:20:29.516888",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "online_learning_attitude",
+      "value": "positive when aligns with interests, values community",
+      "context": "I had a change of heart about online courses. After enrolling in one that fits my interests perfectly, I found learning enjoyable! ... sense of community among my fellow learners",
+      "profile_type": "preference",
+      "stability_score": 0.7217825095221576,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I had a change of heart about online courses. After enrolling in one that fits my interests perfectly, I found learning enjoyable! ... sense of community among my fellow learners",
+          "scene": "session_1",
+          "evidence_id": "59e1e9a9a074497d90419febe9779c4a",
+          "timestamp": "2026-06-09T02:20:29.488205"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "positive when aligns with interests, values community",
+          "context": "I had a change of heart about online courses. After enrolling in one that fits my interests perfectly, I found learning enjoyable! ... sense of community among my fellow learners",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I had a change of heart about online courses. After enrolling in one that fits my interests perfectly, I found learning enjoyable! ... sense of community among my fellow learners",
+              "scene": "session_1",
+              "evidence_id": "59e1e9a9a074497d90419febe9779c4a",
+              "timestamp": "2026-06-09T02:20:29.488205"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:20:29.488205",
+          "last_accessed": "2026-06-09T02:20:29.516144"
+        }
+      },
+      "unit_id": "ab43c90192394dcf9b149dd431f7caaf",
+      "timestamp": "2026-06-09T02:20:29.488874",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.516141",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "learning_style_preference",
+      "value": "visual_learner",
+      "context": "Decided to focus exclusively on visual learning methods; uses illustrations in flashcards.",
+      "profile_type": "style",
+      "stability_score": 0.7805465507032459,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Decided to focus exclusively on visual learning methods; uses illustrations in flashcards.",
+          "scene": "session_2",
+          "evidence_id": "46a52bfc7f8c4b4ab38f139bbca8536f",
+          "timestamp": "2026-06-09T02:20:29.490666"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "visual_learner",
+          "context": "Decided to focus exclusively on visual learning methods; uses illustrations in flashcards.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Decided to focus exclusively on visual learning methods; uses illustrations in flashcards.",
+              "scene": "session_2",
+              "evidence_id": "46a52bfc7f8c4b4ab38f139bbca8536f",
+              "timestamp": "2026-06-09T02:20:29.490666"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:29.490666",
+          "last_accessed": "2026-06-09T02:20:29.516286"
+        }
+      },
+      "unit_id": "23deabb5a41440bb9ac2f2007a90b5f1",
+      "timestamp": "2026-06-09T02:20:29.491605",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.516283",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "study_schedule_preference",
+      "value": "flexible",
+      "context": "Gave up on strict schedules; prefers adapting based on energy and mood.",
+      "profile_type": "style",
+      "stability_score": 0.7362005297106604,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Gave up on strict schedules; prefers adapting based on energy and mood.",
+          "scene": "session_2",
+          "evidence_id": "7ccccd7a759b40be9c43a00bd8c8695f",
+          "timestamp": "2026-06-09T02:20:29.490669"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "flexible",
+          "context": "Gave up on strict schedules; prefers adapting based on energy and mood.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Gave up on strict schedules; prefers adapting based on energy and mood.",
+              "scene": "session_2",
+              "evidence_id": "7ccccd7a759b40be9c43a00bd8c8695f",
+              "timestamp": "2026-06-09T02:20:29.490669"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:29.490669",
+          "last_accessed": "2026-06-09T02:20:29.516394"
+        }
+      },
+      "unit_id": "548794c4e8134252bab18a10aa68483c",
+      "timestamp": "2026-06-09T02:20:29.492732",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.516392",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "learning_style_preference",
+      "value": "collaborative learning",
+      "context": "organized a study group that emphasized collaborative learning and mutual support",
+      "profile_type": "style",
+      "stability_score": 0.7246130147114931,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "organized a study group that emphasized collaborative learning and mutual support",
+          "scene": "session_3",
+          "evidence_id": "ae9d0075ed83479497bbc075a513e765",
+          "timestamp": "2026-06-09T02:20:29.498032"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "collaborative learning",
+          "context": "organized a study group that emphasized collaborative learning and mutual support",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "organized a study group that emphasized collaborative learning and mutual support",
+              "scene": "session_3",
+              "evidence_id": "ae9d0075ed83479497bbc075a513e765",
+              "timestamp": "2026-06-09T02:20:29.498032"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:29.498032",
+          "last_accessed": "2026-06-09T02:20:29.516570"
+        }
+      },
+      "unit_id": "704fb1cdd2ec49949e6cc12ac1ef226a",
+      "timestamp": "2026-06-09T02:20:29.499579",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.516567",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "teaching_preference",
+      "value": "tutoring to reinforce knowledge",
+      "context": "started tutoring again... teaching others reinforces my own knowledge",
+      "profile_type": "goal",
+      "stability_score": 0.6493050132592816,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started tutoring again... teaching others reinforces my own knowledge",
+          "scene": "session_3",
+          "evidence_id": "2701f8804dae436ba57a875d1a6829a3",
+          "timestamp": "2026-06-09T02:20:29.498035"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "tutoring to reinforce knowledge",
+          "context": "started tutoring again... teaching others reinforces my own knowledge",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started tutoring again... teaching others reinforces my own knowledge",
+              "scene": "session_3",
+              "evidence_id": "2701f8804dae436ba57a875d1a6829a3",
+              "timestamp": "2026-06-09T02:20:29.498035"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:29.498035",
+          "last_accessed": "2026-06-09T02:20:29.516723"
+        }
+      },
+      "unit_id": "68b0d7a4531a430aace6d862dbbbafb8",
+      "timestamp": "2026-06-09T02:20:29.501403",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.516720",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "study_schedule_habit",
+      "value": "structured scheduling",
+      "context": "resumed creating study schedules, and it has greatly improved my productivity",
+      "profile_type": "style",
+      "stability_score": 0.7246130158794061,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "resumed creating study schedules, and it has greatly improved my productivity",
+          "scene": "session_3",
+          "evidence_id": "24c86c2bd5eb4df3a797ab299c2ad060",
+          "timestamp": "2026-06-09T02:20:29.498038"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "structured scheduling",
+          "context": "resumed creating study schedules, and it has greatly improved my productivity",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "resumed creating study schedules, and it has greatly improved my productivity",
+              "scene": "session_3",
+              "evidence_id": "24c86c2bd5eb4df3a797ab299c2ad060",
+              "timestamp": "2026-06-09T02:20:29.498038"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:29.498038",
+          "last_accessed": "2026-06-09T02:20:29.516867"
+        }
+      },
+      "unit_id": "18b42de670574559a8b986037dd7fb9c",
+      "timestamp": "2026-06-09T02:20:29.503483",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.516864",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_style",
+      "value": "detailed and proactive planner",
+      "context": "User created a detailed travel itinerary, researched destinations, booked accommodations, mapped attractions, created packing list.",
+      "profile_type": "style",
+      "stability_score": 0.7125526061863792,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User created a detailed travel itinerary, researched destinations, booked accommodations, mapped attractions, created packing list.",
+          "scene": "session_4",
+          "evidence_id": "677638e17a554b3284f6221947344108",
+          "timestamp": "2026-06-09T02:20:29.508873"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "detailed and proactive planner",
+          "context": "User created a detailed travel itinerary, researched destinations, booked accommodations, mapped attractions, created packing list.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User created a detailed travel itinerary, researched destinations, booked accommodations, mapped attractions, created packing list.",
+              "scene": "session_4",
+              "evidence_id": "677638e17a554b3284f6221947344108",
+              "timestamp": "2026-06-09T02:20:29.508873"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:29.508873",
+          "last_accessed": "2026-06-09T02:20:29.515766"
+        }
+      },
+      "unit_id": "8d1cf462de364ceebc9363eaed0a7d0c",
+      "timestamp": "2026-06-09T02:20:29.512981",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:29.515764",
+      "last_evolved": "2026-06-09T02:20:29.516904",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "e0e5e7287f734c558663b1a901bc8ef8": {
+      "source": "llm_deepseek",
+      "content": "I've been trying to find effective ways to improve my study habits lately",
+      "scene": "session_0",
+      "evidence_id": "e0e5e7287f734c558663b1a901bc8ef8",
+      "timestamp": "2026-06-09T02:20:29.487459"
+    },
+    "59e1e9a9a074497d90419febe9779c4a": {
+      "source": "llm_deepseek",
+      "content": "I had a change of heart about online courses. After enrolling in one that fits my interests perfectly, I found learning enjoyable! ... sense of community among my fellow learners",
+      "scene": "session_1",
+      "evidence_id": "59e1e9a9a074497d90419febe9779c4a",
+      "timestamp": "2026-06-09T02:20:29.488205"
+    },
+    "46a52bfc7f8c4b4ab38f139bbca8536f": {
+      "source": "llm_deepseek",
+      "content": "Decided to focus exclusively on visual learning methods; uses illustrations in flashcards.",
+      "scene": "session_2",
+      "evidence_id": "46a52bfc7f8c4b4ab38f139bbca8536f",
+      "timestamp": "2026-06-09T02:20:29.490666"
+    },
+    "7ccccd7a759b40be9c43a00bd8c8695f": {
+      "source": "llm_deepseek",
+      "content": "Gave up on strict schedules; prefers adapting based on energy and mood.",
+      "scene": "session_2",
+      "evidence_id": "7ccccd7a759b40be9c43a00bd8c8695f",
+      "timestamp": "2026-06-09T02:20:29.490669"
+    },
+    "ae9d0075ed83479497bbc075a513e765": {
+      "source": "llm_deepseek",
+      "content": "organized a study group that emphasized collaborative learning and mutual support",
+      "scene": "session_3",
+      "evidence_id": "ae9d0075ed83479497bbc075a513e765",
+      "timestamp": "2026-06-09T02:20:29.498032"
+    },
+    "2701f8804dae436ba57a875d1a6829a3": {
+      "source": "llm_deepseek",
+      "content": "started tutoring again... teaching others reinforces my own knowledge",
+      "scene": "session_3",
+      "evidence_id": "2701f8804dae436ba57a875d1a6829a3",
+      "timestamp": "2026-06-09T02:20:29.498035"
+    },
+    "24c86c2bd5eb4df3a797ab299c2ad060": {
+      "source": "llm_deepseek",
+      "content": "resumed creating study schedules, and it has greatly improved my productivity",
+      "scene": "session_3",
+      "evidence_id": "24c86c2bd5eb4df3a797ab299c2ad060",
+      "timestamp": "2026-06-09T02:20:29.498038"
+    },
+    "677638e17a554b3284f6221947344108": {
+      "source": "llm_deepseek",
+      "content": "User created a detailed travel itinerary, researched destinations, booked accommodations, mapped attractions, created packing list.",
+      "scene": "session_4",
+      "evidence_id": "677638e17a554b3284f6221947344108",
+      "timestamp": "2026-06-09T02:20:29.508873"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708_session_4",
+  "config_id": "write_0.80",
+  "context_hash": "98d9b178256013b02fc07fa1bf558117907a33092519997fd1605074184e6708",
+  "num_sessions": 5
+}

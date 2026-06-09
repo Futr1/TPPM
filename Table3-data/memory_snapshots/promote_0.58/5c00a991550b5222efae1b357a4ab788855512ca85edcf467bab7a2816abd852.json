@@ -1,0 +1,1580 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "creative_interest",
+      "value": "romance writing and photography",
+      "context": "Joined creative writing workshop on romance storytelling, uses photography to capture date moments.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999520660436,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Joined creative writing workshop on romance storytelling, uses photography to capture date moments.",
+          "scene": "session_0",
+          "evidence_id": "3229db3b776e43be92b25a91ac7e4557",
+          "timestamp": "2026-06-09T02:20:53.766531"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "romance writing and photography",
+          "context": "Joined creative writing workshop on romance storytelling, uses photography to capture date moments.",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Joined creative writing workshop on romance storytelling, uses photography to capture date moments.",
+              "scene": "session_0",
+              "evidence_id": "3229db3b776e43be92b25a91ac7e4557",
+              "timestamp": "2026-06-09T02:20:53.766531"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:53.766531",
+          "last_accessed": "2026-06-09T02:20:53.994310"
+        }
+      },
+      "unit_id": "94357024c4d74515964251e30e975707",
+      "timestamp": "2026-06-09T02:20:53.767048",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.994307",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "social_activity_preference",
+      "value": "enjoys creative social events (pottery, painting with wine, salsa dancing, game nights, trivia nights)",
+      "context": "User mentioned attending pottery class, wine tasting with painting, salsa dancing, game night, and trivia nights as positive experiences.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999524943769,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User mentioned attending pottery class, wine tasting with painting, salsa dancing, game night, and trivia nights as positive experiences.",
+          "scene": "session_1",
+          "evidence_id": "ae579364d0de40da9e51656ca75dfc11",
+          "timestamp": "2026-06-09T02:20:53.767654"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "enjoys creative social events (pottery, painting with wine, salsa dancing, game nights, trivia nights)",
+          "context": "User mentioned attending pottery class, wine tasting with painting, salsa dancing, game night, and trivia nights as positive experiences.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User mentioned attending pottery class, wine tasting with painting, salsa dancing, game night, and trivia nights as positive experiences.",
+              "scene": "session_1",
+              "evidence_id": "ae579364d0de40da9e51656ca75dfc11",
+              "timestamp": "2026-06-09T02:20:53.767654"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:53.767654",
+          "last_accessed": "2026-06-09T02:20:53.994505"
+        }
+      },
+      "unit_id": "fb7ec74937254d6dbdd4bfd0aa2fe04c",
+      "timestamp": "2026-06-09T02:20:53.769105",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.994502",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "animal_interest",
+      "value": "passionate about animal welfare, volunteers at local animal shelter",
+      "context": "User signed up to volunteer at animal shelter drawn by passion for animals and desire to help.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999535475017,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User signed up to volunteer at animal shelter drawn by passion for animals and desire to help.",
+          "scene": "session_1",
+          "evidence_id": "d691a65844264f228f1eeb563e39dab5",
+          "timestamp": "2026-06-09T02:20:53.767663"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "passionate about animal welfare, volunteers at local animal shelter",
+          "context": "User signed up to volunteer at animal shelter drawn by passion for animals and desire to help.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User signed up to volunteer at animal shelter drawn by passion for animals and desire to help.",
+              "scene": "session_1",
+              "evidence_id": "d691a65844264f228f1eeb563e39dab5",
+              "timestamp": "2026-06-09T02:20:53.767663"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:53.767663",
+          "last_accessed": "2026-06-09T02:20:53.994682"
+        }
+      },
+      "unit_id": "32877c79101248799b0f6acfdbdd661e",
+      "timestamp": "2026-06-09T02:20:53.774160",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.994679",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "dating_preference",
+      "value": "themed creative dating events",
+      "context": "joined a themed singles gala focusing on creative self-expression; appreciated relaxed atmosphere away from traditional norms",
+      "profile_type": "preference",
+      "stability_score": 0.5999999564200015,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a themed singles gala focusing on creative self-expression; appreciated relaxed atmosphere away from traditional norms",
+          "scene": "session_2",
+          "evidence_id": "f079059d85294c06829130fdc960c523",
+          "timestamp": "2026-06-09T02:20:53.777955"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "themed creative dating events",
+          "context": "joined a themed singles gala focusing on creative self-expression; appreciated relaxed atmosphere away from traditional norms",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a themed singles gala focusing on creative self-expression; appreciated relaxed atmosphere away from traditional norms",
+              "scene": "session_2",
+              "evidence_id": "f079059d85294c06829130fdc960c523",
+              "timestamp": "2026-06-09T02:20:53.777955"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:53.777955",
+          "last_accessed": "2026-06-09T02:20:53.994828"
+        }
+      },
+      "unit_id": "ca7327eaabf944a1b92d27e96b5479ca",
+      "timestamp": "2026-06-09T02:20:53.787948",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.994825",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "communication_style",
+      "value": "prefers making law accessible to laypeople",
+      "context": "I created an educational video series about tenants' rights... demystify the legal jargon that often leaves people feeling overwhelmed and confused.",
+      "profile_type": "style",
+      "stability_score": 0.649999965194758,
+      "confidence_score": 0.75,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I created an educational video series about tenants' rights... demystify the legal jargon that often leaves people feeling overwhelmed and confused.",
+          "scene": "session_3",
+          "evidence_id": "c480a59d4f4b46c3afe83d7748908f1b",
+          "timestamp": "2026-06-09T02:20:53.802838"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers making law accessible to laypeople",
+          "context": "I created an educational video series about tenants' rights... demystify the legal jargon that often leaves people feeling overwhelmed and confused.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I created an educational video series about tenants' rights... demystify the legal jargon that often leaves people feeling overwhelmed and confused.",
+              "scene": "session_3",
+              "evidence_id": "c480a59d4f4b46c3afe83d7748908f1b",
+              "timestamp": "2026-06-09T02:20:53.802838"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:53.802838",
+          "last_accessed": "2026-06-09T02:20:53.995007"
+        }
+      },
+      "unit_id": "70b7b4f669aa4ee4b523387dbd2933a0",
+      "timestamp": "2026-06-09T02:20:53.842918",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995004",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "coding_style_preference",
+      "value": "prefers snake_case, docstrings, short functions, minimal comments",
+      "context": "User requested snake_case naming, docstrings over comments, and clear short functions throughout the refactoring conversation.",
+      "profile_type": "style",
+      "stability_score": 0.599999971863334,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User requested snake_case naming, docstrings over comments, and clear short functions throughout the refactoring conversation.",
+          "scene": "session_4",
+          "evidence_id": "e526f4654b974557a3263071e2abf0fd",
+          "timestamp": "2026-06-09T02:20:53.851641"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers snake_case, docstrings, short functions, minimal comments",
+          "context": "User requested snake_case naming, docstrings over comments, and clear short functions throughout the refactoring conversation.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User requested snake_case naming, docstrings over comments, and clear short functions throughout the refactoring conversation.",
+              "scene": "session_4",
+              "evidence_id": "e526f4654b974557a3263071e2abf0fd",
+              "timestamp": "2026-06-09T02:20:53.851641"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:53.851641",
+          "last_accessed": "2026-06-09T02:20:53.995181"
+        }
+      },
+      "unit_id": "0d4524b9db18438594f7690e15caf8c2",
+      "timestamp": "2026-06-09T02:20:53.862076",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995178",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "communication_valence",
+      "value": "prefers positive over negative",
+      "context": "dislike ... negative valence; asks for more positive, motivational wording",
+      "profile_type": "style",
+      "stability_score": 0.649999977617431,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "dislike ... negative valence; asks for more positive, motivational wording",
+          "scene": "session_5",
+          "evidence_id": "1a38014a3075462d99d8a2cdf9eacf2a",
+          "timestamp": "2026-06-09T02:20:53.878600"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "prefers positive over negative",
+          "context": "dislike ... negative valence; asks for more positive, motivational wording",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "dislike ... negative valence; asks for more positive, motivational wording",
+              "scene": "session_5",
+              "evidence_id": "1a38014a3075462d99d8a2cdf9eacf2a",
+              "timestamp": "2026-06-09T02:20:53.878600"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:53.878600",
+          "last_accessed": "2026-06-09T02:20:53.995313"
+        }
+      },
+      "unit_id": "8dd5c6f32f8e4b33a6a875e6cbda055a",
+      "timestamp": "2026-06-09T02:20:53.897959",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995310",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "travel_experience",
+      "value": "solo trip to South America exploring cultures",
+      "context": "User embarked on a solo trip to South America, engaging with local cultures, cuisines, and people.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999846704168,
+      "confidence_score": 0.8,
+      "scene": "session_6",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User embarked on a solo trip to South America, engaging with local cultures, cuisines, and people.",
+          "scene": "session_6",
+          "evidence_id": "950d80122d0d47fc9d35529c5488a20a",
+          "timestamp": "2026-06-09T02:20:53.911785"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "solo trip to South America exploring cultures",
+          "context": "User embarked on a solo trip to South America, engaging with local cultures, cuisines, and people.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User embarked on a solo trip to South America, engaging with local cultures, cuisines, and people.",
+              "scene": "session_6",
+              "evidence_id": "950d80122d0d47fc9d35529c5488a20a",
+              "timestamp": "2026-06-09T02:20:53.911785"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:53.911785",
+          "last_accessed": "2026-06-09T02:20:53.993529"
+        }
+      },
+      "unit_id": "66fa88a7184d4411ad58c6dd110ad4c1",
+      "timestamp": "2026-06-09T02:20:53.923550",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.993526",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "social_event_organizing",
+      "value": "organized themed singles event with creative hobbies workshops",
+      "context": "User organized a singles event highlighting creative hobbies like painting, pottery, and photography to foster connections.",
+      "profile_type": "interest",
+      "stability_score": 0.4999999896895834,
+      "confidence_score": 0.8,
+      "scene": "session_6",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User organized a singles event highlighting creative hobbies like painting, pottery, and photography to foster connections.",
+          "scene": "session_6",
+          "evidence_id": "731988735b9e4de8a80c35142b76a548",
+          "timestamp": "2026-06-09T02:20:53.911789"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "organized themed singles event with creative hobbies workshops",
+          "context": "User organized a singles event highlighting creative hobbies like painting, pottery, and photography to foster connections.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User organized a singles event highlighting creative hobbies like painting, pottery, and photography to foster connections.",
+              "scene": "session_6",
+              "evidence_id": "731988735b9e4de8a80c35142b76a548",
+              "timestamp": "2026-06-09T02:20:53.911789"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:53.911789",
+          "last_accessed": "2026-06-09T02:20:53.993740"
+        }
+      },
+      "unit_id": "0357ad4b4df447be8f0ae7626dd9185d",
+      "timestamp": "2026-06-09T02:20:53.937744",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.993738",
+      "last_evolved": "2026-06-09T02:20:53.997136",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "dating_activity_preference",
+      "value": "adventurous and interactive",
+      "context": "User enjoyed kayaking, cooking class, dance; disliked wine tasting, comedy, arts and crafts for dating.",
+      "profile_type": "preference",
+      "stability_score": 0.8059553607313331,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User enjoyed kayaking, cooking class, dance; disliked wine tasting, comedy, arts and crafts for dating.",
+          "scene": "session_0",
+          "evidence_id": "cc563eb83eb342af8f41e2a348df98b9",
+          "timestamp": "2026-06-09T02:20:53.766524"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "adventurous and interactive",
+          "context": "User enjoyed kayaking, cooking class, dance; disliked wine tasting, comedy, arts and crafts for dating.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User enjoyed kayaking, cooking class, dance; disliked wine tasting, comedy, arts and crafts for dating.",
+              "scene": "session_0",
+              "evidence_id": "cc563eb83eb342af8f41e2a348df98b9",
+              "timestamp": "2026-06-09T02:20:53.766524"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:53.766524",
+          "last_accessed": "2026-06-09T02:20:53.995456"
+        }
+      },
+      "unit_id": "9539bca7759f47cdb7db40b3b3229ca7",
+      "timestamp": "2026-06-09T02:20:53.766554",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995453",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "dating_goal",
+      "value": "seeking meaningful local connections, prioritizing local dating over travel",
+      "context": "User canceled planned travels to focus on local dating, joined local groups to meet like-minded people.",
+      "profile_type": "goal",
+      "stability_score": 0.573817503355252,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User canceled planned travels to focus on local dating, joined local groups to meet like-minded people.",
+          "scene": "session_1",
+          "evidence_id": "6a31304d618b4247a64a365768611409",
+          "timestamp": "2026-06-09T02:20:53.767658"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "seeking meaningful local connections, prioritizing local dating over travel",
+          "context": "User canceled planned travels to focus on local dating, joined local groups to meet like-minded people.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User canceled planned travels to focus on local dating, joined local groups to meet like-minded people.",
+              "scene": "session_1",
+              "evidence_id": "6a31304d618b4247a64a365768611409",
+              "timestamp": "2026-06-09T02:20:53.767658"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:53.767658",
+          "last_accessed": "2026-06-09T02:20:53.995615"
+        }
+      },
+      "unit_id": "bfd5eb0c3cca442dafe68e2741033c5e",
+      "timestamp": "2026-06-09T02:20:53.771016",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995612",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "hobby_preference",
+      "value": "low-pressure creative expression",
+      "context": "dropped pottery class due to high demands; values enjoyment over performance",
+      "profile_type": "preference",
+      "stability_score": 0.726580691649469,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "dropped pottery class due to high demands; values enjoyment over performance",
+          "scene": "session_2",
+          "evidence_id": "c2982420b6d7402d82f265e31508ae44",
+          "timestamp": "2026-06-09T02:20:53.777949"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "low-pressure creative expression",
+          "context": "dropped pottery class due to high demands; values enjoyment over performance",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "dropped pottery class due to high demands; values enjoyment over performance",
+              "scene": "session_2",
+              "evidence_id": "c2982420b6d7402d82f265e31508ae44",
+              "timestamp": "2026-06-09T02:20:53.777949"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:53.777949",
+          "last_accessed": "2026-06-09T02:20:53.995701"
+        }
+      },
+      "unit_id": "020e1592add9450e87154db47a628f6f",
+      "timestamp": "2026-06-09T02:20:53.780259",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995698",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_style",
+      "value": "connection through shared creative interests",
+      "context": "enjoys photography walks, museum visits, reading groups, salsa classes, and wine/poetry nights for social bonding",
+      "profile_type": "style",
+      "stability_score": 0.8399033291718787,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8166666666666665,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "enjoys photography walks, museum visits, reading groups, salsa classes, and wine/poetry nights for social bonding",
+          "scene": "session_2",
+          "evidence_id": "bc8cef5329394f8c83dcded8fdc6e317",
+          "timestamp": "2026-06-09T02:20:53.777952"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "connection through shared creative interests",
+          "context": "enjoys photography walks, museum visits, reading groups, salsa classes, and wine/poetry nights for social bonding",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666665,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "enjoys photography walks, museum visits, reading groups, salsa classes, and wine/poetry nights for social bonding",
+              "scene": "session_2",
+              "evidence_id": "bc8cef5329394f8c83dcded8fdc6e317",
+              "timestamp": "2026-06-09T02:20:53.777952"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:53.777952",
+          "last_accessed": "2026-06-09T02:20:53.995853"
+        }
+      },
+      "unit_id": "5057b9a2c7054676b400318e6a6cc1ea",
+      "timestamp": "2026-06-09T02:20:53.783693",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995850",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "value",
+      "value": "community service and empathy",
+      "context": "created a community service initiative providing meals for the homeless to connect personally and make a difference",
+      "profile_type": "general",
+      "stability_score": 0.8823408336888636,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "created a community service initiative providing meals for the homeless to connect personally and make a difference",
+          "scene": "session_2",
+          "evidence_id": "f203749939a04e269c7e852c272244eb",
+          "timestamp": "2026-06-09T02:20:53.777957"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "community service and empathy",
+          "context": "created a community service initiative providing meals for the homeless to connect personally and make a difference",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "created a community service initiative providing meals for the homeless to connect personally and make a difference",
+              "scene": "session_2",
+              "evidence_id": "f203749939a04e269c7e852c272244eb",
+              "timestamp": "2026-06-09T02:20:53.777957"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:53.777957",
+          "last_accessed": "2026-06-09T02:20:53.995974"
+        }
+      },
+      "unit_id": "a379ce8e377f4b1eb396c500b70c1e32",
+      "timestamp": "2026-06-09T02:20:53.792529",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.995971",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "reading_interest",
+      "value": "romance novels",
+      "context": "started a reading group focused on romance novels to discuss themes and connect with others",
+      "profile_type": "interest",
+      "stability_score": 0.6680063698594836,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started a reading group focused on romance novels to discuss themes and connect with others",
+          "scene": "session_2",
+          "evidence_id": "21d5c888e7c6467388bce50bfe38916a",
+          "timestamp": "2026-06-09T02:20:53.777960"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "romance novels",
+          "context": "started a reading group focused on romance novels to discuss themes and connect with others",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started a reading group focused on romance novels to discuss themes and connect with others",
+              "scene": "session_2",
+              "evidence_id": "21d5c888e7c6467388bce50bfe38916a",
+              "timestamp": "2026-06-09T02:20:53.777960"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:53.777960",
+          "last_accessed": "2026-06-09T02:20:53.996093"
+        }
+      },
+      "unit_id": "ff4e46348ee74fb8999a0485044c1133",
+      "timestamp": "2026-06-09T02:20:53.796632",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.996090",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "career_goal",
+      "value": "enhance legal skills to better serve clients",
+      "context": "I've been really focused on enhancing my legal skills recently. This dedication has come from a strong desire to be more competent in my field and better serve my clients.",
+      "profile_type": "goal",
+      "stability_score": 0.6748313643386643,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been really focused on enhancing my legal skills recently. This dedication has come from a strong desire to be more competent in my field and better serve my clients.",
+          "scene": "session_3",
+          "evidence_id": "78ffa26506bb4227bf7248dafed9afd3",
+          "timestamp": "2026-06-09T02:20:53.802829"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "enhance legal skills to better serve clients",
+          "context": "I've been really focused on enhancing my legal skills recently. This dedication has come from a strong desire to be more competent in my field and better serve my clients.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been really focused on enhancing my legal skills recently. This dedication has come from a strong desire to be more competent in my field and better serve my clients.",
+              "scene": "session_3",
+              "evidence_id": "78ffa26506bb4227bf7248dafed9afd3",
+              "timestamp": "2026-06-09T02:20:53.802829"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:53.802829",
+          "last_accessed": "2026-06-09T02:20:53.996306"
+        }
+      },
+      "unit_id": "8847bfb9cc364a20b236c50b9431a83c",
+      "timestamp": "2026-06-09T02:20:53.811733",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.996304",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "legal_work_preference",
+      "value": "practical and community-oriented legal work",
+      "context": "Volunteering at a legal aid clinic has been incredibly rewarding. I get to assist clients with their legal questions, which makes me feel like I am giving back to my community in a significant way.",
+      "profile_type": "preference",
+      "stability_score": 0.7217824545418894,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Volunteering at a legal aid clinic has been incredibly rewarding. I get to assist clients with their legal questions, which makes me feel like I am giving back to my community in a significant way.",
+          "scene": "session_3",
+          "evidence_id": "7bc1d19bc22749f894ef696d7ee4722e",
+          "timestamp": "2026-06-09T02:20:53.802833"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "practical and community-oriented legal work",
+          "context": "Volunteering at a legal aid clinic has been incredibly rewarding. I get to assist clients with their legal questions, which makes me feel like I am giving back to my community in a significant way.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Volunteering at a legal aid clinic has been incredibly rewarding. I get to assist clients with their legal questions, which makes me feel like I am giving back to my community in a significant way.",
+              "scene": "session_3",
+              "evidence_id": "7bc1d19bc22749f894ef696d7ee4722e",
+              "timestamp": "2026-06-09T02:20:53.802833"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:53.802833",
+          "last_accessed": "2026-06-09T02:20:53.996469"
+        }
+      },
+      "unit_id": "1d7f4bdd2bd6449cae38dffcc77e6709",
+      "timestamp": "2026-06-09T02:20:53.821976",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.996466",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "activity_preference",
+      "value": "prefers collaborative over competitive environments",
+      "context": "I tried participating in a debate competition once, but I found it stressful and unproductive. Also, I joined a mock trial competition, but I felt overwhelmed by the pressure.",
+      "profile_type": "style",
+      "stability_score": 0.7473336495590754,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I tried participating in a debate competition once, but I found it stressful and unproductive. Also, I joined a mock trial competition, but I felt overwhelmed by the pressure.",
+          "scene": "session_3",
+          "evidence_id": "bb9fc304228d405c830bd327f11b19a0",
+          "timestamp": "2026-06-09T02:20:53.802835"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers collaborative over competitive environments",
+          "context": "I tried participating in a debate competition once, but I found it stressful and unproductive. Also, I joined a mock trial competition, but I felt overwhelmed by the pressure.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I tried participating in a debate competition once, but I found it stressful and unproductive. Also, I joined a mock trial competition, but I felt overwhelmed by the pressure.",
+              "scene": "session_3",
+              "evidence_id": "bb9fc304228d405c830bd327f11b19a0",
+              "timestamp": "2026-06-09T02:20:53.802835"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:53.802835",
+          "last_accessed": "2026-06-09T02:20:53.996630"
+        }
+      },
+      "unit_id": "3e975eb35afe46ad946aeb25dd787f4d",
+      "timestamp": "2026-06-09T02:20:53.831797",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.996627",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "coding_goal",
+      "value": "improve code readability and maintainability",
+      "context": "User stated: 'I'm looking to refactor my code to make it more readable and maintainable.' and consistently guided toward that end.",
+      "profile_type": "goal",
+      "stability_score": 0.6493049406184571,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated: 'I'm looking to refactor my code to make it more readable and maintainable.' and consistently guided toward that end.",
+          "scene": "session_4",
+          "evidence_id": "2a9cc76cdae84249b9a711432ffb98e8",
+          "timestamp": "2026-06-09T02:20:53.851645"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "improve code readability and maintainability",
+          "context": "User stated: 'I'm looking to refactor my code to make it more readable and maintainable.' and consistently guided toward that end.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated: 'I'm looking to refactor my code to make it more readable and maintainable.' and consistently guided toward that end.",
+              "scene": "session_4",
+              "evidence_id": "2a9cc76cdae84249b9a711432ffb98e8",
+              "timestamp": "2026-06-09T02:20:53.851645"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:53.851645",
+          "last_accessed": "2026-06-09T02:20:53.996804"
+        }
+      },
+      "unit_id": "c748a417c8ac41869464e76d3336c579",
+      "timestamp": "2026-06-09T02:20:53.873588",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.996802",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "demographic_identity",
+      "value": "college athlete",
+      "context": "as a college athlete",
+      "profile_type": "background",
+      "stability_score": 0.8169246136122956,
+      "confidence_score": 0.95,
+      "scene": "session_5",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "as a college athlete",
+          "scene": "session_5",
+          "evidence_id": "dcdb1bdd506a409da27f6c1ca4373f6d",
+          "timestamp": "2026-06-09T02:20:53.878591"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "college athlete",
+          "context": "as a college athlete",
+          "confidence_score": 0.95,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "as a college athlete",
+              "scene": "session_5",
+              "evidence_id": "dcdb1bdd506a409da27f6c1ca4373f6d",
+              "timestamp": "2026-06-09T02:20:53.878591"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:53.878591",
+          "last_accessed": "2026-06-09T02:20:53.996909"
+        }
+      },
+      "unit_id": "40cf9ba5bb2b404fa51f8142148738bd",
+      "timestamp": "2026-06-09T02:20:53.881514",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.996906",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "communication_tone",
+      "value": "casual and motivational",
+      "context": "I like casual tones and motivational wording",
+      "profile_type": "preference",
+      "stability_score": 0.7114353270918715,
+      "confidence_score": 0.9,
+      "scene": "session_5",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I like casual tones and motivational wording",
+          "scene": "session_5",
+          "evidence_id": "b110ad81bfd64a7b8f741262704a6539",
+          "timestamp": "2026-06-09T02:20:53.878595"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "casual and motivational",
+          "context": "I like casual tones and motivational wording",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I like casual tones and motivational wording",
+              "scene": "session_5",
+              "evidence_id": "b110ad81bfd64a7b8f741262704a6539",
+              "timestamp": "2026-06-09T02:20:53.878595"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:53.878595",
+          "last_accessed": "2026-06-09T02:20:53.997016"
+        }
+      },
+      "unit_id": "a8edcf85350f4fbda4004b395798a471",
+      "timestamp": "2026-06-09T02:20:53.886319",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.997013",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "communication_formality_avoidance",
+      "value": "dislikes formal language",
+      "context": "I dislike overly formal language",
+      "profile_type": "preference",
+      "stability_score": 0.7114353286020284,
+      "confidence_score": 0.85,
+      "scene": "session_5",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I dislike overly formal language",
+          "scene": "session_5",
+          "evidence_id": "7dc8b1a92af4484e989a9daaea5a4ab3",
+          "timestamp": "2026-06-09T02:20:53.878597"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "dislikes formal language",
+          "context": "I dislike overly formal language",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I dislike overly formal language",
+              "scene": "session_5",
+              "evidence_id": "7dc8b1a92af4484e989a9daaea5a4ab3",
+              "timestamp": "2026-06-09T02:20:53.878597"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:53.878597",
+          "last_accessed": "2026-06-09T02:20:53.997088"
+        }
+      },
+      "unit_id": "39780d9fc10040f28adeb1f6eaf82c3c",
+      "timestamp": "2026-06-09T02:20:53.890439",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.997085",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "creative_pursuit_style",
+      "value": "prefers spontaneous photography over pressured classes",
+      "context": "User stopped photography classes due to pressure for perfection, now captures spontaneous moments freely.",
+      "profile_type": "style",
+      "stability_score": 0.7125525929959413,
+      "confidence_score": 0.8,
+      "scene": "session_6",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stopped photography classes due to pressure for perfection, now captures spontaneous moments freely.",
+          "scene": "session_6",
+          "evidence_id": "b887a553e50e416790368a69b0090163",
+          "timestamp": "2026-06-09T02:20:53.911791"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "prefers spontaneous photography over pressured classes",
+          "context": "User stopped photography classes due to pressure for perfection, now captures spontaneous moments freely.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stopped photography classes due to pressure for perfection, now captures spontaneous moments freely.",
+              "scene": "session_6",
+              "evidence_id": "b887a553e50e416790368a69b0090163",
+              "timestamp": "2026-06-09T02:20:53.911791"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:53.911791",
+          "last_accessed": "2026-06-09T02:20:53.993879"
+        }
+      },
+      "unit_id": "6f8a6d8ac3b64dc1a8791dc8370b9558",
+      "timestamp": "2026-06-09T02:20:53.950890",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.993877",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_service",
+      "value": "launched monthly homeless support initiative",
+      "context": "User initiated a monthly program providing food, shelter, and fostering community for homeless individuals.",
+      "profile_type": "interest",
+      "stability_score": 0.6926756563926744,
+      "confidence_score": 0.9,
+      "scene": "session_6",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User initiated a monthly program providing food, shelter, and fostering community for homeless individuals.",
+          "scene": "session_6",
+          "evidence_id": "5428c46441db403ab2e08708ee365122",
+          "timestamp": "2026-06-09T02:20:53.911794"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "launched monthly homeless support initiative",
+          "context": "User initiated a monthly program providing food, shelter, and fostering community for homeless individuals.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User initiated a monthly program providing food, shelter, and fostering community for homeless individuals.",
+              "scene": "session_6",
+              "evidence_id": "5428c46441db403ab2e08708ee365122",
+              "timestamp": "2026-06-09T02:20:53.911794"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:53.911794",
+          "last_accessed": "2026-06-09T02:20:53.994031"
+        }
+      },
+      "unit_id": "c28ec0772b264c88953c7fa341cff1c3",
+      "timestamp": "2026-06-09T02:20:53.963998",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.994029",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "dance_partnership",
+      "value": "has social dance partner, attends advanced classes",
+      "context": "User found a dance partner and enjoys advanced dance classes together, practicing outside as well.",
+      "profile_type": "interest",
+      "stability_score": 0.6926756637676826,
+      "confidence_score": 0.8,
+      "scene": "session_6",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User found a dance partner and enjoys advanced dance classes together, practicing outside as well.",
+          "scene": "session_6",
+          "evidence_id": "aca1044f8e9f4adc948e49c2cff44efd",
+          "timestamp": "2026-06-09T02:20:53.911796"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "has social dance partner, attends advanced classes",
+          "context": "User found a dance partner and enjoys advanced dance classes together, practicing outside as well.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User found a dance partner and enjoys advanced dance classes together, practicing outside as well.",
+              "scene": "session_6",
+              "evidence_id": "aca1044f8e9f4adc948e49c2cff44efd",
+              "timestamp": "2026-06-09T02:20:53.911796"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:53.911796",
+          "last_accessed": "2026-06-09T02:20:53.994151"
+        }
+      },
+      "unit_id": "eb12dc3ec5e64d52a42be0aa351206b7",
+      "timestamp": "2026-06-09T02:20:53.977945",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:20:53.994150",
+      "last_evolved": "2026-06-09T02:20:53.997176",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "cc563eb83eb342af8f41e2a348df98b9": {
+      "source": "llm_deepseek",
+      "content": "User enjoyed kayaking, cooking class, dance; disliked wine tasting, comedy, arts and crafts for dating.",
+      "scene": "session_0",
+      "evidence_id": "cc563eb83eb342af8f41e2a348df98b9",
+      "timestamp": "2026-06-09T02:20:53.766524"
+    },
+    "3229db3b776e43be92b25a91ac7e4557": {
+      "source": "llm_deepseek",
+      "content": "Joined creative writing workshop on romance storytelling, uses photography to capture date moments.",
+      "scene": "session_0",
+      "evidence_id": "3229db3b776e43be92b25a91ac7e4557",
+      "timestamp": "2026-06-09T02:20:53.766531"
+    },
+    "ae579364d0de40da9e51656ca75dfc11": {
+      "source": "llm_deepseek",
+      "content": "User mentioned attending pottery class, wine tasting with painting, salsa dancing, game night, and trivia nights as positive experiences.",
+      "scene": "session_1",
+      "evidence_id": "ae579364d0de40da9e51656ca75dfc11",
+      "timestamp": "2026-06-09T02:20:53.767654"
+    },
+    "6a31304d618b4247a64a365768611409": {
+      "source": "llm_deepseek",
+      "content": "User canceled planned travels to focus on local dating, joined local groups to meet like-minded people.",
+      "scene": "session_1",
+      "evidence_id": "6a31304d618b4247a64a365768611409",
+      "timestamp": "2026-06-09T02:20:53.767658"
+    },
+    "d691a65844264f228f1eeb563e39dab5": {
+      "source": "llm_deepseek",
+      "content": "User signed up to volunteer at animal shelter drawn by passion for animals and desire to help.",
+      "scene": "session_1",
+      "evidence_id": "d691a65844264f228f1eeb563e39dab5",
+      "timestamp": "2026-06-09T02:20:53.767663"
+    },
+    "c2982420b6d7402d82f265e31508ae44": {
+      "source": "llm_deepseek",
+      "content": "dropped pottery class due to high demands; values enjoyment over performance",
+      "scene": "session_2",
+      "evidence_id": "c2982420b6d7402d82f265e31508ae44",
+      "timestamp": "2026-06-09T02:20:53.777949"
+    },
+    "bc8cef5329394f8c83dcded8fdc6e317": {
+      "source": "llm_deepseek",
+      "content": "enjoys photography walks, museum visits, reading groups, salsa classes, and wine/poetry nights for social bonding",
+      "scene": "session_2",
+      "evidence_id": "bc8cef5329394f8c83dcded8fdc6e317",
+      "timestamp": "2026-06-09T02:20:53.777952"
+    },
+    "f079059d85294c06829130fdc960c523": {
+      "source": "llm_deepseek",
+      "content": "joined a themed singles gala focusing on creative self-expression; appreciated relaxed atmosphere away from traditional norms",
+      "scene": "session_2",
+      "evidence_id": "f079059d85294c06829130fdc960c523",
+      "timestamp": "2026-06-09T02:20:53.777955"
+    },
+    "f203749939a04e269c7e852c272244eb": {
+      "source": "llm_deepseek",
+      "content": "created a community service initiative providing meals for the homeless to connect personally and make a difference",
+      "scene": "session_2",
+      "evidence_id": "f203749939a04e269c7e852c272244eb",
+      "timestamp": "2026-06-09T02:20:53.777957"
+    },
+    "21d5c888e7c6467388bce50bfe38916a": {
+      "source": "llm_deepseek",
+      "content": "started a reading group focused on romance novels to discuss themes and connect with others",
+      "scene": "session_2",
+      "evidence_id": "21d5c888e7c6467388bce50bfe38916a",
+      "timestamp": "2026-06-09T02:20:53.777960"
+    },
+    "78ffa26506bb4227bf7248dafed9afd3": {
+      "source": "llm_deepseek",
+      "content": "I've been really focused on enhancing my legal skills recently. This dedication has come from a strong desire to be more competent in my field and better serve my clients.",
+      "scene": "session_3",
+      "evidence_id": "78ffa26506bb4227bf7248dafed9afd3",
+      "timestamp": "2026-06-09T02:20:53.802829"
+    },
+    "7bc1d19bc22749f894ef696d7ee4722e": {
+      "source": "llm_deepseek",
+      "content": "Volunteering at a legal aid clinic has been incredibly rewarding. I get to assist clients with their legal questions, which makes me feel like I am giving back to my community in a significant way.",
+      "scene": "session_3",
+      "evidence_id": "7bc1d19bc22749f894ef696d7ee4722e",
+      "timestamp": "2026-06-09T02:20:53.802833"
+    },
+    "bb9fc304228d405c830bd327f11b19a0": {
+      "source": "llm_deepseek",
+      "content": "I tried participating in a debate competition once, but I found it stressful and unproductive. Also, I joined a mock trial competition, but I felt overwhelmed by the pressure.",
+      "scene": "session_3",
+      "evidence_id": "bb9fc304228d405c830bd327f11b19a0",
+      "timestamp": "2026-06-09T02:20:53.802835"
+    },
+    "c480a59d4f4b46c3afe83d7748908f1b": {
+      "source": "llm_deepseek",
+      "content": "I created an educational video series about tenants' rights... demystify the legal jargon that often leaves people feeling overwhelmed and confused.",
+      "scene": "session_3",
+      "evidence_id": "c480a59d4f4b46c3afe83d7748908f1b",
+      "timestamp": "2026-06-09T02:20:53.802838"
+    },
+    "e526f4654b974557a3263071e2abf0fd": {
+      "source": "llm_deepseek",
+      "content": "User requested snake_case naming, docstrings over comments, and clear short functions throughout the refactoring conversation.",
+      "scene": "session_4",
+      "evidence_id": "e526f4654b974557a3263071e2abf0fd",
+      "timestamp": "2026-06-09T02:20:53.851641"
+    },
+    "2a9cc76cdae84249b9a711432ffb98e8": {
+      "source": "llm_deepseek",
+      "content": "User stated: 'I'm looking to refactor my code to make it more readable and maintainable.' and consistently guided toward that end.",
+      "scene": "session_4",
+      "evidence_id": "2a9cc76cdae84249b9a711432ffb98e8",
+      "timestamp": "2026-06-09T02:20:53.851645"
+    },
+    "dcdb1bdd506a409da27f6c1ca4373f6d": {
+      "source": "llm_deepseek",
+      "content": "as a college athlete",
+      "scene": "session_5",
+      "evidence_id": "dcdb1bdd506a409da27f6c1ca4373f6d",
+      "timestamp": "2026-06-09T02:20:53.878591"
+    },
+    "b110ad81bfd64a7b8f741262704a6539": {
+      "source": "llm_deepseek",
+      "content": "I like casual tones and motivational wording",
+      "scene": "session_5",
+      "evidence_id": "b110ad81bfd64a7b8f741262704a6539",
+      "timestamp": "2026-06-09T02:20:53.878595"
+    },
+    "7dc8b1a92af4484e989a9daaea5a4ab3": {
+      "source": "llm_deepseek",
+      "content": "I dislike overly formal language",
+      "scene": "session_5",
+      "evidence_id": "7dc8b1a92af4484e989a9daaea5a4ab3",
+      "timestamp": "2026-06-09T02:20:53.878597"
+    },
+    "1a38014a3075462d99d8a2cdf9eacf2a": {
+      "source": "llm_deepseek",
+      "content": "dislike ... negative valence; asks for more positive, motivational wording",
+      "scene": "session_5",
+      "evidence_id": "1a38014a3075462d99d8a2cdf9eacf2a",
+      "timestamp": "2026-06-09T02:20:53.878600"
+    },
+    "950d80122d0d47fc9d35529c5488a20a": {
+      "source": "llm_deepseek",
+      "content": "User embarked on a solo trip to South America, engaging with local cultures, cuisines, and people.",
+      "scene": "session_6",
+      "evidence_id": "950d80122d0d47fc9d35529c5488a20a",
+      "timestamp": "2026-06-09T02:20:53.911785"
+    },
+    "731988735b9e4de8a80c35142b76a548": {
+      "source": "llm_deepseek",
+      "content": "User organized a singles event highlighting creative hobbies like painting, pottery, and photography to foster connections.",
+      "scene": "session_6",
+      "evidence_id": "731988735b9e4de8a80c35142b76a548",
+      "timestamp": "2026-06-09T02:20:53.911789"
+    },
+    "b887a553e50e416790368a69b0090163": {
+      "source": "llm_deepseek",
+      "content": "User stopped photography classes due to pressure for perfection, now captures spontaneous moments freely.",
+      "scene": "session_6",
+      "evidence_id": "b887a553e50e416790368a69b0090163",
+      "timestamp": "2026-06-09T02:20:53.911791"
+    },
+    "5428c46441db403ab2e08708ee365122": {
+      "source": "llm_deepseek",
+      "content": "User initiated a monthly program providing food, shelter, and fostering community for homeless individuals.",
+      "scene": "session_6",
+      "evidence_id": "5428c46441db403ab2e08708ee365122",
+      "timestamp": "2026-06-09T02:20:53.911794"
+    },
+    "aca1044f8e9f4adc948e49c2cff44efd": {
+      "source": "llm_deepseek",
+      "content": "User found a dance partner and enjoys advanced dance classes together, practicing outside as well.",
+      "scene": "session_6",
+      "evidence_id": "aca1044f8e9f4adc948e49c2cff44efd",
+      "timestamp": "2026-06-09T02:20:53.911796"
+    }
+  },
+  "current_session": "session_6",
+  "current_session_id": "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852_session_6",
+  "config_id": "promote_0.58",
+  "context_hash": "5c00a991550b5222efae1b357a4ab788855512ca85edcf467bab7a2816abd852",
+  "num_sessions": 7
+}

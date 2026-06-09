@@ -1,0 +1,1824 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.46,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "social_event_style",
+      "value": "organizing group cultural experiences",
+      "context": "I also organized a travel group’s visit to an upcoming international festival in a neighboring city. This festival promises to showcase a variety of cultural traditions",
+      "profile_type": "style",
+      "stability_score": 0.49999997594253526,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I also organized a travel group’s visit to an upcoming international festival in a neighboring city. This festival promises to showcase a variety of cultural traditions",
+          "scene": "session_4",
+          "evidence_id": "92b508782e904f0da35745d689a9c7ab",
+          "timestamp": "2026-06-09T02:20:44.866077"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "organizing group cultural experiences",
+          "context": "I also organized a travel group’s visit to an upcoming international festival in a neighboring city. This festival promises to showcase a variety of cultural traditions",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I also organized a travel group’s visit to an upcoming international festival in a neighboring city. This festival promises to showcase a variety of cultural traditions",
+              "scene": "session_4",
+              "evidence_id": "92b508782e904f0da35745d689a9c7ab",
+              "timestamp": "2026-06-09T02:20:44.866077"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866077",
+          "last_accessed": "2026-06-09T02:20:45.060477"
+        }
+      },
+      "unit_id": "22de233cfa504bc9b9f48f2c5b97e54e",
+      "timestamp": "2026-06-09T02:20:44.925269",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060474",
+      "last_evolved": "2026-06-09T02:20:45.063844",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "travel_planning_emotion",
+      "value": "mixed anxiety and excitement",
+      "context": "feels overwhelmed but finds planning rewarding",
+      "profile_type": "style",
+      "stability_score": 0.6896446610397869,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "feels overwhelmed but finds planning rewarding",
+          "scene": "session_0",
+          "evidence_id": "e3df870037644da18e67b5a65449068b",
+          "timestamp": "2026-06-09T02:20:44.750451"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "mixed anxiety and excitement",
+          "context": "feels overwhelmed but finds planning rewarding",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "feels overwhelmed but finds planning rewarding",
+              "scene": "session_0",
+              "evidence_id": "e3df870037644da18e67b5a65449068b",
+              "timestamp": "2026-06-09T02:20:44.750451"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 32,
+          "last_seen": "2026-06-09T02:20:44.750451",
+          "last_accessed": "2026-06-09T02:20:45.060592"
+        }
+      },
+      "unit_id": "771ded89feb54eada2b6adcc21fb5172",
+      "timestamp": "2026-06-09T02:20:44.750491",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 32,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060589",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "cuisine_exploration_interest",
+      "value": "high",
+      "context": "self-identified as a huge foodie, loves new flavors",
+      "profile_type": "interest",
+      "stability_score": 0.6628449546203762,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "self-identified as a huge foodie, loves new flavors",
+          "scene": "session_0",
+          "evidence_id": "cd0afb8b7c1a4804aaf48b202f2de55c",
+          "timestamp": "2026-06-09T02:20:44.750458"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "high",
+          "context": "self-identified as a huge foodie, loves new flavors",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "self-identified as a huge foodie, loves new flavors",
+              "scene": "session_0",
+              "evidence_id": "cd0afb8b7c1a4804aaf48b202f2de55c",
+              "timestamp": "2026-06-09T02:20:44.750458"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 32,
+          "last_seen": "2026-06-09T02:20:44.750458",
+          "last_accessed": "2026-06-09T02:20:45.060676"
+        }
+      },
+      "unit_id": "7b892af221b94055a647bdbef2c85568",
+      "timestamp": "2026-06-09T02:20:44.750728",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 32,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060674",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "destination_type_preference",
+      "value": "hidden gems and lesser-known places",
+      "context": "seeks hidden gems, avoids touristy spots",
+      "profile_type": "preference",
+      "stability_score": 0.7311448934787818,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "seeks hidden gems, avoids touristy spots",
+          "scene": "session_0",
+          "evidence_id": "57de88db6f32402a9a9d64932e5793d9",
+          "timestamp": "2026-06-09T02:20:44.750461"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "hidden gems and lesser-known places",
+          "context": "seeks hidden gems, avoids touristy spots",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "seeks hidden gems, avoids touristy spots",
+              "scene": "session_0",
+              "evidence_id": "57de88db6f32402a9a9d64932e5793d9",
+              "timestamp": "2026-06-09T02:20:44.750461"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 32,
+          "last_seen": "2026-06-09T02:20:44.750461",
+          "last_accessed": "2026-06-09T02:20:45.060760"
+        }
+      },
+      "unit_id": "b2c43cae84c34a7dbb9ce3d118a729c2",
+      "timestamp": "2026-06-09T02:20:44.751138",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 32,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060757",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_budgeting_behavior",
+      "value": "proactive",
+      "context": "budgets for trips to ease financial anxiety",
+      "profile_type": "style",
+      "stability_score": 0.6896446612845157,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "budgets for trips to ease financial anxiety",
+          "scene": "session_0",
+          "evidence_id": "9214deca94ab4e6a99349437376ebf6d",
+          "timestamp": "2026-06-09T02:20:44.750466"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "proactive",
+          "context": "budgets for trips to ease financial anxiety",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "budgets for trips to ease financial anxiety",
+              "scene": "session_0",
+              "evidence_id": "9214deca94ab4e6a99349437376ebf6d",
+              "timestamp": "2026-06-09T02:20:44.750466"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 32,
+          "last_seen": "2026-06-09T02:20:44.750466",
+          "last_accessed": "2026-06-09T02:20:45.060848"
+        }
+      },
+      "unit_id": "4c0e7f2a5a1a4b71863faea9caae37fa",
+      "timestamp": "2026-06-09T02:20:44.751611",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 32,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060845",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_style",
+      "value": "digital_guides_over_physical",
+      "context": "decided to stop collecting physical travel guides; uses online platforms and apps",
+      "profile_type": "preference",
+      "stability_score": 0.7265806579722696,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to stop collecting physical travel guides; uses online platforms and apps",
+          "scene": "session_1",
+          "evidence_id": "a24705c8d8d2499b8c88696a1b89c893",
+          "timestamp": "2026-06-09T02:20:44.754415"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "digital_guides_over_physical",
+          "context": "decided to stop collecting physical travel guides; uses online platforms and apps",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to stop collecting physical travel guides; uses online platforms and apps",
+              "scene": "session_1",
+              "evidence_id": "a24705c8d8d2499b8c88696a1b89c893",
+              "timestamp": "2026-06-09T02:20:44.754415"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:44.754415",
+          "last_accessed": "2026-06-09T02:20:45.060968"
+        }
+      },
+      "unit_id": "a2db2c90f98a4184add43ee988665a5b",
+      "timestamp": "2026-06-09T02:20:44.755501",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060965",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_cultural_interest",
+      "value": "exploring_festivals_with_friends",
+      "context": "started enjoying exploring cultural festivals; went with a friend who shares enthusiasm",
+      "profile_type": "interest",
+      "stability_score": 0.597537529588329,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started enjoying exploring cultural festivals; went with a friend who shares enthusiasm",
+          "scene": "session_1",
+          "evidence_id": "956e4a064909414081ddc3c00620a3c6",
+          "timestamp": "2026-06-09T02:20:44.754418"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "exploring_festivals_with_friends",
+          "context": "started enjoying exploring cultural festivals; went with a friend who shares enthusiasm",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started enjoying exploring cultural festivals; went with a friend who shares enthusiasm",
+              "scene": "session_1",
+              "evidence_id": "956e4a064909414081ddc3c00620a3c6",
+              "timestamp": "2026-06-09T02:20:44.754418"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:44.754418",
+          "last_accessed": "2026-06-09T02:20:45.061080"
+        }
+      },
+      "unit_id": "b28bd69864cc485f9caf68bd0bd96c85",
+      "timestamp": "2026-06-09T02:20:44.756889",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061078",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_budgeting_preference",
+      "value": "flexible_spontaneous_no_strict_budget",
+      "context": "decided to travel without a strict budget to allow spontaneous experiences",
+      "profile_type": "preference",
+      "stability_score": 0.7265806589736234,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to travel without a strict budget to allow spontaneous experiences",
+          "scene": "session_1",
+          "evidence_id": "751b4ae88d8d47f9ac3f0ed56b24219e",
+          "timestamp": "2026-06-09T02:20:44.754421"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "flexible_spontaneous_no_strict_budget",
+          "context": "decided to travel without a strict budget to allow spontaneous experiences",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to travel without a strict budget to allow spontaneous experiences",
+              "scene": "session_1",
+              "evidence_id": "751b4ae88d8d47f9ac3f0ed56b24219e",
+              "timestamp": "2026-06-09T02:20:44.754421"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:44.754421",
+          "last_accessed": "2026-06-09T02:20:45.061263"
+        }
+      },
+      "unit_id": "2477454d83384b0cac81c33615e644eb",
+      "timestamp": "2026-06-09T02:20:44.758673",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061259",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_documentation_style",
+      "value": "spontaneous_notes_over_daily_journaling",
+      "context": "stopped daily journaling; opts for spontaneous note-taking to focus on experience",
+      "profile_type": "style",
+      "stability_score": 0.7580302341821449,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stopped daily journaling; opts for spontaneous note-taking to focus on experience",
+          "scene": "session_1",
+          "evidence_id": "0abe07daad164f72ae324734d4f750e5",
+          "timestamp": "2026-06-09T02:20:44.754423"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "spontaneous_notes_over_daily_journaling",
+          "context": "stopped daily journaling; opts for spontaneous note-taking to focus on experience",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stopped daily journaling; opts for spontaneous note-taking to focus on experience",
+              "scene": "session_1",
+              "evidence_id": "0abe07daad164f72ae324734d4f750e5",
+              "timestamp": "2026-06-09T02:20:44.754423"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:44.754423",
+          "last_accessed": "2026-06-09T02:20:45.061368"
+        }
+      },
+      "unit_id": "cc1b903e0c6643d5a338cb136c357ebc",
+      "timestamp": "2026-06-09T02:20:44.760788",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061365",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "language_learning_interest",
+      "value": "joined_exchange_program_with_native_speakers",
+      "context": "joined language exchange program to practice new languages with native speakers",
+      "profile_type": "interest",
+      "stability_score": 0.5975375318176874,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined language exchange program to practice new languages with native speakers",
+          "scene": "session_1",
+          "evidence_id": "dd3ea8efe24e4fc8ae9fdef17b2e1fc7",
+          "timestamp": "2026-06-09T02:20:44.754425"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "joined_exchange_program_with_native_speakers",
+          "context": "joined language exchange program to practice new languages with native speakers",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined language exchange program to practice new languages with native speakers",
+              "scene": "session_1",
+              "evidence_id": "dd3ea8efe24e4fc8ae9fdef17b2e1fc7",
+              "timestamp": "2026-06-09T02:20:44.754425"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:44.754425",
+          "last_accessed": "2026-06-09T02:20:45.061498"
+        }
+      },
+      "unit_id": "d5f419b09fed4ed58d18d6feecc9b22e",
+      "timestamp": "2026-06-09T02:20:44.763396",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061495",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "financial_reflection_habit",
+      "value": "introspective",
+      "context": "I've been on quite a journey regarding my financial habits and goals recently... introspection and analysis of past spending patterns",
+      "profile_type": "style",
+      "stability_score": 0.6621192453002419,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been on quite a journey regarding my financial habits and goals recently... introspection and analysis of past spending patterns",
+          "scene": "session_2",
+          "evidence_id": "160b26f7cc28445faac1b124fdd72f28",
+          "timestamp": "2026-06-09T02:20:44.770171"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "introspective",
+          "context": "I've been on quite a journey regarding my financial habits and goals recently... introspection and analysis of past spending patterns",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been on quite a journey regarding my financial habits and goals recently... introspection and analysis of past spending patterns",
+              "scene": "session_2",
+              "evidence_id": "160b26f7cc28445faac1b124fdd72f28",
+              "timestamp": "2026-06-09T02:20:44.770171"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:20:44.770171",
+          "last_accessed": "2026-06-09T02:20:45.061618"
+        }
+      },
+      "unit_id": "a20d5b46933b4534a82724ae8fdfcf4a",
+      "timestamp": "2026-06-09T02:20:44.774056",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061615",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "learning_style_preference",
+      "value": "structured",
+      "context": "I realized I preferred structured learning instead",
+      "profile_type": "style",
+      "stability_score": 0.7473336133407097,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I realized I preferred structured learning instead",
+          "scene": "session_2",
+          "evidence_id": "1fe6b76e332046f194e8836945e08605",
+          "timestamp": "2026-06-09T02:20:44.770174"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "structured",
+          "context": "I realized I preferred structured learning instead",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I realized I preferred structured learning instead",
+              "scene": "session_2",
+              "evidence_id": "1fe6b76e332046f194e8836945e08605",
+              "timestamp": "2026-06-09T02:20:44.770174"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:20:44.770174",
+          "last_accessed": "2026-06-09T02:20:45.061713"
+        }
+      },
+      "unit_id": "743a734b9ed64298beb77a251d167efe",
+      "timestamp": "2026-06-09T02:20:44.776149",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061710",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "financial_literacy_goal",
+      "value": "continuous learning",
+      "context": "I realized I might need to strengthen my own knowledge base before seeking professional advice",
+      "profile_type": "goal",
+      "stability_score": 0.6077993157775458,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I realized I might need to strengthen my own knowledge base before seeking professional advice",
+          "scene": "session_2",
+          "evidence_id": "639f0d03b3b84b8d97bc697b3acf86a9",
+          "timestamp": "2026-06-09T02:20:44.770177"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "continuous learning",
+          "context": "I realized I might need to strengthen my own knowledge base before seeking professional advice",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I realized I might need to strengthen my own knowledge base before seeking professional advice",
+              "scene": "session_2",
+              "evidence_id": "639f0d03b3b84b8d97bc697b3acf86a9",
+              "timestamp": "2026-06-09T02:20:44.770177"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:20:44.770177",
+          "last_accessed": "2026-06-09T02:20:45.061845"
+        }
+      },
+      "unit_id": "4fe20efd11ac4a3da227937ad4840d0a",
+      "timestamp": "2026-06-09T02:20:44.780172",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061842",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "learning_content_preference",
+      "value": "practical",
+      "context": "the content seemed more theoretical and lacking in applicable advice",
+      "profile_type": "preference",
+      "stability_score": 0.6399093546400956,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "the content seemed more theoretical and lacking in applicable advice",
+          "scene": "session_2",
+          "evidence_id": "197af756b10247ba9f87abf010b5babb",
+          "timestamp": "2026-06-09T02:20:44.770179"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "practical",
+          "context": "the content seemed more theoretical and lacking in applicable advice",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "the content seemed more theoretical and lacking in applicable advice",
+              "scene": "session_2",
+              "evidence_id": "197af756b10247ba9f87abf010b5babb",
+              "timestamp": "2026-06-09T02:20:44.770179"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:20:44.770179",
+          "last_accessed": "2026-06-09T02:20:45.061949"
+        }
+      },
+      "unit_id": "903765373c134646baf70ae892604da3",
+      "timestamp": "2026-06-09T02:20:44.783303",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.061946",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "local_experience_preference",
+      "value": "prefers local and meaningful cultural experiences",
+      "context": "User: I find myself leaning towards local experiences that allow me to connect with the culture and people in a more meaningful way.",
+      "profile_type": "preference",
+      "stability_score": 0.8028089438969949,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User: I find myself leaning towards local experiences that allow me to connect with the culture and people in a more meaningful way.",
+          "scene": "session_3",
+          "evidence_id": "cd1ac0b61ef24a63bbb0c31a78b43983",
+          "timestamp": "2026-06-09T02:20:44.791305"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers local and meaningful cultural experiences",
+          "context": "User: I find myself leaning towards local experiences that allow me to connect with the culture and people in a more meaningful way.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User: I find myself leaning towards local experiences that allow me to connect with the culture and people in a more meaningful way.",
+              "scene": "session_3",
+              "evidence_id": "cd1ac0b61ef24a63bbb0c31a78b43983",
+              "timestamp": "2026-06-09T02:20:44.791305"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:44.791305",
+          "last_accessed": "2026-06-09T02:20:45.062131"
+        }
+      },
+      "unit_id": "22021a15f5f74c7fb8e78602223fe3e1",
+      "timestamp": "2026-06-09T02:20:44.797431",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.062128",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "sustainable_travel_commitment",
+      "value": "prioritizes environmentally conscious travel choices",
+      "context": "User: I'm really glad to be making environmentally conscious choices, as it has become so important in today's world where climate change and environmental degradation are pressing concerns.",
+      "profile_type": "general",
+      "stability_score": 0.8028089479514866,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User: I'm really glad to be making environmentally conscious choices, as it has become so important in today's world where climate change and environmental degradation are pressing concerns.",
+          "scene": "session_3",
+          "evidence_id": "f165623b713b45119a6c74e8f1319c53",
+          "timestamp": "2026-06-09T02:20:44.791309"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prioritizes environmentally conscious travel choices",
+          "context": "User: I'm really glad to be making environmentally conscious choices, as it has become so important in today's world where climate change and environmental degradation are pressing concerns.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User: I'm really glad to be making environmentally conscious choices, as it has become so important in today's world where climate change and environmental degradation are pressing concerns.",
+              "scene": "session_3",
+              "evidence_id": "f165623b713b45119a6c74e8f1319c53",
+              "timestamp": "2026-06-09T02:20:44.791309"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:44.791309",
+          "last_accessed": "2026-06-09T02:20:45.062319"
+        }
+      },
+      "unit_id": "f139bd3715884912a184c645d8c6f924",
+      "timestamp": "2026-06-09T02:20:44.807607",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.062316",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_guide_collection",
+      "value": "collects travel guidebooks from favorite destinations",
+      "context": "User: I've started a new collection of travel guides from my favorite destinations.",
+      "profile_type": "interest",
+      "stability_score": 0.5984205247984384,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User: I've started a new collection of travel guides from my favorite destinations.",
+          "scene": "session_3",
+          "evidence_id": "d61d5a8d49434c829a06cc424f0ed21d",
+          "timestamp": "2026-06-09T02:20:44.791311"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "collects travel guidebooks from favorite destinations",
+          "context": "User: I've started a new collection of travel guides from my favorite destinations.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User: I've started a new collection of travel guides from my favorite destinations.",
+              "scene": "session_3",
+              "evidence_id": "d61d5a8d49434c829a06cc424f0ed21d",
+              "timestamp": "2026-06-09T02:20:44.791311"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:44.791311",
+          "last_accessed": "2026-06-09T02:20:45.062465"
+        }
+      },
+      "unit_id": "b1893664081b46aeab24d0e33357dd35",
+      "timestamp": "2026-06-09T02:20:44.813745",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.062462",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "budgeting_app_development",
+      "value": "creating a budgeting app to track travel expenses and savings",
+      "context": "User: I've also started creating a budgeting app to help track my travel expenses and savings.",
+      "profile_type": "goal",
+      "stability_score": 0.6275153269943243,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User: I've also started creating a budgeting app to help track my travel expenses and savings.",
+          "scene": "session_3",
+          "evidence_id": "0cc8ac76dc1b43ffad2882ee3575bed8",
+          "timestamp": "2026-06-09T02:20:44.791313"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "creating a budgeting app to track travel expenses and savings",
+          "context": "User: I've also started creating a budgeting app to help track my travel expenses and savings.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User: I've also started creating a budgeting app to help track my travel expenses and savings.",
+              "scene": "session_3",
+              "evidence_id": "0cc8ac76dc1b43ffad2882ee3575bed8",
+              "timestamp": "2026-06-09T02:20:44.791313"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:44.791313",
+          "last_accessed": "2026-06-09T02:20:45.062617"
+        }
+      },
+      "unit_id": "d198802d56304092a553551abe045a36",
+      "timestamp": "2026-06-09T02:20:44.821234",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.062615",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "self_paced_exploration_style",
+      "value": "enjoys exploring at own pace and appreciating quiet nature moments",
+      "context": "User: I love the flexibility of exploring at my own pace now. It’s much more relaxing. I've found myself enjoying quiet parks where I can watch the changing seasons.",
+      "profile_type": "style",
+      "stability_score": 0.7362004668885032,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User: I love the flexibility of exploring at my own pace now. It’s much more relaxing. I've found myself enjoying quiet parks where I can watch the changing seasons.",
+          "scene": "session_3",
+          "evidence_id": "7eeae1db145a47379138aa6f4b340e11",
+          "timestamp": "2026-06-09T02:20:44.791316"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "enjoys exploring at own pace and appreciating quiet nature moments",
+          "context": "User: I love the flexibility of exploring at my own pace now. It’s much more relaxing. I've found myself enjoying quiet parks where I can watch the changing seasons.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User: I love the flexibility of exploring at my own pace now. It’s much more relaxing. I've found myself enjoying quiet parks where I can watch the changing seasons.",
+              "scene": "session_3",
+              "evidence_id": "7eeae1db145a47379138aa6f4b340e11",
+              "timestamp": "2026-06-09T02:20:44.791316"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:44.791316",
+          "last_accessed": "2026-06-09T02:20:45.062751"
+        }
+      },
+      "unit_id": "a79a9c9f143346719d3d11149c7526d7",
+      "timestamp": "2026-06-09T02:20:44.833053",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.062748",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_photography_sharing",
+      "value": "launched social media for sharing travel photography and experiences",
+      "context": "User: I launched a social media account dedicated to sharing travel photography and experiences.",
+      "profile_type": "interest",
+      "stability_score": 0.5984205359724528,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User: I launched a social media account dedicated to sharing travel photography and experiences.",
+          "scene": "session_3",
+          "evidence_id": "5134e60a993e41c395c6709832e46af3",
+          "timestamp": "2026-06-09T02:20:44.791318"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "launched social media for sharing travel photography and experiences",
+          "context": "User: I launched a social media account dedicated to sharing travel photography and experiences.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User: I launched a social media account dedicated to sharing travel photography and experiences.",
+              "scene": "session_3",
+              "evidence_id": "5134e60a993e41c395c6709832e46af3",
+              "timestamp": "2026-06-09T02:20:44.791318"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:44.791318",
+          "last_accessed": "2026-06-09T02:20:45.062903"
+        }
+      },
+      "unit_id": "51d1772940f7413ab12cb98266f5313a",
+      "timestamp": "2026-06-09T02:20:44.842103",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.062900",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_style",
+      "value": "flexible and spontaneous",
+      "context": "I've found that incorporating more flexibility into my itinerary has significantly impacted my overall experience. Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+      "profile_type": "style",
+      "stability_score": 0.7246129649249049,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've found that incorporating more flexibility into my itinerary has significantly impacted my overall experience. Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+          "scene": "session_4",
+          "evidence_id": "24a5f7a956ac4d7eaad50bd57be57185",
+          "timestamp": "2026-06-09T02:20:44.866068"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "flexible and spontaneous",
+          "context": "I've found that incorporating more flexibility into my itinerary has significantly impacted my overall experience. Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've found that incorporating more flexibility into my itinerary has significantly impacted my overall experience. Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+              "scene": "session_4",
+              "evidence_id": "24a5f7a956ac4d7eaad50bd57be57185",
+              "timestamp": "2026-06-09T02:20:44.866068"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866068",
+          "last_accessed": "2026-06-09T02:20:45.063004"
+        }
+      },
+      "unit_id": "53c048551d4548edb15adb212fc2210a",
+      "timestamp": "2026-06-09T02:20:44.881350",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063001",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "personal_finance_goal",
+      "value": "travel budgeting and financial planning for adventures",
+      "context": "I’ve committed to a personal finance course focused on travel budgeting strategies! ... I aim not just to save money but to create a well-balanced travel budget that allows for spontaneity while still being responsible",
+      "profile_type": "goal",
+      "stability_score": 0.5674318532548854,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I’ve committed to a personal finance course focused on travel budgeting strategies! ... I aim not just to save money but to create a well-balanced travel budget that allows for spontaneity while still being responsible",
+          "scene": "session_4",
+          "evidence_id": "58b954dfe14946f0b3eb6f9f36af5ea1",
+          "timestamp": "2026-06-09T02:20:44.866072"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "travel budgeting and financial planning for adventures",
+          "context": "I’ve committed to a personal finance course focused on travel budgeting strategies! ... I aim not just to save money but to create a well-balanced travel budget that allows for spontaneity while still being responsible",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I’ve committed to a personal finance course focused on travel budgeting strategies! ... I aim not just to save money but to create a well-balanced travel budget that allows for spontaneity while still being responsible",
+              "scene": "session_4",
+              "evidence_id": "58b954dfe14946f0b3eb6f9f36af5ea1",
+              "timestamp": "2026-06-09T02:20:44.866072"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866072",
+          "last_accessed": "2026-06-09T02:20:45.063121"
+        }
+      },
+      "unit_id": "d61de413ecd448ceb637bf9e13576293",
+      "timestamp": "2026-06-09T02:20:44.898337",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063117",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "language_learning_method",
+      "value": "self-paced via apps",
+      "context": "I switched to language apps for self-paced learning! ... These apps allow me to choose what I want to learn at my own pace, rather than feeling rushed to keep up with a group",
+      "profile_type": "preference",
+      "stability_score": 0.6661934462975797,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I switched to language apps for self-paced learning! ... These apps allow me to choose what I want to learn at my own pace, rather than feeling rushed to keep up with a group",
+          "scene": "session_4",
+          "evidence_id": "a78a79af929f4164bc49575db2635c98",
+          "timestamp": "2026-06-09T02:20:44.866075"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "self-paced via apps",
+          "context": "I switched to language apps for self-paced learning! ... These apps allow me to choose what I want to learn at my own pace, rather than feeling rushed to keep up with a group",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I switched to language apps for self-paced learning! ... These apps allow me to choose what I want to learn at my own pace, rather than feeling rushed to keep up with a group",
+              "scene": "session_4",
+              "evidence_id": "a78a79af929f4164bc49575db2635c98",
+              "timestamp": "2026-06-09T02:20:44.866075"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866075",
+          "last_accessed": "2026-06-09T02:20:45.063282"
+        }
+      },
+      "unit_id": "732d22147ba64824a6e78960bed4b480",
+      "timestamp": "2026-06-09T02:20:44.911750",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063279",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_journaling_interest",
+      "value": "emotional and story-focused journaling",
+      "context": "I started a new travel journal focusing on emotions and stories from my adventures. ... I want to ensure that my journeys are captured not only in terms of places but also the growth and emotions I experience",
+      "profile_type": "interest",
+      "stability_score": 0.729314365247515,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.8833333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I started a new travel journal focusing on emotions and stories from my adventures. ... I want to ensure that my journeys are captured not only in terms of places but also the growth and emotions I experience",
+          "scene": "session_4",
+          "evidence_id": "82d7638614514be7963fb83f1c77c32e",
+          "timestamp": "2026-06-09T02:20:44.866080"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "emotional and story-focused journaling",
+          "context": "I started a new travel journal focusing on emotions and stories from my adventures. ... I want to ensure that my journeys are captured not only in terms of places but also the growth and emotions I experience",
+          "confidence_score": 0.9,
+          "quality_score": 0.8833333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I started a new travel journal focusing on emotions and stories from my adventures. ... I want to ensure that my journeys are captured not only in terms of places but also the growth and emotions I experience",
+              "scene": "session_4",
+              "evidence_id": "82d7638614514be7963fb83f1c77c32e",
+              "timestamp": "2026-06-09T02:20:44.866080"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866080",
+          "last_accessed": "2026-06-09T02:20:45.063379"
+        }
+      },
+      "unit_id": "009899da4d854194b29270e494476967",
+      "timestamp": "2026-06-09T02:20:44.944169",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063376",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "conservation_engagement",
+      "value": "participated in eco-tourism and conservation projects",
+      "context": "It truly was a transformative experience for me! I had the opportunity to dive deep into various conservation projects ... reshaping my perspective on the interconnectedness of travel and environmental responsibility",
+      "profile_type": "interest",
+      "stability_score": 0.5989106505155832,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "It truly was a transformative experience for me! I had the opportunity to dive deep into various conservation projects ... reshaping my perspective on the interconnectedness of travel and environmental responsibility",
+          "scene": "session_4",
+          "evidence_id": "60b1fb31625a44ff84e52c0f0a47604e",
+          "timestamp": "2026-06-09T02:20:44.866082"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "participated in eco-tourism and conservation projects",
+          "context": "It truly was a transformative experience for me! I had the opportunity to dive deep into various conservation projects ... reshaping my perspective on the interconnectedness of travel and environmental responsibility",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "It truly was a transformative experience for me! I had the opportunity to dive deep into various conservation projects ... reshaping my perspective on the interconnectedness of travel and environmental responsibility",
+              "scene": "session_4",
+              "evidence_id": "60b1fb31625a44ff84e52c0f0a47604e",
+              "timestamp": "2026-06-09T02:20:44.866082"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866082",
+          "last_accessed": "2026-06-09T02:20:45.063495"
+        }
+      },
+      "unit_id": "d3f1030997be489aa6bf891e54e844d7",
+      "timestamp": "2026-06-09T02:20:44.962933",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063492",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "local_adventure_style",
+      "value": "active explorer through adventure club",
+      "context": "I’ve rejoined the local adventure club and signed up for upcoming excursions! ... I reconnected with the excitement of unexpected discoveries in my city after exploring a new hiking trail",
+      "profile_type": "style",
+      "stability_score": 0.7246129943919736,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I’ve rejoined the local adventure club and signed up for upcoming excursions! ... I reconnected with the excitement of unexpected discoveries in my city after exploring a new hiking trail",
+          "scene": "session_4",
+          "evidence_id": "c8cec0a80ea641f1b0f4b0a13f04972c",
+          "timestamp": "2026-06-09T02:20:44.866084"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "active explorer through adventure club",
+          "context": "I’ve rejoined the local adventure club and signed up for upcoming excursions! ... I reconnected with the excitement of unexpected discoveries in my city after exploring a new hiking trail",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I’ve rejoined the local adventure club and signed up for upcoming excursions! ... I reconnected with the excitement of unexpected discoveries in my city after exploring a new hiking trail",
+              "scene": "session_4",
+              "evidence_id": "c8cec0a80ea641f1b0f4b0a13f04972c",
+              "timestamp": "2026-06-09T02:20:44.866084"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866084",
+          "last_accessed": "2026-06-09T02:20:45.063692"
+        }
+      },
+      "unit_id": "a67879e50b0b4a87adbf62d974aa9f9b",
+      "timestamp": "2026-06-09T02:20:44.979849",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063689",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_guide_collection_style",
+      "value": "digital and physical hybrid",
+      "context": "I converted my travel guide collection into a digital library while still curating unique physical guides. ... The digital format enables me to quickly access information ... the physical guides serve as a nostalgic reminder",
+      "profile_type": "preference",
+      "stability_score": 0.666193476887209,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I converted my travel guide collection into a digital library while still curating unique physical guides. ... The digital format enables me to quickly access information ... the physical guides serve as a nostalgic reminder",
+          "scene": "session_4",
+          "evidence_id": "0b1dd6d5b9bc4029883393d2a22588be",
+          "timestamp": "2026-06-09T02:20:44.866087"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "digital and physical hybrid",
+          "context": "I converted my travel guide collection into a digital library while still curating unique physical guides. ... The digital format enables me to quickly access information ... the physical guides serve as a nostalgic reminder",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I converted my travel guide collection into a digital library while still curating unique physical guides. ... The digital format enables me to quickly access information ... the physical guides serve as a nostalgic reminder",
+              "scene": "session_4",
+              "evidence_id": "0b1dd6d5b9bc4029883393d2a22588be",
+              "timestamp": "2026-06-09T02:20:44.866087"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:20:44.866087",
+          "last_accessed": "2026-06-09T02:20:45.063797"
+        }
+      },
+      "unit_id": "fad0c3edee4d4855b01662438500cf61",
+      "timestamp": "2026-06-09T02:20:45.001623",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.063794",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "writing_style",
+      "value": "prefers formal, objective, and professional writing style",
+      "context": "user repeatedly asks assistant to revise sentences to be more professional, less casual, and more objective",
+      "profile_type": "style",
+      "stability_score": 0.712552602775977,
+      "confidence_score": 0.85,
+      "scene": "session_5",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user repeatedly asks assistant to revise sentences to be more professional, less casual, and more objective",
+          "scene": "session_5",
+          "evidence_id": "05a5dc842d514b53858201bc5c64be44",
+          "timestamp": "2026-06-09T02:20:45.035579"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "prefers formal, objective, and professional writing style",
+          "context": "user repeatedly asks assistant to revise sentences to be more professional, less casual, and more objective",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user repeatedly asks assistant to revise sentences to be more professional, less casual, and more objective",
+              "scene": "session_5",
+              "evidence_id": "05a5dc842d514b53858201bc5c64be44",
+              "timestamp": "2026-06-09T02:20:45.035579"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:45.035579",
+          "last_accessed": "2026-06-09T02:20:45.060201"
+        }
+      },
+      "unit_id": "e69632bcc0cc4cfe9e1f7ffa7524dbf5",
+      "timestamp": "2026-06-09T02:20:45.049013",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060199",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "age_group",
+      "value": "23 years old",
+      "context": "user mentions 'on my 23rd birthday'",
+      "profile_type": "background",
+      "stability_score": 0.9047104913675115,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user mentions 'on my 23rd birthday'",
+          "scene": "session_5",
+          "evidence_id": "aeed03402a8645429617c407ef4f258b",
+          "timestamp": "2026-06-09T02:20:45.035583"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "23 years old",
+          "context": "user mentions 'on my 23rd birthday'",
+          "confidence_score": 0.8,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user mentions 'on my 23rd birthday'",
+              "scene": "session_5",
+              "evidence_id": "aeed03402a8645429617c407ef4f258b",
+              "timestamp": "2026-06-09T02:20:45.035583"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:45.035583",
+          "last_accessed": "2026-06-09T02:20:45.060281"
+        }
+      },
+      "unit_id": "0f183845fdb34a4f82fd1a0c23d323e4",
+      "timestamp": "2026-06-09T02:20:45.054219",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:45.060279",
+      "last_evolved": "2026-06-09T02:20:45.063890",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "e3df870037644da18e67b5a65449068b": {
+      "source": "llm_deepseek",
+      "content": "feels overwhelmed but finds planning rewarding",
+      "scene": "session_0",
+      "evidence_id": "e3df870037644da18e67b5a65449068b",
+      "timestamp": "2026-06-09T02:20:44.750451"
+    },
+    "cd0afb8b7c1a4804aaf48b202f2de55c": {
+      "source": "llm_deepseek",
+      "content": "self-identified as a huge foodie, loves new flavors",
+      "scene": "session_0",
+      "evidence_id": "cd0afb8b7c1a4804aaf48b202f2de55c",
+      "timestamp": "2026-06-09T02:20:44.750458"
+    },
+    "57de88db6f32402a9a9d64932e5793d9": {
+      "source": "llm_deepseek",
+      "content": "seeks hidden gems, avoids touristy spots",
+      "scene": "session_0",
+      "evidence_id": "57de88db6f32402a9a9d64932e5793d9",
+      "timestamp": "2026-06-09T02:20:44.750461"
+    },
+    "9214deca94ab4e6a99349437376ebf6d": {
+      "source": "llm_deepseek",
+      "content": "budgets for trips to ease financial anxiety",
+      "scene": "session_0",
+      "evidence_id": "9214deca94ab4e6a99349437376ebf6d",
+      "timestamp": "2026-06-09T02:20:44.750466"
+    },
+    "a24705c8d8d2499b8c88696a1b89c893": {
+      "source": "llm_deepseek",
+      "content": "decided to stop collecting physical travel guides; uses online platforms and apps",
+      "scene": "session_1",
+      "evidence_id": "a24705c8d8d2499b8c88696a1b89c893",
+      "timestamp": "2026-06-09T02:20:44.754415"
+    },
+    "956e4a064909414081ddc3c00620a3c6": {
+      "source": "llm_deepseek",
+      "content": "started enjoying exploring cultural festivals; went with a friend who shares enthusiasm",
+      "scene": "session_1",
+      "evidence_id": "956e4a064909414081ddc3c00620a3c6",
+      "timestamp": "2026-06-09T02:20:44.754418"
+    },
+    "751b4ae88d8d47f9ac3f0ed56b24219e": {
+      "source": "llm_deepseek",
+      "content": "decided to travel without a strict budget to allow spontaneous experiences",
+      "scene": "session_1",
+      "evidence_id": "751b4ae88d8d47f9ac3f0ed56b24219e",
+      "timestamp": "2026-06-09T02:20:44.754421"
+    },
+    "0abe07daad164f72ae324734d4f750e5": {
+      "source": "llm_deepseek",
+      "content": "stopped daily journaling; opts for spontaneous note-taking to focus on experience",
+      "scene": "session_1",
+      "evidence_id": "0abe07daad164f72ae324734d4f750e5",
+      "timestamp": "2026-06-09T02:20:44.754423"
+    },
+    "dd3ea8efe24e4fc8ae9fdef17b2e1fc7": {
+      "source": "llm_deepseek",
+      "content": "joined language exchange program to practice new languages with native speakers",
+      "scene": "session_1",
+      "evidence_id": "dd3ea8efe24e4fc8ae9fdef17b2e1fc7",
+      "timestamp": "2026-06-09T02:20:44.754425"
+    },
+    "160b26f7cc28445faac1b124fdd72f28": {
+      "source": "llm_deepseek",
+      "content": "I've been on quite a journey regarding my financial habits and goals recently... introspection and analysis of past spending patterns",
+      "scene": "session_2",
+      "evidence_id": "160b26f7cc28445faac1b124fdd72f28",
+      "timestamp": "2026-06-09T02:20:44.770171"
+    },
+    "1fe6b76e332046f194e8836945e08605": {
+      "source": "llm_deepseek",
+      "content": "I realized I preferred structured learning instead",
+      "scene": "session_2",
+      "evidence_id": "1fe6b76e332046f194e8836945e08605",
+      "timestamp": "2026-06-09T02:20:44.770174"
+    },
+    "639f0d03b3b84b8d97bc697b3acf86a9": {
+      "source": "llm_deepseek",
+      "content": "I realized I might need to strengthen my own knowledge base before seeking professional advice",
+      "scene": "session_2",
+      "evidence_id": "639f0d03b3b84b8d97bc697b3acf86a9",
+      "timestamp": "2026-06-09T02:20:44.770177"
+    },
+    "197af756b10247ba9f87abf010b5babb": {
+      "source": "llm_deepseek",
+      "content": "the content seemed more theoretical and lacking in applicable advice",
+      "scene": "session_2",
+      "evidence_id": "197af756b10247ba9f87abf010b5babb",
+      "timestamp": "2026-06-09T02:20:44.770179"
+    },
+    "cd1ac0b61ef24a63bbb0c31a78b43983": {
+      "source": "llm_deepseek",
+      "content": "User: I find myself leaning towards local experiences that allow me to connect with the culture and people in a more meaningful way.",
+      "scene": "session_3",
+      "evidence_id": "cd1ac0b61ef24a63bbb0c31a78b43983",
+      "timestamp": "2026-06-09T02:20:44.791305"
+    },
+    "f165623b713b45119a6c74e8f1319c53": {
+      "source": "llm_deepseek",
+      "content": "User: I'm really glad to be making environmentally conscious choices, as it has become so important in today's world where climate change and environmental degradation are pressing concerns.",
+      "scene": "session_3",
+      "evidence_id": "f165623b713b45119a6c74e8f1319c53",
+      "timestamp": "2026-06-09T02:20:44.791309"
+    },
+    "d61d5a8d49434c829a06cc424f0ed21d": {
+      "source": "llm_deepseek",
+      "content": "User: I've started a new collection of travel guides from my favorite destinations.",
+      "scene": "session_3",
+      "evidence_id": "d61d5a8d49434c829a06cc424f0ed21d",
+      "timestamp": "2026-06-09T02:20:44.791311"
+    },
+    "0cc8ac76dc1b43ffad2882ee3575bed8": {
+      "source": "llm_deepseek",
+      "content": "User: I've also started creating a budgeting app to help track my travel expenses and savings.",
+      "scene": "session_3",
+      "evidence_id": "0cc8ac76dc1b43ffad2882ee3575bed8",
+      "timestamp": "2026-06-09T02:20:44.791313"
+    },
+    "7eeae1db145a47379138aa6f4b340e11": {
+      "source": "llm_deepseek",
+      "content": "User: I love the flexibility of exploring at my own pace now. It’s much more relaxing. I've found myself enjoying quiet parks where I can watch the changing seasons.",
+      "scene": "session_3",
+      "evidence_id": "7eeae1db145a47379138aa6f4b340e11",
+      "timestamp": "2026-06-09T02:20:44.791316"
+    },
+    "5134e60a993e41c395c6709832e46af3": {
+      "source": "llm_deepseek",
+      "content": "User: I launched a social media account dedicated to sharing travel photography and experiences.",
+      "scene": "session_3",
+      "evidence_id": "5134e60a993e41c395c6709832e46af3",
+      "timestamp": "2026-06-09T02:20:44.791318"
+    },
+    "24a5f7a956ac4d7eaad50bd57be57185": {
+      "source": "llm_deepseek",
+      "content": "I've found that incorporating more flexibility into my itinerary has significantly impacted my overall experience. Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+      "scene": "session_4",
+      "evidence_id": "24a5f7a956ac4d7eaad50bd57be57185",
+      "timestamp": "2026-06-09T02:20:44.866068"
+    },
+    "58b954dfe14946f0b3eb6f9f36af5ea1": {
+      "source": "llm_deepseek",
+      "content": "I’ve committed to a personal finance course focused on travel budgeting strategies! ... I aim not just to save money but to create a well-balanced travel budget that allows for spontaneity while still being responsible",
+      "scene": "session_4",
+      "evidence_id": "58b954dfe14946f0b3eb6f9f36af5ea1",
+      "timestamp": "2026-06-09T02:20:44.866072"
+    },
+    "a78a79af929f4164bc49575db2635c98": {
+      "source": "llm_deepseek",
+      "content": "I switched to language apps for self-paced learning! ... These apps allow me to choose what I want to learn at my own pace, rather than feeling rushed to keep up with a group",
+      "scene": "session_4",
+      "evidence_id": "a78a79af929f4164bc49575db2635c98",
+      "timestamp": "2026-06-09T02:20:44.866075"
+    },
+    "92b508782e904f0da35745d689a9c7ab": {
+      "source": "llm_deepseek",
+      "content": "I also organized a travel group’s visit to an upcoming international festival in a neighboring city. This festival promises to showcase a variety of cultural traditions",
+      "scene": "session_4",
+      "evidence_id": "92b508782e904f0da35745d689a9c7ab",
+      "timestamp": "2026-06-09T02:20:44.866077"
+    },
+    "82d7638614514be7963fb83f1c77c32e": {
+      "source": "llm_deepseek",
+      "content": "I started a new travel journal focusing on emotions and stories from my adventures. ... I want to ensure that my journeys are captured not only in terms of places but also the growth and emotions I experience",
+      "scene": "session_4",
+      "evidence_id": "82d7638614514be7963fb83f1c77c32e",
+      "timestamp": "2026-06-09T02:20:44.866080"
+    },
+    "60b1fb31625a44ff84e52c0f0a47604e": {
+      "source": "llm_deepseek",
+      "content": "It truly was a transformative experience for me! I had the opportunity to dive deep into various conservation projects ... reshaping my perspective on the interconnectedness of travel and environmental responsibility",
+      "scene": "session_4",
+      "evidence_id": "60b1fb31625a44ff84e52c0f0a47604e",
+      "timestamp": "2026-06-09T02:20:44.866082"
+    },
+    "c8cec0a80ea641f1b0f4b0a13f04972c": {
+      "source": "llm_deepseek",
+      "content": "I’ve rejoined the local adventure club and signed up for upcoming excursions! ... I reconnected with the excitement of unexpected discoveries in my city after exploring a new hiking trail",
+      "scene": "session_4",
+      "evidence_id": "c8cec0a80ea641f1b0f4b0a13f04972c",
+      "timestamp": "2026-06-09T02:20:44.866084"
+    },
+    "0b1dd6d5b9bc4029883393d2a22588be": {
+      "source": "llm_deepseek",
+      "content": "I converted my travel guide collection into a digital library while still curating unique physical guides. ... The digital format enables me to quickly access information ... the physical guides serve as a nostalgic reminder",
+      "scene": "session_4",
+      "evidence_id": "0b1dd6d5b9bc4029883393d2a22588be",
+      "timestamp": "2026-06-09T02:20:44.866087"
+    },
+    "05a5dc842d514b53858201bc5c64be44": {
+      "source": "llm_deepseek",
+      "content": "user repeatedly asks assistant to revise sentences to be more professional, less casual, and more objective",
+      "scene": "session_5",
+      "evidence_id": "05a5dc842d514b53858201bc5c64be44",
+      "timestamp": "2026-06-09T02:20:45.035579"
+    },
+    "aeed03402a8645429617c407ef4f258b": {
+      "source": "llm_deepseek",
+      "content": "user mentions 'on my 23rd birthday'",
+      "scene": "session_5",
+      "evidence_id": "aeed03402a8645429617c407ef4f258b",
+      "timestamp": "2026-06-09T02:20:45.035583"
+    }
+  },
+  "current_session": "session_5",
+  "current_session_id": "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9_session_5",
+  "config_id": "promote_0.46",
+  "context_hash": "f56dc82b80270d4a2d45ddff57844726783aa968c7ede0114de9894b782c8ac9",
+  "num_sessions": 6
+}

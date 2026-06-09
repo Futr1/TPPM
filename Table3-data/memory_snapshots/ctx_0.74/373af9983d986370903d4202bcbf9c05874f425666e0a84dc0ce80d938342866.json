@@ -1,0 +1,1214 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.74,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "health_information_source",
+      "value": "listens to health podcasts and reads medical journals",
+      "context": "Started listening to health podcasts, reads latest medical journal issues",
+      "profile_type": "preference",
+      "stability_score": 0.5999999704847924,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started listening to health podcasts, reads latest medical journal issues",
+          "scene": "session_0",
+          "evidence_id": "cb962d6eca8c4b9db51a50d8c6e24b51",
+          "timestamp": "2026-06-09T02:22:28.059157"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "listens to health podcasts and reads medical journals",
+          "context": "Started listening to health podcasts, reads latest medical journal issues",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started listening to health podcasts, reads latest medical journal issues",
+              "scene": "session_0",
+              "evidence_id": "cb962d6eca8c4b9db51a50d8c6e24b51",
+              "timestamp": "2026-06-09T02:22:28.059157"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:28.059157",
+          "last_accessed": "2026-06-09T02:22:28.206089"
+        }
+      },
+      "unit_id": "90cb5df92a1e47738e3a8085fb619024",
+      "timestamp": "2026-06-09T02:22:28.067364",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.206085",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "health_info_preference",
+      "value": "prefers accessible health information via podcasts over dense medical journals",
+      "context": "I made the decision to stop subscribing to medical journals... I started a new health podcast that discusses topics in a more accessible format.",
+      "profile_type": "preference",
+      "stability_score": 0.5999999747693756,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I made the decision to stop subscribing to medical journals... I started a new health podcast that discusses topics in a more accessible format.",
+          "scene": "session_1",
+          "evidence_id": "abda082c680c45009bd4d0f182a01a9d",
+          "timestamp": "2026-06-09T02:22:28.073268"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers accessible health information via podcasts over dense medical journals",
+          "context": "I made the decision to stop subscribing to medical journals... I started a new health podcast that discusses topics in a more accessible format.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I made the decision to stop subscribing to medical journals... I started a new health podcast that discusses topics in a more accessible format.",
+              "scene": "session_1",
+              "evidence_id": "abda082c680c45009bd4d0f182a01a9d",
+              "timestamp": "2026-06-09T02:22:28.073268"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:28.073268",
+          "last_accessed": "2026-06-09T02:22:28.206303"
+        }
+      },
+      "unit_id": "e1a3eeca97284b3cb1cf6fdc51758d27",
+      "timestamp": "2026-06-09T02:22:28.087930",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.206300",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "blogging_goal",
+      "value": "document personal health journey to help others and build community",
+      "context": "I’ve started a small blog focusing on my personal health journeys... to help others and create a supportive community.",
+      "profile_type": "goal",
+      "stability_score": 0.5999999761239588,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I’ve started a small blog focusing on my personal health journeys... to help others and create a supportive community.",
+          "scene": "session_1",
+          "evidence_id": "737b125698e347b3ae963bb232d723f0",
+          "timestamp": "2026-06-09T02:22:28.073270"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "document personal health journey to help others and build community",
+          "context": "I’ve started a small blog focusing on my personal health journeys... to help others and create a supportive community.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I’ve started a small blog focusing on my personal health journeys... to help others and create a supportive community.",
+              "scene": "session_1",
+              "evidence_id": "737b125698e347b3ae963bb232d723f0",
+              "timestamp": "2026-06-09T02:22:28.073270"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:28.073270",
+          "last_accessed": "2026-06-09T02:22:28.206499"
+        }
+      },
+      "unit_id": "604be916b2684d7d9bcd57930d6f3543",
+      "timestamp": "2026-06-09T02:22:28.094432",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.206495",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "medical_education_engagement",
+      "value": "hands-on simulation learning",
+      "context": "enjoyed advanced medical simulation and found it realistic and confidence-building",
+      "profile_type": "preference",
+      "stability_score": 0.5999999784700003,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "enjoyed advanced medical simulation and found it realistic and confidence-building",
+          "scene": "session_2",
+          "evidence_id": "52b679643055431fba415b3272301571",
+          "timestamp": "2026-06-09T02:22:28.101315"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "hands-on simulation learning",
+          "context": "enjoyed advanced medical simulation and found it realistic and confidence-building",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "enjoyed advanced medical simulation and found it realistic and confidence-building",
+              "scene": "session_2",
+              "evidence_id": "52b679643055431fba415b3272301571",
+              "timestamp": "2026-06-09T02:22:28.101315"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:28.101315",
+          "last_accessed": "2026-06-09T02:22:28.206655"
+        }
+      },
+      "unit_id": "a081bdfb2b3a4a69891212a16fdd7280",
+      "timestamp": "2026-06-09T02:22:28.105692",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.206652",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "mental_health_advocacy",
+      "value": "actively promotes mental health awareness",
+      "context": "volunteered at health fair and helped create mental health programs",
+      "profile_type": "interest",
+      "stability_score": 0.5999999805564586,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "volunteered at health fair and helped create mental health programs",
+          "scene": "session_2",
+          "evidence_id": "4efd7dbb621a47ada26a47c73120c7b6",
+          "timestamp": "2026-06-09T02:22:28.101321"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "actively promotes mental health awareness",
+          "context": "volunteered at health fair and helped create mental health programs",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "volunteered at health fair and helped create mental health programs",
+              "scene": "session_2",
+              "evidence_id": "4efd7dbb621a47ada26a47c73120c7b6",
+              "timestamp": "2026-06-09T02:22:28.101321"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:28.101321",
+          "last_accessed": "2026-06-09T02:22:28.206817"
+        }
+      },
+      "unit_id": "b116f48d1f50404d9b4a814aac734d5d",
+      "timestamp": "2026-06-09T02:22:28.115708",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.206814",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "pet_therapy_enthusiasm",
+      "value": "enjoys pet therapy for emotional well-being",
+      "context": "started attending pet therapy sessions again, finds them stress-relieving",
+      "profile_type": "preference",
+      "stability_score": 0.599999981829792,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started attending pet therapy sessions again, finds them stress-relieving",
+          "scene": "session_2",
+          "evidence_id": "0d5a6e56514e4c17bd063510529b6e4b",
+          "timestamp": "2026-06-09T02:22:28.101324"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "enjoys pet therapy for emotional well-being",
+          "context": "started attending pet therapy sessions again, finds them stress-relieving",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started attending pet therapy sessions again, finds them stress-relieving",
+              "scene": "session_2",
+              "evidence_id": "0d5a6e56514e4c17bd063510529b6e4b",
+              "timestamp": "2026-06-09T02:22:28.101324"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:28.101324",
+          "last_accessed": "2026-06-09T02:22:28.206981"
+        }
+      },
+      "unit_id": "2708822f2af84cca998bf0d9f15009d4",
+      "timestamp": "2026-06-09T02:22:28.121819",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.206978",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "community_engagement",
+      "value": "involved in community gardening for food security",
+      "context": "joined gardening club growing herbs/vegetables for community kitchens",
+      "profile_type": "interest",
+      "stability_score": 0.49999998583559047,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined gardening club growing herbs/vegetables for community kitchens",
+          "scene": "session_2",
+          "evidence_id": "69444d21cfba4553bea3cf29774cf31a",
+          "timestamp": "2026-06-09T02:22:28.101326"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "involved in community gardening for food security",
+          "context": "joined gardening club growing herbs/vegetables for community kitchens",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined gardening club growing herbs/vegetables for community kitchens",
+              "scene": "session_2",
+              "evidence_id": "69444d21cfba4553bea3cf29774cf31a",
+              "timestamp": "2026-06-09T02:22:28.101326"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:28.101326",
+          "last_accessed": "2026-06-09T02:22:28.207129"
+        }
+      },
+      "unit_id": "75b39680cae8449b9c7cb959112a0f13",
+      "timestamp": "2026-06-09T02:22:28.127450",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.207126",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "creative_expression_interest",
+      "value": "enjoys visual arts like collage-making and art therapy",
+      "context": "The patient found art therapy workshop liberating and enjoyed making collages in a creative expression workshop, describing them as a source of joy and liberation.",
+      "profile_type": "interest",
+      "stability_score": 0.6999999935901389,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "The patient found art therapy workshop liberating and enjoyed making collages in a creative expression workshop, describing them as a source of joy and liberation.",
+          "scene": "session_4",
+          "evidence_id": "4743b2c6e566434a98a4427d5eabf1b9",
+          "timestamp": "2026-06-09T02:22:28.169352"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys visual arts like collage-making and art therapy",
+          "context": "The patient found art therapy workshop liberating and enjoyed making collages in a creative expression workshop, describing them as a source of joy and liberation.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "The patient found art therapy workshop liberating and enjoyed making collages in a creative expression workshop, describing them as a source of joy and liberation.",
+              "scene": "session_4",
+              "evidence_id": "4743b2c6e566434a98a4427d5eabf1b9",
+              "timestamp": "2026-06-09T02:22:28.169352"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:22:28.169352",
+          "last_accessed": "2026-06-09T02:22:28.205669"
+        }
+      },
+      "unit_id": "b13ce726e5a341bc89b9ff2a51602e61",
+      "timestamp": "2026-06-09T02:22:28.182664",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 2,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.205667",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "self_reflective_style",
+      "value": "prefers introspective and mindfulness-based practices like journaling, meditation, guided imagery over structured or group-oriented techniques",
+      "context": "The patient benefits from journaling daily, mindfulness meditation, and guided imagery, while finding CBT confusing, deep breathing ineffective, and some group activities overwhelming.",
+      "profile_type": "style",
+      "stability_score": 0.6499999982122744,
+      "confidence_score": 0.75,
+      "scene": "session_4",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "The patient benefits from journaling daily, mindfulness meditation, and guided imagery, while finding CBT confusing, deep breathing ineffective, and some group activities overwhelming.",
+          "scene": "session_4",
+          "evidence_id": "2a608d5814be49c38862df43841f31ba",
+          "timestamp": "2026-06-09T02:22:28.169355"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers introspective and mindfulness-based practices like journaling, meditation, guided imagery over structured or group-oriented techniques",
+          "context": "The patient benefits from journaling daily, mindfulness meditation, and guided imagery, while finding CBT confusing, deep breathing ineffective, and some group activities overwhelming.",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "The patient benefits from journaling daily, mindfulness meditation, and guided imagery, while finding CBT confusing, deep breathing ineffective, and some group activities overwhelming.",
+              "scene": "session_4",
+              "evidence_id": "2a608d5814be49c38862df43841f31ba",
+              "timestamp": "2026-06-09T02:22:28.169355"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:22:28.169355",
+          "last_accessed": "2026-06-09T02:22:28.205919"
+        }
+      },
+      "unit_id": "964e308a83474f24b021a444b3771d0c",
+      "timestamp": "2026-06-09T02:22:28.201115",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 2,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.205917",
+      "last_evolved": "2026-06-09T02:22:28.209041",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "health_tracking_habit",
+      "value": "actively tracks meals and workouts",
+      "context": "Started tracking meals and workouts to gain awareness about habits",
+      "profile_type": "preference",
+      "stability_score": 0.7265807166966743,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started tracking meals and workouts to gain awareness about habits",
+          "scene": "session_0",
+          "evidence_id": "cfde1daec98e40bb9f9809bd1e29d040",
+          "timestamp": "2026-06-09T02:22:28.059139"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "actively tracks meals and workouts",
+          "context": "Started tracking meals and workouts to gain awareness about habits",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started tracking meals and workouts to gain awareness about habits",
+              "scene": "session_0",
+              "evidence_id": "cfde1daec98e40bb9f9809bd1e29d040",
+              "timestamp": "2026-06-09T02:22:28.059139"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:28.059139",
+          "last_accessed": "2026-06-09T02:22:28.207452"
+        }
+      },
+      "unit_id": "e32483bf252b45eaad38b47a7ac31792",
+      "timestamp": "2026-06-09T02:22:28.059180",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.207449",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_engagement_style",
+      "value": "active volunteer and organizer for health-related community initiatives",
+      "context": "Volunteered at health fairs, organized community gardening program",
+      "profile_type": "interest",
+      "stability_score": 0.7384751959193514,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Volunteered at health fairs, organized community gardening program",
+          "scene": "session_0",
+          "evidence_id": "cf6d77a2a3734efa9f5cafc8d0f42103",
+          "timestamp": "2026-06-09T02:22:28.059146"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "active volunteer and organizer for health-related community initiatives",
+          "context": "Volunteered at health fairs, organized community gardening program",
+          "confidence_score": 0.9,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Volunteered at health fairs, organized community gardening program",
+              "scene": "session_0",
+              "evidence_id": "cf6d77a2a3734efa9f5cafc8d0f42103",
+              "timestamp": "2026-06-09T02:22:28.059146"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:28.059146",
+          "last_accessed": "2026-06-09T02:22:28.207609"
+        }
+      },
+      "unit_id": "19ba6f26d1c64fa0a6a895bbac891a35",
+      "timestamp": "2026-06-09T02:22:28.059629",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.207606",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_style_preference",
+      "value": "prefers small, supportive groups over large competitive or crowded events",
+      "context": "Stopped attending wellness festivals due to overload, left running club due to competitiveness, felt lost at policy meeting",
+      "profile_type": "style",
+      "stability_score": 0.7580302824485998,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Stopped attending wellness festivals due to overload, left running club due to competitiveness, felt lost at policy meeting",
+          "scene": "session_0",
+          "evidence_id": "d316433be43d4e43b938d752331f1f65",
+          "timestamp": "2026-06-09T02:22:28.059149"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers small, supportive groups over large competitive or crowded events",
+          "context": "Stopped attending wellness festivals due to overload, left running club due to competitiveness, felt lost at policy meeting",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Stopped attending wellness festivals due to overload, left running club due to competitiveness, felt lost at policy meeting",
+              "scene": "session_0",
+              "evidence_id": "d316433be43d4e43b938d752331f1f65",
+              "timestamp": "2026-06-09T02:22:28.059149"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:28.059149",
+          "last_accessed": "2026-06-09T02:22:28.207834"
+        }
+      },
+      "unit_id": "aa30ab7161fc4432af60aa91bd603adb",
+      "timestamp": "2026-06-09T02:22:28.060760",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.207830",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "meditation_habit",
+      "value": "regularly practices meditation for mental wellness and stress reduction",
+      "context": "Started meditating regularly; practices mindfulness and loving-kindness techniques",
+      "profile_type": "preference",
+      "stability_score": 0.7655207535055046,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started meditating regularly; practices mindfulness and loving-kindness techniques",
+          "scene": "session_0",
+          "evidence_id": "44ec1fd4b23f4d4f86e90f209592af36",
+          "timestamp": "2026-06-09T02:22:28.059151"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "regularly practices meditation for mental wellness and stress reduction",
+          "context": "Started meditating regularly; practices mindfulness and loving-kindness techniques",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started meditating regularly; practices mindfulness and loving-kindness techniques",
+              "scene": "session_0",
+              "evidence_id": "44ec1fd4b23f4d4f86e90f209592af36",
+              "timestamp": "2026-06-09T02:22:28.059151"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:28.059151",
+          "last_accessed": "2026-06-09T02:22:28.208022"
+        }
+      },
+      "unit_id": "801dda5a89a54d669468003b644209df",
+      "timestamp": "2026-06-09T02:22:28.062236",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.208019",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "cooking_interest",
+      "value": "enjoys cooking healthy meals, explores new recipes",
+      "context": "Attended nutritional health workshop, improved cooking skills, discovered a new healthy recipe that became family favorite",
+      "profile_type": "interest",
+      "stability_score": 0.6680063975460125,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Attended nutritional health workshop, improved cooking skills, discovered a new healthy recipe that became family favorite",
+          "scene": "session_0",
+          "evidence_id": "d2330c3df9834e26b5c7aad9bb9279c7",
+          "timestamp": "2026-06-09T02:22:28.059154"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "enjoys cooking healthy meals, explores new recipes",
+          "context": "Attended nutritional health workshop, improved cooking skills, discovered a new healthy recipe that became family favorite",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Attended nutritional health workshop, improved cooking skills, discovered a new healthy recipe that became family favorite",
+              "scene": "session_0",
+              "evidence_id": "d2330c3df9834e26b5c7aad9bb9279c7",
+              "timestamp": "2026-06-09T02:22:28.059154"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:28.059154",
+          "last_accessed": "2026-06-09T02:22:28.208237"
+        }
+      },
+      "unit_id": "1413560b1f7e4a30a2dfe7ef767d955e",
+      "timestamp": "2026-06-09T02:22:28.064801",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.208234",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "exercise_app_preference",
+      "value": "avoids fitness tracking apps due to anxiety from metrics pressure",
+      "context": "I decided to stop using fitness tracking apps. The constant notifications and pressure to meet pre-set goals caused more anxiety than motivation.",
+      "profile_type": "preference",
+      "stability_score": 0.7217824718314917,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I decided to stop using fitness tracking apps. The constant notifications and pressure to meet pre-set goals caused more anxiety than motivation.",
+          "scene": "session_1",
+          "evidence_id": "7bce17edf6764c748862895e360fbc09",
+          "timestamp": "2026-06-09T02:22:28.073262"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "avoids fitness tracking apps due to anxiety from metrics pressure",
+          "context": "I decided to stop using fitness tracking apps. The constant notifications and pressure to meet pre-set goals caused more anxiety than motivation.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I decided to stop using fitness tracking apps. The constant notifications and pressure to meet pre-set goals caused more anxiety than motivation.",
+              "scene": "session_1",
+              "evidence_id": "7bce17edf6764c748862895e360fbc09",
+              "timestamp": "2026-06-09T02:22:28.073262"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:28.073262",
+          "last_accessed": "2026-06-09T02:22:28.208425"
+        }
+      },
+      "unit_id": "c394726e5aba4f12b5f73f2bd1cf8f2c",
+      "timestamp": "2026-06-09T02:22:28.077582",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.208421",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_health_interest",
+      "value": "started a medicinal herb garden for local clinics as a community initiative",
+      "context": "I did start a community gardening initiative aimed at producing medicinal herbs for local health clinics.",
+      "profile_type": "interest",
+      "stability_score": 0.6735420104517889,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I did start a community gardening initiative aimed at producing medicinal herbs for local health clinics.",
+          "scene": "session_1",
+          "evidence_id": "9535afdb650344e2a4302bad6a0128e3",
+          "timestamp": "2026-06-09T02:22:28.073265"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "started a medicinal herb garden for local clinics as a community initiative",
+          "context": "I did start a community gardening initiative aimed at producing medicinal herbs for local health clinics.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I did start a community gardening initiative aimed at producing medicinal herbs for local health clinics.",
+              "scene": "session_1",
+              "evidence_id": "9535afdb650344e2a4302bad6a0128e3",
+              "timestamp": "2026-06-09T02:22:28.073265"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:28.073265",
+          "last_accessed": "2026-06-09T02:22:28.208620"
+        }
+      },
+      "unit_id": "63b5493055fc446098b8f8e3a520e549",
+      "timestamp": "2026-06-09T02:22:28.081601",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.208616",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "privacy_value",
+      "value": "prioritizes privacy over public exposure",
+      "context": "closed blog due to pressure and privacy concerns, shifted to private journaling",
+      "profile_type": "preference",
+      "stability_score": 0.7167382205997606,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "closed blog due to pressure and privacy concerns, shifted to private journaling",
+          "scene": "session_2",
+          "evidence_id": "bb783e0f55b94e959e545f33e43fd2b5",
+          "timestamp": "2026-06-09T02:22:28.101319"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prioritizes privacy over public exposure",
+          "context": "closed blog due to pressure and privacy concerns, shifted to private journaling",
+          "confidence_score": 0.7,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "closed blog due to pressure and privacy concerns, shifted to private journaling",
+              "scene": "session_2",
+              "evidence_id": "bb783e0f55b94e959e545f33e43fd2b5",
+              "timestamp": "2026-06-09T02:22:28.101319"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:28.101319",
+          "last_accessed": "2026-06-09T02:22:28.208783"
+        }
+      },
+      "unit_id": "47cd3fb1721f43fd94ab7c5bdbdba641",
+      "timestamp": "2026-06-09T02:22:28.110768",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.208780",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "alternative_medicine_practice",
+      "value": "certified practitioner in mindfulness and stress relief techniques",
+      "context": "User stated: 'I became a certified practitioner of alternative medicine techniques, focusing on mindfulness and stress relief.'",
+      "profile_type": "background",
+      "stability_score": 0.8630804495760138,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated: 'I became a certified practitioner of alternative medicine techniques, focusing on mindfulness and stress relief.'",
+          "scene": "session_3",
+          "evidence_id": "1dc0f0b5c13f4ae48614685540ac1eea",
+          "timestamp": "2026-06-09T02:22:28.139879"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "certified practitioner in mindfulness and stress relief techniques",
+          "context": "User stated: 'I became a certified practitioner of alternative medicine techniques, focusing on mindfulness and stress relief.'",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated: 'I became a certified practitioner of alternative medicine techniques, focusing on mindfulness and stress relief.'",
+              "scene": "session_3",
+              "evidence_id": "1dc0f0b5c13f4ae48614685540ac1eea",
+              "timestamp": "2026-06-09T02:22:28.139879"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:22:28.139879",
+          "last_accessed": "2026-06-09T02:22:28.209001"
+        }
+      },
+      "unit_id": "47577442ca814c5a89ffd3d6bcbce8d8",
+      "timestamp": "2026-06-09T02:22:28.149301",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.208998",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "health_resource_preference",
+      "value": "prefers practical, non-technical, and non-repetitive health information",
+      "context": "User cancelled medical journal subscription due to technical jargon and stopped health podcasts due to repetitiveness.",
+      "profile_type": "preference",
+      "stability_score": 0.7058605801167994,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User cancelled medical journal subscription due to technical jargon and stopped health podcasts due to repetitiveness.",
+          "scene": "session_3",
+          "evidence_id": "9bdc81b39195485799d44165b79e8d45",
+          "timestamp": "2026-06-09T02:22:28.139882"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers practical, non-technical, and non-repetitive health information",
+          "context": "User cancelled medical journal subscription due to technical jargon and stopped health podcasts due to repetitiveness.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User cancelled medical journal subscription due to technical jargon and stopped health podcasts due to repetitiveness.",
+              "scene": "session_3",
+              "evidence_id": "9bdc81b39195485799d44165b79e8d45",
+              "timestamp": "2026-06-09T02:22:28.139882"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:22:28.139882",
+          "last_accessed": "2026-06-09T02:22:28.207318"
+        }
+      },
+      "unit_id": "b97d917f7115408f89d1a0e058599f31",
+      "timestamp": "2026-06-09T02:22:28.161911",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:28.207315",
+      "last_evolved": "2026-06-09T02:22:28.209073",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "cfde1daec98e40bb9f9809bd1e29d040": {
+      "source": "llm_deepseek",
+      "content": "Started tracking meals and workouts to gain awareness about habits",
+      "scene": "session_0",
+      "evidence_id": "cfde1daec98e40bb9f9809bd1e29d040",
+      "timestamp": "2026-06-09T02:22:28.059139"
+    },
+    "cf6d77a2a3734efa9f5cafc8d0f42103": {
+      "source": "llm_deepseek",
+      "content": "Volunteered at health fairs, organized community gardening program",
+      "scene": "session_0",
+      "evidence_id": "cf6d77a2a3734efa9f5cafc8d0f42103",
+      "timestamp": "2026-06-09T02:22:28.059146"
+    },
+    "d316433be43d4e43b938d752331f1f65": {
+      "source": "llm_deepseek",
+      "content": "Stopped attending wellness festivals due to overload, left running club due to competitiveness, felt lost at policy meeting",
+      "scene": "session_0",
+      "evidence_id": "d316433be43d4e43b938d752331f1f65",
+      "timestamp": "2026-06-09T02:22:28.059149"
+    },
+    "44ec1fd4b23f4d4f86e90f209592af36": {
+      "source": "llm_deepseek",
+      "content": "Started meditating regularly; practices mindfulness and loving-kindness techniques",
+      "scene": "session_0",
+      "evidence_id": "44ec1fd4b23f4d4f86e90f209592af36",
+      "timestamp": "2026-06-09T02:22:28.059151"
+    },
+    "d2330c3df9834e26b5c7aad9bb9279c7": {
+      "source": "llm_deepseek",
+      "content": "Attended nutritional health workshop, improved cooking skills, discovered a new healthy recipe that became family favorite",
+      "scene": "session_0",
+      "evidence_id": "d2330c3df9834e26b5c7aad9bb9279c7",
+      "timestamp": "2026-06-09T02:22:28.059154"
+    },
+    "cb962d6eca8c4b9db51a50d8c6e24b51": {
+      "source": "llm_deepseek",
+      "content": "Started listening to health podcasts, reads latest medical journal issues",
+      "scene": "session_0",
+      "evidence_id": "cb962d6eca8c4b9db51a50d8c6e24b51",
+      "timestamp": "2026-06-09T02:22:28.059157"
+    },
+    "7bce17edf6764c748862895e360fbc09": {
+      "source": "llm_deepseek",
+      "content": "I decided to stop using fitness tracking apps. The constant notifications and pressure to meet pre-set goals caused more anxiety than motivation.",
+      "scene": "session_1",
+      "evidence_id": "7bce17edf6764c748862895e360fbc09",
+      "timestamp": "2026-06-09T02:22:28.073262"
+    },
+    "9535afdb650344e2a4302bad6a0128e3": {
+      "source": "llm_deepseek",
+      "content": "I did start a community gardening initiative aimed at producing medicinal herbs for local health clinics.",
+      "scene": "session_1",
+      "evidence_id": "9535afdb650344e2a4302bad6a0128e3",
+      "timestamp": "2026-06-09T02:22:28.073265"
+    },
+    "abda082c680c45009bd4d0f182a01a9d": {
+      "source": "llm_deepseek",
+      "content": "I made the decision to stop subscribing to medical journals... I started a new health podcast that discusses topics in a more accessible format.",
+      "scene": "session_1",
+      "evidence_id": "abda082c680c45009bd4d0f182a01a9d",
+      "timestamp": "2026-06-09T02:22:28.073268"
+    },
+    "737b125698e347b3ae963bb232d723f0": {
+      "source": "llm_deepseek",
+      "content": "I’ve started a small blog focusing on my personal health journeys... to help others and create a supportive community.",
+      "scene": "session_1",
+      "evidence_id": "737b125698e347b3ae963bb232d723f0",
+      "timestamp": "2026-06-09T02:22:28.073270"
+    },
+    "52b679643055431fba415b3272301571": {
+      "source": "llm_deepseek",
+      "content": "enjoyed advanced medical simulation and found it realistic and confidence-building",
+      "scene": "session_2",
+      "evidence_id": "52b679643055431fba415b3272301571",
+      "timestamp": "2026-06-09T02:22:28.101315"
+    },
+    "bb783e0f55b94e959e545f33e43fd2b5": {
+      "source": "llm_deepseek",
+      "content": "closed blog due to pressure and privacy concerns, shifted to private journaling",
+      "scene": "session_2",
+      "evidence_id": "bb783e0f55b94e959e545f33e43fd2b5",
+      "timestamp": "2026-06-09T02:22:28.101319"
+    },
+    "4efd7dbb621a47ada26a47c73120c7b6": {
+      "source": "llm_deepseek",
+      "content": "volunteered at health fair and helped create mental health programs",
+      "scene": "session_2",
+      "evidence_id": "4efd7dbb621a47ada26a47c73120c7b6",
+      "timestamp": "2026-06-09T02:22:28.101321"
+    },
+    "0d5a6e56514e4c17bd063510529b6e4b": {
+      "source": "llm_deepseek",
+      "content": "started attending pet therapy sessions again, finds them stress-relieving",
+      "scene": "session_2",
+      "evidence_id": "0d5a6e56514e4c17bd063510529b6e4b",
+      "timestamp": "2026-06-09T02:22:28.101324"
+    },
+    "69444d21cfba4553bea3cf29774cf31a": {
+      "source": "llm_deepseek",
+      "content": "joined gardening club growing herbs/vegetables for community kitchens",
+      "scene": "session_2",
+      "evidence_id": "69444d21cfba4553bea3cf29774cf31a",
+      "timestamp": "2026-06-09T02:22:28.101326"
+    },
+    "1dc0f0b5c13f4ae48614685540ac1eea": {
+      "source": "llm_deepseek",
+      "content": "User stated: 'I became a certified practitioner of alternative medicine techniques, focusing on mindfulness and stress relief.'",
+      "scene": "session_3",
+      "evidence_id": "1dc0f0b5c13f4ae48614685540ac1eea",
+      "timestamp": "2026-06-09T02:22:28.139879"
+    },
+    "9bdc81b39195485799d44165b79e8d45": {
+      "source": "llm_deepseek",
+      "content": "User cancelled medical journal subscription due to technical jargon and stopped health podcasts due to repetitiveness.",
+      "scene": "session_3",
+      "evidence_id": "9bdc81b39195485799d44165b79e8d45",
+      "timestamp": "2026-06-09T02:22:28.139882"
+    },
+    "4743b2c6e566434a98a4427d5eabf1b9": {
+      "source": "llm_deepseek",
+      "content": "The patient found art therapy workshop liberating and enjoyed making collages in a creative expression workshop, describing them as a source of joy and liberation.",
+      "scene": "session_4",
+      "evidence_id": "4743b2c6e566434a98a4427d5eabf1b9",
+      "timestamp": "2026-06-09T02:22:28.169352"
+    },
+    "2a608d5814be49c38862df43841f31ba": {
+      "source": "llm_deepseek",
+      "content": "The patient benefits from journaling daily, mindfulness meditation, and guided imagery, while finding CBT confusing, deep breathing ineffective, and some group activities overwhelming.",
+      "scene": "session_4",
+      "evidence_id": "2a608d5814be49c38862df43841f31ba",
+      "timestamp": "2026-06-09T02:22:28.169355"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866_session_4",
+  "config_id": "ctx_0.74",
+  "context_hash": "373af9983d986370903d4202bcbf9c05874f425666e0a84dc0ce80d938342866",
+  "num_sessions": 5
+}

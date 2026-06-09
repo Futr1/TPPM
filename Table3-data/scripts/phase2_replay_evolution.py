@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,9 @@ ROOT = Path("/root/autodl-tmp/wangqihao/Table3-data")
 CANDIDATES_DIR = ROOT / "candidates"
 SNAPSHOTS_DIR = ROOT / "memory_snapshots"
 SWEEP_CONFIG_PATH = ROOT / "configs" / "param_sweep.yaml"
+
+# ===== Simulated time between sessions (for long-term decay) =====
+SESSION_INTERVAL_HOURS = 24  # Simulate 1 day between sessions
 
 
 # ===== Config loading =====
@@ -103,9 +107,11 @@ def _make_config(params: dict[str, Any]) -> TPMConfig:
 
     return TPMConfig(
         write_threshold=float(params.get("write_threshold", 0.68)),
-        promote_threshold=float(params.get("promote_threshold", 0.72)),
+        promote_threshold=float(params.get("promote_threshold", 0.58)),
         context_threshold=float(params.get("context_threshold", 0.62)),
         decay_lambdas=decay_lambdas,
+        promote_weights=tuple(params.get("promote_weights", (0.10, 0.10, 0.05, 0.70, 0.05))),
+        promotion_min_sessions=1,  # PersonaMem: each context = one persona, sessions are segments
     )
 
 
@@ -181,7 +187,14 @@ def replay_context(
 
         candidates = candidates_to_objects(raw_candidates)
         if candidates:
-            tpm.ingest_candidates(candidates, scene=scene, session_id=session_id)
+            ingested = tpm.ingest_candidates(candidates, scene=scene, session_id=session_id)
+
+            # Simulate conversation-time retrieval: query TPPM with each
+            # candidate's attribute to increment access_count on matched PMUs.
+            # This is what a real agent would do during dialogue to recall
+            # relevant profile memories.
+            for cand in candidates:
+                tpm.retrieve(cand.attribute, scene=scene, top_k=3)
 
         tpm.finish_session(scene=scene)
 
@@ -190,8 +203,17 @@ def replay_context(
         # - Decay working memory (0.015) and short-term memory (0.03)
         tpm.run_evolution_engine(scene=scene, include_long_term_decay=False)
 
-    # Run long-term decay after all sessions (type-conditional exponential decay)
-    tpm.decay_long_term()
+        # Simulate time passage: backdate LTM last_evolved so decay_long_term
+        # sees a meaningful Δt. PersonaMem sessions are synthetic — without this,
+        # Δt≈0 and decay has no effect.
+        for pmu in tpm.long_term_memory:
+            try:
+                last = datetime.fromisoformat(pmu.last_evolved)
+            except (ValueError, TypeError):
+                last = datetime.utcnow()
+            pmu.last_evolved = (last - timedelta(hours=SESSION_INTERVAL_HOURS)).isoformat()
+
+        tpm.decay_long_term()
 
     snapshot = tpm.to_dict()
     snapshot["config_id"] = config_id

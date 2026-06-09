@@ -1,0 +1,823 @@
+{
+  "config": {
+    "write_threshold": 0.74,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "language_learning_goal",
+      "value": "beginner Spanish course for travel",
+      "context": "enrolled in a beginner's Spanish course to enhance communication during future travels",
+      "profile_type": "goal",
+      "stability_score": 0.4999999891776043,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "enrolled in a beginner's Spanish course to enhance communication during future travels",
+          "scene": "session_1",
+          "evidence_id": "c7a9c568efad41be80470f3d74895b0c",
+          "timestamp": "2026-06-09T02:20:26.483430"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "beginner Spanish course for travel",
+          "context": "enrolled in a beginner's Spanish course to enhance communication during future travels",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "enrolled in a beginner's Spanish course to enhance communication during future travels",
+              "scene": "session_1",
+              "evidence_id": "c7a9c568efad41be80470f3d74895b0c",
+              "timestamp": "2026-06-09T02:20:26.483430"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:26.483430",
+          "last_accessed": "2026-06-09T02:20:26.544930"
+        }
+      },
+      "unit_id": "7a48d6675d9f423cb6cd8a7beccdb615",
+      "timestamp": "2026-06-09T02:20:26.484451",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.544927",
+      "last_evolved": "2026-06-09T02:20:26.546791",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "memory_capture_style",
+      "value": "scrapbooking and digital collection for travel memories",
+      "context": "creates scrapbook and collects digital e-brochures and guides",
+      "profile_type": "interest",
+      "stability_score": 0.5999999881164585,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "creates scrapbook and collects digital e-brochures and guides",
+          "scene": "session_1",
+          "evidence_id": "bab331a8f15340218345bb80998a6ff1",
+          "timestamp": "2026-06-09T02:20:26.483438"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "scrapbooking and digital collection for travel memories",
+          "context": "creates scrapbook and collects digital e-brochures and guides",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "creates scrapbook and collects digital e-brochures and guides",
+              "scene": "session_1",
+              "evidence_id": "bab331a8f15340218345bb80998a6ff1",
+              "timestamp": "2026-06-09T02:20:26.483438"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:26.483438",
+          "last_accessed": "2026-06-09T02:20:26.545119"
+        }
+      },
+      "unit_id": "b535de9a54154b4ca49ee97ba60cd84e",
+      "timestamp": "2026-06-09T02:20:26.489746",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.545116",
+      "last_evolved": "2026-06-09T02:20:26.546791",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "travel_documentation_preference",
+      "value": "journaling over scrapbooking",
+      "context": "User abandoned scrapbook idea due to frustration, opted for travel journal instead, finding it more genuine and free-form.",
+      "profile_type": "preference",
+      "stability_score": 0.5999999917283335,
+      "confidence_score": 0.75,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User abandoned scrapbook idea due to frustration, opted for travel journal instead, finding it more genuine and free-form.",
+          "scene": "session_2",
+          "evidence_id": "7bb9a2788e6448c296d3dd473e8982ba",
+          "timestamp": "2026-06-09T02:20:26.498338"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "journaling over scrapbooking",
+          "context": "User abandoned scrapbook idea due to frustration, opted for travel journal instead, finding it more genuine and free-form.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User abandoned scrapbook idea due to frustration, opted for travel journal instead, finding it more genuine and free-form.",
+              "scene": "session_2",
+              "evidence_id": "7bb9a2788e6448c296d3dd473e8982ba",
+              "timestamp": "2026-06-09T02:20:26.498338"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:20:26.498338",
+          "last_accessed": "2026-06-09T02:20:26.545324"
+        }
+      },
+      "unit_id": "1cc3447b8f424681907c33eb7caad327",
+      "timestamp": "2026-06-09T02:20:26.507083",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.545320",
+      "last_evolved": "2026-06-09T02:20:26.546791",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "travel_style_preference",
+      "value": "organized_group_trips",
+      "context": "I really love organized group trips now that I’ve experienced how fun they can be!",
+      "profile_type": "preference",
+      "stability_score": 0.7217824965896791,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.8833333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I really love organized group trips now that I’ve experienced how fun they can be!",
+          "scene": "session_0",
+          "evidence_id": "4cb1a128b36740ec87ee072efe1b5b1c",
+          "timestamp": "2026-06-09T02:20:26.482066"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "organized_group_trips",
+          "context": "I really love organized group trips now that I’ve experienced how fun they can be!",
+          "confidence_score": 0.9,
+          "quality_score": 0.8833333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I really love organized group trips now that I’ve experienced how fun they can be!",
+              "scene": "session_0",
+              "evidence_id": "4cb1a128b36740ec87ee072efe1b5b1c",
+              "timestamp": "2026-06-09T02:20:26.482066"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:26.482066",
+          "last_accessed": "2026-06-09T02:20:26.545522"
+        }
+      },
+      "unit_id": "068df917adf943d5beccf402161ba10c",
+      "timestamp": "2026-06-09T02:20:26.482099",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.545519",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_style",
+      "value": "detailed_planning",
+      "context": "I spent time creating a detailed itinerary for my upcoming trip to Italy... and I even organized a group trip... taking charge of planning everything.",
+      "profile_type": "style",
+      "stability_score": 0.7473336818495068,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I spent time creating a detailed itinerary for my upcoming trip to Italy... and I even organized a group trip... taking charge of planning everything.",
+          "scene": "session_0",
+          "evidence_id": "bd54ec2ce65148719dcc747a4e5e1702",
+          "timestamp": "2026-06-09T02:20:26.482074"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "detailed_planning",
+          "context": "I spent time creating a detailed itinerary for my upcoming trip to Italy... and I even organized a group trip... taking charge of planning everything.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I spent time creating a detailed itinerary for my upcoming trip to Italy... and I even organized a group trip... taking charge of planning everything.",
+              "scene": "session_0",
+              "evidence_id": "bd54ec2ce65148719dcc747a4e5e1702",
+              "timestamp": "2026-06-09T02:20:26.482074"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:26.482074",
+          "last_accessed": "2026-06-09T02:20:26.545688"
+        }
+      },
+      "unit_id": "0f1dba98e5d94227a6f14e144ce0768a",
+      "timestamp": "2026-06-09T02:20:26.482723",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.545684",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "packing_style",
+      "value": "minimalist packing for travel and daily life",
+      "context": "packed using a minimalist approach and embraced minimalism in daily life",
+      "profile_type": "style",
+      "stability_score": 0.7473336826270287,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "packed using a minimalist approach and embraced minimalism in daily life",
+          "scene": "session_1",
+          "evidence_id": "b6dab786591549aa9174687016db1a4d",
+          "timestamp": "2026-06-09T02:20:26.483434"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "minimalist packing for travel and daily life",
+          "context": "packed using a minimalist approach and embraced minimalism in daily life",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "packed using a minimalist approach and embraced minimalism in daily life",
+              "scene": "session_1",
+              "evidence_id": "b6dab786591549aa9174687016db1a4d",
+              "timestamp": "2026-06-09T02:20:26.483434"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:26.483434",
+          "last_accessed": "2026-06-09T02:20:26.545867"
+        }
+      },
+      "unit_id": "4c9449cf16cf4b14992af25609cb33c4",
+      "timestamp": "2026-06-09T02:20:26.485711",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.545864",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_app_usage",
+      "value": "uses app for navigation and local recommendations",
+      "context": "started using a travel app with real-time navigation and suggestions for attractions and restaurants",
+      "profile_type": "preference",
+      "stability_score": 0.721782498305697,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started using a travel app with real-time navigation and suggestions for attractions and restaurants",
+          "scene": "session_1",
+          "evidence_id": "82b88ef3153b42598afe1e95b8646f3f",
+          "timestamp": "2026-06-09T02:20:26.483436"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "uses app for navigation and local recommendations",
+          "context": "started using a travel app with real-time navigation and suggestions for attractions and restaurants",
+          "confidence_score": 0.9,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started using a travel app with real-time navigation and suggestions for attractions and restaurants",
+              "scene": "session_1",
+              "evidence_id": "82b88ef3153b42598afe1e95b8646f3f",
+              "timestamp": "2026-06-09T02:20:26.483436"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:26.483436",
+          "last_accessed": "2026-06-09T02:20:26.546082"
+        }
+      },
+      "unit_id": "cd0fd918cbec4046ae68dfc6d5421e20",
+      "timestamp": "2026-06-09T02:20:26.487798",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.546079",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_journaling_preference",
+      "value": "prefers private journaling over public blogging",
+      "context": "stopped travel blog and focuses on journaling for personal reflection",
+      "profile_type": "preference",
+      "stability_score": 0.8036555724128795,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stopped travel blog and focuses on journaling for personal reflection",
+          "scene": "session_1",
+          "evidence_id": "892fe44b26fc4ebfaa24de642e5170d4",
+          "timestamp": "2026-06-09T02:20:26.483441"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers private journaling over public blogging",
+          "context": "stopped travel blog and focuses on journaling for personal reflection",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stopped travel blog and focuses on journaling for personal reflection",
+              "scene": "session_1",
+              "evidence_id": "892fe44b26fc4ebfaa24de642e5170d4",
+              "timestamp": "2026-06-09T02:20:26.483441"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:26.483441",
+          "last_accessed": "2026-06-09T02:20:26.546240"
+        }
+      },
+      "unit_id": "78a79bac907c41f1b28b25fa609414be",
+      "timestamp": "2026-06-09T02:20:26.492008",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.546237",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_style",
+      "value": "meticulous and research-oriented",
+      "context": "spent a month planning solo trip, researched customs, cuisines, and festivals",
+      "profile_type": "style",
+      "stability_score": 0.7812308094868704,
+      "confidence_score": 0.8500000000000001,
+      "scene": "session_3",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User repeatedly designs intricate itineraries for group trips, focusing on hidden gems, local culture, and cuisine. Also meticulously planned a food tour.",
+          "scene": "session_2",
+          "evidence_id": "53d2d9f08e0c43c0af520edd1449baee",
+          "timestamp": "2026-06-09T02:20:26.498334"
+        },
+        {
+          "source": "llm_deepseek",
+          "content": "spent a month planning solo trip, researched customs, cuisines, and festivals",
+          "scene": "session_3",
+          "evidence_id": "7c4eed967c0b4aa38a9c30b3f4192ece",
+          "timestamp": "2026-06-09T02:20:26.510390"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "meticulous and experience-focused",
+          "context": "User repeatedly designs intricate itineraries for group trips, focusing on hidden gems, local culture, and cuisine. Also meticulously planned a food tour.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User repeatedly designs intricate itineraries for group trips, focusing on hidden gems, local culture, and cuisine. Also meticulously planned a food tour.",
+              "scene": "session_2",
+              "evidence_id": "53d2d9f08e0c43c0af520edd1449baee",
+              "timestamp": "2026-06-09T02:20:26.498334"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:20:26.498334",
+          "last_accessed": "2026-06-09T02:20:26.508741"
+        },
+        "session_3": {
+          "scene": "session_3",
+          "value": "meticulous and research-oriented",
+          "context": "spent a month planning solo trip, researched customs, cuisines, and festivals",
+          "confidence_score": 0.8500000000000001,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "spent a month planning solo trip, researched customs, cuisines, and festivals",
+              "scene": "session_3",
+              "evidence_id": "7c4eed967c0b4aa38a9c30b3f4192ece",
+              "timestamp": "2026-06-09T02:20:26.510390"
+            }
+          ],
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 10,
+          "last_seen": "2026-06-09T02:20:26.510390",
+          "last_accessed": "2026-06-09T02:20:26.546408"
+        }
+      },
+      "unit_id": "42b0c3a53a18465b8547cd0b885e38e3",
+      "timestamp": "2026-06-09T02:20:26.502702",
+      "session_count": 2,
+      "reinforcement_count": 2,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_2",
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.546405",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_content_creation",
+      "value": "weekly travel vlogging",
+      "context": "began uploading weekly travel videos highlighting experiences and tips",
+      "profile_type": "interest",
+      "stability_score": 0.6858465024799324,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "began uploading weekly travel videos highlighting experiences and tips",
+          "scene": "session_3",
+          "evidence_id": "d6f41a81879f4c63974477961bf17469",
+          "timestamp": "2026-06-09T02:20:26.510394"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "weekly travel vlogging",
+          "context": "began uploading weekly travel videos highlighting experiences and tips",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "began uploading weekly travel videos highlighting experiences and tips",
+              "scene": "session_3",
+              "evidence_id": "d6f41a81879f4c63974477961bf17469",
+              "timestamp": "2026-06-09T02:20:26.510394"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 10,
+          "last_seen": "2026-06-09T02:20:26.510394",
+          "last_accessed": "2026-06-09T02:20:26.546574"
+        }
+      },
+      "unit_id": "be3af5b5236d42fb9893b5ad3ed37d40",
+      "timestamp": "2026-06-09T02:20:26.517045",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 10,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.546571",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_discussion_preference",
+      "value": "prefers real-life conversations over online forums",
+      "context": "stepped back from online forums and focused on travel discussions with friends due to overwhelming differing opinions",
+      "profile_type": "preference",
+      "stability_score": 0.8019191008313914,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stepped back from online forums and focused on travel discussions with friends due to overwhelming differing opinions",
+          "scene": "session_3",
+          "evidence_id": "3a8d13248c7a4e54834889692b4c0115",
+          "timestamp": "2026-06-09T02:20:26.510404"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers real-life conversations over online forums",
+          "context": "stepped back from online forums and focused on travel discussions with friends due to overwhelming differing opinions",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stepped back from online forums and focused on travel discussions with friends due to overwhelming differing opinions",
+              "scene": "session_3",
+              "evidence_id": "3a8d13248c7a4e54834889692b4c0115",
+              "timestamp": "2026-06-09T02:20:26.510404"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 10,
+          "last_seen": "2026-06-09T02:20:26.510404",
+          "last_accessed": "2026-06-09T02:20:26.546763"
+        }
+      },
+      "unit_id": "387958cfed6844d48653d71535d35df1",
+      "timestamp": "2026-06-09T02:20:26.522290",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 10,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.546760",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "personal_finance_blogging_interest",
+      "value": "active blogger sharing experiences",
+      "context": "I've always liked personal finance blogging, but now it feels like I can really make a difference.",
+      "profile_type": "interest",
+      "stability_score": 0.6926756691449294,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've always liked personal finance blogging, but now it feels like I can really make a difference.",
+          "scene": "session_4",
+          "evidence_id": "9e4aee03e77943d897f329d392370316",
+          "timestamp": "2026-06-09T02:20:26.532948"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "active blogger sharing experiences",
+          "context": "I've always liked personal finance blogging, but now it feels like I can really make a difference.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've always liked personal finance blogging, but now it feels like I can really make a difference.",
+              "scene": "session_4",
+              "evidence_id": "9e4aee03e77943d897f329d392370316",
+              "timestamp": "2026-06-09T02:20:26.532948"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:20:26.532948",
+          "last_accessed": "2026-06-09T02:20:26.544731"
+        }
+      },
+      "unit_id": "e70a2375e0bd416bafc7d90c19917d95",
+      "timestamp": "2026-06-09T02:20:26.537753",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.544729",
+      "last_evolved": "2026-06-09T02:20:26.546814",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "4cb1a128b36740ec87ee072efe1b5b1c": {
+      "source": "llm_deepseek",
+      "content": "I really love organized group trips now that I’ve experienced how fun they can be!",
+      "scene": "session_0",
+      "evidence_id": "4cb1a128b36740ec87ee072efe1b5b1c",
+      "timestamp": "2026-06-09T02:20:26.482066"
+    },
+    "bd54ec2ce65148719dcc747a4e5e1702": {
+      "source": "llm_deepseek",
+      "content": "I spent time creating a detailed itinerary for my upcoming trip to Italy... and I even organized a group trip... taking charge of planning everything.",
+      "scene": "session_0",
+      "evidence_id": "bd54ec2ce65148719dcc747a4e5e1702",
+      "timestamp": "2026-06-09T02:20:26.482074"
+    },
+    "c7a9c568efad41be80470f3d74895b0c": {
+      "source": "llm_deepseek",
+      "content": "enrolled in a beginner's Spanish course to enhance communication during future travels",
+      "scene": "session_1",
+      "evidence_id": "c7a9c568efad41be80470f3d74895b0c",
+      "timestamp": "2026-06-09T02:20:26.483430"
+    },
+    "b6dab786591549aa9174687016db1a4d": {
+      "source": "llm_deepseek",
+      "content": "packed using a minimalist approach and embraced minimalism in daily life",
+      "scene": "session_1",
+      "evidence_id": "b6dab786591549aa9174687016db1a4d",
+      "timestamp": "2026-06-09T02:20:26.483434"
+    },
+    "82b88ef3153b42598afe1e95b8646f3f": {
+      "source": "llm_deepseek",
+      "content": "started using a travel app with real-time navigation and suggestions for attractions and restaurants",
+      "scene": "session_1",
+      "evidence_id": "82b88ef3153b42598afe1e95b8646f3f",
+      "timestamp": "2026-06-09T02:20:26.483436"
+    },
+    "bab331a8f15340218345bb80998a6ff1": {
+      "source": "llm_deepseek",
+      "content": "creates scrapbook and collects digital e-brochures and guides",
+      "scene": "session_1",
+      "evidence_id": "bab331a8f15340218345bb80998a6ff1",
+      "timestamp": "2026-06-09T02:20:26.483438"
+    },
+    "892fe44b26fc4ebfaa24de642e5170d4": {
+      "source": "llm_deepseek",
+      "content": "stopped travel blog and focuses on journaling for personal reflection",
+      "scene": "session_1",
+      "evidence_id": "892fe44b26fc4ebfaa24de642e5170d4",
+      "timestamp": "2026-06-09T02:20:26.483441"
+    },
+    "53d2d9f08e0c43c0af520edd1449baee": {
+      "source": "llm_deepseek",
+      "content": "User repeatedly designs intricate itineraries for group trips, focusing on hidden gems, local culture, and cuisine. Also meticulously planned a food tour.",
+      "scene": "session_2",
+      "evidence_id": "53d2d9f08e0c43c0af520edd1449baee",
+      "timestamp": "2026-06-09T02:20:26.498334"
+    },
+    "7bb9a2788e6448c296d3dd473e8982ba": {
+      "source": "llm_deepseek",
+      "content": "User abandoned scrapbook idea due to frustration, opted for travel journal instead, finding it more genuine and free-form.",
+      "scene": "session_2",
+      "evidence_id": "7bb9a2788e6448c296d3dd473e8982ba",
+      "timestamp": "2026-06-09T02:20:26.498338"
+    },
+    "7c4eed967c0b4aa38a9c30b3f4192ece": {
+      "source": "llm_deepseek",
+      "content": "spent a month planning solo trip, researched customs, cuisines, and festivals",
+      "scene": "session_3",
+      "evidence_id": "7c4eed967c0b4aa38a9c30b3f4192ece",
+      "timestamp": "2026-06-09T02:20:26.510390"
+    },
+    "d6f41a81879f4c63974477961bf17469": {
+      "source": "llm_deepseek",
+      "content": "began uploading weekly travel videos highlighting experiences and tips",
+      "scene": "session_3",
+      "evidence_id": "d6f41a81879f4c63974477961bf17469",
+      "timestamp": "2026-06-09T02:20:26.510394"
+    },
+    "3a8d13248c7a4e54834889692b4c0115": {
+      "source": "llm_deepseek",
+      "content": "stepped back from online forums and focused on travel discussions with friends due to overwhelming differing opinions",
+      "scene": "session_3",
+      "evidence_id": "3a8d13248c7a4e54834889692b4c0115",
+      "timestamp": "2026-06-09T02:20:26.510404"
+    },
+    "9e4aee03e77943d897f329d392370316": {
+      "source": "llm_deepseek",
+      "content": "I've always liked personal finance blogging, but now it feels like I can really make a difference.",
+      "scene": "session_4",
+      "evidence_id": "9e4aee03e77943d897f329d392370316",
+      "timestamp": "2026-06-09T02:20:26.532948"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0_session_4",
+  "config_id": "write_0.74",
+  "context_hash": "947ec42fcf5d327ccb9640332b5fabe4b7a25acc46be08b925861fa0c6e8eaf0",
+  "num_sessions": 5
+}

@@ -1,0 +1,1701 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.7,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "film_preference_thought_provoking",
+      "value": "enjoys films that provoke thought and evoke emotions",
+      "context": "films that not only entertain but also provoke thought and evoke emotions",
+      "profile_type": "preference",
+      "stability_score": 0.7999999405427803,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "films that not only entertain but also provoke thought and evoke emotions",
+          "scene": "session_0",
+          "evidence_id": "73c6237f01714bd48b32d98056ca2795",
+          "timestamp": "2026-06-09T02:21:08.165490"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "enjoys films that provoke thought and evoke emotions",
+          "context": "films that not only entertain but also provoke thought and evoke emotions",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "films that not only entertain but also provoke thought and evoke emotions",
+              "scene": "session_0",
+              "evidence_id": "73c6237f01714bd48b32d98056ca2795",
+              "timestamp": "2026-06-09T02:21:08.165490"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 35,
+          "last_seen": "2026-06-09T02:21:08.165490",
+          "last_accessed": "2026-06-09T02:21:08.376625"
+        }
+      },
+      "unit_id": "93eee05370574d7288045b6dade8a74c",
+      "timestamp": "2026-06-09T02:21:08.165533",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 35,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376622",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_exploration_behavior",
+      "value": "actively exploring different genres like documentaries, foreign films, classics",
+      "context": "exploring different genres that I had never really appreciated before, like documentaries and foreign films",
+      "profile_type": "interest",
+      "stability_score": 0.6999999481227103,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "exploring different genres that I had never really appreciated before, like documentaries and foreign films",
+          "scene": "session_0",
+          "evidence_id": "c554b209bcf243a799ff19b6d284ab2a",
+          "timestamp": "2026-06-09T02:21:08.165496"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "actively exploring different genres like documentaries, foreign films, classics",
+          "context": "exploring different genres that I had never really appreciated before, like documentaries and foreign films",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "exploring different genres that I had never really appreciated before, like documentaries and foreign films",
+              "scene": "session_0",
+              "evidence_id": "c554b209bcf243a799ff19b6d284ab2a",
+              "timestamp": "2026-06-09T02:21:08.165496"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 35,
+          "last_seen": "2026-06-09T02:21:08.165496",
+          "last_accessed": "2026-06-09T02:21:08.376828"
+        }
+      },
+      "unit_id": "f16135225fad438498a3741b394f7093",
+      "timestamp": "2026-06-09T02:21:08.166140",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 35,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376826",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "indie_film_appreciation",
+      "value": "appreciates indie filmmakers for fresh perspectives and innovative narrative techniques",
+      "context": "discovered some incredible indie filmmakers... brought a fresh perspective and innovative narrative techniques",
+      "profile_type": "preference",
+      "stability_score": 0.5999999557881266,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "discovered some incredible indie filmmakers... brought a fresh perspective and innovative narrative techniques",
+          "scene": "session_0",
+          "evidence_id": "a60876fba9da44ccaa3bd19025372e03",
+          "timestamp": "2026-06-09T02:21:08.165499"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "appreciates indie filmmakers for fresh perspectives and innovative narrative techniques",
+          "context": "discovered some incredible indie filmmakers... brought a fresh perspective and innovative narrative techniques",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "discovered some incredible indie filmmakers... brought a fresh perspective and innovative narrative techniques",
+              "scene": "session_0",
+              "evidence_id": "a60876fba9da44ccaa3bd19025372e03",
+              "timestamp": "2026-06-09T02:21:08.165499"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 35,
+          "last_seen": "2026-06-09T02:21:08.165499",
+          "last_accessed": "2026-06-09T02:21:08.376993"
+        }
+      },
+      "unit_id": "899c7b46e1614ba8aa080b9b77e07043",
+      "timestamp": "2026-06-09T02:21:08.167362",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 35,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376990",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "blogging_habit",
+      "value": "started a blog to write film reviews and share thoughts with community",
+      "context": "started a blog to write reviews on the latest films",
+      "profile_type": "goal",
+      "stability_score": 0.6999999487157658,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started a blog to write reviews on the latest films",
+          "scene": "session_0",
+          "evidence_id": "00866c3644b243b6938f316d5a621379",
+          "timestamp": "2026-06-09T02:21:08.165504"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "started a blog to write film reviews and share thoughts with community",
+          "context": "started a blog to write reviews on the latest films",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started a blog to write reviews on the latest films",
+              "scene": "session_0",
+              "evidence_id": "00866c3644b243b6938f316d5a621379",
+              "timestamp": "2026-06-09T02:21:08.165504"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 35,
+          "last_seen": "2026-06-09T02:21:08.165504",
+          "last_accessed": "2026-06-09T02:21:08.377138"
+        }
+      },
+      "unit_id": "8c1a88ee318041888320f53cf5668dde",
+      "timestamp": "2026-06-09T02:21:08.168580",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 35,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377135",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_narrative_preference",
+      "value": "prefers narrative-driven storytelling over technical cinematic techniques",
+      "context": "I prefer engaging storytelling over technical jargon; studying cinematic techniques wasn't for me",
+      "profile_type": "preference",
+      "stability_score": 0.6999999506820851,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I prefer engaging storytelling over technical jargon; studying cinematic techniques wasn't for me",
+          "scene": "session_1",
+          "evidence_id": "f949b616dcb2470caa450e6b2bf1f1f7",
+          "timestamp": "2026-06-09T02:21:08.174115"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers narrative-driven storytelling over technical cinematic techniques",
+          "context": "I prefer engaging storytelling over technical jargon; studying cinematic techniques wasn't for me",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I prefer engaging storytelling over technical jargon; studying cinematic techniques wasn't for me",
+              "scene": "session_1",
+              "evidence_id": "f949b616dcb2470caa450e6b2bf1f1f7",
+              "timestamp": "2026-06-09T02:21:08.174115"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:21:08.174115",
+          "last_accessed": "2026-06-09T02:21:08.377291"
+        }
+      },
+      "unit_id": "6ad79137acfd4deea1b8080a2c226d96",
+      "timestamp": "2026-06-09T02:21:08.176671",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377288",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "content_creation_style",
+      "value": "prefers spontaneous conversations over structured blogging for sharing film thoughts",
+      "context": "I decided to stop blogging; now I prefer having spontaneous conversations with friends about films",
+      "profile_type": "style",
+      "stability_score": 0.5999999584210433,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I decided to stop blogging; now I prefer having spontaneous conversations with friends about films",
+          "scene": "session_1",
+          "evidence_id": "5a7eae459f484829bdbf70dd9d7d3efc",
+          "timestamp": "2026-06-09T02:21:08.174119"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers spontaneous conversations over structured blogging for sharing film thoughts",
+          "context": "I decided to stop blogging; now I prefer having spontaneous conversations with friends about films",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I decided to stop blogging; now I prefer having spontaneous conversations with friends about films",
+              "scene": "session_1",
+              "evidence_id": "5a7eae459f484829bdbf70dd9d7d3efc",
+              "timestamp": "2026-06-09T02:21:08.174119"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:21:08.174119",
+          "last_accessed": "2026-06-09T02:21:08.377448"
+        }
+      },
+      "unit_id": "d3258d4839f14a2eb3770a78cde5878b",
+      "timestamp": "2026-06-09T02:21:08.179999",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377445",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "social_learning_style",
+      "value": "prefers casual film discussions and diverse opinions over formal critiques",
+      "context": "joined a new film discussion club that focuses on casual conversations and diverse opinions",
+      "profile_type": "style",
+      "stability_score": 0.5999999591545849,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a new film discussion club that focuses on casual conversations and diverse opinions",
+          "scene": "session_1",
+          "evidence_id": "924a5582cd78478dbc06362faf7eae82",
+          "timestamp": "2026-06-09T02:21:08.174124"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers casual film discussions and diverse opinions over formal critiques",
+          "context": "joined a new film discussion club that focuses on casual conversations and diverse opinions",
+          "confidence_score": 0.85,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a new film discussion club that focuses on casual conversations and diverse opinions",
+              "scene": "session_1",
+              "evidence_id": "924a5582cd78478dbc06362faf7eae82",
+              "timestamp": "2026-06-09T02:21:08.174124"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:21:08.174124",
+          "last_accessed": "2026-06-09T02:21:08.377594"
+        }
+      },
+      "unit_id": "377dd44f863745f9a10f3f02137edd0a",
+      "timestamp": "2026-06-09T02:21:08.183520",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377591",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "blog_style",
+      "value": "personal reflections",
+      "context": "User explicitly states shift to personal reflections in movie blog",
+      "profile_type": "goal",
+      "stability_score": 0.6999999542938904,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User explicitly states shift to personal reflections in movie blog",
+          "scene": "session_2",
+          "evidence_id": "32f0ff70b7a24e3ea5b02c8ad2d4c2f0",
+          "timestamp": "2026-06-09T02:21:08.188819"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "personal reflections",
+          "context": "User explicitly states shift to personal reflections in movie blog",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User explicitly states shift to personal reflections in movie blog",
+              "scene": "session_2",
+              "evidence_id": "32f0ff70b7a24e3ea5b02c8ad2d4c2f0",
+              "timestamp": "2026-06-09T02:21:08.188819"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:21:08.188819",
+          "last_accessed": "2026-06-09T02:21:08.377695"
+        }
+      },
+      "unit_id": "850092e46b8b40698cf12a44a4e0a494",
+      "timestamp": "2026-06-09T02:21:08.191530",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377692",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "learning_preference",
+      "value": "hands-on practical",
+      "context": "User took a hands-on workshop and found it more engaging than theory",
+      "profile_type": "style",
+      "stability_score": 0.6999999549061474,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User took a hands-on workshop and found it more engaging than theory",
+          "scene": "session_2",
+          "evidence_id": "e44ff0e586b14c1ea6d23601636f82b4",
+          "timestamp": "2026-06-09T02:21:08.188822"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "hands-on practical",
+          "context": "User took a hands-on workshop and found it more engaging than theory",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User took a hands-on workshop and found it more engaging than theory",
+              "scene": "session_2",
+              "evidence_id": "e44ff0e586b14c1ea6d23601636f82b4",
+              "timestamp": "2026-06-09T02:21:08.188822"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:21:08.188822",
+          "last_accessed": "2026-06-09T02:21:08.377825"
+        }
+      },
+      "unit_id": "d6f6b52e1b884d9ebe71e9bf339017d8",
+      "timestamp": "2026-06-09T02:21:08.194050",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377823",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_memorabilia_collecting",
+      "value": "actively collecting and seeking rare items",
+      "context": "User added a rare collector's item, sees it as milestone and plans to explore more",
+      "profile_type": "interest",
+      "stability_score": 0.7499999528453142,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User added a rare collector's item, sees it as milestone and plans to explore more",
+          "scene": "session_2",
+          "evidence_id": "c00b299060cf4581a12f32003cc5505a",
+          "timestamp": "2026-06-09T02:21:08.188825"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "actively collecting and seeking rare items",
+          "context": "User added a rare collector's item, sees it as milestone and plans to explore more",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User added a rare collector's item, sees it as milestone and plans to explore more",
+              "scene": "session_2",
+              "evidence_id": "c00b299060cf4581a12f32003cc5505a",
+              "timestamp": "2026-06-09T02:21:08.188825"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:21:08.188825",
+          "last_accessed": "2026-06-09T02:21:08.377983"
+        }
+      },
+      "unit_id": "801ee410f4b04aaf88150cda278fdc69",
+      "timestamp": "2026-06-09T02:21:08.198504",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.377980",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_discussion_role",
+      "value": "leader and facilitator",
+      "context": "User led a film discussion night on underappreciated films",
+      "profile_type": "general",
+      "stability_score": 0.5999999629627095,
+      "confidence_score": 0.75,
+      "scene": "session_2",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User led a film discussion night on underappreciated films",
+          "scene": "session_2",
+          "evidence_id": "48419b68a3c647a998de9279d25ebe16",
+          "timestamp": "2026-06-09T02:21:08.188827"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "leader and facilitator",
+          "context": "User led a film discussion night on underappreciated films",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User led a film discussion night on underappreciated films",
+              "scene": "session_2",
+              "evidence_id": "48419b68a3c647a998de9279d25ebe16",
+              "timestamp": "2026-06-09T02:21:08.188827"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:21:08.188827",
+          "last_accessed": "2026-06-09T02:21:08.378091"
+        }
+      },
+      "unit_id": "d194688738714c409ccb3f33d9f35c8f",
+      "timestamp": "2026-06-09T02:21:08.201798",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378088",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "memorabilia_preference",
+      "value": "digital",
+      "context": "Sold physical memorabilia; excited about digital mediums for film experiences",
+      "profile_type": "preference",
+      "stability_score": 0.6999999590699318,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Sold physical memorabilia; excited about digital mediums for film experiences",
+          "scene": "session_3",
+          "evidence_id": "97543a9cbc594fa1a599b9dd6960fe5e",
+          "timestamp": "2026-06-09T02:21:08.207908"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "digital",
+          "context": "Sold physical memorabilia; excited about digital mediums for film experiences",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Sold physical memorabilia; excited about digital mediums for film experiences",
+              "scene": "session_3",
+              "evidence_id": "97543a9cbc594fa1a599b9dd6960fe5e",
+              "timestamp": "2026-06-09T02:21:08.207908"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:08.207908",
+          "last_accessed": "2026-06-09T02:21:08.378205"
+        }
+      },
+      "unit_id": "af3fab4b7bc54800b2e04c26520ac2f9",
+      "timestamp": "2026-06-09T02:21:08.211181",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378202",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_theory_focus",
+      "value": "psychological impact of film",
+      "context": "Enrolled in advanced film theory course on psychological impact on audiences",
+      "profile_type": "interest",
+      "stability_score": 0.6999999599906261,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Enrolled in advanced film theory course on psychological impact on audiences",
+          "scene": "session_3",
+          "evidence_id": "a45819bdfdf84f0286b340934d497580",
+          "timestamp": "2026-06-09T02:21:08.207914"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "psychological impact of film",
+          "context": "Enrolled in advanced film theory course on psychological impact on audiences",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Enrolled in advanced film theory course on psychological impact on audiences",
+              "scene": "session_3",
+              "evidence_id": "a45819bdfdf84f0286b340934d497580",
+              "timestamp": "2026-06-09T02:21:08.207914"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:08.207914",
+          "last_accessed": "2026-06-09T02:21:08.378364"
+        }
+      },
+      "unit_id": "5cd3ee6b9fd84db19b077d6951483538",
+      "timestamp": "2026-06-09T02:21:08.214968",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378361",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "blogging_activity",
+      "value": "writing film review blog",
+      "context": "Started a blog for heartfelt film reviews and personal cinema experiences",
+      "profile_type": "goal",
+      "stability_score": 0.5999999666339593,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started a blog for heartfelt film reviews and personal cinema experiences",
+          "scene": "session_3",
+          "evidence_id": "43e36b70a292497d907127bb1749374a",
+          "timestamp": "2026-06-09T02:21:08.207917"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "writing film review blog",
+          "context": "Started a blog for heartfelt film reviews and personal cinema experiences",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started a blog for heartfelt film reviews and personal cinema experiences",
+              "scene": "session_3",
+              "evidence_id": "43e36b70a292497d907127bb1749374a",
+              "timestamp": "2026-06-09T02:21:08.207917"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:08.207917",
+          "last_accessed": "2026-06-09T02:21:08.378476"
+        }
+      },
+      "unit_id": "9c0bbc2b067741e8a23ba51530d4322f",
+      "timestamp": "2026-06-09T02:21:08.219421",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378474",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "foreign_film_taste",
+      "value": "regularly watches foreign films",
+      "context": "Regularly watching foreign films after developing appreciation",
+      "profile_type": "preference",
+      "stability_score": 0.69999996209889,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Regularly watching foreign films after developing appreciation",
+          "scene": "session_3",
+          "evidence_id": "b621301b3060426c90c07c9522966869",
+          "timestamp": "2026-06-09T02:21:08.207919"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "regularly watches foreign films",
+          "context": "Regularly watching foreign films after developing appreciation",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Regularly watching foreign films after developing appreciation",
+              "scene": "session_3",
+              "evidence_id": "b621301b3060426c90c07c9522966869",
+              "timestamp": "2026-06-09T02:21:08.207919"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:08.207919",
+          "last_accessed": "2026-06-09T02:21:08.378585"
+        }
+      },
+      "unit_id": "2f5c8c9396dd41df8b2f57bd8c5a3ab8",
+      "timestamp": "2026-06-09T02:21:08.223642",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378582",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "coding_style_preference",
+      "value": "clarity and maintainability",
+      "context": "I need help refactoring my code to improve clarity and maintainability while ensuring good coding practices.",
+      "profile_type": "style",
+      "stability_score": 0.5999999710370841,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I need help refactoring my code to improve clarity and maintainability while ensuring good coding practices.",
+          "scene": "session_4",
+          "evidence_id": "66f968e0c0cd4a1c934848305cda2f3e",
+          "timestamp": "2026-06-09T02:21:08.233447"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "clarity and maintainability",
+          "context": "I need help refactoring my code to improve clarity and maintainability while ensuring good coding practices.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I need help refactoring my code to improve clarity and maintainability while ensuring good coding practices.",
+              "scene": "session_4",
+              "evidence_id": "66f968e0c0cd4a1c934848305cda2f3e",
+              "timestamp": "2026-06-09T02:21:08.233447"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:21:08.233447",
+          "last_accessed": "2026-06-09T02:21:08.378730"
+        }
+      },
+      "unit_id": "fda5148dbb81459eba50eb8ae6c20752",
+      "timestamp": "2026-06-09T02:21:08.240556",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378727",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "formatting_habit",
+      "value": "consistent naming and neat formatting",
+      "context": "I dislike inconsistent naming and formatting practices. I want clarity and neatness, not a single line too long or improperly indented.",
+      "profile_type": "preference",
+      "stability_score": 0.4999999773659728,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9333333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I dislike inconsistent naming and formatting practices. I want clarity and neatness, not a single line too long or improperly indented.",
+          "scene": "session_4",
+          "evidence_id": "a30611d6b2bd4248b970d80b4880d828",
+          "timestamp": "2026-06-09T02:21:08.233451"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "consistent naming and neat formatting",
+          "context": "I dislike inconsistent naming and formatting practices. I want clarity and neatness, not a single line too long or improperly indented.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9333333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I dislike inconsistent naming and formatting practices. I want clarity and neatness, not a single line too long or improperly indented.",
+              "scene": "session_4",
+              "evidence_id": "a30611d6b2bd4248b970d80b4880d828",
+              "timestamp": "2026-06-09T02:21:08.233451"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:21:08.233451",
+          "last_accessed": "2026-06-09T02:21:08.378919"
+        }
+      },
+      "unit_id": "03b01d01710f4de0bae50912b1c36e45",
+      "timestamp": "2026-06-09T02:21:08.249205",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.378916",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "legal_field_engagement",
+      "value": "actively exploring legal field through workshops, shadowing, volunteering, and writing",
+      "context": "I've been actively engaging in various aspects of the legal field lately",
+      "profile_type": "background",
+      "stability_score": 0.6999999713053479,
+      "confidence_score": 0.9,
+      "scene": "session_5",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been actively engaging in various aspects of the legal field lately",
+          "scene": "session_5",
+          "evidence_id": "84d46ef260dd46089050277a879614d4",
+          "timestamp": "2026-06-09T02:21:08.254060"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "actively exploring legal field through workshops, shadowing, volunteering, and writing",
+          "context": "I've been actively engaging in various aspects of the legal field lately",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been actively engaging in various aspects of the legal field lately",
+              "scene": "session_5",
+              "evidence_id": "84d46ef260dd46089050277a879614d4",
+              "timestamp": "2026-06-09T02:21:08.254060"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:08.254060",
+          "last_accessed": "2026-06-09T02:21:08.379047"
+        }
+      },
+      "unit_id": "2275d1f3962940d8ae6d9674bd0f28c2",
+      "timestamp": "2026-06-09T02:21:08.261520",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.379045",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "legal_tech_interest",
+      "value": "strong interest in legal technology and its impact on the court system",
+      "context": "I participated in a workshop about new legal technologies... wrote an article about the impact of legal technology",
+      "profile_type": "interest",
+      "stability_score": 0.5999999775650005,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I participated in a workshop about new legal technologies... wrote an article about the impact of legal technology",
+          "scene": "session_5",
+          "evidence_id": "35955083a81544db9c52fe09f98ccceb",
+          "timestamp": "2026-06-09T02:21:08.254064"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "strong interest in legal technology and its impact on the court system",
+          "context": "I participated in a workshop about new legal technologies... wrote an article about the impact of legal technology",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I participated in a workshop about new legal technologies... wrote an article about the impact of legal technology",
+              "scene": "session_5",
+              "evidence_id": "35955083a81544db9c52fe09f98ccceb",
+              "timestamp": "2026-06-09T02:21:08.254064"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:08.254064",
+          "last_accessed": "2026-06-09T02:21:08.379232"
+        }
+      },
+      "unit_id": "44f211ea9e414b3d87c5fff120309114",
+      "timestamp": "2026-06-09T02:21:08.271890",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.379229",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "expression_medium_preference",
+      "value": "prefers written formats (articles, blog) over visual or audio for legal communication",
+      "context": "Writing helps me reflect... attempted infographics challenging, podcasting uninteresting",
+      "profile_type": "preference",
+      "stability_score": 0.6999999762267366,
+      "confidence_score": 0.7,
+      "scene": "session_5",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Writing helps me reflect... attempted infographics challenging, podcasting uninteresting",
+          "scene": "session_5",
+          "evidence_id": "8ec3d3e760da4f799bc2e91271139064",
+          "timestamp": "2026-06-09T02:21:08.254069"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "prefers written formats (articles, blog) over visual or audio for legal communication",
+          "context": "Writing helps me reflect... attempted infographics challenging, podcasting uninteresting",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Writing helps me reflect... attempted infographics challenging, podcasting uninteresting",
+              "scene": "session_5",
+              "evidence_id": "8ec3d3e760da4f799bc2e91271139064",
+              "timestamp": "2026-06-09T02:21:08.254069"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:08.254069",
+          "last_accessed": "2026-06-09T02:21:08.379385"
+        }
+      },
+      "unit_id": "9c468509bbbe433d80313444e58d77a3",
+      "timestamp": "2026-06-09T02:21:08.281768",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.379382",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "community_service_engagement",
+      "value": "actively involved in legal aid and community legal education projects",
+      "context": "Volunteering at a legal aid clinic... community service project regarding law education",
+      "profile_type": "background",
+      "stability_score": 0.5999999817639586,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Volunteering at a legal aid clinic... community service project regarding law education",
+          "scene": "session_5",
+          "evidence_id": "0edf035380874af5aa18310df10b4674",
+          "timestamp": "2026-06-09T02:21:08.254071"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "actively involved in legal aid and community legal education projects",
+          "context": "Volunteering at a legal aid clinic... community service project regarding law education",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Volunteering at a legal aid clinic... community service project regarding law education",
+              "scene": "session_5",
+              "evidence_id": "0edf035380874af5aa18310df10b4674",
+              "timestamp": "2026-06-09T02:21:08.254071"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:08.254071",
+          "last_accessed": "2026-06-09T02:21:08.379523"
+        }
+      },
+      "unit_id": "a6acdc5326e543aa8669a9d3382f8fb6",
+      "timestamp": "2026-06-09T02:21:08.292045",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.379520",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_genre_preference",
+      "value": "mystery novels",
+      "context": "joined a local book club that focuses on mystery novels",
+      "profile_type": "preference",
+      "stability_score": 0.6999999852022918,
+      "confidence_score": 0.9,
+      "scene": "session_6",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a local book club that focuses on mystery novels",
+          "scene": "session_6",
+          "evidence_id": "0f164c7ce8104622830514408804f33f",
+          "timestamp": "2026-06-09T02:21:08.312999"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "mystery novels",
+          "context": "joined a local book club that focuses on mystery novels",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a local book club that focuses on mystery novels",
+              "scene": "session_6",
+              "evidence_id": "0f164c7ce8104622830514408804f33f",
+              "timestamp": "2026-06-09T02:21:08.312999"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:08.312999",
+          "last_accessed": "2026-06-09T02:21:08.375990"
+        }
+      },
+      "unit_id": "39333f41267849c5bf38a00e3e845f99",
+      "timestamp": "2026-06-09T02:21:08.318695",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.375987",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_social_style",
+      "value": "book club member",
+      "context": "joined a local book club",
+      "profile_type": "style",
+      "stability_score": 0.6999999860357292,
+      "confidence_score": 0.8,
+      "scene": "session_6",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a local book club",
+          "scene": "session_6",
+          "evidence_id": "0911ef0f70e34771a7bd7c4d4936becd",
+          "timestamp": "2026-06-09T02:21:08.313002"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "book club member",
+          "context": "joined a local book club",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a local book club",
+              "scene": "session_6",
+              "evidence_id": "0911ef0f70e34771a7bd7c4d4936becd",
+              "timestamp": "2026-06-09T02:21:08.313002"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:08.313002",
+          "last_accessed": "2026-06-09T02:21:08.376061"
+        }
+      },
+      "unit_id": "10b156029c1f4582ac00d196cafedfbb",
+      "timestamp": "2026-06-09T02:21:08.322125",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376059",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "annual_reading_goal",
+      "value": "50 books per year",
+      "context": "created a personal challenge to read 50 books this year",
+      "profile_type": "goal",
+      "stability_score": 0.5999999893097917,
+      "confidence_score": 0.9,
+      "scene": "session_6",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "created a personal challenge to read 50 books this year",
+          "scene": "session_6",
+          "evidence_id": "669320f5691e4fe88987f487dbb8e3b7",
+          "timestamp": "2026-06-09T02:21:08.313005"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "50 books per year",
+          "context": "created a personal challenge to read 50 books this year",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "created a personal challenge to read 50 books this year",
+              "scene": "session_6",
+              "evidence_id": "669320f5691e4fe88987f487dbb8e3b7",
+              "timestamp": "2026-06-09T02:21:08.313005"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:08.313005",
+          "last_accessed": "2026-06-09T02:21:08.376134"
+        }
+      },
+      "unit_id": "12284fad108746b2b00ff71caeca14c6",
+      "timestamp": "2026-06-09T02:21:08.328265",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376132",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "writing_community_engagement",
+      "value": "member of fan fiction writing group",
+      "context": "joined a fan fiction writing group where I can share and discuss my works",
+      "profile_type": "interest",
+      "stability_score": 0.699999989564896,
+      "confidence_score": 0.8,
+      "scene": "session_6",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a fan fiction writing group where I can share and discuss my works",
+          "scene": "session_6",
+          "evidence_id": "fa5f5fffd54f48c48ab98bf1589fd0bd",
+          "timestamp": "2026-06-09T02:21:08.313008"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "member of fan fiction writing group",
+          "context": "joined a fan fiction writing group where I can share and discuss my works",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a fan fiction writing group where I can share and discuss my works",
+              "scene": "session_6",
+              "evidence_id": "fa5f5fffd54f48c48ab98bf1589fd0bd",
+              "timestamp": "2026-06-09T02:21:08.313008"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:08.313008",
+          "last_accessed": "2026-06-09T02:21:08.376260"
+        }
+      },
+      "unit_id": "999c5d9556fa475f97f88a67895b0b26",
+      "timestamp": "2026-06-09T02:21:08.336645",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376259",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "library_visiting_frequency",
+      "value": "often",
+      "context": "visit local libraries often to explore new arrivals",
+      "profile_type": "general",
+      "stability_score": 0.6999999909194444,
+      "confidence_score": 0.7,
+      "scene": "session_6",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "visit local libraries often to explore new arrivals",
+          "scene": "session_6",
+          "evidence_id": "63b8de46b0d64615bd9ee621e2249e81",
+          "timestamp": "2026-06-09T02:21:08.313010"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "often",
+          "context": "visit local libraries often to explore new arrivals",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "visit local libraries often to explore new arrivals",
+              "scene": "session_6",
+              "evidence_id": "63b8de46b0d64615bd9ee621e2249e81",
+              "timestamp": "2026-06-09T02:21:08.313010"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:08.313010",
+          "last_accessed": "2026-06-09T02:21:08.376368"
+        }
+      },
+      "unit_id": "83d326d08387471185e089340247a630",
+      "timestamp": "2026-06-09T02:21:08.342219",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376367",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "adaptation_opinion",
+      "value": "critical when film fails to capture book essence",
+      "context": "watched a film adaptation of a favorite book, but I felt it didn’t capture the essence of the story at all",
+      "profile_type": "preference",
+      "stability_score": 0.4999999957064236,
+      "confidence_score": 0.7,
+      "scene": "session_6",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "watched a film adaptation of a favorite book, but I felt it didn’t capture the essence of the story at all",
+          "scene": "session_6",
+          "evidence_id": "a7a66ceacd3c406884228ee0c73f6b74",
+          "timestamp": "2026-06-09T02:21:08.313013"
+        }
+      ],
+      "scene_branches": {
+        "session_6": {
+          "scene": "session_6",
+          "value": "critical when film fails to capture book essence",
+          "context": "watched a film adaptation of a favorite book, but I felt it didn’t capture the essence of the story at all",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "watched a film adaptation of a favorite book, but I felt it didn’t capture the essence of the story at all",
+              "scene": "session_6",
+              "evidence_id": "a7a66ceacd3c406884228ee0c73f6b74",
+              "timestamp": "2026-06-09T02:21:08.313013"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:08.313013",
+          "last_accessed": "2026-06-09T02:21:08.376512"
+        }
+      },
+      "unit_id": "42b04155ce76442c8d56b6b55b7d44a9",
+      "timestamp": "2026-06-09T02:21:08.354847",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6"
+      ],
+      "last_accessed": "2026-06-09T02:21:08.376510",
+      "last_evolved": "2026-06-09T02:21:08.379582",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [],
+  "evidence_store": {
+    "73c6237f01714bd48b32d98056ca2795": {
+      "source": "llm_deepseek",
+      "content": "films that not only entertain but also provoke thought and evoke emotions",
+      "scene": "session_0",
+      "evidence_id": "73c6237f01714bd48b32d98056ca2795",
+      "timestamp": "2026-06-09T02:21:08.165490"
+    },
+    "c554b209bcf243a799ff19b6d284ab2a": {
+      "source": "llm_deepseek",
+      "content": "exploring different genres that I had never really appreciated before, like documentaries and foreign films",
+      "scene": "session_0",
+      "evidence_id": "c554b209bcf243a799ff19b6d284ab2a",
+      "timestamp": "2026-06-09T02:21:08.165496"
+    },
+    "a60876fba9da44ccaa3bd19025372e03": {
+      "source": "llm_deepseek",
+      "content": "discovered some incredible indie filmmakers... brought a fresh perspective and innovative narrative techniques",
+      "scene": "session_0",
+      "evidence_id": "a60876fba9da44ccaa3bd19025372e03",
+      "timestamp": "2026-06-09T02:21:08.165499"
+    },
+    "00866c3644b243b6938f316d5a621379": {
+      "source": "llm_deepseek",
+      "content": "started a blog to write reviews on the latest films",
+      "scene": "session_0",
+      "evidence_id": "00866c3644b243b6938f316d5a621379",
+      "timestamp": "2026-06-09T02:21:08.165504"
+    },
+    "f949b616dcb2470caa450e6b2bf1f1f7": {
+      "source": "llm_deepseek",
+      "content": "I prefer engaging storytelling over technical jargon; studying cinematic techniques wasn't for me",
+      "scene": "session_1",
+      "evidence_id": "f949b616dcb2470caa450e6b2bf1f1f7",
+      "timestamp": "2026-06-09T02:21:08.174115"
+    },
+    "5a7eae459f484829bdbf70dd9d7d3efc": {
+      "source": "llm_deepseek",
+      "content": "I decided to stop blogging; now I prefer having spontaneous conversations with friends about films",
+      "scene": "session_1",
+      "evidence_id": "5a7eae459f484829bdbf70dd9d7d3efc",
+      "timestamp": "2026-06-09T02:21:08.174119"
+    },
+    "924a5582cd78478dbc06362faf7eae82": {
+      "source": "llm_deepseek",
+      "content": "joined a new film discussion club that focuses on casual conversations and diverse opinions",
+      "scene": "session_1",
+      "evidence_id": "924a5582cd78478dbc06362faf7eae82",
+      "timestamp": "2026-06-09T02:21:08.174124"
+    },
+    "32f0ff70b7a24e3ea5b02c8ad2d4c2f0": {
+      "source": "llm_deepseek",
+      "content": "User explicitly states shift to personal reflections in movie blog",
+      "scene": "session_2",
+      "evidence_id": "32f0ff70b7a24e3ea5b02c8ad2d4c2f0",
+      "timestamp": "2026-06-09T02:21:08.188819"
+    },
+    "e44ff0e586b14c1ea6d23601636f82b4": {
+      "source": "llm_deepseek",
+      "content": "User took a hands-on workshop and found it more engaging than theory",
+      "scene": "session_2",
+      "evidence_id": "e44ff0e586b14c1ea6d23601636f82b4",
+      "timestamp": "2026-06-09T02:21:08.188822"
+    },
+    "c00b299060cf4581a12f32003cc5505a": {
+      "source": "llm_deepseek",
+      "content": "User added a rare collector's item, sees it as milestone and plans to explore more",
+      "scene": "session_2",
+      "evidence_id": "c00b299060cf4581a12f32003cc5505a",
+      "timestamp": "2026-06-09T02:21:08.188825"
+    },
+    "48419b68a3c647a998de9279d25ebe16": {
+      "source": "llm_deepseek",
+      "content": "User led a film discussion night on underappreciated films",
+      "scene": "session_2",
+      "evidence_id": "48419b68a3c647a998de9279d25ebe16",
+      "timestamp": "2026-06-09T02:21:08.188827"
+    },
+    "97543a9cbc594fa1a599b9dd6960fe5e": {
+      "source": "llm_deepseek",
+      "content": "Sold physical memorabilia; excited about digital mediums for film experiences",
+      "scene": "session_3",
+      "evidence_id": "97543a9cbc594fa1a599b9dd6960fe5e",
+      "timestamp": "2026-06-09T02:21:08.207908"
+    },
+    "a45819bdfdf84f0286b340934d497580": {
+      "source": "llm_deepseek",
+      "content": "Enrolled in advanced film theory course on psychological impact on audiences",
+      "scene": "session_3",
+      "evidence_id": "a45819bdfdf84f0286b340934d497580",
+      "timestamp": "2026-06-09T02:21:08.207914"
+    },
+    "43e36b70a292497d907127bb1749374a": {
+      "source": "llm_deepseek",
+      "content": "Started a blog for heartfelt film reviews and personal cinema experiences",
+      "scene": "session_3",
+      "evidence_id": "43e36b70a292497d907127bb1749374a",
+      "timestamp": "2026-06-09T02:21:08.207917"
+    },
+    "b621301b3060426c90c07c9522966869": {
+      "source": "llm_deepseek",
+      "content": "Regularly watching foreign films after developing appreciation",
+      "scene": "session_3",
+      "evidence_id": "b621301b3060426c90c07c9522966869",
+      "timestamp": "2026-06-09T02:21:08.207919"
+    },
+    "66f968e0c0cd4a1c934848305cda2f3e": {
+      "source": "llm_deepseek",
+      "content": "I need help refactoring my code to improve clarity and maintainability while ensuring good coding practices.",
+      "scene": "session_4",
+      "evidence_id": "66f968e0c0cd4a1c934848305cda2f3e",
+      "timestamp": "2026-06-09T02:21:08.233447"
+    },
+    "a30611d6b2bd4248b970d80b4880d828": {
+      "source": "llm_deepseek",
+      "content": "I dislike inconsistent naming and formatting practices. I want clarity and neatness, not a single line too long or improperly indented.",
+      "scene": "session_4",
+      "evidence_id": "a30611d6b2bd4248b970d80b4880d828",
+      "timestamp": "2026-06-09T02:21:08.233451"
+    },
+    "84d46ef260dd46089050277a879614d4": {
+      "source": "llm_deepseek",
+      "content": "I've been actively engaging in various aspects of the legal field lately",
+      "scene": "session_5",
+      "evidence_id": "84d46ef260dd46089050277a879614d4",
+      "timestamp": "2026-06-09T02:21:08.254060"
+    },
+    "35955083a81544db9c52fe09f98ccceb": {
+      "source": "llm_deepseek",
+      "content": "I participated in a workshop about new legal technologies... wrote an article about the impact of legal technology",
+      "scene": "session_5",
+      "evidence_id": "35955083a81544db9c52fe09f98ccceb",
+      "timestamp": "2026-06-09T02:21:08.254064"
+    },
+    "8ec3d3e760da4f799bc2e91271139064": {
+      "source": "llm_deepseek",
+      "content": "Writing helps me reflect... attempted infographics challenging, podcasting uninteresting",
+      "scene": "session_5",
+      "evidence_id": "8ec3d3e760da4f799bc2e91271139064",
+      "timestamp": "2026-06-09T02:21:08.254069"
+    },
+    "0edf035380874af5aa18310df10b4674": {
+      "source": "llm_deepseek",
+      "content": "Volunteering at a legal aid clinic... community service project regarding law education",
+      "scene": "session_5",
+      "evidence_id": "0edf035380874af5aa18310df10b4674",
+      "timestamp": "2026-06-09T02:21:08.254071"
+    },
+    "0f164c7ce8104622830514408804f33f": {
+      "source": "llm_deepseek",
+      "content": "joined a local book club that focuses on mystery novels",
+      "scene": "session_6",
+      "evidence_id": "0f164c7ce8104622830514408804f33f",
+      "timestamp": "2026-06-09T02:21:08.312999"
+    },
+    "0911ef0f70e34771a7bd7c4d4936becd": {
+      "source": "llm_deepseek",
+      "content": "joined a local book club",
+      "scene": "session_6",
+      "evidence_id": "0911ef0f70e34771a7bd7c4d4936becd",
+      "timestamp": "2026-06-09T02:21:08.313002"
+    },
+    "669320f5691e4fe88987f487dbb8e3b7": {
+      "source": "llm_deepseek",
+      "content": "created a personal challenge to read 50 books this year",
+      "scene": "session_6",
+      "evidence_id": "669320f5691e4fe88987f487dbb8e3b7",
+      "timestamp": "2026-06-09T02:21:08.313005"
+    },
+    "fa5f5fffd54f48c48ab98bf1589fd0bd": {
+      "source": "llm_deepseek",
+      "content": "joined a fan fiction writing group where I can share and discuss my works",
+      "scene": "session_6",
+      "evidence_id": "fa5f5fffd54f48c48ab98bf1589fd0bd",
+      "timestamp": "2026-06-09T02:21:08.313008"
+    },
+    "63b8de46b0d64615bd9ee621e2249e81": {
+      "source": "llm_deepseek",
+      "content": "visit local libraries often to explore new arrivals",
+      "scene": "session_6",
+      "evidence_id": "63b8de46b0d64615bd9ee621e2249e81",
+      "timestamp": "2026-06-09T02:21:08.313010"
+    },
+    "a7a66ceacd3c406884228ee0c73f6b74": {
+      "source": "llm_deepseek",
+      "content": "watched a film adaptation of a favorite book, but I felt it didn’t capture the essence of the story at all",
+      "scene": "session_6",
+      "evidence_id": "a7a66ceacd3c406884228ee0c73f6b74",
+      "timestamp": "2026-06-09T02:21:08.313013"
+    }
+  },
+  "current_session": "session_6",
+  "current_session_id": "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a_session_6",
+  "config_id": "promote_0.70",
+  "context_hash": "87fcbc7f2659effa29e8588b521c937634a53fcc516ee1ca85eeddfe8190708a",
+  "num_sessions": 7
+}

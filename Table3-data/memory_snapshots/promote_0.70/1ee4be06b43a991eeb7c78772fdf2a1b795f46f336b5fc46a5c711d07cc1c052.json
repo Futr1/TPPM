@@ -1,0 +1,786 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.7,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "reading_style",
+      "value": "prefers slow, immersive reading; dislikes time pressure and readathons",
+      "context": "found readathons overwhelming and stressful, prefers to savor reading at own pace",
+      "profile_type": "style",
+      "stability_score": 0.6999999848231252,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "found readathons overwhelming and stressful, prefers to savor reading at own pace",
+          "scene": "session_0",
+          "evidence_id": "21b929f437cc451fbc21995e09637966",
+          "timestamp": "2026-06-09T02:21:05.618509"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers slow, immersive reading; dislikes time pressure and readathons",
+          "context": "found readathons overwhelming and stressful, prefers to savor reading at own pace",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "found readathons overwhelming and stressful, prefers to savor reading at own pace",
+              "scene": "session_0",
+              "evidence_id": "21b929f437cc451fbc21995e09637966",
+              "timestamp": "2026-06-09T02:21:05.618509"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:05.618509",
+          "last_accessed": "2026-06-09T02:21:05.679432"
+        }
+      },
+      "unit_id": "dc370d07769a44d0a3f2a4a94c9595c1",
+      "timestamp": "2026-06-09T02:21:05.618541",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.679429",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "literary_event_goal",
+      "value": "actively planning to organize community literary events featuring local authors and schools",
+      "context": "pitched idea to local community groups, excited about bringing people together through literature",
+      "profile_type": "goal",
+      "stability_score": 0.5999999871510417,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "pitched idea to local community groups, excited about bringing people together through literature",
+          "scene": "session_0",
+          "evidence_id": "f9ee1c55671f4e1fb82b7d2293a47007",
+          "timestamp": "2026-06-09T02:21:05.618516"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "actively planning to organize community literary events featuring local authors and schools",
+          "context": "pitched idea to local community groups, excited about bringing people together through literature",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "pitched idea to local community groups, excited about bringing people together through literature",
+              "scene": "session_0",
+              "evidence_id": "f9ee1c55671f4e1fb82b7d2293a47007",
+              "timestamp": "2026-06-09T02:21:05.618516"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:05.618516",
+          "last_accessed": "2026-06-09T02:21:05.679596"
+        }
+      },
+      "unit_id": "582bea03255a4685819cee311c8eddbd",
+      "timestamp": "2026-06-09T02:21:05.619307",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.679593",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_collecting_hobby",
+      "value": "collects rare first editions as a hobby, treasures literary history",
+      "context": "dedicated time to collecting rare first editions, connects with fellow enthusiasts",
+      "profile_type": "interest",
+      "stability_score": 0.6999999852747224,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "dedicated time to collecting rare first editions, connects with fellow enthusiasts",
+          "scene": "session_0",
+          "evidence_id": "1fc1e357a87d4f20975e482283b7f255",
+          "timestamp": "2026-06-09T02:21:05.618519"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "collects rare first editions as a hobby, treasures literary history",
+          "context": "dedicated time to collecting rare first editions, connects with fellow enthusiasts",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "dedicated time to collecting rare first editions, connects with fellow enthusiasts",
+              "scene": "session_0",
+              "evidence_id": "1fc1e357a87d4f20975e482283b7f255",
+              "timestamp": "2026-06-09T02:21:05.618519"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:05.618519",
+          "last_accessed": "2026-06-09T02:21:05.679739"
+        }
+      },
+      "unit_id": "5c0895a13719403da9344733ed7e0825",
+      "timestamp": "2026-06-09T02:21:05.620399",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.679736",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_style",
+      "value": "informal and spontaneous discussions over formal critiques",
+      "context": "User decided to stop writing book critiques and focus on more informal discussions instead, citing pressure and negative feedback.",
+      "profile_type": "style",
+      "stability_score": 0.7499999850872398,
+      "confidence_score": 0.92,
+      "scene": "session_1",
+      "quality_score": 0.89,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User decided to stop writing book critiques and focus on more informal discussions instead, citing pressure and negative feedback.",
+          "scene": "session_1",
+          "evidence_id": "60d2b4e4d05f4c48b58264794863128f",
+          "timestamp": "2026-06-09T02:21:05.621750"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "informal and spontaneous discussions over formal critiques",
+          "context": "User decided to stop writing book critiques and focus on more informal discussions instead, citing pressure and negative feedback.",
+          "confidence_score": 0.92,
+          "quality_score": 0.89,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User decided to stop writing book critiques and focus on more informal discussions instead, citing pressure and negative feedback.",
+              "scene": "session_1",
+              "evidence_id": "60d2b4e4d05f4c48b58264794863128f",
+              "timestamp": "2026-06-09T02:21:05.621750"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:21:05.621750",
+          "last_accessed": "2026-06-09T02:21:05.679927"
+        }
+      },
+      "unit_id": "e9c1dd357bf84d3da7f02614d401b2e2",
+      "timestamp": "2026-06-09T02:21:05.623717",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.679924",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "literary_preference",
+      "value": "indie literature",
+      "context": "User started following a book influencer focusing on indie literature, finding their recommendations align perfectly with personal tastes.",
+      "profile_type": "preference",
+      "stability_score": 0.6999999867663542,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User started following a book influencer focusing on indie literature, finding their recommendations align perfectly with personal tastes.",
+          "scene": "session_1",
+          "evidence_id": "0cc6e9c671af434fa55d74f9fc3b557c",
+          "timestamp": "2026-06-09T02:21:05.621754"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "indie literature",
+          "context": "User started following a book influencer focusing on indie literature, finding their recommendations align perfectly with personal tastes.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User started following a book influencer focusing on indie literature, finding their recommendations align perfectly with personal tastes.",
+              "scene": "session_1",
+              "evidence_id": "0cc6e9c671af434fa55d74f9fc3b557c",
+              "timestamp": "2026-06-09T02:21:05.621754"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:21:05.621754",
+          "last_accessed": "2026-06-09T02:21:05.680083"
+        }
+      },
+      "unit_id": "571a69bb146f4fe481ac143652065faa",
+      "timestamp": "2026-06-09T02:21:05.626535",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.680080",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_collecting_taste",
+      "value": "rare and second-hand books",
+      "context": "User found a rare book in a second-hand store, reigniting passion for collecting rare books.",
+      "profile_type": "interest",
+      "stability_score": 0.6499999882923265,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User found a rare book in a second-hand store, reigniting passion for collecting rare books.",
+          "scene": "session_1",
+          "evidence_id": "8901898bfab54eeaa1becdfb9a700d22",
+          "timestamp": "2026-06-09T02:21:05.621756"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "rare and second-hand books",
+          "context": "User found a rare book in a second-hand store, reigniting passion for collecting rare books.",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User found a rare book in a second-hand store, reigniting passion for collecting rare books.",
+              "scene": "session_1",
+              "evidence_id": "8901898bfab54eeaa1becdfb9a700d22",
+              "timestamp": "2026-06-09T02:21:05.621756"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:21:05.621756",
+          "last_accessed": "2026-06-09T02:21:05.680212"
+        }
+      },
+      "unit_id": "87c9458d9b4949c086925143ce8c91b7",
+      "timestamp": "2026-06-09T02:21:05.629108",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.680209",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_style",
+      "value": "prefers curated personal recommendations over influencer suggestions",
+      "context": "I unfollowed all book influencers to regain a more authentic reading experience.",
+      "profile_type": "preference",
+      "stability_score": 0.6999999888724306,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I unfollowed all book influencers to regain a more authentic reading experience.",
+          "scene": "session_2",
+          "evidence_id": "7ff2788b6b6b4e0684c1d7d22e5bff4c",
+          "timestamp": "2026-06-09T02:21:05.631829"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers curated personal recommendations over influencer suggestions",
+          "context": "I unfollowed all book influencers to regain a more authentic reading experience.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I unfollowed all book influencers to regain a more authentic reading experience.",
+              "scene": "session_2",
+              "evidence_id": "7ff2788b6b6b4e0684c1d7d22e5bff4c",
+              "timestamp": "2026-06-09T02:21:05.631829"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:05.631829",
+          "last_accessed": "2026-06-09T02:21:05.680349"
+        }
+      },
+      "unit_id": "1e49332cec9045db98dc905a24787634",
+      "timestamp": "2026-06-09T02:21:05.635200",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.680346",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "social_reading_style",
+      "value": "values community bonding and sharing perspectives in book events",
+      "context": "participated in a fantasy book readathon and made lasting friendships... camaraderie... felt electric.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999919389584,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "participated in a fantasy book readathon and made lasting friendships... camaraderie... felt electric.",
+          "scene": "session_2",
+          "evidence_id": "307ef1fced4d4784962df0b725d96817",
+          "timestamp": "2026-06-09T02:21:05.631832"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "values community bonding and sharing perspectives in book events",
+          "context": "participated in a fantasy book readathon and made lasting friendships... camaraderie... felt electric.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "participated in a fantasy book readathon and made lasting friendships... camaraderie... felt electric.",
+              "scene": "session_2",
+              "evidence_id": "307ef1fced4d4784962df0b725d96817",
+              "timestamp": "2026-06-09T02:21:05.631832"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:05.631832",
+          "last_accessed": "2026-06-09T02:21:05.680545"
+        }
+      },
+      "unit_id": "ef5032f3f2dd4df8bf146443fb7b868d",
+      "timestamp": "2026-06-09T02:21:05.642289",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.680542",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_format_preference",
+      "value": "prefers digital collections and ebooks over physical rare books",
+      "context": "decided to focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs.",
+      "profile_type": "preference",
+      "stability_score": 0.799999990920278,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs.",
+          "scene": "session_2",
+          "evidence_id": "6509f9f4681b4053b2817b92406dec6a",
+          "timestamp": "2026-06-09T02:21:05.631835"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers digital collections and ebooks over physical rare books",
+          "context": "decided to focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs.",
+              "scene": "session_2",
+              "evidence_id": "6509f9f4681b4053b2817b92406dec6a",
+              "timestamp": "2026-06-09T02:21:05.631835"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:05.631835",
+          "last_accessed": "2026-06-09T02:21:05.680734"
+        }
+      },
+      "unit_id": "132630a39d8d41869eef535b7bd45c72",
+      "timestamp": "2026-06-09T02:21:05.648296",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.680731",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "writing_learning_goal",
+      "value": "studying non-fiction on writing techniques and philosophy to enhance storytelling",
+      "context": "began reading several non-fiction books on writing techniques and philosophy.",
+      "profile_type": "goal",
+      "stability_score": 0.5999999941697917,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "began reading several non-fiction books on writing techniques and philosophy.",
+          "scene": "session_2",
+          "evidence_id": "25a72fc759e14bf4998fb63dbba4850f",
+          "timestamp": "2026-06-09T02:21:05.631837"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "studying non-fiction on writing techniques and philosophy to enhance storytelling",
+          "context": "began reading several non-fiction books on writing techniques and philosophy.",
+          "confidence_score": 0.85,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "began reading several non-fiction books on writing techniques and philosophy.",
+              "scene": "session_2",
+              "evidence_id": "25a72fc759e14bf4998fb63dbba4850f",
+              "timestamp": "2026-06-09T02:21:05.631837"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:05.631837",
+          "last_accessed": "2026-06-09T02:21:05.680952"
+        }
+      },
+      "unit_id": "d7432c84b4464d8cbd8600474b5c9ca5",
+      "timestamp": "2026-06-09T02:21:05.652997",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.680949",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_style",
+      "value": "prefers deep analytical engagement with character psychology and narrative nuances",
+      "context": "User expressed interest in a podcast exploring character development psychology, left book club due to lack of deep analysis, and enjoys discussions that probe authorial intentions.",
+      "profile_type": "preference",
+      "stability_score": 0.6999999971669444,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User expressed interest in a podcast exploring character development psychology, left book club due to lack of deep analysis, and enjoys discussions that probe authorial intentions.",
+          "scene": "session_3",
+          "evidence_id": "a8f30b1a933c4b2db4a35b680fe4ae45",
+          "timestamp": "2026-06-09T02:21:05.659852"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers deep analytical engagement with character psychology and narrative nuances",
+          "context": "User expressed interest in a podcast exploring character development psychology, left book club due to lack of deep analysis, and enjoys discussions that probe authorial intentions.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User expressed interest in a podcast exploring character development psychology, left book club due to lack of deep analysis, and enjoys discussions that probe authorial intentions.",
+              "scene": "session_3",
+              "evidence_id": "a8f30b1a933c4b2db4a35b680fe4ae45",
+              "timestamp": "2026-06-09T02:21:05.659852"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:21:05.659852",
+          "last_accessed": "2026-06-09T02:21:05.679091"
+        }
+      },
+      "unit_id": "c53cd950a4b04cb39a475b93ff4c8a28",
+      "timestamp": "2026-06-09T02:21:05.669325",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 2,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.679089",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_format_preference",
+      "value": "prefers tangible books and collects rare first editions",
+      "context": "User attended an antique book fair, rediscovered passion for physical books, and mentioned collecting cherished novels and rare finds.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999992291667,
+      "confidence_score": 0.75,
+      "scene": "session_3",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User attended an antique book fair, rediscovered passion for physical books, and mentioned collecting cherished novels and rare finds.",
+          "scene": "session_3",
+          "evidence_id": "014489bf7146411a9a2684dcfdbbfbc9",
+          "timestamp": "2026-06-09T02:21:05.659856"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers tangible books and collects rare first editions",
+          "context": "User attended an antique book fair, rediscovered passion for physical books, and mentioned collecting cherished novels and rare finds.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User attended an antique book fair, rediscovered passion for physical books, and mentioned collecting cherished novels and rare finds.",
+              "scene": "session_3",
+              "evidence_id": "014489bf7146411a9a2684dcfdbbfbc9",
+              "timestamp": "2026-06-09T02:21:05.659856"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:21:05.659856",
+          "last_accessed": "2026-06-09T02:21:05.679285"
+        }
+      },
+      "unit_id": "3d7c32d265154ffda15d86cdfa205b86",
+      "timestamp": "2026-06-09T02:21:05.677281",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 2,
+      "seen_session_ids": [
+        "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:05.679283",
+      "last_evolved": "2026-06-09T02:21:05.680986",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [],
+  "evidence_store": {
+    "21b929f437cc451fbc21995e09637966": {
+      "source": "llm_deepseek",
+      "content": "found readathons overwhelming and stressful, prefers to savor reading at own pace",
+      "scene": "session_0",
+      "evidence_id": "21b929f437cc451fbc21995e09637966",
+      "timestamp": "2026-06-09T02:21:05.618509"
+    },
+    "f9ee1c55671f4e1fb82b7d2293a47007": {
+      "source": "llm_deepseek",
+      "content": "pitched idea to local community groups, excited about bringing people together through literature",
+      "scene": "session_0",
+      "evidence_id": "f9ee1c55671f4e1fb82b7d2293a47007",
+      "timestamp": "2026-06-09T02:21:05.618516"
+    },
+    "1fc1e357a87d4f20975e482283b7f255": {
+      "source": "llm_deepseek",
+      "content": "dedicated time to collecting rare first editions, connects with fellow enthusiasts",
+      "scene": "session_0",
+      "evidence_id": "1fc1e357a87d4f20975e482283b7f255",
+      "timestamp": "2026-06-09T02:21:05.618519"
+    },
+    "60d2b4e4d05f4c48b58264794863128f": {
+      "source": "llm_deepseek",
+      "content": "User decided to stop writing book critiques and focus on more informal discussions instead, citing pressure and negative feedback.",
+      "scene": "session_1",
+      "evidence_id": "60d2b4e4d05f4c48b58264794863128f",
+      "timestamp": "2026-06-09T02:21:05.621750"
+    },
+    "0cc6e9c671af434fa55d74f9fc3b557c": {
+      "source": "llm_deepseek",
+      "content": "User started following a book influencer focusing on indie literature, finding their recommendations align perfectly with personal tastes.",
+      "scene": "session_1",
+      "evidence_id": "0cc6e9c671af434fa55d74f9fc3b557c",
+      "timestamp": "2026-06-09T02:21:05.621754"
+    },
+    "8901898bfab54eeaa1becdfb9a700d22": {
+      "source": "llm_deepseek",
+      "content": "User found a rare book in a second-hand store, reigniting passion for collecting rare books.",
+      "scene": "session_1",
+      "evidence_id": "8901898bfab54eeaa1becdfb9a700d22",
+      "timestamp": "2026-06-09T02:21:05.621756"
+    },
+    "7ff2788b6b6b4e0684c1d7d22e5bff4c": {
+      "source": "llm_deepseek",
+      "content": "I unfollowed all book influencers to regain a more authentic reading experience.",
+      "scene": "session_2",
+      "evidence_id": "7ff2788b6b6b4e0684c1d7d22e5bff4c",
+      "timestamp": "2026-06-09T02:21:05.631829"
+    },
+    "307ef1fced4d4784962df0b725d96817": {
+      "source": "llm_deepseek",
+      "content": "participated in a fantasy book readathon and made lasting friendships... camaraderie... felt electric.",
+      "scene": "session_2",
+      "evidence_id": "307ef1fced4d4784962df0b725d96817",
+      "timestamp": "2026-06-09T02:21:05.631832"
+    },
+    "6509f9f4681b4053b2817b92406dec6a": {
+      "source": "llm_deepseek",
+      "content": "decided to focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs.",
+      "scene": "session_2",
+      "evidence_id": "6509f9f4681b4053b2817b92406dec6a",
+      "timestamp": "2026-06-09T02:21:05.631835"
+    },
+    "25a72fc759e14bf4998fb63dbba4850f": {
+      "source": "llm_deepseek",
+      "content": "began reading several non-fiction books on writing techniques and philosophy.",
+      "scene": "session_2",
+      "evidence_id": "25a72fc759e14bf4998fb63dbba4850f",
+      "timestamp": "2026-06-09T02:21:05.631837"
+    },
+    "a8f30b1a933c4b2db4a35b680fe4ae45": {
+      "source": "llm_deepseek",
+      "content": "User expressed interest in a podcast exploring character development psychology, left book club due to lack of deep analysis, and enjoys discussions that probe authorial intentions.",
+      "scene": "session_3",
+      "evidence_id": "a8f30b1a933c4b2db4a35b680fe4ae45",
+      "timestamp": "2026-06-09T02:21:05.659852"
+    },
+    "014489bf7146411a9a2684dcfdbbfbc9": {
+      "source": "llm_deepseek",
+      "content": "User attended an antique book fair, rediscovered passion for physical books, and mentioned collecting cherished novels and rare finds.",
+      "scene": "session_3",
+      "evidence_id": "014489bf7146411a9a2684dcfdbbfbc9",
+      "timestamp": "2026-06-09T02:21:05.659856"
+    }
+  },
+  "current_session": "session_3",
+  "current_session_id": "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052_session_3",
+  "config_id": "promote_0.70",
+  "context_hash": "1ee4be06b43a991eeb7c78772fdf2a1b795f46f336b5fc46a5c711d07cc1c052",
+  "num_sessions": 4
+}

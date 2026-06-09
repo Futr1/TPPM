@@ -1,0 +1,1336 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.46,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "literary_discussion_deepness",
+      "value": "prefers deep analysis over superficial discussions",
+      "context": "book club discussions drifted from deeper analysis, considering leaving",
+      "profile_type": "preference",
+      "stability_score": 0.49999998667968765,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "book club discussions drifted from deeper analysis, considering leaving",
+          "scene": "session_4",
+          "evidence_id": "fa2d836a5f494e549fd80f361362a9e7",
+          "timestamp": "2026-06-09T02:20:40.469989"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers deep analysis over superficial discussions",
+          "context": "book club discussions drifted from deeper analysis, considering leaving",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "book club discussions drifted from deeper analysis, considering leaving",
+              "scene": "session_4",
+              "evidence_id": "fa2d836a5f494e549fd80f361362a9e7",
+              "timestamp": "2026-06-09T02:20:40.469989"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:40.469989",
+          "last_accessed": "2026-06-09T02:20:40.559110"
+        }
+      },
+      "unit_id": "24764e9a761847e69cb530bdf6d4c071",
+      "timestamp": "2026-06-09T02:20:40.484900",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.559107",
+      "last_evolved": "2026-06-09T02:20:40.561628",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "reading_preference",
+      "value": "Avid reader, enjoys contemporary fiction, book club member",
+      "context": "joined a local book club focused on contemporary fiction",
+      "profile_type": "interest",
+      "stability_score": 0.7285496997374142,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a local book club focused on contemporary fiction",
+          "scene": "session_0",
+          "evidence_id": "c4603ce68b3d4cce836970e1ef273b67",
+          "timestamp": "2026-06-09T02:20:40.405631"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "Avid reader, enjoys contemporary fiction, book club member",
+          "context": "joined a local book club focused on contemporary fiction",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a local book club focused on contemporary fiction",
+              "scene": "session_0",
+              "evidence_id": "c4603ce68b3d4cce836970e1ef273b67",
+              "timestamp": "2026-06-09T02:20:40.405631"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:40.405631",
+          "last_accessed": "2026-06-09T02:20:40.559244"
+        }
+      },
+      "unit_id": "e9bb82688e9a49e0a1cbffe2b2c82169",
+      "timestamp": "2026-06-09T02:20:40.405660",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.559241",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "writing_aspiration",
+      "value": "Aspires to start a book blog and write critiques",
+      "context": "eager to start my personal journey in the world of blogging about books",
+      "profile_type": "goal",
+      "stability_score": 0.5189363868758942,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "eager to start my personal journey in the world of blogging about books",
+          "scene": "session_0",
+          "evidence_id": "0fd1383301ab44999b5d3afadd664e59",
+          "timestamp": "2026-06-09T02:20:40.405639"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "Aspires to start a book blog and write critiques",
+          "context": "eager to start my personal journey in the world of blogging about books",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "eager to start my personal journey in the world of blogging about books",
+              "scene": "session_0",
+              "evidence_id": "0fd1383301ab44999b5d3afadd664e59",
+              "timestamp": "2026-06-09T02:20:40.405639"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:40.405639",
+          "last_accessed": "2026-06-09T02:20:40.559417"
+        }
+      },
+      "unit_id": "83332e8bac7443ba973edf6d68c040ba",
+      "timestamp": "2026-06-09T02:20:40.406060",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.559413",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "literature_preference",
+      "value": "indie_literature",
+      "context": "follows a book influencer focusing solely on indie literature, appreciates unique perspectives and hidden gems",
+      "profile_type": "preference",
+      "stability_score": 0.7265807137234132,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "follows a book influencer focusing solely on indie literature, appreciates unique perspectives and hidden gems",
+          "scene": "session_1",
+          "evidence_id": "7cd0aba8b51d4c238ddf957638176549",
+          "timestamp": "2026-06-09T02:20:40.406636"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "indie_literature",
+          "context": "follows a book influencer focusing solely on indie literature, appreciates unique perspectives and hidden gems",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "follows a book influencer focusing solely on indie literature, appreciates unique perspectives and hidden gems",
+              "scene": "session_1",
+              "evidence_id": "7cd0aba8b51d4c238ddf957638176549",
+              "timestamp": "2026-06-09T02:20:40.406636"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:20:40.406636",
+          "last_accessed": "2026-06-09T02:20:40.559588"
+        }
+      },
+      "unit_id": "ccd4b68faa274896b059607aca318a60",
+      "timestamp": "2026-06-09T02:20:40.407407",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.559585",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "critique_style",
+      "value": "informal_discussion",
+      "context": "stopped writing formal book critiques and shifted to informal discussions to avoid pressure and enjoy literature more freely",
+      "profile_type": "style",
+      "stability_score": 0.7580302799155079,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stopped writing formal book critiques and shifted to informal discussions to avoid pressure and enjoy literature more freely",
+          "scene": "session_1",
+          "evidence_id": "8c865af054934288ae770dcfbf9625ae",
+          "timestamp": "2026-06-09T02:20:40.406639"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "informal_discussion",
+          "context": "stopped writing formal book critiques and shifted to informal discussions to avoid pressure and enjoy literature more freely",
+          "confidence_score": 0.85,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stopped writing formal book critiques and shifted to informal discussions to avoid pressure and enjoy literature more freely",
+              "scene": "session_1",
+              "evidence_id": "8c865af054934288ae770dcfbf9625ae",
+              "timestamp": "2026-06-09T02:20:40.406639"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:20:40.406639",
+          "last_accessed": "2026-06-09T02:20:40.559750"
+        }
+      },
+      "unit_id": "cefce1bbeafe4fc0b50ab5c710017e66",
+      "timestamp": "2026-06-09T02:20:40.408738",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.559747",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "reading_habit",
+      "value": "spontaneous_reading",
+      "context": "opts to read spontaneously instead of adhering to structured reading lists, finds them restrictive",
+      "profile_type": "style",
+      "stability_score": 0.7170937456062185,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "opts to read spontaneously instead of adhering to structured reading lists, finds them restrictive",
+          "scene": "session_1",
+          "evidence_id": "7e87325ab99f45bfb8829def831dbde0",
+          "timestamp": "2026-06-09T02:20:40.406642"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "spontaneous_reading",
+          "context": "opts to read spontaneously instead of adhering to structured reading lists, finds them restrictive",
+          "confidence_score": 0.75,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "opts to read spontaneously instead of adhering to structured reading lists, finds them restrictive",
+              "scene": "session_1",
+              "evidence_id": "7e87325ab99f45bfb8829def831dbde0",
+              "timestamp": "2026-06-09T02:20:40.406642"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:20:40.406642",
+          "last_accessed": "2026-06-09T02:20:40.559880"
+        }
+      },
+      "unit_id": "01c959820021419d98848fffc43d4e78",
+      "timestamp": "2026-06-09T02:20:40.410550",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.559877",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "movie_memorabilia_collecting",
+      "value": "actively collects memorabilia from favorite films",
+      "context": "I've even started a collection of movie memorabilia from favorite films over the years since then",
+      "profile_type": "interest",
+      "stability_score": 0.6735420005276835,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've even started a collection of movie memorabilia from favorite films over the years since then",
+          "scene": "session_2",
+          "evidence_id": "78acd45e28a8442582f7e8312e2c4fd9",
+          "timestamp": "2026-06-09T02:20:40.412791"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "actively collects memorabilia from favorite films",
+          "context": "I've even started a collection of movie memorabilia from favorite films over the years since then",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've even started a collection of movie memorabilia from favorite films over the years since then",
+              "scene": "session_2",
+              "evidence_id": "78acd45e28a8442582f7e8312e2c4fd9",
+              "timestamp": "2026-06-09T02:20:40.412791"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:40.412791",
+          "last_accessed": "2026-06-09T02:20:40.560032"
+        }
+      },
+      "unit_id": "b2875270d3e94a47b889cdb0df92c986",
+      "timestamp": "2026-06-09T02:20:40.415258",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560028",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_review_writing",
+      "value": "regularly writes detailed film reviews and shares online",
+      "context": "writing allows me to articulate my thoughts... has become a routine for me",
+      "profile_type": "style",
+      "stability_score": 0.7047264700242206,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "writing allows me to articulate my thoughts... has become a routine for me",
+          "scene": "session_2",
+          "evidence_id": "7afb76ff3d3142daa7981632482d5100",
+          "timestamp": "2026-06-09T02:20:40.412794"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "regularly writes detailed film reviews and shares online",
+          "context": "writing allows me to articulate my thoughts... has become a routine for me",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "writing allows me to articulate my thoughts... has become a routine for me",
+              "scene": "session_2",
+              "evidence_id": "7afb76ff3d3142daa7981632482d5100",
+              "timestamp": "2026-06-09T02:20:40.412794"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:40.412794",
+          "last_accessed": "2026-06-09T02:20:40.560193"
+        }
+      },
+      "unit_id": "a86d81ae92fc4ccfa3411f795c5176d1",
+      "timestamp": "2026-06-09T02:20:40.417644",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560190",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "documentary_club_membership",
+      "value": "participates in a documentary screening club",
+      "context": "joined a documentary screening club",
+      "profile_type": "interest",
+      "stability_score": 0.5979636368415362,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a documentary screening club",
+          "scene": "session_2",
+          "evidence_id": "f11703af5c114292a46643755c70ca1f",
+          "timestamp": "2026-06-09T02:20:40.412799"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "participates in a documentary screening club",
+          "context": "joined a documentary screening club",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a documentary screening club",
+              "scene": "session_2",
+              "evidence_id": "f11703af5c114292a46643755c70ca1f",
+              "timestamp": "2026-06-09T02:20:40.412799"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:40.412799",
+          "last_accessed": "2026-06-09T02:20:40.560326"
+        }
+      },
+      "unit_id": "5be125eb6c4640ad9d83642a7a947805",
+      "timestamp": "2026-06-09T02:20:40.419327",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560323",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "reading_authenticity_preference",
+      "value": "unfollowed book influencers to regain authentic reading experience",
+      "context": "unfollowed all book influencers to regain a more authentic reading experience",
+      "profile_type": "preference",
+      "stability_score": 0.7167382078918669,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "unfollowed all book influencers to regain a more authentic reading experience",
+          "scene": "session_3",
+          "evidence_id": "7e635d2b871f4148b7a2529ba31b2dc8",
+          "timestamp": "2026-06-09T02:20:40.425615"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "unfollowed book influencers to regain authentic reading experience",
+          "context": "unfollowed all book influencers to regain a more authentic reading experience",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "unfollowed all book influencers to regain a more authentic reading experience",
+              "scene": "session_3",
+              "evidence_id": "7e635d2b871f4148b7a2529ba31b2dc8",
+              "timestamp": "2026-06-09T02:20:40.425615"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:40.425615",
+          "last_accessed": "2026-06-09T02:20:40.560522"
+        }
+      },
+      "unit_id": "a87d94978f42430fa7fd35f4df0fe8ae",
+      "timestamp": "2026-06-09T02:20:40.429164",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560519",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "podcast_consumption_habit",
+      "value": "stopped listening to book podcasts due to repetitiveness",
+      "context": "stopped listening to book podcasts entirely. They started to feel repetitive",
+      "profile_type": "preference",
+      "stability_score": 0.7167382091746106,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stopped listening to book podcasts entirely. They started to feel repetitive",
+          "scene": "session_3",
+          "evidence_id": "e4c62fcc37f24c5da84920bc28857699",
+          "timestamp": "2026-06-09T02:20:40.425619"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "stopped listening to book podcasts due to repetitiveness",
+          "context": "stopped listening to book podcasts entirely. They started to feel repetitive",
+          "confidence_score": 0.85,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stopped listening to book podcasts entirely. They started to feel repetitive",
+              "scene": "session_3",
+              "evidence_id": "e4c62fcc37f24c5da84920bc28857699",
+              "timestamp": "2026-06-09T02:20:40.425619"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:40.425619",
+          "last_accessed": "2026-06-09T02:20:40.560661"
+        }
+      },
+      "unit_id": "1ddb19982e7140d5bd1f61df6a417ad9",
+      "timestamp": "2026-06-09T02:20:40.432843",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560658",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "literary_magazine_preference",
+      "value": "discovered a literary magazine that resonates deeply with personal experiences",
+      "context": "discovered a literary magazine that resonates deeply with my experiences",
+      "profile_type": "preference",
+      "stability_score": 0.7167382107380309,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "discovered a literary magazine that resonates deeply with my experiences",
+          "scene": "session_3",
+          "evidence_id": "720218e6aa984f83bb4b5352c2034907",
+          "timestamp": "2026-06-09T02:20:40.425621"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "discovered a literary magazine that resonates deeply with personal experiences",
+          "context": "discovered a literary magazine that resonates deeply with my experiences",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "discovered a literary magazine that resonates deeply with my experiences",
+              "scene": "session_3",
+              "evidence_id": "720218e6aa984f83bb4b5352c2034907",
+              "timestamp": "2026-06-09T02:20:40.425621"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:40.425621",
+          "last_accessed": "2026-06-09T02:20:40.560805"
+        }
+      },
+      "unit_id": "c5a79ed93fe44426be04211a63e14fcf",
+      "timestamp": "2026-06-09T02:20:40.437327",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560802",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "non_fiction_writing_interest",
+      "value": "reading non-fiction on writing techniques and philosophy",
+      "context": "reading several non-fiction books on writing techniques and philosophy",
+      "profile_type": "interest",
+      "stability_score": 0.5984205780467782,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "reading several non-fiction books on writing techniques and philosophy",
+          "scene": "session_3",
+          "evidence_id": "10c4610067984e1c912fd6f276c88b4f",
+          "timestamp": "2026-06-09T02:20:40.425624"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "reading non-fiction on writing techniques and philosophy",
+          "context": "reading several non-fiction books on writing techniques and philosophy",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "reading several non-fiction books on writing techniques and philosophy",
+              "scene": "session_3",
+              "evidence_id": "10c4610067984e1c912fd6f276c88b4f",
+              "timestamp": "2026-06-09T02:20:40.425624"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:40.425624",
+          "last_accessed": "2026-06-09T02:20:40.560932"
+        }
+      },
+      "unit_id": "651813edf5554c7cb0b80083b457a52f",
+      "timestamp": "2026-06-09T02:20:40.441032",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.560929",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "book_format_preference",
+      "value": "prefers digital collections and eBooks over physical due to space and cost",
+      "context": "focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs",
+      "profile_type": "preference",
+      "stability_score": 0.7167382143007041,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs",
+          "scene": "session_3",
+          "evidence_id": "ebfa8300bc6c4b2381f9b0d6594bd24a",
+          "timestamp": "2026-06-09T02:20:40.425626"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers digital collections and eBooks over physical due to space and cost",
+          "context": "focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs",
+              "scene": "session_3",
+              "evidence_id": "ebfa8300bc6c4b2381f9b0d6594bd24a",
+              "timestamp": "2026-06-09T02:20:40.425626"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:40.425626",
+          "last_accessed": "2026-06-09T02:20:40.561098"
+        }
+      },
+      "unit_id": "1274c7537f1c46cf9ff9a5c148617be9",
+      "timestamp": "2026-06-09T02:20:40.447545",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.561095",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "adaptation_movie_night_interest",
+      "value": "started weekly movie night focusing on book-to-film adaptations to analyze translation",
+      "context": "start a weekly movie night that specifically focuses on adaptations from books to films",
+      "profile_type": "interest",
+      "stability_score": 0.5984205831361209,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "start a weekly movie night that specifically focuses on adaptations from books to films",
+          "scene": "session_3",
+          "evidence_id": "35b78f246345416099d9e77b01660ef4",
+          "timestamp": "2026-06-09T02:20:40.425628"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "started weekly movie night focusing on book-to-film adaptations to analyze translation",
+          "context": "start a weekly movie night that specifically focuses on adaptations from books to films",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "start a weekly movie night that specifically focuses on adaptations from books to films",
+              "scene": "session_3",
+              "evidence_id": "35b78f246345416099d9e77b01660ef4",
+              "timestamp": "2026-06-09T02:20:40.425628"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:20:40.425628",
+          "last_accessed": "2026-06-09T02:20:40.561262"
+        }
+      },
+      "unit_id": "1e4de7cb28ad483d81116d147dd339ea",
+      "timestamp": "2026-06-09T02:20:40.453948",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.561259",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "reading_speed_preference",
+      "value": "slow and savoring",
+      "context": "stepped back from readathons to enjoy reading at own pace",
+      "profile_type": "style",
+      "stability_score": 0.6784571774062793,
+      "confidence_score": 0.75,
+      "scene": "session_4",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stepped back from readathons to enjoy reading at own pace",
+          "scene": "session_4",
+          "evidence_id": "36aa0c3102c446638178a2e6ab4e1932",
+          "timestamp": "2026-06-09T02:20:40.469981"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "slow and savoring",
+          "context": "stepped back from readathons to enjoy reading at own pace",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stepped back from readathons to enjoy reading at own pace",
+              "scene": "session_4",
+              "evidence_id": "36aa0c3102c446638178a2e6ab4e1932",
+              "timestamp": "2026-06-09T02:20:40.469981"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:40.469981",
+          "last_accessed": "2026-06-09T02:20:40.561344"
+        }
+      },
+      "unit_id": "f58d76e56e8548328213ddf078ca119d",
+      "timestamp": "2026-06-09T02:20:40.474003",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.561341",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "genre_preference",
+      "value": "fiction over non-fiction writing guides",
+      "context": "shifted focus towards fiction and ignored non-fiction writing books",
+      "profile_type": "preference",
+      "stability_score": 0.7114353381190515,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "shifted focus towards fiction and ignored non-fiction writing books",
+          "scene": "session_4",
+          "evidence_id": "3e682363baa84867a5689dc529a5b082",
+          "timestamp": "2026-06-09T02:20:40.469984"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "fiction over non-fiction writing guides",
+          "context": "shifted focus towards fiction and ignored non-fiction writing books",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "shifted focus towards fiction and ignored non-fiction writing books",
+              "scene": "session_4",
+              "evidence_id": "3e682363baa84867a5689dc529a5b082",
+              "timestamp": "2026-06-09T02:20:40.469984"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:40.469984",
+          "last_accessed": "2026-06-09T02:20:40.561453"
+        }
+      },
+      "unit_id": "9f9b5bff0232471fb4ea3c5a98196447",
+      "timestamp": "2026-06-09T02:20:40.479004",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.561450",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "collecting_interest",
+      "value": "rare first editions and antique books",
+      "context": "attended antique book fair, found rare finds, collecting cherished novels",
+      "profile_type": "interest",
+      "stability_score": 0.6423785717972974,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "attended antique book fair, found rare finds, collecting cherished novels",
+          "scene": "session_4",
+          "evidence_id": "638281eb1aa54df099eb78e458fc23be",
+          "timestamp": "2026-06-09T02:20:40.469993"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "rare first editions and antique books",
+          "context": "attended antique book fair, found rare finds, collecting cherished novels",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "attended antique book fair, found rare finds, collecting cherished novels",
+              "scene": "session_4",
+              "evidence_id": "638281eb1aa54df099eb78e458fc23be",
+              "timestamp": "2026-06-09T02:20:40.469993"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:40.469993",
+          "last_accessed": "2026-06-09T02:20:40.561587"
+        }
+      },
+      "unit_id": "ea4b067dcc5d4e85ac82fd263b93a617",
+      "timestamp": "2026-06-09T02:20:40.490942",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.561584",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "interest_film_podcast",
+      "value": "started a podcast to highlight underappreciated films and directors",
+      "context": "User stated: 'I also took the leap to start my own movie podcast, which truly focuses on showcasing underappreciated films and directors'",
+      "profile_type": "interest",
+      "stability_score": 0.6926756513496218,
+      "confidence_score": 0.9,
+      "scene": "session_5",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated: 'I also took the leap to start my own movie podcast, which truly focuses on showcasing underappreciated films and directors'",
+          "scene": "session_5",
+          "evidence_id": "765fdc1e5fdb4027b7a5ce3d93df72c7",
+          "timestamp": "2026-06-09T02:20:40.507678"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "started a podcast to highlight underappreciated films and directors",
+          "context": "User stated: 'I also took the leap to start my own movie podcast, which truly focuses on showcasing underappreciated films and directors'",
+          "confidence_score": 0.9,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated: 'I also took the leap to start my own movie podcast, which truly focuses on showcasing underappreciated films and directors'",
+              "scene": "session_5",
+              "evidence_id": "765fdc1e5fdb4027b7a5ce3d93df72c7",
+              "timestamp": "2026-06-09T02:20:40.507678"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:40.507678",
+          "last_accessed": "2026-06-09T02:20:40.558594"
+        }
+      },
+      "unit_id": "f59aba4c731e4a6e90d8571213e80bcb",
+      "timestamp": "2026-06-09T02:20:40.518949",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.558592",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "preference_social_environment",
+      "value": "prefers smaller, intimate film discussions and screenings over large crowds and competitive events",
+      "context": "User decided to avoid trivia nights due to competitive stress, attend smaller local screenings instead of large festivals, and joined a local online film discussion group for more personal conversations",
+      "profile_type": "preference",
+      "stability_score": 0.7534220578129255,
+      "confidence_score": 0.85,
+      "scene": "session_5",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User decided to avoid trivia nights due to competitive stress, attend smaller local screenings instead of large festivals, and joined a local online film discussion group for more personal conversations",
+          "scene": "session_5",
+          "evidence_id": "ea9090cd0a9e4b6d94e534185d2cce15",
+          "timestamp": "2026-06-09T02:20:40.507681"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "prefers smaller, intimate film discussions and screenings over large crowds and competitive events",
+          "context": "User decided to avoid trivia nights due to competitive stress, attend smaller local screenings instead of large festivals, and joined a local online film discussion group for more personal conversations",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User decided to avoid trivia nights due to competitive stress, attend smaller local screenings instead of large festivals, and joined a local online film discussion group for more personal conversations",
+              "scene": "session_5",
+              "evidence_id": "ea9090cd0a9e4b6d94e534185d2cce15",
+              "timestamp": "2026-06-09T02:20:40.507681"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:40.507681",
+          "last_accessed": "2026-06-09T02:20:40.558725"
+        }
+      },
+      "unit_id": "64332f559af842eebd2c5998d3f7f267",
+      "timestamp": "2026-06-09T02:20:40.536075",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.558723",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "goal_film_education",
+      "value": "actively learning about filmmaking through workshops, analysis classes, and documentaries",
+      "context": "User joined a local filmmaking workshop, participated in a community class on film analysis techniques, and watched a documentary series on film history",
+      "profile_type": "goal",
+      "stability_score": 0.5829024438826038,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User joined a local filmmaking workshop, participated in a community class on film analysis techniques, and watched a documentary series on film history",
+          "scene": "session_5",
+          "evidence_id": "fe9a35efc8aa47f1bc4e4fba11f7ab6c",
+          "timestamp": "2026-06-09T02:20:40.507684"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "actively learning about filmmaking through workshops, analysis classes, and documentaries",
+          "context": "User joined a local filmmaking workshop, participated in a community class on film analysis techniques, and watched a documentary series on film history",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User joined a local filmmaking workshop, participated in a community class on film analysis techniques, and watched a documentary series on film history",
+              "scene": "session_5",
+              "evidence_id": "fe9a35efc8aa47f1bc4e4fba11f7ab6c",
+              "timestamp": "2026-06-09T02:20:40.507684"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:40.507684",
+          "last_accessed": "2026-06-09T02:20:40.558950"
+        }
+      },
+      "unit_id": "cbfbd720b23b40bcad6ea4872a7cf1d3",
+      "timestamp": "2026-06-09T02:20:40.550616",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:40.558948",
+      "last_evolved": "2026-06-09T02:20:40.561663",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "c4603ce68b3d4cce836970e1ef273b67": {
+      "source": "llm_deepseek",
+      "content": "joined a local book club focused on contemporary fiction",
+      "scene": "session_0",
+      "evidence_id": "c4603ce68b3d4cce836970e1ef273b67",
+      "timestamp": "2026-06-09T02:20:40.405631"
+    },
+    "0fd1383301ab44999b5d3afadd664e59": {
+      "source": "llm_deepseek",
+      "content": "eager to start my personal journey in the world of blogging about books",
+      "scene": "session_0",
+      "evidence_id": "0fd1383301ab44999b5d3afadd664e59",
+      "timestamp": "2026-06-09T02:20:40.405639"
+    },
+    "7cd0aba8b51d4c238ddf957638176549": {
+      "source": "llm_deepseek",
+      "content": "follows a book influencer focusing solely on indie literature, appreciates unique perspectives and hidden gems",
+      "scene": "session_1",
+      "evidence_id": "7cd0aba8b51d4c238ddf957638176549",
+      "timestamp": "2026-06-09T02:20:40.406636"
+    },
+    "8c865af054934288ae770dcfbf9625ae": {
+      "source": "llm_deepseek",
+      "content": "stopped writing formal book critiques and shifted to informal discussions to avoid pressure and enjoy literature more freely",
+      "scene": "session_1",
+      "evidence_id": "8c865af054934288ae770dcfbf9625ae",
+      "timestamp": "2026-06-09T02:20:40.406639"
+    },
+    "7e87325ab99f45bfb8829def831dbde0": {
+      "source": "llm_deepseek",
+      "content": "opts to read spontaneously instead of adhering to structured reading lists, finds them restrictive",
+      "scene": "session_1",
+      "evidence_id": "7e87325ab99f45bfb8829def831dbde0",
+      "timestamp": "2026-06-09T02:20:40.406642"
+    },
+    "78acd45e28a8442582f7e8312e2c4fd9": {
+      "source": "llm_deepseek",
+      "content": "I've even started a collection of movie memorabilia from favorite films over the years since then",
+      "scene": "session_2",
+      "evidence_id": "78acd45e28a8442582f7e8312e2c4fd9",
+      "timestamp": "2026-06-09T02:20:40.412791"
+    },
+    "7afb76ff3d3142daa7981632482d5100": {
+      "source": "llm_deepseek",
+      "content": "writing allows me to articulate my thoughts... has become a routine for me",
+      "scene": "session_2",
+      "evidence_id": "7afb76ff3d3142daa7981632482d5100",
+      "timestamp": "2026-06-09T02:20:40.412794"
+    },
+    "f11703af5c114292a46643755c70ca1f": {
+      "source": "llm_deepseek",
+      "content": "joined a documentary screening club",
+      "scene": "session_2",
+      "evidence_id": "f11703af5c114292a46643755c70ca1f",
+      "timestamp": "2026-06-09T02:20:40.412799"
+    },
+    "7e635d2b871f4148b7a2529ba31b2dc8": {
+      "source": "llm_deepseek",
+      "content": "unfollowed all book influencers to regain a more authentic reading experience",
+      "scene": "session_3",
+      "evidence_id": "7e635d2b871f4148b7a2529ba31b2dc8",
+      "timestamp": "2026-06-09T02:20:40.425615"
+    },
+    "e4c62fcc37f24c5da84920bc28857699": {
+      "source": "llm_deepseek",
+      "content": "stopped listening to book podcasts entirely. They started to feel repetitive",
+      "scene": "session_3",
+      "evidence_id": "e4c62fcc37f24c5da84920bc28857699",
+      "timestamp": "2026-06-09T02:20:40.425619"
+    },
+    "720218e6aa984f83bb4b5352c2034907": {
+      "source": "llm_deepseek",
+      "content": "discovered a literary magazine that resonates deeply with my experiences",
+      "scene": "session_3",
+      "evidence_id": "720218e6aa984f83bb4b5352c2034907",
+      "timestamp": "2026-06-09T02:20:40.425621"
+    },
+    "10c4610067984e1c912fd6f276c88b4f": {
+      "source": "llm_deepseek",
+      "content": "reading several non-fiction books on writing techniques and philosophy",
+      "scene": "session_3",
+      "evidence_id": "10c4610067984e1c912fd6f276c88b4f",
+      "timestamp": "2026-06-09T02:20:40.425624"
+    },
+    "ebfa8300bc6c4b2381f9b0d6594bd24a": {
+      "source": "llm_deepseek",
+      "content": "focus on digital collections and eBooks rather than physically collecting rare books because of space constraints and costs",
+      "scene": "session_3",
+      "evidence_id": "ebfa8300bc6c4b2381f9b0d6594bd24a",
+      "timestamp": "2026-06-09T02:20:40.425626"
+    },
+    "35b78f246345416099d9e77b01660ef4": {
+      "source": "llm_deepseek",
+      "content": "start a weekly movie night that specifically focuses on adaptations from books to films",
+      "scene": "session_3",
+      "evidence_id": "35b78f246345416099d9e77b01660ef4",
+      "timestamp": "2026-06-09T02:20:40.425628"
+    },
+    "36aa0c3102c446638178a2e6ab4e1932": {
+      "source": "llm_deepseek",
+      "content": "stepped back from readathons to enjoy reading at own pace",
+      "scene": "session_4",
+      "evidence_id": "36aa0c3102c446638178a2e6ab4e1932",
+      "timestamp": "2026-06-09T02:20:40.469981"
+    },
+    "3e682363baa84867a5689dc529a5b082": {
+      "source": "llm_deepseek",
+      "content": "shifted focus towards fiction and ignored non-fiction writing books",
+      "scene": "session_4",
+      "evidence_id": "3e682363baa84867a5689dc529a5b082",
+      "timestamp": "2026-06-09T02:20:40.469984"
+    },
+    "fa2d836a5f494e549fd80f361362a9e7": {
+      "source": "llm_deepseek",
+      "content": "book club discussions drifted from deeper analysis, considering leaving",
+      "scene": "session_4",
+      "evidence_id": "fa2d836a5f494e549fd80f361362a9e7",
+      "timestamp": "2026-06-09T02:20:40.469989"
+    },
+    "638281eb1aa54df099eb78e458fc23be": {
+      "source": "llm_deepseek",
+      "content": "attended antique book fair, found rare finds, collecting cherished novels",
+      "scene": "session_4",
+      "evidence_id": "638281eb1aa54df099eb78e458fc23be",
+      "timestamp": "2026-06-09T02:20:40.469993"
+    },
+    "765fdc1e5fdb4027b7a5ce3d93df72c7": {
+      "source": "llm_deepseek",
+      "content": "User stated: 'I also took the leap to start my own movie podcast, which truly focuses on showcasing underappreciated films and directors'",
+      "scene": "session_5",
+      "evidence_id": "765fdc1e5fdb4027b7a5ce3d93df72c7",
+      "timestamp": "2026-06-09T02:20:40.507678"
+    },
+    "ea9090cd0a9e4b6d94e534185d2cce15": {
+      "source": "llm_deepseek",
+      "content": "User decided to avoid trivia nights due to competitive stress, attend smaller local screenings instead of large festivals, and joined a local online film discussion group for more personal conversations",
+      "scene": "session_5",
+      "evidence_id": "ea9090cd0a9e4b6d94e534185d2cce15",
+      "timestamp": "2026-06-09T02:20:40.507681"
+    },
+    "fe9a35efc8aa47f1bc4e4fba11f7ab6c": {
+      "source": "llm_deepseek",
+      "content": "User joined a local filmmaking workshop, participated in a community class on film analysis techniques, and watched a documentary series on film history",
+      "scene": "session_5",
+      "evidence_id": "fe9a35efc8aa47f1bc4e4fba11f7ab6c",
+      "timestamp": "2026-06-09T02:20:40.507684"
+    }
+  },
+  "current_session": "session_5",
+  "current_session_id": "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06_session_5",
+  "config_id": "promote_0.46",
+  "context_hash": "40027b883505bfc53148a5b86c418f9374c3bdd49ebd5160d8f6901cfca51d06",
+  "num_sessions": 6
+}

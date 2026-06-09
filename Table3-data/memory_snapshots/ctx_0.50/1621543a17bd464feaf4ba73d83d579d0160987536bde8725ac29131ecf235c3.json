@@ -1,0 +1,848 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.5,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "learning_style_preference",
+      "value": "prefers accessible, jargon-free resources over dense materials",
+      "context": "User frequently expresses frustration with financial jargon in webinars, literature, and courses, and seeks simpler resources.",
+      "profile_type": "preference",
+      "stability_score": 0.5999999856364584,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User frequently expresses frustration with financial jargon in webinars, literature, and courses, and seeks simpler resources.",
+          "scene": "session_0",
+          "evidence_id": "23501ab30de64a61ae88cc412b3d978a",
+          "timestamp": "2026-06-09T02:22:00.698705"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers accessible, jargon-free resources over dense materials",
+          "context": "User frequently expresses frustration with financial jargon in webinars, literature, and courses, and seeks simpler resources.",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User frequently expresses frustration with financial jargon in webinars, literature, and courses, and seeks simpler resources.",
+              "scene": "session_0",
+              "evidence_id": "23501ab30de64a61ae88cc412b3d978a",
+              "timestamp": "2026-06-09T02:22:00.698705"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:00.698705",
+          "last_accessed": "2026-06-09T02:22:00.766561"
+        }
+      },
+      "unit_id": "4ef9be9e017946219edc55bf1fce70ce",
+      "timestamp": "2026-06-09T02:22:00.698739",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766558",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "financial_goal",
+      "value": "build a structured retirement plan using spreadsheets and diversified portfolios",
+      "context": "User created a retirement planning spreadsheet and researches diversified portfolios including stocks, bonds, real estate.",
+      "profile_type": "goal",
+      "stability_score": 0.5999999862370834,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User created a retirement planning spreadsheet and researches diversified portfolios including stocks, bonds, real estate.",
+          "scene": "session_0",
+          "evidence_id": "97e6b957ae524c5b8d1d6f5db3a1684d",
+          "timestamp": "2026-06-09T02:22:00.698715"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "build a structured retirement plan using spreadsheets and diversified portfolios",
+          "context": "User created a retirement planning spreadsheet and researches diversified portfolios including stocks, bonds, real estate.",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User created a retirement planning spreadsheet and researches diversified portfolios including stocks, bonds, real estate.",
+              "scene": "session_0",
+              "evidence_id": "97e6b957ae524c5b8d1d6f5db3a1684d",
+              "timestamp": "2026-06-09T02:22:00.698715"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:00.698715",
+          "last_accessed": "2026-06-09T02:22:00.766709"
+        }
+      },
+      "unit_id": "b5d3ab820e684bb79ad876b614408b12",
+      "timestamp": "2026-06-09T02:22:00.701622",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766706",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "mentoring_style",
+      "value": "informal peer mentor",
+      "context": "user decided to invest time in mentoring peers informally rather than formal volunteering",
+      "profile_type": "style",
+      "stability_score": 0.4999999902932293,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user decided to invest time in mentoring peers informally rather than formal volunteering",
+          "scene": "session_1",
+          "evidence_id": "740d8f4fc55f478c9a9ae2899615c884",
+          "timestamp": "2026-06-09T02:22:00.706386"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "informal peer mentor",
+          "context": "user decided to invest time in mentoring peers informally rather than formal volunteering",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user decided to invest time in mentoring peers informally rather than formal volunteering",
+              "scene": "session_1",
+              "evidence_id": "740d8f4fc55f478c9a9ae2899615c884",
+              "timestamp": "2026-06-09T02:22:00.706386"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:00.706386",
+          "last_accessed": "2026-06-09T02:22:00.766824"
+        }
+      },
+      "unit_id": "e5cd5ac416904d4bbdf0b6d1420c4b6d",
+      "timestamp": "2026-06-09T02:22:00.711773",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766821",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "networking_style",
+      "value": "selective and deep",
+      "context": "user felt overwhelmed by pressure to impress, so connect with only a select few to deepen relationships",
+      "profile_type": "style",
+      "stability_score": 0.5999999891437501,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user felt overwhelmed by pressure to impress, so connect with only a select few to deepen relationships",
+          "scene": "session_1",
+          "evidence_id": "2a8e2d3a5bc84976868a006496be506c",
+          "timestamp": "2026-06-09T02:22:00.706388"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "selective and deep",
+          "context": "user felt overwhelmed by pressure to impress, so connect with only a select few to deepen relationships",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user felt overwhelmed by pressure to impress, so connect with only a select few to deepen relationships",
+              "scene": "session_1",
+              "evidence_id": "2a8e2d3a5bc84976868a006496be506c",
+              "timestamp": "2026-06-09T02:22:00.706388"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:00.706388",
+          "last_accessed": "2026-06-09T02:22:00.766955"
+        }
+      },
+      "unit_id": "63cecc7a531b469885fe119ecadbdf98",
+      "timestamp": "2026-06-09T02:22:00.715573",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766952",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "finance_tool_preference",
+      "value": "automatic categorization and investment tracking",
+      "context": "came across an application that not only tracks my budget but also offers investment tracking features",
+      "profile_type": "preference",
+      "stability_score": 0.5999999916327083,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "came across an application that not only tracks my budget but also offers investment tracking features",
+          "scene": "session_2",
+          "evidence_id": "8ae9545b854d467b8f7622eb69cce7aa",
+          "timestamp": "2026-06-09T02:22:00.723263"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "automatic categorization and investment tracking",
+          "context": "came across an application that not only tracks my budget but also offers investment tracking features",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "came across an application that not only tracks my budget but also offers investment tracking features",
+              "scene": "session_2",
+              "evidence_id": "8ae9545b854d467b8f7622eb69cce7aa",
+              "timestamp": "2026-06-09T02:22:00.723263"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:22:00.723263",
+          "last_accessed": "2026-06-09T02:22:00.767058"
+        }
+      },
+      "unit_id": "427054b56ca64bf6b3b605442f0f9b7b",
+      "timestamp": "2026-06-09T02:22:00.727521",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.767055",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "social_learning_preference",
+      "value": "hosts finance-themed game nights with friends for mutual learning",
+      "context": "Hosting these finance-themed game nights; playing trading simulator games and investment quizzes; it's become a monthly tradition.",
+      "profile_type": "style",
+      "stability_score": 0.5999999964410416,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Hosting these finance-themed game nights; playing trading simulator games and investment quizzes; it's become a monthly tradition.",
+          "scene": "session_3",
+          "evidence_id": "9e33468f60194fa99ca637356c28c4cd",
+          "timestamp": "2026-06-09T02:22:00.736190"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "hosts finance-themed game nights with friends for mutual learning",
+          "context": "Hosting these finance-themed game nights; playing trading simulator games and investment quizzes; it's become a monthly tradition.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Hosting these finance-themed game nights; playing trading simulator games and investment quizzes; it's become a monthly tradition.",
+              "scene": "session_3",
+              "evidence_id": "9e33468f60194fa99ca637356c28c4cd",
+              "timestamp": "2026-06-09T02:22:00.736190"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:22:00.736190",
+          "last_accessed": "2026-06-09T02:22:00.766277"
+        }
+      },
+      "unit_id": "37a9baf01c09438f9394fff6ad453a95",
+      "timestamp": "2026-06-09T02:22:00.750600",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766275",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "investment_goal",
+      "value": "retirement planning through real estate rentals in growth areas",
+      "context": "Began exploring real estate as a retirement investment option; looking into rental properties in areas expected to grow, on the cusp of revitalization.",
+      "profile_type": "goal",
+      "stability_score": 0.6499999984652778,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Began exploring real estate as a retirement investment option; looking into rental properties in areas expected to grow, on the cusp of revitalization.",
+          "scene": "session_3",
+          "evidence_id": "5c025beae72c4628b808cc0ed1b82b24",
+          "timestamp": "2026-06-09T02:22:00.736193"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "retirement planning through real estate rentals in growth areas",
+          "context": "Began exploring real estate as a retirement investment option; looking into rental properties in areas expected to grow, on the cusp of revitalization.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Began exploring real estate as a retirement investment option; looking into rental properties in areas expected to grow, on the cusp of revitalization.",
+              "scene": "session_3",
+              "evidence_id": "5c025beae72c4628b808cc0ed1b82b24",
+              "timestamp": "2026-06-09T02:22:00.736193"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:22:00.736193",
+          "last_accessed": "2026-06-09T02:22:00.766420"
+        }
+      },
+      "unit_id": "01558fff0deb4e77ad22040d3eaf4302",
+      "timestamp": "2026-06-09T02:22:00.760882",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766418",
+      "last_evolved": "2026-06-09T02:22:00.767687",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "engagement_style",
+      "value": "seeks collaborative and community-based learning",
+      "context": "User shares budget with friends, joins budgeting community, participates in panel discussions, blogs about finance, and considers volunteering.",
+      "profile_type": "style",
+      "stability_score": 0.7473336800209772,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User shares budget with friends, joins budgeting community, participates in panel discussions, blogs about finance, and considers volunteering.",
+          "scene": "session_0",
+          "evidence_id": "d19539a7dc0c46a6aa54132bf2c223a0",
+          "timestamp": "2026-06-09T02:22:00.698712"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "seeks collaborative and community-based learning",
+          "context": "User shares budget with friends, joins budgeting community, participates in panel discussions, blogs about finance, and considers volunteering.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User shares budget with friends, joins budgeting community, participates in panel discussions, blogs about finance, and considers volunteering.",
+              "scene": "session_0",
+              "evidence_id": "d19539a7dc0c46a6aa54132bf2c223a0",
+              "timestamp": "2026-06-09T02:22:00.698712"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:00.698712",
+          "last_accessed": "2026-06-09T02:22:00.767318"
+        }
+      },
+      "unit_id": "5875dcbaaf23416cb20e4276ab95e17a",
+      "timestamp": "2026-06-09T02:22:00.699570",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.767315",
+      "last_evolved": "2026-06-09T02:22:00.767712",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "challenge_pattern",
+      "value": "overwhelmed by complex financial terminology and dense content",
+      "context": "User reports difficulty with jargon in crypto, tax webinar, financial literature, and advanced tax course.",
+      "profile_type": "general",
+      "stability_score": 0.7217824958480274,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User reports difficulty with jargon in crypto, tax webinar, financial literature, and advanced tax course.",
+          "scene": "session_0",
+          "evidence_id": "f0dac1b630224d51b09c42c4d93016ff",
+          "timestamp": "2026-06-09T02:22:00.698717"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "overwhelmed by complex financial terminology and dense content",
+          "context": "User reports difficulty with jargon in crypto, tax webinar, financial literature, and advanced tax course.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User reports difficulty with jargon in crypto, tax webinar, financial literature, and advanced tax course.",
+              "scene": "session_0",
+              "evidence_id": "f0dac1b630224d51b09c42c4d93016ff",
+              "timestamp": "2026-06-09T02:22:00.698717"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:22:00.698717",
+          "last_accessed": "2026-06-09T02:22:00.767459"
+        }
+      },
+      "unit_id": "dfc7aed12f3445799f9448d5503a0fc9",
+      "timestamp": "2026-06-09T02:22:00.703736",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.767456",
+      "last_evolved": "2026-06-09T02:22:00.767712",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "learning_interest",
+      "value": "financial literacy enthusiast",
+      "context": "user has been focused on expanding financial knowledge through self-study, books, webinars, courses, etc.",
+      "profile_type": "interest",
+      "stability_score": 0.760537445776327,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user has been focused on expanding financial knowledge through self-study, books, webinars, courses, etc.",
+          "scene": "session_1",
+          "evidence_id": "5e1cadcb97a24a4c8a80008e5e564ae1",
+          "timestamp": "2026-06-09T02:22:00.706383"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "financial literacy enthusiast",
+          "context": "user has been focused on expanding financial knowledge through self-study, books, webinars, courses, etc.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user has been focused on expanding financial knowledge through self-study, books, webinars, courses, etc.",
+              "scene": "session_1",
+              "evidence_id": "5e1cadcb97a24a4c8a80008e5e564ae1",
+              "timestamp": "2026-06-09T02:22:00.706383"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:00.706383",
+          "last_accessed": "2026-06-09T02:22:00.767577"
+        }
+      },
+      "unit_id": "8dddc225a9df48beab31a436fb9cf533",
+      "timestamp": "2026-06-09T02:22:00.708692",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.767575",
+      "last_evolved": "2026-06-09T02:22:00.767712",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "financial_tool_preference",
+      "value": "budgeting app user",
+      "context": "user uses an automated budgeting app to track expenses",
+      "profile_type": "preference",
+      "stability_score": 0.7167382383403718,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user uses an automated budgeting app to track expenses",
+          "scene": "session_1",
+          "evidence_id": "94b3b204c7094e9899698f66df966758",
+          "timestamp": "2026-06-09T02:22:00.706391"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "budgeting app user",
+          "context": "user uses an automated budgeting app to track expenses",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user uses an automated budgeting app to track expenses",
+              "scene": "session_1",
+              "evidence_id": "94b3b204c7094e9899698f66df966758",
+              "timestamp": "2026-06-09T02:22:00.706391"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:22:00.706391",
+          "last_accessed": "2026-06-09T02:22:00.767654"
+        }
+      },
+      "unit_id": "1f28af3a00144d06a2205a9566be899d",
+      "timestamp": "2026-06-09T02:22:00.718283",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.767652",
+      "last_evolved": "2026-06-09T02:22:00.767712",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "investment_learning_style",
+      "value": "simulation with community engagement",
+      "context": "joined an online community for investment simulations, enjoying both the game and the camaraderie",
+      "profile_type": "style",
+      "stability_score": 0.7125525966780111,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined an online community for investment simulations, enjoying both the game and the camaraderie",
+          "scene": "session_2",
+          "evidence_id": "dea40326c21a4c909ca45aedf0290e3c",
+          "timestamp": "2026-06-09T02:22:00.723267"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "simulation with community engagement",
+          "context": "joined an online community for investment simulations, enjoying both the game and the camaraderie",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined an online community for investment simulations, enjoying both the game and the camaraderie",
+              "scene": "session_2",
+              "evidence_id": "dea40326c21a4c909ca45aedf0290e3c",
+              "timestamp": "2026-06-09T02:22:00.723267"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:22:00.723267",
+          "last_accessed": "2026-06-09T02:22:00.767172"
+        }
+      },
+      "unit_id": "5592494889084867a64e63160c8d8f1a",
+      "timestamp": "2026-06-09T02:22:00.732286",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.767170",
+      "last_evolved": "2026-06-09T02:22:00.767712",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "finance_learning_style",
+      "value": "prefers self-study and premium resources over workshops",
+      "context": "Frustrated by lack of tangible results from workshops; decided to focus on personal study; enrolled in premium financial analysis service.",
+      "profile_type": "style",
+      "stability_score": 0.7125525997211559,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Frustrated by lack of tangible results from workshops; decided to focus on personal study; enrolled in premium financial analysis service.",
+          "scene": "session_3",
+          "evidence_id": "fe689264c9fa44e994b500ea588bb720",
+          "timestamp": "2026-06-09T02:22:00.736187"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers self-study and premium resources over workshops",
+          "context": "Frustrated by lack of tangible results from workshops; decided to focus on personal study; enrolled in premium financial analysis service.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Frustrated by lack of tangible results from workshops; decided to focus on personal study; enrolled in premium financial analysis service.",
+              "scene": "session_3",
+              "evidence_id": "fe689264c9fa44e994b500ea588bb720",
+              "timestamp": "2026-06-09T02:22:00.736187"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:22:00.736187",
+          "last_accessed": "2026-06-09T02:22:00.766121"
+        }
+      },
+      "unit_id": "8d012e994b9e484895262c9c564e5f81",
+      "timestamp": "2026-06-09T02:22:00.743025",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:00.766119",
+      "last_evolved": "2026-06-09T02:22:00.767712",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "23501ab30de64a61ae88cc412b3d978a": {
+      "source": "llm_deepseek",
+      "content": "User frequently expresses frustration with financial jargon in webinars, literature, and courses, and seeks simpler resources.",
+      "scene": "session_0",
+      "evidence_id": "23501ab30de64a61ae88cc412b3d978a",
+      "timestamp": "2026-06-09T02:22:00.698705"
+    },
+    "d19539a7dc0c46a6aa54132bf2c223a0": {
+      "source": "llm_deepseek",
+      "content": "User shares budget with friends, joins budgeting community, participates in panel discussions, blogs about finance, and considers volunteering.",
+      "scene": "session_0",
+      "evidence_id": "d19539a7dc0c46a6aa54132bf2c223a0",
+      "timestamp": "2026-06-09T02:22:00.698712"
+    },
+    "97e6b957ae524c5b8d1d6f5db3a1684d": {
+      "source": "llm_deepseek",
+      "content": "User created a retirement planning spreadsheet and researches diversified portfolios including stocks, bonds, real estate.",
+      "scene": "session_0",
+      "evidence_id": "97e6b957ae524c5b8d1d6f5db3a1684d",
+      "timestamp": "2026-06-09T02:22:00.698715"
+    },
+    "f0dac1b630224d51b09c42c4d93016ff": {
+      "source": "llm_deepseek",
+      "content": "User reports difficulty with jargon in crypto, tax webinar, financial literature, and advanced tax course.",
+      "scene": "session_0",
+      "evidence_id": "f0dac1b630224d51b09c42c4d93016ff",
+      "timestamp": "2026-06-09T02:22:00.698717"
+    },
+    "5e1cadcb97a24a4c8a80008e5e564ae1": {
+      "source": "llm_deepseek",
+      "content": "user has been focused on expanding financial knowledge through self-study, books, webinars, courses, etc.",
+      "scene": "session_1",
+      "evidence_id": "5e1cadcb97a24a4c8a80008e5e564ae1",
+      "timestamp": "2026-06-09T02:22:00.706383"
+    },
+    "740d8f4fc55f478c9a9ae2899615c884": {
+      "source": "llm_deepseek",
+      "content": "user decided to invest time in mentoring peers informally rather than formal volunteering",
+      "scene": "session_1",
+      "evidence_id": "740d8f4fc55f478c9a9ae2899615c884",
+      "timestamp": "2026-06-09T02:22:00.706386"
+    },
+    "2a8e2d3a5bc84976868a006496be506c": {
+      "source": "llm_deepseek",
+      "content": "user felt overwhelmed by pressure to impress, so connect with only a select few to deepen relationships",
+      "scene": "session_1",
+      "evidence_id": "2a8e2d3a5bc84976868a006496be506c",
+      "timestamp": "2026-06-09T02:22:00.706388"
+    },
+    "94b3b204c7094e9899698f66df966758": {
+      "source": "llm_deepseek",
+      "content": "user uses an automated budgeting app to track expenses",
+      "scene": "session_1",
+      "evidence_id": "94b3b204c7094e9899698f66df966758",
+      "timestamp": "2026-06-09T02:22:00.706391"
+    },
+    "8ae9545b854d467b8f7622eb69cce7aa": {
+      "source": "llm_deepseek",
+      "content": "came across an application that not only tracks my budget but also offers investment tracking features",
+      "scene": "session_2",
+      "evidence_id": "8ae9545b854d467b8f7622eb69cce7aa",
+      "timestamp": "2026-06-09T02:22:00.723263"
+    },
+    "dea40326c21a4c909ca45aedf0290e3c": {
+      "source": "llm_deepseek",
+      "content": "joined an online community for investment simulations, enjoying both the game and the camaraderie",
+      "scene": "session_2",
+      "evidence_id": "dea40326c21a4c909ca45aedf0290e3c",
+      "timestamp": "2026-06-09T02:22:00.723267"
+    },
+    "fe689264c9fa44e994b500ea588bb720": {
+      "source": "llm_deepseek",
+      "content": "Frustrated by lack of tangible results from workshops; decided to focus on personal study; enrolled in premium financial analysis service.",
+      "scene": "session_3",
+      "evidence_id": "fe689264c9fa44e994b500ea588bb720",
+      "timestamp": "2026-06-09T02:22:00.736187"
+    },
+    "9e33468f60194fa99ca637356c28c4cd": {
+      "source": "llm_deepseek",
+      "content": "Hosting these finance-themed game nights; playing trading simulator games and investment quizzes; it's become a monthly tradition.",
+      "scene": "session_3",
+      "evidence_id": "9e33468f60194fa99ca637356c28c4cd",
+      "timestamp": "2026-06-09T02:22:00.736190"
+    },
+    "5c025beae72c4628b808cc0ed1b82b24": {
+      "source": "llm_deepseek",
+      "content": "Began exploring real estate as a retirement investment option; looking into rental properties in areas expected to grow, on the cusp of revitalization.",
+      "scene": "session_3",
+      "evidence_id": "5c025beae72c4628b808cc0ed1b82b24",
+      "timestamp": "2026-06-09T02:22:00.736193"
+    }
+  },
+  "current_session": "session_3",
+  "current_session_id": "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3_session_3",
+  "config_id": "ctx_0.50",
+  "context_hash": "1621543a17bd464feaf4ba73d83d579d0160987536bde8725ac29131ecf235c3",
+  "num_sessions": 4
+}

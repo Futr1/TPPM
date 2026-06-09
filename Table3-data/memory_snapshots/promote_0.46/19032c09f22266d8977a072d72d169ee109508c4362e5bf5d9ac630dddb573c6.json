@@ -1,0 +1,1432 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.46,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [],
+  "long_term_memory": [
+    {
+      "attribute": "activity_preference",
+      "value": "prefers interactive family activities over passive ones like movie nights",
+      "context": "User decided to skip movie nights due to arguments and stated preference for interactive activities",
+      "profile_type": "preference",
+      "stability_score": 0.7888556969933634,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I think I still prefer more laid-back activities these days; avoids board games, crafting, family tree due to complexity/conflict",
+          "scene": "session_0",
+          "evidence_id": "4ef5767798d34f09a7eb9f8dd6df3412",
+          "timestamp": "2026-06-09T02:20:39.063115"
+        },
+        {
+          "source": "llm_deepseek",
+          "content": "User decided to skip movie nights due to arguments and stated preference for interactive activities",
+          "scene": "session_1",
+          "evidence_id": "635bcc3c85fd4dd485477a17b91bfb3a",
+          "timestamp": "2026-06-09T02:20:39.077942"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers simple, low-stress family activities over complex or competitive ones",
+          "context": "I think I still prefer more laid-back activities these days; avoids board games, crafting, family tree due to complexity/conflict",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I think I still prefer more laid-back activities these days; avoids board games, crafting, family tree due to complexity/conflict",
+              "scene": "session_0",
+              "evidence_id": "4ef5767798d34f09a7eb9f8dd6df3412",
+              "timestamp": "2026-06-09T02:20:39.063115"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:39.063115",
+          "last_accessed": "2026-06-09T02:20:39.077171"
+        },
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers interactive family activities over passive ones like movie nights",
+          "context": "User decided to skip movie nights due to arguments and stated preference for interactive activities",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User decided to skip movie nights due to arguments and stated preference for interactive activities",
+              "scene": "session_1",
+              "evidence_id": "635bcc3c85fd4dd485477a17b91bfb3a",
+              "timestamp": "2026-06-09T02:20:39.077942"
+            }
+          ],
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:39.077942",
+          "last_accessed": "2026-06-09T02:20:39.254643"
+        }
+      },
+      "unit_id": "262d49c6469a468e85700c478c269236",
+      "timestamp": "2026-06-09T02:20:39.063156",
+      "session_count": 2,
+      "reinforcement_count": 2,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_0",
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.254640",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_bonding_activity",
+      "value": "enjoys movie nights with post-film discussions as a bonding activity",
+      "context": "our family movie nights sparked great conversations afterward; we always ended up discussing the movie long after it ended",
+      "profile_type": "interest",
+      "stability_score": 0.5975375755566129,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "our family movie nights sparked great conversations afterward; we always ended up discussing the movie long after it ended",
+          "scene": "session_0",
+          "evidence_id": "bfb66930998a4c72814c240d0f22af01",
+          "timestamp": "2026-06-09T02:20:39.063122"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "enjoys movie nights with post-film discussions as a bonding activity",
+          "context": "our family movie nights sparked great conversations afterward; we always ended up discussing the movie long after it ended",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "our family movie nights sparked great conversations afterward; we always ended up discussing the movie long after it ended",
+              "scene": "session_0",
+              "evidence_id": "bfb66930998a4c72814c240d0f22af01",
+              "timestamp": "2026-06-09T02:20:39.063122"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:39.063122",
+          "last_accessed": "2026-06-09T02:20:39.254817"
+        }
+      },
+      "unit_id": "cb034c401fd74cad872164c5491636e0",
+      "timestamp": "2026-06-09T02:20:39.063936",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.254814",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_nostalgia",
+      "value": "values preserving family memories through photographs, recipes, and writing history",
+      "context": "collecting family photographs... rewarding experience; writing our family history was a fulfilling project; cooking traditional family recipes",
+      "profile_type": "interest",
+      "stability_score": 0.6680063741185862,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "collecting family photographs... rewarding experience; writing our family history was a fulfilling project; cooking traditional family recipes",
+          "scene": "session_0",
+          "evidence_id": "a06c83f00676432697812435ec5feb45",
+          "timestamp": "2026-06-09T02:20:39.063127"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "values preserving family memories through photographs, recipes, and writing history",
+          "context": "collecting family photographs... rewarding experience; writing our family history was a fulfilling project; cooking traditional family recipes",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "collecting family photographs... rewarding experience; writing our family history was a fulfilling project; cooking traditional family recipes",
+              "scene": "session_0",
+              "evidence_id": "a06c83f00676432697812435ec5feb45",
+              "timestamp": "2026-06-09T02:20:39.063127"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:39.063127",
+          "last_accessed": "2026-06-09T02:20:39.255028"
+        }
+      },
+      "unit_id": "793e8d31a075494d9205aaa07a95df61",
+      "timestamp": "2026-06-09T02:20:39.065532",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.255025",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "conflict_sensitivity",
+      "value": "avoids activities that lead to disagreements or tension among family members",
+      "context": "It just creates disagreements among us; playing board games isn't the best... leads to conflict; sports events were just too competitive",
+      "profile_type": "preference",
+      "stability_score": 0.7265807009318831,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "It just creates disagreements among us; playing board games isn't the best... leads to conflict; sports events were just too competitive",
+          "scene": "session_0",
+          "evidence_id": "adc63c570b094b7fad91aec7d333c215",
+          "timestamp": "2026-06-09T02:20:39.063129"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "avoids activities that lead to disagreements or tension among family members",
+          "context": "It just creates disagreements among us; playing board games isn't the best... leads to conflict; sports events were just too competitive",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "It just creates disagreements among us; playing board games isn't the best... leads to conflict; sports events were just too competitive",
+              "scene": "session_0",
+              "evidence_id": "adc63c570b094b7fad91aec7d333c215",
+              "timestamp": "2026-06-09T02:20:39.063129"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:39.063129",
+          "last_accessed": "2026-06-09T02:20:39.255227"
+        }
+      },
+      "unit_id": "a3b009ac02a24755be5d0a14ae6584fa",
+      "timestamp": "2026-06-09T02:20:39.068045",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.255224",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_role_organizer",
+      "value": "often takes on organizational roles for family events, such as reunions and workshops",
+      "context": "I also organized the family reunion that year; The family workshop we held was a success! Planning fun activities for everyone is key",
+      "profile_type": "background",
+      "stability_score": 0.7580302697804431,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I also organized the family reunion that year; The family workshop we held was a success! Planning fun activities for everyone is key",
+          "scene": "session_0",
+          "evidence_id": "af4f17fe74524b7a8b6295e95b274ddf",
+          "timestamp": "2026-06-09T02:20:39.063134"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "often takes on organizational roles for family events, such as reunions and workshops",
+          "context": "I also organized the family reunion that year; The family workshop we held was a success! Planning fun activities for everyone is key",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I also organized the family reunion that year; The family workshop we held was a success! Planning fun activities for everyone is key",
+              "scene": "session_0",
+              "evidence_id": "af4f17fe74524b7a8b6295e95b274ddf",
+              "timestamp": "2026-06-09T02:20:39.063134"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:39.063134",
+          "last_accessed": "2026-06-09T02:20:39.255433"
+        }
+      },
+      "unit_id": "9e6bb8f017e84faf88a7aeb1a85106d6",
+      "timestamp": "2026-06-09T02:20:39.071604",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.255430",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "cooking_activity_style",
+      "value": "modernizes family recipes with children, fostering creativity and bonding",
+      "context": "User made a new twist on family recipes with kids, enjoyed the process",
+      "profile_type": "interest",
+      "stability_score": 0.5979636241507411,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User made a new twist on family recipes with kids, enjoyed the process",
+          "scene": "session_1",
+          "evidence_id": "8d81ceef678a4c4ea290083e4b074de1",
+          "timestamp": "2026-06-09T02:20:39.077945"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "modernizes family recipes with children, fostering creativity and bonding",
+          "context": "User made a new twist on family recipes with kids, enjoyed the process",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User made a new twist on family recipes with kids, enjoyed the process",
+              "scene": "session_1",
+              "evidence_id": "8d81ceef678a4c4ea290083e4b074de1",
+              "timestamp": "2026-06-09T02:20:39.077945"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:39.077945",
+          "last_accessed": "2026-06-09T02:20:39.255601"
+        }
+      },
+      "unit_id": "1ca0a63967344ad0b3f813b798b35d47",
+      "timestamp": "2026-06-09T02:20:39.084675",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.255598",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_volunteering_habit",
+      "value": "organizes family volunteering days at local shelters",
+      "context": "User arranged a volunteering day for the whole family at a shelter",
+      "profile_type": "general",
+      "stability_score": 0.6399093893665325,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User arranged a volunteering day for the whole family at a shelter",
+          "scene": "session_1",
+          "evidence_id": "70be7a16732343228ea024d3dada98ca",
+          "timestamp": "2026-06-09T02:20:39.077948"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "organizes family volunteering days at local shelters",
+          "context": "User arranged a volunteering day for the whole family at a shelter",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User arranged a volunteering day for the whole family at a shelter",
+              "scene": "session_1",
+              "evidence_id": "70be7a16732343228ea024d3dada98ca",
+              "timestamp": "2026-06-09T02:20:39.077948"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:39.077948",
+          "last_accessed": "2026-06-09T02:20:39.255734"
+        }
+      },
+      "unit_id": "ef6d94a7c5764f948cd3e04db260d40b",
+      "timestamp": "2026-06-09T02:20:39.087564",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.255731",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_communication_ritual",
+      "value": "established weekly family check-ins to discuss feelings and ideas",
+      "context": "User reintroduced weekly family check-ins as a ritual",
+      "profile_type": "style",
+      "stability_score": 0.7473336494741342,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User reintroduced weekly family check-ins as a ritual",
+          "scene": "session_1",
+          "evidence_id": "fc4711a0495d4b37bf7b8089b5968773",
+          "timestamp": "2026-06-09T02:20:39.077950"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "established weekly family check-ins to discuss feelings and ideas",
+          "context": "User reintroduced weekly family check-ins as a ritual",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User reintroduced weekly family check-ins as a ritual",
+              "scene": "session_1",
+              "evidence_id": "fc4711a0495d4b37bf7b8089b5968773",
+              "timestamp": "2026-06-09T02:20:39.077950"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:39.077950",
+          "last_accessed": "2026-06-09T02:20:39.255882"
+        }
+      },
+      "unit_id": "e7d9f72ced3d46479a71ba888fafb5ea",
+      "timestamp": "2026-06-09T02:20:39.090832",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.255880",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "genealogy_interest",
+      "value": "actively researching family history and constructing a family tree",
+      "context": "User began constructing a family tree after attending a genealogy lecture",
+      "profile_type": "interest",
+      "stability_score": 0.6735419920821356,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User began constructing a family tree after attending a genealogy lecture",
+          "scene": "session_1",
+          "evidence_id": "0f70541313034fabac55b3f0310f51ff",
+          "timestamp": "2026-06-09T02:20:39.077952"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "actively researching family history and constructing a family tree",
+          "context": "User began constructing a family tree after attending a genealogy lecture",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User began constructing a family tree after attending a genealogy lecture",
+              "scene": "session_1",
+              "evidence_id": "0f70541313034fabac55b3f0310f51ff",
+              "timestamp": "2026-06-09T02:20:39.077952"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:39.077952",
+          "last_accessed": "2026-06-09T02:20:39.256042"
+        }
+      },
+      "unit_id": "28427debb73f41478dafa56ea64448db",
+      "timestamp": "2026-06-09T02:20:39.094857",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.256039",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_activity_preference",
+      "value": "structured but flexible activities that accommodate everyone's preferences",
+      "context": "decided to reintroduce family game nights with a schedule that accommodates everyone’s preferences",
+      "profile_type": "preference",
+      "stability_score": 0.6306674112824197,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to reintroduce family game nights with a schedule that accommodates everyone’s preferences",
+          "scene": "session_2",
+          "evidence_id": "dbe9cc48ac784ea8983a4d4316722a34",
+          "timestamp": "2026-06-09T02:20:39.103145"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "structured but flexible activities that accommodate everyone's preferences",
+          "context": "decided to reintroduce family game nights with a schedule that accommodates everyone’s preferences",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to reintroduce family game nights with a schedule that accommodates everyone’s preferences",
+              "scene": "session_2",
+              "evidence_id": "dbe9cc48ac784ea8983a4d4316722a34",
+              "timestamp": "2026-06-09T02:20:39.103145"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:20:39.103145",
+          "last_accessed": "2026-06-09T02:20:39.256211"
+        }
+      },
+      "unit_id": "87c4ae0f51374c8b946cfc1073b33378",
+      "timestamp": "2026-06-09T02:20:39.108865",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.256208",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_volunteering_attitude",
+      "value": "prefers children to genuinely enjoy activities, avoids forcing participation",
+      "context": "decided against future family volunteering because kids were resentful; focuses on fostering their interests",
+      "profile_type": "preference",
+      "stability_score": 0.6306674133959358,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided against future family volunteering because kids were resentful; focuses on fostering their interests",
+          "scene": "session_2",
+          "evidence_id": "c80cd9ce7e5d4abbadd201c6f777944b",
+          "timestamp": "2026-06-09T02:20:39.103148"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers children to genuinely enjoy activities, avoids forcing participation",
+          "context": "decided against future family volunteering because kids were resentful; focuses on fostering their interests",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided against future family volunteering because kids were resentful; focuses on fostering their interests",
+              "scene": "session_2",
+              "evidence_id": "c80cd9ce7e5d4abbadd201c6f777944b",
+              "timestamp": "2026-06-09T02:20:39.103148"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:20:39.103148",
+          "last_accessed": "2026-06-09T02:20:39.256383"
+        }
+      },
+      "unit_id": "7c16c36294d54013921e34bc21d8467e",
+      "timestamp": "2026-06-09T02:20:39.115937",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.256380",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_preference",
+      "value": "prefers short getaways over long travels for quality family bonding",
+      "context": "planned a short getaway focusing on quality experiences instead of long travels",
+      "profile_type": "preference",
+      "stability_score": 0.6306674151923647,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "planned a short getaway focusing on quality experiences instead of long travels",
+          "scene": "session_2",
+          "evidence_id": "ab5b0f2800ef4bdbb8b65f65cb4d692e",
+          "timestamp": "2026-06-09T02:20:39.103151"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers short getaways over long travels for quality family bonding",
+          "context": "planned a short getaway focusing on quality experiences instead of long travels",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "planned a short getaway focusing on quality experiences instead of long travels",
+              "scene": "session_2",
+              "evidence_id": "ab5b0f2800ef4bdbb8b65f65cb4d692e",
+              "timestamp": "2026-06-09T02:20:39.103151"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:20:39.103151",
+          "last_accessed": "2026-06-09T02:20:39.256532"
+        }
+      },
+      "unit_id": "69776bd9067a4a05981bc36e6d12c053",
+      "timestamp": "2026-06-09T02:20:39.121948",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.256529",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_values_discussion_practice",
+      "value": "facilitates open discussions about family values during dinner to enhance connections and teach life lessons",
+      "context": "begun facilitating open discussions about family values during dinner to enhance our connections",
+      "profile_type": "goal",
+      "stability_score": 0.5534335869059471,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "begun facilitating open discussions about family values during dinner to enhance our connections",
+          "scene": "session_2",
+          "evidence_id": "4288797b97454cf39f7e5ce54e15930b",
+          "timestamp": "2026-06-09T02:20:39.103153"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "facilitates open discussions about family values during dinner to enhance connections and teach life lessons",
+          "context": "begun facilitating open discussions about family values during dinner to enhance our connections",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "begun facilitating open discussions about family values during dinner to enhance our connections",
+              "scene": "session_2",
+              "evidence_id": "4288797b97454cf39f7e5ce54e15930b",
+              "timestamp": "2026-06-09T02:20:39.103153"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:20:39.103153",
+          "last_accessed": "2026-06-09T02:20:39.256731"
+        }
+      },
+      "unit_id": "f3557b01f7794e07adc0586e88f462d8",
+      "timestamp": "2026-06-09T02:20:39.130689",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.256729",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "financial_learning_approach",
+      "value": "proactive and multi-faceted (seminars, clubs, courses, podcasts)",
+      "context": "user attended retirement seminar, joined investment club, took online course on advanced strategies, listens to financial podcasts",
+      "profile_type": "style",
+      "stability_score": 0.7246129872345564,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user attended retirement seminar, joined investment club, took online course on advanced strategies, listens to financial podcasts",
+          "scene": "session_3",
+          "evidence_id": "f834f29d35714b98a1414ebf8521d9e1",
+          "timestamp": "2026-06-09T02:20:39.141528"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "proactive and multi-faceted (seminars, clubs, courses, podcasts)",
+          "context": "user attended retirement seminar, joined investment club, took online course on advanced strategies, listens to financial podcasts",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user attended retirement seminar, joined investment club, took online course on advanced strategies, listens to financial podcasts",
+              "scene": "session_3",
+              "evidence_id": "f834f29d35714b98a1414ebf8521d9e1",
+              "timestamp": "2026-06-09T02:20:39.141528"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:39.141528",
+          "last_accessed": "2026-06-09T02:20:39.256897"
+        }
+      },
+      "unit_id": "ecd64d2e8b314e8c82564b050dd8e7f1",
+      "timestamp": "2026-06-09T02:20:39.151687",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.256895",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "learning_style_preference",
+      "value": "practical, hands-on, visual, realistic",
+      "context": "user found board game unhelpful, prefers realistic simulations, visual tracking, disliked stock simulation games",
+      "profile_type": "preference",
+      "stability_score": 0.7114353325002264,
+      "confidence_score": 0.75,
+      "scene": "session_3",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user found board game unhelpful, prefers realistic simulations, visual tracking, disliked stock simulation games",
+          "scene": "session_3",
+          "evidence_id": "fd82ad6bf7204c7086d706e3403e5cb7",
+          "timestamp": "2026-06-09T02:20:39.141532"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "practical, hands-on, visual, realistic",
+          "context": "user found board game unhelpful, prefers realistic simulations, visual tracking, disliked stock simulation games",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user found board game unhelpful, prefers realistic simulations, visual tracking, disliked stock simulation games",
+              "scene": "session_3",
+              "evidence_id": "fd82ad6bf7204c7086d706e3403e5cb7",
+              "timestamp": "2026-06-09T02:20:39.141532"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:39.141532",
+          "last_accessed": "2026-06-09T02:20:39.257072"
+        }
+      },
+      "unit_id": "a14e36fec6f34a42b54b401cfe0f6d90",
+      "timestamp": "2026-06-09T02:20:39.160146",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.257069",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "content_creation_interest",
+      "value": "personal finance blogging",
+      "context": "user started a personal finance blog to share insights and help others navigate their financial journeys",
+      "profile_type": "interest",
+      "stability_score": 0.8162501980017858,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user started a personal finance blog to share insights and help others navigate their financial journeys",
+          "scene": "session_3",
+          "evidence_id": "13ad048606d34b5c9d20545229923067",
+          "timestamp": "2026-06-09T02:20:39.141535"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "personal finance blogging",
+          "context": "user started a personal finance blog to share insights and help others navigate their financial journeys",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user started a personal finance blog to share insights and help others navigate their financial journeys",
+              "scene": "session_3",
+              "evidence_id": "13ad048606d34b5c9d20545229923067",
+              "timestamp": "2026-06-09T02:20:39.141535"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:39.141535",
+          "last_accessed": "2026-06-09T02:20:39.257213"
+        }
+      },
+      "unit_id": "f6c005a07c814bc09e2183106ddb3227",
+      "timestamp": "2026-06-09T02:20:39.169072",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.257210",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "public_speaking_comfort",
+      "value": "low, prefers written communication",
+      "context": "user felt uncomfortable at public speaking event about investment strategies and decided not to pursue it",
+      "profile_type": "preference",
+      "stability_score": 0.7566772078249406,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user felt uncomfortable at public speaking event about investment strategies and decided not to pursue it",
+          "scene": "session_3",
+          "evidence_id": "17a6633f8c1a4871a9d0842d97a9613c",
+          "timestamp": "2026-06-09T02:20:39.141537"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "low, prefers written communication",
+          "context": "user felt uncomfortable at public speaking event about investment strategies and decided not to pursue it",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user felt uncomfortable at public speaking event about investment strategies and decided not to pursue it",
+              "scene": "session_3",
+              "evidence_id": "17a6633f8c1a4871a9d0842d97a9613c",
+              "timestamp": "2026-06-09T02:20:39.141537"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:39.141537",
+          "last_accessed": "2026-06-09T02:20:39.257360"
+        }
+      },
+      "unit_id": "75ab324d12e44a1fa95a48dbf1ee87ee",
+      "timestamp": "2026-06-09T02:20:39.177893",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.257357",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_tradition_initiation_style",
+      "value": "creates new traditions to enhance bonding",
+      "context": "Started monthly game night, family reunion, memory sharing tradition",
+      "profile_type": "style",
+      "stability_score": 0.7605920599723092,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started monthly game night, family reunion, memory sharing tradition",
+          "scene": "session_4",
+          "evidence_id": "5d0fbdef33bd4aaba7eefc269aab93ea",
+          "timestamp": "2026-06-09T02:20:39.191866"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "creates new traditions to enhance bonding",
+          "context": "Started monthly game night, family reunion, memory sharing tradition",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started monthly game night, family reunion, memory sharing tradition",
+              "scene": "session_4",
+              "evidence_id": "5d0fbdef33bd4aaba7eefc269aab93ea",
+              "timestamp": "2026-06-09T02:20:39.191866"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:39.191866",
+          "last_accessed": "2026-06-09T02:20:39.253902"
+        }
+      },
+      "unit_id": "19be0b8ecc8940e2961c44eeff672d4d",
+      "timestamp": "2026-06-09T02:20:39.199306",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.253900",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "stress_response_in_family_activities",
+      "value": "discontinues activities causing tension",
+      "context": "Stopped photo sessions and values discussions due to stress and conflict",
+      "profile_type": "style",
+      "stability_score": 0.6645131209128888,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Stopped photo sessions and values discussions due to stress and conflict",
+          "scene": "session_4",
+          "evidence_id": "f32512ebe8c54797804ca7e343464680",
+          "timestamp": "2026-06-09T02:20:39.191870"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "discontinues activities causing tension",
+          "context": "Stopped photo sessions and values discussions due to stress and conflict",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Stopped photo sessions and values discussions due to stress and conflict",
+              "scene": "session_4",
+              "evidence_id": "f32512ebe8c54797804ca7e343464680",
+              "timestamp": "2026-06-09T02:20:39.191870"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:39.191870",
+          "last_accessed": "2026-06-09T02:20:39.254060"
+        }
+      },
+      "unit_id": "3e7113eeba4448dbbb694521101124df",
+      "timestamp": "2026-06-09T02:20:39.207158",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.254058",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_activity_preference",
+      "value": "active outdoor experiences over passive entertainment",
+      "context": "Replaced movie nights with outdoor activities, joined hiking group",
+      "profile_type": "preference",
+      "stability_score": 0.7058605808951012,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Replaced movie nights with outdoor activities, joined hiking group",
+          "scene": "session_4",
+          "evidence_id": "6cbc0ee7891e47ab8ce4fd60e8631e15",
+          "timestamp": "2026-06-09T02:20:39.191873"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "active outdoor experiences over passive entertainment",
+          "context": "Replaced movie nights with outdoor activities, joined hiking group",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Replaced movie nights with outdoor activities, joined hiking group",
+              "scene": "session_4",
+              "evidence_id": "6cbc0ee7891e47ab8ce4fd60e8631e15",
+              "timestamp": "2026-06-09T02:20:39.191873"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:39.191873",
+          "last_accessed": "2026-06-09T02:20:39.254204"
+        }
+      },
+      "unit_id": "d712d88fbd354037818abc9f0c47deb5",
+      "timestamp": "2026-06-09T02:20:39.215249",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.254202",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "family_reflection_habit",
+      "value": "annual memory sharing tradition",
+      "context": "Started new holiday tradition where everyone shares favorite memories from the year",
+      "profile_type": "preference",
+      "stability_score": 0.8009835249613267,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started new holiday tradition where everyone shares favorite memories from the year",
+          "scene": "session_4",
+          "evidence_id": "ec98a7d4d3e043fd9d972b19eba05235",
+          "timestamp": "2026-06-09T02:20:39.191875"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "annual memory sharing tradition",
+          "context": "Started new holiday tradition where everyone shares favorite memories from the year",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started new holiday tradition where everyone shares favorite memories from the year",
+              "scene": "session_4",
+              "evidence_id": "ec98a7d4d3e043fd9d972b19eba05235",
+              "timestamp": "2026-06-09T02:20:39.191875"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:39.191875",
+          "last_accessed": "2026-06-09T02:20:39.254342"
+        }
+      },
+      "unit_id": "c5f428341d0d4544ac699b61984da951",
+      "timestamp": "2026-06-09T02:20:39.224191",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.254341",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "gardening_interest",
+      "value": "home vegetable gardening with children",
+      "context": "Started garden with tomatoes, peppers, lettuce; kids involved in watering and pest checking",
+      "profile_type": "interest",
+      "stability_score": 0.5994362819549117,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started garden with tomatoes, peppers, lettuce; kids involved in watering and pest checking",
+          "scene": "session_4",
+          "evidence_id": "edf1ec45c74f4a5994dc50fa803f1259",
+          "timestamp": "2026-06-09T02:20:39.191877"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "home vegetable gardening with children",
+          "context": "Started garden with tomatoes, peppers, lettuce; kids involved in watering and pest checking",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started garden with tomatoes, peppers, lettuce; kids involved in watering and pest checking",
+              "scene": "session_4",
+              "evidence_id": "edf1ec45c74f4a5994dc50fa803f1259",
+              "timestamp": "2026-06-09T02:20:39.191877"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:39.191877",
+          "last_accessed": "2026-06-09T02:20:39.254480"
+        }
+      },
+      "unit_id": "287644eda0eb40f4af79a3f0379ee8ae",
+      "timestamp": "2026-06-09T02:20:39.235395",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:39.254478",
+      "last_evolved": "2026-06-09T02:20:39.257438",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "4ef5767798d34f09a7eb9f8dd6df3412": {
+      "source": "llm_deepseek",
+      "content": "I think I still prefer more laid-back activities these days; avoids board games, crafting, family tree due to complexity/conflict",
+      "scene": "session_0",
+      "evidence_id": "4ef5767798d34f09a7eb9f8dd6df3412",
+      "timestamp": "2026-06-09T02:20:39.063115"
+    },
+    "bfb66930998a4c72814c240d0f22af01": {
+      "source": "llm_deepseek",
+      "content": "our family movie nights sparked great conversations afterward; we always ended up discussing the movie long after it ended",
+      "scene": "session_0",
+      "evidence_id": "bfb66930998a4c72814c240d0f22af01",
+      "timestamp": "2026-06-09T02:20:39.063122"
+    },
+    "a06c83f00676432697812435ec5feb45": {
+      "source": "llm_deepseek",
+      "content": "collecting family photographs... rewarding experience; writing our family history was a fulfilling project; cooking traditional family recipes",
+      "scene": "session_0",
+      "evidence_id": "a06c83f00676432697812435ec5feb45",
+      "timestamp": "2026-06-09T02:20:39.063127"
+    },
+    "adc63c570b094b7fad91aec7d333c215": {
+      "source": "llm_deepseek",
+      "content": "It just creates disagreements among us; playing board games isn't the best... leads to conflict; sports events were just too competitive",
+      "scene": "session_0",
+      "evidence_id": "adc63c570b094b7fad91aec7d333c215",
+      "timestamp": "2026-06-09T02:20:39.063129"
+    },
+    "af4f17fe74524b7a8b6295e95b274ddf": {
+      "source": "llm_deepseek",
+      "content": "I also organized the family reunion that year; The family workshop we held was a success! Planning fun activities for everyone is key",
+      "scene": "session_0",
+      "evidence_id": "af4f17fe74524b7a8b6295e95b274ddf",
+      "timestamp": "2026-06-09T02:20:39.063134"
+    },
+    "635bcc3c85fd4dd485477a17b91bfb3a": {
+      "source": "llm_deepseek",
+      "content": "User decided to skip movie nights due to arguments and stated preference for interactive activities",
+      "scene": "session_1",
+      "evidence_id": "635bcc3c85fd4dd485477a17b91bfb3a",
+      "timestamp": "2026-06-09T02:20:39.077942"
+    },
+    "8d81ceef678a4c4ea290083e4b074de1": {
+      "source": "llm_deepseek",
+      "content": "User made a new twist on family recipes with kids, enjoyed the process",
+      "scene": "session_1",
+      "evidence_id": "8d81ceef678a4c4ea290083e4b074de1",
+      "timestamp": "2026-06-09T02:20:39.077945"
+    },
+    "70be7a16732343228ea024d3dada98ca": {
+      "source": "llm_deepseek",
+      "content": "User arranged a volunteering day for the whole family at a shelter",
+      "scene": "session_1",
+      "evidence_id": "70be7a16732343228ea024d3dada98ca",
+      "timestamp": "2026-06-09T02:20:39.077948"
+    },
+    "fc4711a0495d4b37bf7b8089b5968773": {
+      "source": "llm_deepseek",
+      "content": "User reintroduced weekly family check-ins as a ritual",
+      "scene": "session_1",
+      "evidence_id": "fc4711a0495d4b37bf7b8089b5968773",
+      "timestamp": "2026-06-09T02:20:39.077950"
+    },
+    "0f70541313034fabac55b3f0310f51ff": {
+      "source": "llm_deepseek",
+      "content": "User began constructing a family tree after attending a genealogy lecture",
+      "scene": "session_1",
+      "evidence_id": "0f70541313034fabac55b3f0310f51ff",
+      "timestamp": "2026-06-09T02:20:39.077952"
+    },
+    "dbe9cc48ac784ea8983a4d4316722a34": {
+      "source": "llm_deepseek",
+      "content": "decided to reintroduce family game nights with a schedule that accommodates everyone’s preferences",
+      "scene": "session_2",
+      "evidence_id": "dbe9cc48ac784ea8983a4d4316722a34",
+      "timestamp": "2026-06-09T02:20:39.103145"
+    },
+    "c80cd9ce7e5d4abbadd201c6f777944b": {
+      "source": "llm_deepseek",
+      "content": "decided against future family volunteering because kids were resentful; focuses on fostering their interests",
+      "scene": "session_2",
+      "evidence_id": "c80cd9ce7e5d4abbadd201c6f777944b",
+      "timestamp": "2026-06-09T02:20:39.103148"
+    },
+    "ab5b0f2800ef4bdbb8b65f65cb4d692e": {
+      "source": "llm_deepseek",
+      "content": "planned a short getaway focusing on quality experiences instead of long travels",
+      "scene": "session_2",
+      "evidence_id": "ab5b0f2800ef4bdbb8b65f65cb4d692e",
+      "timestamp": "2026-06-09T02:20:39.103151"
+    },
+    "4288797b97454cf39f7e5ce54e15930b": {
+      "source": "llm_deepseek",
+      "content": "begun facilitating open discussions about family values during dinner to enhance our connections",
+      "scene": "session_2",
+      "evidence_id": "4288797b97454cf39f7e5ce54e15930b",
+      "timestamp": "2026-06-09T02:20:39.103153"
+    },
+    "f834f29d35714b98a1414ebf8521d9e1": {
+      "source": "llm_deepseek",
+      "content": "user attended retirement seminar, joined investment club, took online course on advanced strategies, listens to financial podcasts",
+      "scene": "session_3",
+      "evidence_id": "f834f29d35714b98a1414ebf8521d9e1",
+      "timestamp": "2026-06-09T02:20:39.141528"
+    },
+    "fd82ad6bf7204c7086d706e3403e5cb7": {
+      "source": "llm_deepseek",
+      "content": "user found board game unhelpful, prefers realistic simulations, visual tracking, disliked stock simulation games",
+      "scene": "session_3",
+      "evidence_id": "fd82ad6bf7204c7086d706e3403e5cb7",
+      "timestamp": "2026-06-09T02:20:39.141532"
+    },
+    "13ad048606d34b5c9d20545229923067": {
+      "source": "llm_deepseek",
+      "content": "user started a personal finance blog to share insights and help others navigate their financial journeys",
+      "scene": "session_3",
+      "evidence_id": "13ad048606d34b5c9d20545229923067",
+      "timestamp": "2026-06-09T02:20:39.141535"
+    },
+    "17a6633f8c1a4871a9d0842d97a9613c": {
+      "source": "llm_deepseek",
+      "content": "user felt uncomfortable at public speaking event about investment strategies and decided not to pursue it",
+      "scene": "session_3",
+      "evidence_id": "17a6633f8c1a4871a9d0842d97a9613c",
+      "timestamp": "2026-06-09T02:20:39.141537"
+    },
+    "5d0fbdef33bd4aaba7eefc269aab93ea": {
+      "source": "llm_deepseek",
+      "content": "Started monthly game night, family reunion, memory sharing tradition",
+      "scene": "session_4",
+      "evidence_id": "5d0fbdef33bd4aaba7eefc269aab93ea",
+      "timestamp": "2026-06-09T02:20:39.191866"
+    },
+    "f32512ebe8c54797804ca7e343464680": {
+      "source": "llm_deepseek",
+      "content": "Stopped photo sessions and values discussions due to stress and conflict",
+      "scene": "session_4",
+      "evidence_id": "f32512ebe8c54797804ca7e343464680",
+      "timestamp": "2026-06-09T02:20:39.191870"
+    },
+    "6cbc0ee7891e47ab8ce4fd60e8631e15": {
+      "source": "llm_deepseek",
+      "content": "Replaced movie nights with outdoor activities, joined hiking group",
+      "scene": "session_4",
+      "evidence_id": "6cbc0ee7891e47ab8ce4fd60e8631e15",
+      "timestamp": "2026-06-09T02:20:39.191873"
+    },
+    "ec98a7d4d3e043fd9d972b19eba05235": {
+      "source": "llm_deepseek",
+      "content": "Started new holiday tradition where everyone shares favorite memories from the year",
+      "scene": "session_4",
+      "evidence_id": "ec98a7d4d3e043fd9d972b19eba05235",
+      "timestamp": "2026-06-09T02:20:39.191875"
+    },
+    "edf1ec45c74f4a5994dc50fa803f1259": {
+      "source": "llm_deepseek",
+      "content": "Started garden with tomatoes, peppers, lettuce; kids involved in watering and pest checking",
+      "scene": "session_4",
+      "evidence_id": "edf1ec45c74f4a5994dc50fa803f1259",
+      "timestamp": "2026-06-09T02:20:39.191877"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6_session_4",
+  "config_id": "promote_0.46",
+  "context_hash": "19032c09f22266d8977a072d72d169ee109508c4362e5bf5d9ac630dddb573c6",
+  "num_sessions": 5
+}

@@ -1,0 +1,1641 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "music_taste_genre",
+      "value": "jazz, classical, Afrobeat, blues",
+      "context": "explored jazz/classical and world music",
+      "profile_type": "preference",
+      "stability_score": 0.5999999600506262,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "explored jazz/classical and world music",
+          "scene": "session_0",
+          "evidence_id": "4c33032b5ec943f8bc5c9f989409b87d",
+          "timestamp": "2026-06-09T02:20:23.749073"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "jazz, classical, Afrobeat, blues",
+          "context": "explored jazz/classical and world music",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "explored jazz/classical and world music",
+              "scene": "session_0",
+              "evidence_id": "4c33032b5ec943f8bc5c9f989409b87d",
+              "timestamp": "2026-06-09T02:20:23.749073"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:23.749073",
+          "last_accessed": "2026-06-09T02:20:23.938685"
+        }
+      },
+      "unit_id": "4e59094f698b4ef7aed81360b5fc307a",
+      "timestamp": "2026-06-09T02:20:23.749929",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938682",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_learning_social",
+      "value": "prefers group learning for musical instruments and dance",
+      "context": "Signed up for ukulele class after seeing a child play; joined a local dance class.",
+      "profile_type": "style",
+      "stability_score": 0.5999999615687512,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Signed up for ukulele class after seeing a child play; joined a local dance class.",
+          "scene": "session_1",
+          "evidence_id": "05998c3a1b2a4bf8906bc4af84ba4cee",
+          "timestamp": "2026-06-09T02:20:23.755151"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers group learning for musical instruments and dance",
+          "context": "Signed up for ukulele class after seeing a child play; joined a local dance class.",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Signed up for ukulele class after seeing a child play; joined a local dance class.",
+              "scene": "session_1",
+              "evidence_id": "05998c3a1b2a4bf8906bc4af84ba4cee",
+              "timestamp": "2026-06-09T02:20:23.755151"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 22,
+          "last_seen": "2026-06-09T02:20:23.755151",
+          "last_accessed": "2026-06-09T02:20:23.938833"
+        }
+      },
+      "unit_id": "2cbab62beffb403895047e0c3378f796",
+      "timestamp": "2026-06-09T02:20:23.757217",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 22,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938830",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_teaching_kids",
+      "value": "enjoys teaching music appreciation to children",
+      "context": "Agreed to run a weekend workshop for kids on music appreciation.",
+      "profile_type": "interest",
+      "stability_score": 0.4999999687461816,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Agreed to run a weekend workshop for kids on music appreciation.",
+          "scene": "session_1",
+          "evidence_id": "c46d8fcb23fa489e98293fa4f180d1b8",
+          "timestamp": "2026-06-09T02:20:23.755156"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "enjoys teaching music appreciation to children",
+          "context": "Agreed to run a weekend workshop for kids on music appreciation.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Agreed to run a weekend workshop for kids on music appreciation.",
+              "scene": "session_1",
+              "evidence_id": "c46d8fcb23fa489e98293fa4f180d1b8",
+              "timestamp": "2026-06-09T02:20:23.755156"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 22,
+          "last_seen": "2026-06-09T02:20:23.755156",
+          "last_accessed": "2026-06-09T02:20:23.938950"
+        }
+      },
+      "unit_id": "5955f8f1180d4f1794857be9fe029280",
+      "timestamp": "2026-06-09T02:20:23.761664",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 22,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938947",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "community_teaching_interest",
+      "value": "enjoys teaching music to children through free workshops",
+      "context": "organized a free community workshop to teach kids about music basics",
+      "profile_type": "interest",
+      "stability_score": 0.49999997144583413,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "organized a free community workshop to teach kids about music basics",
+          "scene": "session_2",
+          "evidence_id": "c4744b4a7ba54d2786d8c15e03ef4297",
+          "timestamp": "2026-06-09T02:20:23.770586"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "enjoys teaching music to children through free workshops",
+          "context": "organized a free community workshop to teach kids about music basics",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "organized a free community workshop to teach kids about music basics",
+              "scene": "session_2",
+              "evidence_id": "c4744b4a7ba54d2786d8c15e03ef4297",
+              "timestamp": "2026-06-09T02:20:23.770586"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770586",
+          "last_accessed": "2026-06-09T02:20:23.939072"
+        }
+      },
+      "unit_id": "097470c4bc9d4a7791df806f6e4c0342",
+      "timestamp": "2026-06-09T02:20:23.777215",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939070",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_discovery_style",
+      "value": "prefers revisiting favorite artists over seeking new ones",
+      "context": "focusing more on favorite artists instead of seeking new talents",
+      "profile_type": "preference",
+      "stability_score": 0.599999967389584,
+      "confidence_score": 0.75,
+      "scene": "session_2",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "focusing more on favorite artists instead of seeking new talents",
+          "scene": "session_2",
+          "evidence_id": "42dac24ee95a4d7b9aa78b4a6d1e3ee9",
+          "timestamp": "2026-06-09T02:20:23.770591"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers revisiting favorite artists over seeking new ones",
+          "context": "focusing more on favorite artists instead of seeking new talents",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "focusing more on favorite artists instead of seeking new talents",
+              "scene": "session_2",
+              "evidence_id": "42dac24ee95a4d7b9aa78b4a6d1e3ee9",
+              "timestamp": "2026-06-09T02:20:23.770591"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770591",
+          "last_accessed": "2026-06-09T02:20:23.939224"
+        }
+      },
+      "unit_id": "5c3bb4530c6549119e6334edff11f411",
+      "timestamp": "2026-06-09T02:20:23.785156",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939221",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "electronic_music_interest",
+      "value": "developed a passion for electronic music after attending a genre-themed night",
+      "context": "genre-themed night at a café sparked a newfound passion for electronic music",
+      "profile_type": "interest",
+      "stability_score": 0.49999997378072986,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "genre-themed night at a café sparked a newfound passion for electronic music",
+          "scene": "session_2",
+          "evidence_id": "f1fa5330a4564cee9dd0c17dc42a312a",
+          "timestamp": "2026-06-09T02:20:23.770593"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "developed a passion for electronic music after attending a genre-themed night",
+          "context": "genre-themed night at a café sparked a newfound passion for electronic music",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "genre-themed night at a café sparked a newfound passion for electronic music",
+              "scene": "session_2",
+              "evidence_id": "f1fa5330a4564cee9dd0c17dc42a312a",
+              "timestamp": "2026-06-09T02:20:23.770593"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770593",
+          "last_accessed": "2026-06-09T02:20:23.939353"
+        }
+      },
+      "unit_id": "f79bafcb3cf84ce4ad076f3e74920b2d",
+      "timestamp": "2026-06-09T02:20:23.790662",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939351",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "playlist_curation_habit",
+      "value": "creates themed playlists for different occasions as a creative outlet",
+      "context": "spent the weekend creating themed playlists for different occasions",
+      "profile_type": "style",
+      "stability_score": 0.4999999747376742,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "spent the weekend creating themed playlists for different occasions",
+          "scene": "session_2",
+          "evidence_id": "6c0dc5a33c7f41db8a11b3f1487c5c03",
+          "timestamp": "2026-06-09T02:20:23.770596"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "creates themed playlists for different occasions as a creative outlet",
+          "context": "spent the weekend creating themed playlists for different occasions",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "spent the weekend creating themed playlists for different occasions",
+              "scene": "session_2",
+              "evidence_id": "6c0dc5a33c7f41db8a11b3f1487c5c03",
+              "timestamp": "2026-06-09T02:20:23.770596"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770596",
+          "last_accessed": "2026-06-09T02:20:23.939484"
+        }
+      },
+      "unit_id": "58c6395934d144e8a47c13cdd27f10ee",
+      "timestamp": "2026-06-09T02:20:23.796175",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939481",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "documentary_appreciation",
+      "value": "finds music documentaries profoundly educational and resonant",
+      "context": "watched a music documentary that deeply resonated and educated",
+      "profile_type": "interest",
+      "stability_score": 0.39999998046527824,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "watched a music documentary that deeply resonated and educated",
+          "scene": "session_2",
+          "evidence_id": "4bcb1453548346e2b555ee1305829f8f",
+          "timestamp": "2026-06-09T02:20:23.770598"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "finds music documentaries profoundly educational and resonant",
+          "context": "watched a music documentary that deeply resonated and educated",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "watched a music documentary that deeply resonated and educated",
+              "scene": "session_2",
+              "evidence_id": "4bcb1453548346e2b555ee1305829f8f",
+              "timestamp": "2026-06-09T02:20:23.770598"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770598",
+          "last_accessed": "2026-06-09T02:20:23.939667"
+        }
+      },
+      "unit_id": "2db3f68a73294e6989fc62c4e41810ec",
+      "timestamp": "2026-06-09T02:20:23.801036",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939664",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "trivia_night_enjoyment",
+      "value": "enjoys music trivia nights for challenge and nostalgia",
+      "context": "joined a local bar's music trivia night and had fun",
+      "profile_type": "preference",
+      "stability_score": 0.4999999764175353,
+      "confidence_score": 0.75,
+      "scene": "session_2",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a local bar's music trivia night and had fun",
+          "scene": "session_2",
+          "evidence_id": "c618c27ef6d548399a22af005a78efd4",
+          "timestamp": "2026-06-09T02:20:23.770600"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "enjoys music trivia nights for challenge and nostalgia",
+          "context": "joined a local bar's music trivia night and had fun",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a local bar's music trivia night and had fun",
+              "scene": "session_2",
+              "evidence_id": "c618c27ef6d548399a22af005a78efd4",
+              "timestamp": "2026-06-09T02:20:23.770600"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770600",
+          "last_accessed": "2026-06-09T02:20:23.939797"
+        }
+      },
+      "unit_id": "138e175f73794d96bac5cc6f01e01361",
+      "timestamp": "2026-06-09T02:20:23.805851",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939794",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "risk_taking_in_music",
+      "value": "willing to step back from stressful hobbies and try new forms of musical expression",
+      "context": "reevaluated hobby of writing music reviews due to stress, joined dance troupe, started piano lessons",
+      "profile_type": "style",
+      "stability_score": 0.5999999946804166,
+      "confidence_score": 0.7,
+      "scene": "session_5",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "reevaluated hobby of writing music reviews due to stress, joined dance troupe, started piano lessons",
+          "scene": "session_5",
+          "evidence_id": "7071a35ec1cc472281ae5d27a62d8c54",
+          "timestamp": "2026-06-09T02:20:23.887900"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "willing to step back from stressful hobbies and try new forms of musical expression",
+          "context": "reevaluated hobby of writing music reviews due to stress, joined dance troupe, started piano lessons",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "reevaluated hobby of writing music reviews due to stress, joined dance troupe, started piano lessons",
+              "scene": "session_5",
+              "evidence_id": "7071a35ec1cc472281ae5d27a62d8c54",
+              "timestamp": "2026-06-09T02:20:23.887900"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:20:23.887900",
+          "last_accessed": "2026-06-09T02:20:23.938487"
+        }
+      },
+      "unit_id": "823a53ff29634b52a9232a5c34e168cb",
+      "timestamp": "2026-06-09T02:20:23.916152",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938485",
+      "last_evolved": "2026-06-09T02:20:23.941690",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "music_listening_style",
+      "value": "prefers solo and deep engagement",
+      "context": "disliked group clubs and competitive events, enjoys solo playlists and documentaries",
+      "profile_type": "style",
+      "stability_score": 0.8469702533277433,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "disliked group clubs and competitive events, enjoys solo playlists and documentaries",
+          "scene": "session_0",
+          "evidence_id": "5acc9e1bc7d54dbda9f62ee290f44287",
+          "timestamp": "2026-06-09T02:20:23.749062"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers solo and deep engagement",
+          "context": "disliked group clubs and competitive events, enjoys solo playlists and documentaries",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "disliked group clubs and competitive events, enjoys solo playlists and documentaries",
+              "scene": "session_0",
+              "evidence_id": "5acc9e1bc7d54dbda9f62ee290f44287",
+              "timestamp": "2026-06-09T02:20:23.749062"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:23.749062",
+          "last_accessed": "2026-06-09T02:20:23.939917"
+        }
+      },
+      "unit_id": "c286eb45cb534dfcb246606789e61db4",
+      "timestamp": "2026-06-09T02:20:23.749101",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.939915",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_discovery_channel",
+      "value": "record shops and podcasts",
+      "context": "enjoyed record shop visit and music podcasts for deep stories",
+      "profile_type": "preference",
+      "stability_score": 0.7311449389431729,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "enjoyed record shop visit and music podcasts for deep stories",
+          "scene": "session_0",
+          "evidence_id": "024f72efd4044acc8dc09e221d63b01c",
+          "timestamp": "2026-06-09T02:20:23.749070"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "record shops and podcasts",
+          "context": "enjoyed record shop visit and music podcasts for deep stories",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "enjoyed record shop visit and music podcasts for deep stories",
+              "scene": "session_0",
+              "evidence_id": "024f72efd4044acc8dc09e221d63b01c",
+              "timestamp": "2026-06-09T02:20:23.749070"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:23.749070",
+          "last_accessed": "2026-06-09T02:20:23.940033"
+        }
+      },
+      "unit_id": "13f62541dbb543d78ebdce7bc99bc40b",
+      "timestamp": "2026-06-09T02:20:23.749479",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940030",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_activity_music",
+      "value": "avoids competitive music events",
+      "context": "felt out of place at trivia night, disliked charts and structured clubs",
+      "profile_type": "style",
+      "stability_score": 0.7683074746498411,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "felt out of place at trivia night, disliked charts and structured clubs",
+          "scene": "session_0",
+          "evidence_id": "4a94a3b8ce6a4e6c9b79dd52d21846df",
+          "timestamp": "2026-06-09T02:20:23.749075"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "avoids competitive music events",
+          "context": "felt out of place at trivia night, disliked charts and structured clubs",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "felt out of place at trivia night, disliked charts and structured clubs",
+              "scene": "session_0",
+              "evidence_id": "4a94a3b8ce6a4e6c9b79dd52d21846df",
+              "timestamp": "2026-06-09T02:20:23.749075"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:23.749075",
+          "last_accessed": "2026-06-09T02:20:23.940152"
+        }
+      },
+      "unit_id": "d9ee8c04cde74da5be23c2f99639fae1",
+      "timestamp": "2026-06-09T02:20:23.750723",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940149",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_participation_preference",
+      "value": "prefers individual projects over collaborations",
+      "context": "found collaboration more work than enjoyment, prefers solo projects",
+      "profile_type": "preference",
+      "stability_score": 0.731144939667314,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "found collaboration more work than enjoyment, prefers solo projects",
+          "scene": "session_0",
+          "evidence_id": "bf94d2e880d541e3a9bf6b28fda73f7d",
+          "timestamp": "2026-06-09T02:20:23.749077"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers individual projects over collaborations",
+          "context": "found collaboration more work than enjoyment, prefers solo projects",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "found collaboration more work than enjoyment, prefers solo projects",
+              "scene": "session_0",
+              "evidence_id": "bf94d2e880d541e3a9bf6b28fda73f7d",
+              "timestamp": "2026-06-09T02:20:23.749077"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 27,
+          "last_seen": "2026-06-09T02:20:23.749077",
+          "last_accessed": "2026-06-09T02:20:23.940292"
+        }
+      },
+      "unit_id": "162149d9221c487c9ec9344670119ae3",
+      "timestamp": "2026-06-09T02:20:23.751892",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 27,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940289",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_discovery_authentic",
+      "value": "values authentic personal discovery over commercial curation",
+      "context": "Stopped listening to music podcasts due to commercialism; prefers independent exploration.",
+      "profile_type": "preference",
+      "stability_score": 0.7265807048541923,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Stopped listening to music podcasts due to commercialism; prefers independent exploration.",
+          "scene": "session_1",
+          "evidence_id": "a612c31ea4814245848663a1902c70a7",
+          "timestamp": "2026-06-09T02:20:23.755154"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "values authentic personal discovery over commercial curation",
+          "context": "Stopped listening to music podcasts due to commercialism; prefers independent exploration.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Stopped listening to music podcasts due to commercialism; prefers independent exploration.",
+              "scene": "session_1",
+              "evidence_id": "a612c31ea4814245848663a1902c70a7",
+              "timestamp": "2026-06-09T02:20:23.755154"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 22,
+          "last_seen": "2026-06-09T02:20:23.755154",
+          "last_accessed": "2026-06-09T02:20:23.940450"
+        }
+      },
+      "unit_id": "77283dcab896465796b2fc4e0f50458b",
+      "timestamp": "2026-06-09T02:20:23.759479",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 22,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940448",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_curation_sharing",
+      "value": "actively curates and shares music with others",
+      "context": "Started a music review blog; participated in an online playlist swap project.",
+      "profile_type": "style",
+      "stability_score": 0.7580302734013725,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started a music review blog; participated in an online playlist swap project.",
+          "scene": "session_1",
+          "evidence_id": "dfb9b1c45fbe49b58e1198e20d46a7a4",
+          "timestamp": "2026-06-09T02:20:23.755159"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "actively curates and shares music with others",
+          "context": "Started a music review blog; participated in an online playlist swap project.",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started a music review blog; participated in an online playlist swap project.",
+              "scene": "session_1",
+              "evidence_id": "dfb9b1c45fbe49b58e1198e20d46a7a4",
+              "timestamp": "2026-06-09T02:20:23.755159"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 22,
+          "last_seen": "2026-06-09T02:20:23.755159",
+          "last_accessed": "2026-06-09T02:20:23.940579"
+        }
+      },
+      "unit_id": "b828bc7b25b84b5593e4426a67228aa7",
+      "timestamp": "2026-06-09T02:20:23.764383",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 22,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940577",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_collaboration_preference",
+      "value": "prefers solo work over collaborations",
+      "context": "decided to step away from further collaborations to focus on solo music projects",
+      "profile_type": "preference",
+      "stability_score": 0.7217824587957506,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to step away from further collaborations to focus on solo music projects",
+          "scene": "session_2",
+          "evidence_id": "ef37ef537ccb4325b393f64d824ef819",
+          "timestamp": "2026-06-09T02:20:23.770582"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers solo work over collaborations",
+          "context": "decided to step away from further collaborations to focus on solo music projects",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to step away from further collaborations to focus on solo music projects",
+              "scene": "session_2",
+              "evidence_id": "ef37ef537ccb4325b393f64d824ef819",
+              "timestamp": "2026-06-09T02:20:23.770582"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770582",
+          "last_accessed": "2026-06-09T02:20:23.940690"
+        }
+      },
+      "unit_id": "2955589dab8d43e990244e52dea21c74",
+      "timestamp": "2026-06-09T02:20:23.773844",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940687",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "crowd_anxiety",
+      "value": "experiences anxiety in large crowds at music events",
+      "context": "attended a music festival and felt anxious due to large crowds",
+      "profile_type": "style",
+      "stability_score": 0.8325480248301114,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "attended a music festival and felt anxious due to large crowds",
+          "scene": "session_2",
+          "evidence_id": "15944660a1884b78ba28f69de9b82dbc",
+          "timestamp": "2026-06-09T02:20:23.770588"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "experiences anxiety in large crowds at music events",
+          "context": "attended a music festival and felt anxious due to large crowds",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "attended a music festival and felt anxious due to large crowds",
+              "scene": "session_2",
+              "evidence_id": "15944660a1884b78ba28f69de9b82dbc",
+              "timestamp": "2026-06-09T02:20:23.770588"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 17,
+          "last_seen": "2026-06-09T02:20:23.770588",
+          "last_accessed": "2026-06-09T02:20:23.940824"
+        }
+      },
+      "unit_id": "4046075763cf42219ce6fcf410885cd0",
+      "timestamp": "2026-06-09T02:20:23.780811",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 17,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940821",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_interest_classic",
+      "value": "passionate about classic films and film analysis",
+      "context": "I've always had a passion for movies, especially classic films; analyzing film scripts has become a hobby; wrote a detailed film review",
+      "profile_type": "interest",
+      "stability_score": 0.8415958360049137,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've always had a passion for movies, especially classic films; analyzing film scripts has become a hobby; wrote a detailed film review",
+          "scene": "session_3",
+          "evidence_id": "8113060101dc408cbfc98acc1fefbfa8",
+          "timestamp": "2026-06-09T02:20:23.826352"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "passionate about classic films and film analysis",
+          "context": "I've always had a passion for movies, especially classic films; analyzing film scripts has become a hobby; wrote a detailed film review",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've always had a passion for movies, especially classic films; analyzing film scripts has become a hobby; wrote a detailed film review",
+              "scene": "session_3",
+              "evidence_id": "8113060101dc408cbfc98acc1fefbfa8",
+              "timestamp": "2026-06-09T02:20:23.826352"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:23.826352",
+          "last_accessed": "2026-06-09T02:20:23.940996"
+        }
+      },
+      "unit_id": "5019df812eb7444f814bf109d4b672fb",
+      "timestamp": "2026-06-09T02:20:23.834583",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.940993",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_engagement_style",
+      "value": "prefers in-depth analytical discussions over superficial ones",
+      "context": "found film club discussions unengaging; found a film documentary dry; found a film theory book not engaging",
+      "profile_type": "style",
+      "stability_score": 0.72461298991847,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "found film club discussions unengaging; found a film documentary dry; found a film theory book not engaging",
+          "scene": "session_3",
+          "evidence_id": "6bd85e5a9a384cf1bfe56020c219645b",
+          "timestamp": "2026-06-09T02:20:23.826355"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers in-depth analytical discussions over superficial ones",
+          "context": "found film club discussions unengaging; found a film documentary dry; found a film theory book not engaging",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "found film club discussions unengaging; found a film documentary dry; found a film theory book not engaging",
+              "scene": "session_3",
+              "evidence_id": "6bd85e5a9a384cf1bfe56020c219645b",
+              "timestamp": "2026-06-09T02:20:23.826355"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 9,
+          "last_seen": "2026-06-09T02:20:23.826355",
+          "last_accessed": "2026-06-09T02:20:23.941165"
+        }
+      },
+      "unit_id": "16335d2841b9443887292233d91cc09c",
+      "timestamp": "2026-06-09T02:20:23.842801",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 9,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.941162",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "writing_style_preference",
+      "value": "direct and casual",
+      "context": "repeatedly asked to simplify and make casual throughout session, e.g., 'We can modify that to...'",
+      "profile_type": "style",
+      "stability_score": 0.7246129933694078,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "repeatedly asked to simplify and make casual throughout session, e.g., 'We can modify that to...'",
+          "scene": "session_4",
+          "evidence_id": "ec9307b058494becbf97e75425f26d6a",
+          "timestamp": "2026-06-09T02:20:23.848696"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "direct and casual",
+          "context": "repeatedly asked to simplify and make casual throughout session, e.g., 'We can modify that to...'",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "repeatedly asked to simplify and make casual throughout session, e.g., 'We can modify that to...'",
+              "scene": "session_4",
+              "evidence_id": "ec9307b058494becbf97e75425f26d6a",
+              "timestamp": "2026-06-09T02:20:23.848696"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:23.848696",
+          "last_accessed": "2026-06-09T02:20:23.941294"
+        }
+      },
+      "unit_id": "40337fbec784490ebadc7fb7e97d88f0",
+      "timestamp": "2026-06-09T02:20:23.855795",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.941292",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "language_simplification_tendency",
+      "value": "prefers avoiding formal/abstract language",
+      "context": "user rejected formal sentences like 'I shall provide' and 'We shall evaluate'",
+      "profile_type": "preference",
+      "stability_score": 0.7566772083374729,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user rejected formal sentences like 'I shall provide' and 'We shall evaluate'",
+          "scene": "session_4",
+          "evidence_id": "0bfb17f8929a43478df0942c09269d63",
+          "timestamp": "2026-06-09T02:20:23.848699"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers avoiding formal/abstract language",
+          "context": "user rejected formal sentences like 'I shall provide' and 'We shall evaluate'",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user rejected formal sentences like 'I shall provide' and 'We shall evaluate'",
+              "scene": "session_4",
+              "evidence_id": "0bfb17f8929a43478df0942c09269d63",
+              "timestamp": "2026-06-09T02:20:23.848699"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:23.848699",
+          "last_accessed": "2026-06-09T02:20:23.941454"
+        }
+      },
+      "unit_id": "7f2b93488d624fe6bf96bc52040e7033",
+      "timestamp": "2026-06-09T02:20:23.862839",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.941451",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "persona_description",
+      "value": "Muay Thai fighter using unconventional techniques",
+      "context": "user explicitly introduced themselves as a Muay Thai fighter with unconventional sparring techniques",
+      "profile_type": "background",
+      "stability_score": 0.909236261634726,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user explicitly introduced themselves as a Muay Thai fighter with unconventional sparring techniques",
+          "scene": "session_4",
+          "evidence_id": "7b9f27b9aac5407690b869dfd1ca3a60",
+          "timestamp": "2026-06-09T02:20:23.848702"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "Muay Thai fighter using unconventional techniques",
+          "context": "user explicitly introduced themselves as a Muay Thai fighter with unconventional sparring techniques",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user explicitly introduced themselves as a Muay Thai fighter with unconventional sparring techniques",
+              "scene": "session_4",
+              "evidence_id": "7b9f27b9aac5407690b869dfd1ca3a60",
+              "timestamp": "2026-06-09T02:20:23.848702"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:23.848702",
+          "last_accessed": "2026-06-09T02:20:23.941641"
+        }
+      },
+      "unit_id": "a1d998d9ef214f84b3f39fe1c245d0ab",
+      "timestamp": "2026-06-09T02:20:23.872260",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.941638",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_involvement_level",
+      "value": "deeply engaged in multiple music activities",
+      "context": "launched community music program, joined dance troupe, took piano lessons, attended festival, etc.",
+      "profile_type": "interest",
+      "stability_score": 0.7859150289964486,
+      "confidence_score": 0.9,
+      "scene": "session_5",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "launched community music program, joined dance troupe, took piano lessons, attended festival, etc.",
+          "scene": "session_5",
+          "evidence_id": "505d7a460806420d8c22f1615882054c",
+          "timestamp": "2026-06-09T02:20:23.887893"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "deeply engaged in multiple music activities",
+          "context": "launched community music program, joined dance troupe, took piano lessons, attended festival, etc.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "launched community music program, joined dance troupe, took piano lessons, attended festival, etc.",
+              "scene": "session_5",
+              "evidence_id": "505d7a460806420d8c22f1615882054c",
+              "timestamp": "2026-06-09T02:20:23.887893"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:20:23.887893",
+          "last_accessed": "2026-06-09T02:20:23.938215"
+        }
+      },
+      "unit_id": "509401e6012d466499d1850458f2a8ea",
+      "timestamp": "2026-06-09T02:20:23.897171",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938213",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_orientation",
+      "value": "enjoys creating and participating in community music programs",
+      "context": "launched a community music program for local children",
+      "profile_type": "style",
+      "stability_score": 0.7125525958418352,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "launched a community music program for local children",
+          "scene": "session_5",
+          "evidence_id": "322b87cf8df746dcaa41f24136c1de5d",
+          "timestamp": "2026-06-09T02:20:23.887897"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "enjoys creating and participating in community music programs",
+          "context": "launched a community music program for local children",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "launched a community music program for local children",
+              "scene": "session_5",
+              "evidence_id": "322b87cf8df746dcaa41f24136c1de5d",
+              "timestamp": "2026-06-09T02:20:23.887897"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:20:23.887897",
+          "last_accessed": "2026-06-09T02:20:23.938318"
+        }
+      },
+      "unit_id": "b86daa66d78b4e96949897832fbbdb89",
+      "timestamp": "2026-06-09T02:20:23.904590",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938316",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_discovery_habit",
+      "value": "actively discovers new artists and genres, especially indie",
+      "context": "dove back into discovering new artists again, especially in the indie genre",
+      "profile_type": "preference",
+      "stability_score": 0.7058605913134302,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "dove back into discovering new artists again, especially in the indie genre",
+          "scene": "session_5",
+          "evidence_id": "4b640c3ec785400c8059f03b417cb1ea",
+          "timestamp": "2026-06-09T02:20:23.887902"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "actively discovers new artists and genres, especially indie",
+          "context": "dove back into discovering new artists again, especially in the indie genre",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "dove back into discovering new artists again, especially in the indie genre",
+              "scene": "session_5",
+              "evidence_id": "4b640c3ec785400c8059f03b417cb1ea",
+              "timestamp": "2026-06-09T02:20:23.887902"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 4,
+          "last_seen": "2026-06-09T02:20:23.887902",
+          "last_accessed": "2026-06-09T02:20:23.938617"
+        }
+      },
+      "unit_id": "5eb17f2284174992b9e51e21978197f6",
+      "timestamp": "2026-06-09T02:20:23.926583",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 4,
+      "seen_session_ids": [
+        "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:23.938616",
+      "last_evolved": "2026-06-09T02:20:23.941736",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "5acc9e1bc7d54dbda9f62ee290f44287": {
+      "source": "llm_deepseek",
+      "content": "disliked group clubs and competitive events, enjoys solo playlists and documentaries",
+      "scene": "session_0",
+      "evidence_id": "5acc9e1bc7d54dbda9f62ee290f44287",
+      "timestamp": "2026-06-09T02:20:23.749062"
+    },
+    "024f72efd4044acc8dc09e221d63b01c": {
+      "source": "llm_deepseek",
+      "content": "enjoyed record shop visit and music podcasts for deep stories",
+      "scene": "session_0",
+      "evidence_id": "024f72efd4044acc8dc09e221d63b01c",
+      "timestamp": "2026-06-09T02:20:23.749070"
+    },
+    "4c33032b5ec943f8bc5c9f989409b87d": {
+      "source": "llm_deepseek",
+      "content": "explored jazz/classical and world music",
+      "scene": "session_0",
+      "evidence_id": "4c33032b5ec943f8bc5c9f989409b87d",
+      "timestamp": "2026-06-09T02:20:23.749073"
+    },
+    "4a94a3b8ce6a4e6c9b79dd52d21846df": {
+      "source": "llm_deepseek",
+      "content": "felt out of place at trivia night, disliked charts and structured clubs",
+      "scene": "session_0",
+      "evidence_id": "4a94a3b8ce6a4e6c9b79dd52d21846df",
+      "timestamp": "2026-06-09T02:20:23.749075"
+    },
+    "bf94d2e880d541e3a9bf6b28fda73f7d": {
+      "source": "llm_deepseek",
+      "content": "found collaboration more work than enjoyment, prefers solo projects",
+      "scene": "session_0",
+      "evidence_id": "bf94d2e880d541e3a9bf6b28fda73f7d",
+      "timestamp": "2026-06-09T02:20:23.749077"
+    },
+    "05998c3a1b2a4bf8906bc4af84ba4cee": {
+      "source": "llm_deepseek",
+      "content": "Signed up for ukulele class after seeing a child play; joined a local dance class.",
+      "scene": "session_1",
+      "evidence_id": "05998c3a1b2a4bf8906bc4af84ba4cee",
+      "timestamp": "2026-06-09T02:20:23.755151"
+    },
+    "a612c31ea4814245848663a1902c70a7": {
+      "source": "llm_deepseek",
+      "content": "Stopped listening to music podcasts due to commercialism; prefers independent exploration.",
+      "scene": "session_1",
+      "evidence_id": "a612c31ea4814245848663a1902c70a7",
+      "timestamp": "2026-06-09T02:20:23.755154"
+    },
+    "c46d8fcb23fa489e98293fa4f180d1b8": {
+      "source": "llm_deepseek",
+      "content": "Agreed to run a weekend workshop for kids on music appreciation.",
+      "scene": "session_1",
+      "evidence_id": "c46d8fcb23fa489e98293fa4f180d1b8",
+      "timestamp": "2026-06-09T02:20:23.755156"
+    },
+    "dfb9b1c45fbe49b58e1198e20d46a7a4": {
+      "source": "llm_deepseek",
+      "content": "Started a music review blog; participated in an online playlist swap project.",
+      "scene": "session_1",
+      "evidence_id": "dfb9b1c45fbe49b58e1198e20d46a7a4",
+      "timestamp": "2026-06-09T02:20:23.755159"
+    },
+    "ef37ef537ccb4325b393f64d824ef819": {
+      "source": "llm_deepseek",
+      "content": "decided to step away from further collaborations to focus on solo music projects",
+      "scene": "session_2",
+      "evidence_id": "ef37ef537ccb4325b393f64d824ef819",
+      "timestamp": "2026-06-09T02:20:23.770582"
+    },
+    "c4744b4a7ba54d2786d8c15e03ef4297": {
+      "source": "llm_deepseek",
+      "content": "organized a free community workshop to teach kids about music basics",
+      "scene": "session_2",
+      "evidence_id": "c4744b4a7ba54d2786d8c15e03ef4297",
+      "timestamp": "2026-06-09T02:20:23.770586"
+    },
+    "15944660a1884b78ba28f69de9b82dbc": {
+      "source": "llm_deepseek",
+      "content": "attended a music festival and felt anxious due to large crowds",
+      "scene": "session_2",
+      "evidence_id": "15944660a1884b78ba28f69de9b82dbc",
+      "timestamp": "2026-06-09T02:20:23.770588"
+    },
+    "42dac24ee95a4d7b9aa78b4a6d1e3ee9": {
+      "source": "llm_deepseek",
+      "content": "focusing more on favorite artists instead of seeking new talents",
+      "scene": "session_2",
+      "evidence_id": "42dac24ee95a4d7b9aa78b4a6d1e3ee9",
+      "timestamp": "2026-06-09T02:20:23.770591"
+    },
+    "f1fa5330a4564cee9dd0c17dc42a312a": {
+      "source": "llm_deepseek",
+      "content": "genre-themed night at a café sparked a newfound passion for electronic music",
+      "scene": "session_2",
+      "evidence_id": "f1fa5330a4564cee9dd0c17dc42a312a",
+      "timestamp": "2026-06-09T02:20:23.770593"
+    },
+    "6c0dc5a33c7f41db8a11b3f1487c5c03": {
+      "source": "llm_deepseek",
+      "content": "spent the weekend creating themed playlists for different occasions",
+      "scene": "session_2",
+      "evidence_id": "6c0dc5a33c7f41db8a11b3f1487c5c03",
+      "timestamp": "2026-06-09T02:20:23.770596"
+    },
+    "4bcb1453548346e2b555ee1305829f8f": {
+      "source": "llm_deepseek",
+      "content": "watched a music documentary that deeply resonated and educated",
+      "scene": "session_2",
+      "evidence_id": "4bcb1453548346e2b555ee1305829f8f",
+      "timestamp": "2026-06-09T02:20:23.770598"
+    },
+    "c618c27ef6d548399a22af005a78efd4": {
+      "source": "llm_deepseek",
+      "content": "joined a local bar's music trivia night and had fun",
+      "scene": "session_2",
+      "evidence_id": "c618c27ef6d548399a22af005a78efd4",
+      "timestamp": "2026-06-09T02:20:23.770600"
+    },
+    "8113060101dc408cbfc98acc1fefbfa8": {
+      "source": "llm_deepseek",
+      "content": "I've always had a passion for movies, especially classic films; analyzing film scripts has become a hobby; wrote a detailed film review",
+      "scene": "session_3",
+      "evidence_id": "8113060101dc408cbfc98acc1fefbfa8",
+      "timestamp": "2026-06-09T02:20:23.826352"
+    },
+    "6bd85e5a9a384cf1bfe56020c219645b": {
+      "source": "llm_deepseek",
+      "content": "found film club discussions unengaging; found a film documentary dry; found a film theory book not engaging",
+      "scene": "session_3",
+      "evidence_id": "6bd85e5a9a384cf1bfe56020c219645b",
+      "timestamp": "2026-06-09T02:20:23.826355"
+    },
+    "ec9307b058494becbf97e75425f26d6a": {
+      "source": "llm_deepseek",
+      "content": "repeatedly asked to simplify and make casual throughout session, e.g., 'We can modify that to...'",
+      "scene": "session_4",
+      "evidence_id": "ec9307b058494becbf97e75425f26d6a",
+      "timestamp": "2026-06-09T02:20:23.848696"
+    },
+    "0bfb17f8929a43478df0942c09269d63": {
+      "source": "llm_deepseek",
+      "content": "user rejected formal sentences like 'I shall provide' and 'We shall evaluate'",
+      "scene": "session_4",
+      "evidence_id": "0bfb17f8929a43478df0942c09269d63",
+      "timestamp": "2026-06-09T02:20:23.848699"
+    },
+    "7b9f27b9aac5407690b869dfd1ca3a60": {
+      "source": "llm_deepseek",
+      "content": "user explicitly introduced themselves as a Muay Thai fighter with unconventional sparring techniques",
+      "scene": "session_4",
+      "evidence_id": "7b9f27b9aac5407690b869dfd1ca3a60",
+      "timestamp": "2026-06-09T02:20:23.848702"
+    },
+    "505d7a460806420d8c22f1615882054c": {
+      "source": "llm_deepseek",
+      "content": "launched community music program, joined dance troupe, took piano lessons, attended festival, etc.",
+      "scene": "session_5",
+      "evidence_id": "505d7a460806420d8c22f1615882054c",
+      "timestamp": "2026-06-09T02:20:23.887893"
+    },
+    "322b87cf8df746dcaa41f24136c1de5d": {
+      "source": "llm_deepseek",
+      "content": "launched a community music program for local children",
+      "scene": "session_5",
+      "evidence_id": "322b87cf8df746dcaa41f24136c1de5d",
+      "timestamp": "2026-06-09T02:20:23.887897"
+    },
+    "7071a35ec1cc472281ae5d27a62d8c54": {
+      "source": "llm_deepseek",
+      "content": "reevaluated hobby of writing music reviews due to stress, joined dance troupe, started piano lessons",
+      "scene": "session_5",
+      "evidence_id": "7071a35ec1cc472281ae5d27a62d8c54",
+      "timestamp": "2026-06-09T02:20:23.887900"
+    },
+    "4b640c3ec785400c8059f03b417cb1ea": {
+      "source": "llm_deepseek",
+      "content": "dove back into discovering new artists again, especially in the indie genre",
+      "scene": "session_5",
+      "evidence_id": "4b640c3ec785400c8059f03b417cb1ea",
+      "timestamp": "2026-06-09T02:20:23.887902"
+    }
+  },
+  "current_session": "session_5",
+  "current_session_id": "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688_session_5",
+  "config_id": "write_0.68",
+  "context_hash": "ff31ea4f6e893e623d262de49b003f3a833571df525d7468689a4d6365f5f688",
+  "num_sessions": 6
+}

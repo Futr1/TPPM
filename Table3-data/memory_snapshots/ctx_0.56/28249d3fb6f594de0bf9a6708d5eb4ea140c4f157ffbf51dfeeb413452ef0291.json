@@ -1,0 +1,1311 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.56,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "film_genre_preference",
+      "value": "classic comedies",
+      "context": "hosted themed movie night featuring classic comedies",
+      "profile_type": "preference",
+      "stability_score": 0.5999999712279174,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "hosted themed movie night featuring classic comedies",
+          "scene": "session_0",
+          "evidence_id": "17a074db3091492faa44e74e6eacbff6",
+          "timestamp": "2026-06-09T02:22:07.832042"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "classic comedies",
+          "context": "hosted themed movie night featuring classic comedies",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "hosted themed movie night featuring classic comedies",
+              "scene": "session_0",
+              "evidence_id": "17a074db3091492faa44e74e6eacbff6",
+              "timestamp": "2026-06-09T02:22:07.832042"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:22:07.832042",
+          "last_accessed": "2026-06-09T02:22:07.967294"
+        }
+      },
+      "unit_id": "8d411bc602684977ae9886c184d7e48e",
+      "timestamp": "2026-06-09T02:22:07.832077",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.967291",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "large_social_discomfort",
+      "value": "feels overwhelmed and anxious in large, fast-paced social settings",
+      "context": "felt overwhelmed at film festival, uncomfortable at cosplay event",
+      "profile_type": "style",
+      "stability_score": 0.5999999716462507,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.6666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "felt overwhelmed at film festival, uncomfortable at cosplay event",
+          "scene": "session_0",
+          "evidence_id": "f68b4b15e26f4a0f9c53efcbaccee8c4",
+          "timestamp": "2026-06-09T02:22:07.832055"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "feels overwhelmed and anxious in large, fast-paced social settings",
+          "context": "felt overwhelmed at film festival, uncomfortable at cosplay event",
+          "confidence_score": 0.7,
+          "quality_score": 0.6666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "felt overwhelmed at film festival, uncomfortable at cosplay event",
+              "scene": "session_0",
+              "evidence_id": "f68b4b15e26f4a0f9c53efcbaccee8c4",
+              "timestamp": "2026-06-09T02:22:07.832055"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:22:07.832055",
+          "last_accessed": "2026-06-09T02:22:07.967479"
+        }
+      },
+      "unit_id": "e780ab102de04ea1a89726a41e1b079b",
+      "timestamp": "2026-06-09T02:22:07.834084",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.967476",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "vintage_movie_poster_collecting",
+      "value": "collects vintage movie posters",
+      "context": "User stated 'I also started collecting vintage movie posters!'",
+      "profile_type": "interest",
+      "stability_score": 0.5999999736081256,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated 'I also started collecting vintage movie posters!'",
+          "scene": "session_1",
+          "evidence_id": "efd2aa8983f243d6abd97b961b1644ae",
+          "timestamp": "2026-06-09T02:22:07.836553"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "collects vintage movie posters",
+          "context": "User stated 'I also started collecting vintage movie posters!'",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated 'I also started collecting vintage movie posters!'",
+              "scene": "session_1",
+              "evidence_id": "efd2aa8983f243d6abd97b961b1644ae",
+              "timestamp": "2026-06-09T02:22:07.836553"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:07.836553",
+          "last_accessed": "2026-06-09T02:22:07.967653"
+        }
+      },
+      "unit_id": "86649c10d1da48e8bc47d2dd7cc79ee5",
+      "timestamp": "2026-06-09T02:22:07.843501",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.967650",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "cinematography_learning_goal",
+      "value": "aims to improve visual storytelling through formal cinematography training",
+      "context": "joined online course on cinematography techniques for personal video projects",
+      "profile_type": "goal",
+      "stability_score": 0.5999999785800003,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined online course on cinematography techniques for personal video projects",
+          "scene": "session_2",
+          "evidence_id": "52e4a49e7c5e4c04bc3f7c1cfc71ae94",
+          "timestamp": "2026-06-09T02:22:07.848531"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "aims to improve visual storytelling through formal cinematography training",
+          "context": "joined online course on cinematography techniques for personal video projects",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined online course on cinematography techniques for personal video projects",
+              "scene": "session_2",
+              "evidence_id": "52e4a49e7c5e4c04bc3f7c1cfc71ae94",
+              "timestamp": "2026-06-09T02:22:07.848531"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:22:07.848531",
+          "last_accessed": "2026-06-09T02:22:07.967876"
+        }
+      },
+      "unit_id": "d474caee518a4146ab976e8ea9654b22",
+      "timestamp": "2026-06-09T02:22:07.867365",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.967873",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "learning_style",
+      "value": "prefers hands-on, practical learning",
+      "context": "Completed year-long cinematography course with hands-on projects and portfolio",
+      "profile_type": "style",
+      "stability_score": 0.5999999827285419,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Completed year-long cinematography course with hands-on projects and portfolio",
+          "scene": "session_3",
+          "evidence_id": "6e7fbbbb0e4e4ae980da1ae927cae6f3",
+          "timestamp": "2026-06-09T02:22:07.874746"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers hands-on, practical learning",
+          "context": "Completed year-long cinematography course with hands-on projects and portfolio",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Completed year-long cinematography course with hands-on projects and portfolio",
+              "scene": "session_3",
+              "evidence_id": "6e7fbbbb0e4e4ae980da1ae927cae6f3",
+              "timestamp": "2026-06-09T02:22:07.874746"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:22:07.874746",
+          "last_accessed": "2026-06-09T02:22:07.968030"
+        }
+      },
+      "unit_id": "8a36ed7dca1c41aa839f01cde239e391",
+      "timestamp": "2026-06-09T02:22:07.887279",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.968027",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "gardening_interest",
+      "value": "enjoys gardening and finds it therapeutic",
+      "context": "I've really enjoyed gardening lately; I even planted a beautiful herb garden... It has been a truly rewarding experience... therapeutic joy",
+      "profile_type": "interest",
+      "stability_score": 0.5999999911554167,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've really enjoyed gardening lately; I even planted a beautiful herb garden... It has been a truly rewarding experience... therapeutic joy",
+          "scene": "session_4",
+          "evidence_id": "61e5f77ad96c40638d7c58b5daaebf61",
+          "timestamp": "2026-06-09T02:22:07.918338"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys gardening and finds it therapeutic",
+          "context": "I've really enjoyed gardening lately; I even planted a beautiful herb garden... It has been a truly rewarding experience... therapeutic joy",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've really enjoyed gardening lately; I even planted a beautiful herb garden... It has been a truly rewarding experience... therapeutic joy",
+              "scene": "session_4",
+              "evidence_id": "61e5f77ad96c40638d7c58b5daaebf61",
+              "timestamp": "2026-06-09T02:22:07.918338"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:22:07.918338",
+          "last_accessed": "2026-06-09T02:22:07.966525"
+        }
+      },
+      "unit_id": "bc77c738bade47c49ccd34ab9b48f286",
+      "timestamp": "2026-06-09T02:22:07.927727",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.966523",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "staging_ability",
+      "value": "successfully stages rooms for open houses",
+      "context": "I staged a room to prepare for an open house... received positive feedback... far beyond expectations",
+      "profile_type": "interest",
+      "stability_score": 0.5999999967954166,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I staged a room to prepare for an open house... received positive feedback... far beyond expectations",
+          "scene": "session_4",
+          "evidence_id": "8ecb1ae718764cf980857a69476d09e0",
+          "timestamp": "2026-06-09T02:22:07.918346"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "successfully stages rooms for open houses",
+          "context": "I staged a room to prepare for an open house... received positive feedback... far beyond expectations",
+          "confidence_score": 0.85,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I staged a room to prepare for an open house... received positive feedback... far beyond expectations",
+              "scene": "session_4",
+              "evidence_id": "8ecb1ae718764cf980857a69476d09e0",
+              "timestamp": "2026-06-09T02:22:07.918346"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:22:07.918346",
+          "last_accessed": "2026-06-09T02:22:07.967136"
+        }
+      },
+      "unit_id": "c032013103924b419b35682345e4a73c",
+      "timestamp": "2026-06-09T02:22:07.954800",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.967134",
+      "last_evolved": "2026-06-09T02:22:07.970186",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "film_version_preference",
+      "value": "originals over remakes",
+      "context": "watched remakes of classic movies but always preferred the originals",
+      "profile_type": "preference",
+      "stability_score": 0.72658071942665,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "watched remakes of classic movies but always preferred the originals",
+          "scene": "session_0",
+          "evidence_id": "e8c59293e4c64bcaa13b556609a7de61",
+          "timestamp": "2026-06-09T02:22:07.832049"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "originals over remakes",
+          "context": "watched remakes of classic movies but always preferred the originals",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "watched remakes of classic movies but always preferred the originals",
+              "scene": "session_0",
+              "evidence_id": "e8c59293e4c64bcaa13b556609a7de61",
+              "timestamp": "2026-06-09T02:22:07.832049"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 23,
+          "last_seen": "2026-06-09T02:22:07.832049",
+          "last_accessed": "2026-06-09T02:22:07.968193"
+        }
+      },
+      "unit_id": "4608e63d1708497e912a78fb7e34a1b5",
+      "timestamp": "2026-06-09T02:22:07.832324",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.968190",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_analysis_interest",
+      "value": "deeply engaged in film theory, cinematography, and cultural analysis",
+      "context": "joined book club on film theory, film analysis forum, created reviews platform, wrote comparative article",
+      "profile_type": "interest",
+      "stability_score": 0.7223112658934365,
+      "confidence_score": 0.9000000000000001,
+      "scene": "session_2",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "completed film theory course, wrote reviews, created video analysis",
+          "scene": "session_0",
+          "evidence_id": "ee19235a72dc4d5d86c24be5e4f1f6fd",
+          "timestamp": "2026-06-09T02:22:07.832052"
+        },
+        {
+          "source": "llm_deepseek",
+          "content": "joined book club on film theory, film analysis forum, created reviews platform, wrote comparative article",
+          "scene": "session_2",
+          "evidence_id": "374b3697066d4df48dd79bbccf6270d5",
+          "timestamp": "2026-06-09T02:22:07.848526"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "high engagement with film theory and critical analysis",
+          "context": "completed film theory course, wrote reviews, created video analysis",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "completed film theory course, wrote reviews, created video analysis",
+              "scene": "session_0",
+              "evidence_id": "ee19235a72dc4d5d86c24be5e4f1f6fd",
+              "timestamp": "2026-06-09T02:22:07.832052"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:22:07.832052",
+          "last_accessed": "2026-06-09T02:22:07.848468"
+        },
+        "session_2": {
+          "scene": "session_2",
+          "value": "deeply engaged in film theory, cinematography, and cultural analysis",
+          "context": "joined book club on film theory, film analysis forum, created reviews platform, wrote comparative article",
+          "confidence_score": 0.9000000000000001,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined book club on film theory, film analysis forum, created reviews platform, wrote comparative article",
+              "scene": "session_2",
+              "evidence_id": "374b3697066d4df48dd79bbccf6270d5",
+              "timestamp": "2026-06-09T02:22:07.848526"
+            }
+          ],
+          "reinforcement_count": 2,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:22:07.848526",
+          "last_accessed": "2026-06-09T02:22:07.968378"
+        }
+      },
+      "unit_id": "c340b25177584d60954e1380a8d48793",
+      "timestamp": "2026-06-09T02:22:07.832979",
+      "session_count": 2,
+      "reinforcement_count": 2,
+      "contradiction_count": 0,
+      "access_count": 23,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_0",
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.968374",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "filmmaking_activity",
+      "value": "actively writes screenplays and directs short films",
+      "context": "User mentioned working on screenplay for weeks and completed a short film that received positive feedback.",
+      "profile_type": "interest",
+      "stability_score": 0.7491203731628727,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User mentioned working on screenplay for weeks and completed a short film that received positive feedback.",
+          "scene": "session_1",
+          "evidence_id": "f2e0657036614c4187b9a68b3957f4fd",
+          "timestamp": "2026-06-09T02:22:07.836547"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "actively writes screenplays and directs short films",
+          "context": "User mentioned working on screenplay for weeks and completed a short film that received positive feedback.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User mentioned working on screenplay for weeks and completed a short film that received positive feedback.",
+              "scene": "session_1",
+              "evidence_id": "f2e0657036614c4187b9a68b3957f4fd",
+              "timestamp": "2026-06-09T02:22:07.836547"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:07.836547",
+          "last_accessed": "2026-06-09T02:22:07.968582"
+        }
+      },
+      "unit_id": "cf75337f31c64788acd3aabe1ee60ad8",
+      "timestamp": "2026-06-09T02:22:07.838349",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.968579",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_analysis_content_creation",
+      "value": "launched a podcast on overlooked films, started a film news blog, and uploaded a video analysis on YouTube",
+      "context": "User explicitly stated launching a podcast, starting a blog, and uploading a YouTube video analysis.",
+      "profile_type": "interest",
+      "stability_score": 0.6735420084047286,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User explicitly stated launching a podcast, starting a blog, and uploading a YouTube video analysis.",
+          "scene": "session_1",
+          "evidence_id": "e75c42ded46f47e9a589cee8de288e59",
+          "timestamp": "2026-06-09T02:22:07.836550"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "launched a podcast on overlooked films, started a film news blog, and uploaded a video analysis on YouTube",
+          "context": "User explicitly stated launching a podcast, starting a blog, and uploading a YouTube video analysis.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User explicitly stated launching a podcast, starting a blog, and uploading a YouTube video analysis.",
+              "scene": "session_1",
+              "evidence_id": "e75c42ded46f47e9a589cee8de288e59",
+              "timestamp": "2026-06-09T02:22:07.836550"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:22:07.836550",
+          "last_accessed": "2026-06-09T02:22:07.968820"
+        }
+      },
+      "unit_id": "5144545a75c24ca8b51887a3edf8e992",
+      "timestamp": "2026-06-09T02:22:07.841411",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.968816",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "memento_collecting_preference",
+      "value": "prefers digital collectibles over physical to reduce clutter",
+      "context": "sold vintage movie posters to streamline belongings and move to digital collectibles",
+      "profile_type": "preference",
+      "stability_score": 0.7167382126707746,
+      "confidence_score": 0.75,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "sold vintage movie posters to streamline belongings and move to digital collectibles",
+          "scene": "session_2",
+          "evidence_id": "786ef3bc2a5d4d508a410ce793d563b7",
+          "timestamp": "2026-06-09T02:22:07.848522"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers digital collectibles over physical to reduce clutter",
+          "context": "sold vintage movie posters to streamline belongings and move to digital collectibles",
+          "confidence_score": 0.75,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "sold vintage movie posters to streamline belongings and move to digital collectibles",
+              "scene": "session_2",
+              "evidence_id": "786ef3bc2a5d4d508a410ce793d563b7",
+              "timestamp": "2026-06-09T02:22:07.848522"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:22:07.848522",
+          "last_accessed": "2026-06-09T02:22:07.968987"
+        }
+      },
+      "unit_id": "3234617acc1744a49d28bd2f6c4e15e7",
+      "timestamp": "2026-06-09T02:22:07.851520",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.968984",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_engagement_style",
+      "value": "actively participates and contributes to film communities, building platforms for discussion",
+      "context": "joined book club, film forum, started podcast, created review platform, collaborated with YouTuber",
+      "profile_type": "style",
+      "stability_score": 0.8248925424824607,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined book club, film forum, started podcast, created review platform, collaborated with YouTuber",
+          "scene": "session_2",
+          "evidence_id": "6673c9ce7d8f430d9254c775b3cd54ca",
+          "timestamp": "2026-06-09T02:22:07.848528"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "actively participates and contributes to film communities, building platforms for discussion",
+          "context": "joined book club, film forum, started podcast, created review platform, collaborated with YouTuber",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined book club, film forum, started podcast, created review platform, collaborated with YouTuber",
+              "scene": "session_2",
+              "evidence_id": "6673c9ce7d8f430d9254c775b3cd54ca",
+              "timestamp": "2026-06-09T02:22:07.848528"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:22:07.848528",
+          "last_accessed": "2026-06-09T02:22:07.969263"
+        }
+      },
+      "unit_id": "0ccff55733e24eab800a8bc789c0b672",
+      "timestamp": "2026-06-09T02:22:07.861356",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.969259",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "filmmaking_role",
+      "value": "aspiring cinematographer",
+      "context": "Completed a year-long cinematography course, directed a short film, hosts film discussions",
+      "profile_type": "background",
+      "stability_score": 0.8169246224072125,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Completed a year-long cinematography course, directed a short film, hosts film discussions",
+          "scene": "session_3",
+          "evidence_id": "701804f992a7446bb0c5af6c5a4b990e",
+          "timestamp": "2026-06-09T02:22:07.874740"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "aspiring cinematographer",
+          "context": "Completed a year-long cinematography course, directed a short film, hosts film discussions",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Completed a year-long cinematography course, directed a short film, hosts film discussions",
+              "scene": "session_3",
+              "evidence_id": "701804f992a7446bb0c5af6c5a4b990e",
+              "timestamp": "2026-06-09T02:22:07.874740"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:22:07.874740",
+          "last_accessed": "2026-06-09T02:22:07.969448"
+        }
+      },
+      "unit_id": "ed5945eab7f4435282df506d7f3f63da",
+      "timestamp": "2026-06-09T02:22:07.878536",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.969445",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_preference",
+      "value": "values constructive, supportive film communities",
+      "context": "Left negative online film forum; prioritizes mental well-being and creativity",
+      "profile_type": "preference",
+      "stability_score": 0.7114353364028732,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Left negative online film forum; prioritizes mental well-being and creativity",
+          "scene": "session_3",
+          "evidence_id": "df4f05fba00c4f47ab1ad7f9b67aac2a",
+          "timestamp": "2026-06-09T02:22:07.874743"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "values constructive, supportive film communities",
+          "context": "Left negative online film forum; prioritizes mental well-being and creativity",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Left negative online film forum; prioritizes mental well-being and creativity",
+              "scene": "session_3",
+              "evidence_id": "df4f05fba00c4f47ab1ad7f9b67aac2a",
+              "timestamp": "2026-06-09T02:22:07.874743"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:22:07.874743",
+          "last_accessed": "2026-06-09T02:22:07.969615"
+        }
+      },
+      "unit_id": "e383f21ae9694688be8c29bb68c17b07",
+      "timestamp": "2026-06-09T02:22:07.882751",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.969612",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "discussion_style",
+      "value": "prefers casual, informal film discussions over academic analysis",
+      "context": "Left film theory book club; enjoys organic discussions with friends",
+      "profile_type": "preference",
+      "stability_score": 0.7114353399938941,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Left film theory book club; enjoys organic discussions with friends",
+          "scene": "session_3",
+          "evidence_id": "7e6b60fe18814e798b1739303d322d45",
+          "timestamp": "2026-06-09T02:22:07.874749"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers casual, informal film discussions over academic analysis",
+          "context": "Left film theory book club; enjoys organic discussions with friends",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Left film theory book club; enjoys organic discussions with friends",
+              "scene": "session_3",
+              "evidence_id": "7e6b60fe18814e798b1739303d322d45",
+              "timestamp": "2026-06-09T02:22:07.874749"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:22:07.874749",
+          "last_accessed": "2026-06-09T02:22:07.969745"
+        }
+      },
+      "unit_id": "962b4021e73e4fd6bd2d4f7ac776f13e",
+      "timestamp": "2026-06-09T02:22:07.892548",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.969742",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "creative_goal",
+      "value": "seeks audience connection and meaningful storytelling",
+      "context": "Screened short film to enthusiastic reception; hosts Q&A events to engage with audience",
+      "profile_type": "goal",
+      "stability_score": 0.6493049746764907,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Screened short film to enthusiastic reception; hosts Q&A events to engage with audience",
+          "scene": "session_3",
+          "evidence_id": "9c265b5537a342488803904dfe92dae4",
+          "timestamp": "2026-06-09T02:22:07.874751"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "seeks audience connection and meaningful storytelling",
+          "context": "Screened short film to enthusiastic reception; hosts Q&A events to engage with audience",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Screened short film to enthusiastic reception; hosts Q&A events to engage with audience",
+              "scene": "session_3",
+              "evidence_id": "9c265b5537a342488803904dfe92dae4",
+              "timestamp": "2026-06-09T02:22:07.874751"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:22:07.874751",
+          "last_accessed": "2026-06-09T02:22:07.969975"
+        }
+      },
+      "unit_id": "06ed2b1715b64595a91b0bd76174c8ee",
+      "timestamp": "2026-06-09T02:22:07.899321",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.969972",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "interest_film_type",
+      "value": "interested in cult films, remakes, and experimental cinema",
+      "context": "Hosted discussion on remakes and podcast on cult films; visited experimental film exhibition",
+      "profile_type": "interest",
+      "stability_score": 0.6858464842324867,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Hosted discussion on remakes and podcast on cult films; visited experimental film exhibition",
+          "scene": "session_3",
+          "evidence_id": "67027e70e163492bb660cce92d1277f3",
+          "timestamp": "2026-06-09T02:22:07.874753"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "interested in cult films, remakes, and experimental cinema",
+          "context": "Hosted discussion on remakes and podcast on cult films; visited experimental film exhibition",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Hosted discussion on remakes and podcast on cult films; visited experimental film exhibition",
+              "scene": "session_3",
+              "evidence_id": "67027e70e163492bb660cce92d1277f3",
+              "timestamp": "2026-06-09T02:22:07.874753"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 11,
+          "last_seen": "2026-06-09T02:22:07.874753",
+          "last_accessed": "2026-06-09T02:22:07.970142"
+        }
+      },
+      "unit_id": "cbb0e39b91664c4bb516abbcec6813d7",
+      "timestamp": "2026-06-09T02:22:07.905769",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 11,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.970139",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "diy_furniture_skill",
+      "value": "creates furniture from reclaimed wood",
+      "context": "I recently completed a unique DIY furniture project where I created a coffee table from reclaimed wood",
+      "profile_type": "interest",
+      "stability_score": 0.6926756559479634,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I recently completed a unique DIY furniture project where I created a coffee table from reclaimed wood",
+          "scene": "session_4",
+          "evidence_id": "e99db364584d4ad4a87c50a9522c1c30",
+          "timestamp": "2026-06-09T02:22:07.918341"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "creates furniture from reclaimed wood",
+          "context": "I recently completed a unique DIY furniture project where I created a coffee table from reclaimed wood",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I recently completed a unique DIY furniture project where I created a coffee table from reclaimed wood",
+              "scene": "session_4",
+              "evidence_id": "e99db364584d4ad4a87c50a9522c1c30",
+              "timestamp": "2026-06-09T02:22:07.918341"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:22:07.918341",
+          "last_accessed": "2026-06-09T02:22:07.966751"
+        }
+      },
+      "unit_id": "6ad85d5f919946a6b6a63653aab392af",
+      "timestamp": "2026-06-09T02:22:07.936201",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.966749",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "upcycling_preference",
+      "value": "enjoys upcycling old furniture into stylish pieces",
+      "context": "I also managed to successfully upcycle an old dresser into a stylish entryway console",
+      "profile_type": "preference",
+      "stability_score": 0.7058605872573835,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I also managed to successfully upcycle an old dresser into a stylish entryway console",
+          "scene": "session_4",
+          "evidence_id": "66ed772b38634c0993a264a86d166608",
+          "timestamp": "2026-06-09T02:22:07.918344"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys upcycling old furniture into stylish pieces",
+          "context": "I also managed to successfully upcycle an old dresser into a stylish entryway console",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I also managed to successfully upcycle an old dresser into a stylish entryway console",
+              "scene": "session_4",
+              "evidence_id": "66ed772b38634c0993a264a86d166608",
+              "timestamp": "2026-06-09T02:22:07.918344"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:22:07.918344",
+          "last_accessed": "2026-06-09T02:22:07.966930"
+        }
+      },
+      "unit_id": "f61bc62ff78f4ca9a177d01f99a420ee",
+      "timestamp": "2026-06-09T02:22:07.944541",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:07.966928",
+      "last_evolved": "2026-06-09T02:22:07.970219",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "17a074db3091492faa44e74e6eacbff6": {
+      "source": "llm_deepseek",
+      "content": "hosted themed movie night featuring classic comedies",
+      "scene": "session_0",
+      "evidence_id": "17a074db3091492faa44e74e6eacbff6",
+      "timestamp": "2026-06-09T02:22:07.832042"
+    },
+    "e8c59293e4c64bcaa13b556609a7de61": {
+      "source": "llm_deepseek",
+      "content": "watched remakes of classic movies but always preferred the originals",
+      "scene": "session_0",
+      "evidence_id": "e8c59293e4c64bcaa13b556609a7de61",
+      "timestamp": "2026-06-09T02:22:07.832049"
+    },
+    "ee19235a72dc4d5d86c24be5e4f1f6fd": {
+      "source": "llm_deepseek",
+      "content": "completed film theory course, wrote reviews, created video analysis",
+      "scene": "session_0",
+      "evidence_id": "ee19235a72dc4d5d86c24be5e4f1f6fd",
+      "timestamp": "2026-06-09T02:22:07.832052"
+    },
+    "f68b4b15e26f4a0f9c53efcbaccee8c4": {
+      "source": "llm_deepseek",
+      "content": "felt overwhelmed at film festival, uncomfortable at cosplay event",
+      "scene": "session_0",
+      "evidence_id": "f68b4b15e26f4a0f9c53efcbaccee8c4",
+      "timestamp": "2026-06-09T02:22:07.832055"
+    },
+    "f2e0657036614c4187b9a68b3957f4fd": {
+      "source": "llm_deepseek",
+      "content": "User mentioned working on screenplay for weeks and completed a short film that received positive feedback.",
+      "scene": "session_1",
+      "evidence_id": "f2e0657036614c4187b9a68b3957f4fd",
+      "timestamp": "2026-06-09T02:22:07.836547"
+    },
+    "e75c42ded46f47e9a589cee8de288e59": {
+      "source": "llm_deepseek",
+      "content": "User explicitly stated launching a podcast, starting a blog, and uploading a YouTube video analysis.",
+      "scene": "session_1",
+      "evidence_id": "e75c42ded46f47e9a589cee8de288e59",
+      "timestamp": "2026-06-09T02:22:07.836550"
+    },
+    "efd2aa8983f243d6abd97b961b1644ae": {
+      "source": "llm_deepseek",
+      "content": "User stated 'I also started collecting vintage movie posters!'",
+      "scene": "session_1",
+      "evidence_id": "efd2aa8983f243d6abd97b961b1644ae",
+      "timestamp": "2026-06-09T02:22:07.836553"
+    },
+    "786ef3bc2a5d4d508a410ce793d563b7": {
+      "source": "llm_deepseek",
+      "content": "sold vintage movie posters to streamline belongings and move to digital collectibles",
+      "scene": "session_2",
+      "evidence_id": "786ef3bc2a5d4d508a410ce793d563b7",
+      "timestamp": "2026-06-09T02:22:07.848522"
+    },
+    "374b3697066d4df48dd79bbccf6270d5": {
+      "source": "llm_deepseek",
+      "content": "joined book club on film theory, film analysis forum, created reviews platform, wrote comparative article",
+      "scene": "session_2",
+      "evidence_id": "374b3697066d4df48dd79bbccf6270d5",
+      "timestamp": "2026-06-09T02:22:07.848526"
+    },
+    "6673c9ce7d8f430d9254c775b3cd54ca": {
+      "source": "llm_deepseek",
+      "content": "joined book club, film forum, started podcast, created review platform, collaborated with YouTuber",
+      "scene": "session_2",
+      "evidence_id": "6673c9ce7d8f430d9254c775b3cd54ca",
+      "timestamp": "2026-06-09T02:22:07.848528"
+    },
+    "52e4a49e7c5e4c04bc3f7c1cfc71ae94": {
+      "source": "llm_deepseek",
+      "content": "joined online course on cinematography techniques for personal video projects",
+      "scene": "session_2",
+      "evidence_id": "52e4a49e7c5e4c04bc3f7c1cfc71ae94",
+      "timestamp": "2026-06-09T02:22:07.848531"
+    },
+    "701804f992a7446bb0c5af6c5a4b990e": {
+      "source": "llm_deepseek",
+      "content": "Completed a year-long cinematography course, directed a short film, hosts film discussions",
+      "scene": "session_3",
+      "evidence_id": "701804f992a7446bb0c5af6c5a4b990e",
+      "timestamp": "2026-06-09T02:22:07.874740"
+    },
+    "df4f05fba00c4f47ab1ad7f9b67aac2a": {
+      "source": "llm_deepseek",
+      "content": "Left negative online film forum; prioritizes mental well-being and creativity",
+      "scene": "session_3",
+      "evidence_id": "df4f05fba00c4f47ab1ad7f9b67aac2a",
+      "timestamp": "2026-06-09T02:22:07.874743"
+    },
+    "6e7fbbbb0e4e4ae980da1ae927cae6f3": {
+      "source": "llm_deepseek",
+      "content": "Completed year-long cinematography course with hands-on projects and portfolio",
+      "scene": "session_3",
+      "evidence_id": "6e7fbbbb0e4e4ae980da1ae927cae6f3",
+      "timestamp": "2026-06-09T02:22:07.874746"
+    },
+    "7e6b60fe18814e798b1739303d322d45": {
+      "source": "llm_deepseek",
+      "content": "Left film theory book club; enjoys organic discussions with friends",
+      "scene": "session_3",
+      "evidence_id": "7e6b60fe18814e798b1739303d322d45",
+      "timestamp": "2026-06-09T02:22:07.874749"
+    },
+    "9c265b5537a342488803904dfe92dae4": {
+      "source": "llm_deepseek",
+      "content": "Screened short film to enthusiastic reception; hosts Q&A events to engage with audience",
+      "scene": "session_3",
+      "evidence_id": "9c265b5537a342488803904dfe92dae4",
+      "timestamp": "2026-06-09T02:22:07.874751"
+    },
+    "67027e70e163492bb660cce92d1277f3": {
+      "source": "llm_deepseek",
+      "content": "Hosted discussion on remakes and podcast on cult films; visited experimental film exhibition",
+      "scene": "session_3",
+      "evidence_id": "67027e70e163492bb660cce92d1277f3",
+      "timestamp": "2026-06-09T02:22:07.874753"
+    },
+    "61e5f77ad96c40638d7c58b5daaebf61": {
+      "source": "llm_deepseek",
+      "content": "I've really enjoyed gardening lately; I even planted a beautiful herb garden... It has been a truly rewarding experience... therapeutic joy",
+      "scene": "session_4",
+      "evidence_id": "61e5f77ad96c40638d7c58b5daaebf61",
+      "timestamp": "2026-06-09T02:22:07.918338"
+    },
+    "e99db364584d4ad4a87c50a9522c1c30": {
+      "source": "llm_deepseek",
+      "content": "I recently completed a unique DIY furniture project where I created a coffee table from reclaimed wood",
+      "scene": "session_4",
+      "evidence_id": "e99db364584d4ad4a87c50a9522c1c30",
+      "timestamp": "2026-06-09T02:22:07.918341"
+    },
+    "66ed772b38634c0993a264a86d166608": {
+      "source": "llm_deepseek",
+      "content": "I also managed to successfully upcycle an old dresser into a stylish entryway console",
+      "scene": "session_4",
+      "evidence_id": "66ed772b38634c0993a264a86d166608",
+      "timestamp": "2026-06-09T02:22:07.918344"
+    },
+    "8ecb1ae718764cf980857a69476d09e0": {
+      "source": "llm_deepseek",
+      "content": "I staged a room to prepare for an open house... received positive feedback... far beyond expectations",
+      "scene": "session_4",
+      "evidence_id": "8ecb1ae718764cf980857a69476d09e0",
+      "timestamp": "2026-06-09T02:22:07.918346"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291_session_4",
+  "config_id": "ctx_0.56",
+  "context_hash": "28249d3fb6f594de0bf9a6708d5eb4ea140c4f157ffbf51dfeeb413452ef0291",
+  "num_sessions": 5
+}
