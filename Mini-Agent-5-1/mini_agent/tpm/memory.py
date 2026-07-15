@@ -520,11 +520,16 @@ class TemporalProfileMemory:
             confidence_score=candidate.confidence,
             quality_score=candidate.quality_score,
         )
+        # 论文主文式(10/11)+δ_ctx：情境重叠 ρ>δ_ctx 且值相似度<δ_val 且同属性 -> 冲突；
+        # 情境不重叠 -> 条件分支（ensure_branch 已按 scene 建分支）。
+        context_overlap = _similarity(candidate.context, unit.context)
+        value_similarity = (
+            _similarity(candidate.value, branch.value) if (candidate.value and branch.value) else 0.0
+        )
         contradiction = bool(
-            candidate.value
-            and branch.value
-            and _similarity(candidate.value, branch.value) < 0.35
-            and candidate.attribute == unit.attribute
+            candidate.attribute == unit.attribute
+            and context_overlap > self.config.conflict_context_threshold
+            and value_similarity < self.config.conflict_value_threshold
         )
         if contradiction:
             unit.contradiction_count += 1

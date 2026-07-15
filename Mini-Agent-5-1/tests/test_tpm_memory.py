@@ -11,7 +11,7 @@ from mini_agent.agent import Agent
 from mini_agent.schema import LLMResponse
 from mini_agent.tpm import TPMMemoryManager, TemporalProfileMemory
 from mini_agent.tpm.extractor import LLMProfileExtractor, RegexProfileExtractor
-from mini_agent.tpm.models import ProfileCandidate, utc_now
+from mini_agent.tpm.models import EvidenceItem, ProfileCandidate, utc_now
 from mini_agent.tools.note_tool import RecallNoteTool, SessionNoteTool
 
 
@@ -576,3 +576,77 @@ def test_retrieve_score_uses_confidence_not_quality():
     memory.long_term_memory.extend([hi, lo])
     results = memory.retrieve("calm", scene="general", top_k=2)
     assert results[0].unit_id == hi.unit_id
+
+
+def test_fuse_candidate_conflict_on_overlapping_context_divergent_value():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.models import EvidenceItem, ProfileCandidate
+
+    memory = TemporalProfileMemory()
+    memory.start_session("general", session_id="s1")
+    seed = ProfileCandidate(
+        attribute="hobby", value="我喜欢跑步", context="聊到周末运动安排",
+        slot="behavior", memory_type="trait", scene="general",
+        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+    )
+    unit = memory._align_or_create(seed, session_id="s1")
+
+    # 同情境 + 值分歧 -> 冲突
+    contra = ProfileCandidate(
+        attribute="hobby", value="我讨厌看书", context="聊到周末运动安排",
+        slot="behavior", memory_type="trait", scene="general",
+        confidence=0.85, stability=0.7, explicitness=0.9, utility=0.8,
+    )
+    ev1 = EvidenceItem(source="test", content=contra.context, scene="general")
+    memory._fuse_candidate(unit, contra, ev1, session_id="s1")
+    assert unit.contradiction_count == 1
+
+
+def test_fuse_candidate_branches_when_context_does_not_overlap():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.models import EvidenceItem, ProfileCandidate
+
+    memory = TemporalProfileMemory()
+    memory.start_session("general", session_id="s1")
+    seed = ProfileCandidate(
+        attribute="hobby", value="我喜欢跑步", context="聊到周末运动安排",
+        slot="behavior", memory_type="trait", scene="general",
+        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+    )
+    unit = memory._align_or_create(seed, session_id="s1")
+    base_contradiction = unit.contradiction_count
+
+    # 不同情境 + 不同 scene -> 条件分支，非冲突
+    variant = ProfileCandidate(
+        attribute="hobby", value="我讨厌看书", context="聊到工作日的阅读习惯",
+        slot="behavior", memory_type="trait", scene="work",
+        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+    )
+    ev2 = EvidenceItem(source="test", content=variant.context, scene="work")
+    memory._fuse_candidate(unit, variant, ev2, session_id="s1")
+    assert unit.contradiction_count == base_contradiction
+    assert "work" in unit.scene_branches
+
+
+def test_fuse_candidate_uses_configurable_thresholds():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.memory import TPMConfig
+    from mini_agent.tpm.models import EvidenceItem, ProfileCandidate
+
+    # 抬高 value 阈值 -> 原本冲突的轻微分歧不再判冲突
+    memory = TemporalProfileMemory(config=TPMConfig(conflict_value_threshold=0.05))
+    memory.start_session("general", session_id="s1")
+    seed = ProfileCandidate(
+        attribute="hobby", value="我喜欢跑步", context="聊到周末运动安排",
+        slot="behavior", memory_type="trait", scene="general",
+        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+    )
+    unit = memory._align_or_create(seed, session_id="s1")
+    contra = ProfileCandidate(
+        attribute="hobby", value="我讨厌看书", context="聊到周末运动安排",
+        slot="behavior", memory_type="trait", scene="general",
+        confidence=0.85, stability=0.7, explicitness=0.9, utility=0.8,
+    )
+    ev = EvidenceItem(source="test", content=contra.context, scene="general")
+    memory._fuse_candidate(unit, contra, ev, session_id="s1")
+    assert unit.contradiction_count == 0
