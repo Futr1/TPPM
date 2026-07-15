@@ -24,7 +24,9 @@ from .models import (
 class ProfileExtractor:
     """Candidate extractor interface."""
 
-    def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
+    def extract(
+        self, text: str, scene: str = "general", recent_history: list[str] | None = None
+    ) -> list[ProfileCandidate]:
         raise NotImplementedError
 
 
@@ -32,7 +34,10 @@ class ProfileExtractor:
 class RegexProfileExtractor(ProfileExtractor):
     """Heuristic extractor used to bootstrap TPM on top of Mini-Agent."""
 
-    def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
+    def extract(
+        self, text: str, scene: str = "general", recent_history: list[str] | None = None
+    ) -> list[ProfileCandidate]:
+        scan_text = "\n".join([*(recent_history or []), text])
         candidates: list[ProfileCandidate] = []
         specs = [
             (r"\bmy name is ([^.,;!?]+)", "identity", "support", "trait", 0.96, 0.95),
@@ -55,7 +60,7 @@ class RegexProfileExtractor(ProfileExtractor):
         ]
 
         for pattern, attribute, slot, memory_type, confidence, stability in specs:
-            for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+            for match in re.finditer(pattern, scan_text, flags=re.IGNORECASE):
                 value = self._clean_value(match.group(1)) if match.groups() else match.group(0).strip()
                 if not value:
                     continue
@@ -93,12 +98,14 @@ class LLMProfileExtractor(ProfileExtractor):
     max_candidates: int = 8
     fallback_extractor: ProfileExtractor | None = None
 
-    def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
+    def extract(
+        self, text: str, scene: str = "general", recent_history: list[str] | None = None
+    ) -> list[ProfileCandidate]:
         if requests is None or not self.api_key:
-            return self._fallback(text, scene)
+            return self._fallback(text, scene, recent_history=recent_history)
 
         try:
-            payload = self._build_payload(text=text, scene=scene)
+            payload = self._build_payload(text=text, scene=scene, recent_history=recent_history)
             response = requests.post(
                 self._chat_completions_url(),
                 headers={
@@ -114,11 +121,11 @@ class LLMProfileExtractor(ProfileExtractor):
             if candidates:
                 return candidates[: self.max_candidates]
         except Exception:
-            return self._fallback(text, scene)
+            return self._fallback(text, scene, recent_history=recent_history)
 
-        return self._fallback(text, scene)
+        return self._fallback(text, scene, recent_history=recent_history)
 
-    def _build_payload(self, text: str, scene: str) -> dict[str, Any]:
+    def _build_payload(self, text: str, scene: str, recent_history: list[str] | None = None) -> dict[str, Any]:
         schema_hint = {
             "candidates": [
                 {
@@ -142,9 +149,14 @@ class LLMProfileExtractor(ProfileExtractor):
             "从用户最新发言中抽取稳定、可复用、情境相关的心理画像信息。"
             "只输出合法 JSON，不要 markdown，不要解释。"
         )
+        history_block = ""
+        if recent_history:
+            joined = "\n".join(f"- {h}" for h in recent_history)
+            history_block = f"最近用户发言历史（用于跨轮信号，非当前发言）：\n{joined}\n\n"
         user_prompt = (
             "任务：为 TPM 抽取心理画像候选。\n"
             f"当前场景：{scene}\n"
+            f"{history_block}"
             f"最新用户发言：\n{text}\n\n"
             "抽取规则：\n"
             "1. slot 必须是 7 个心理子空间之一：affect(情绪)/stressor(压力源)/cognitive(认知信念)/"
@@ -259,10 +271,12 @@ class LLMProfileExtractor(ProfileExtractor):
 
         raise ValueError("No valid JSON found in LLM extractor output.")
 
-    def _fallback(self, text: str, scene: str) -> list[ProfileCandidate]:
+    def _fallback(
+        self, text: str, scene: str, recent_history: list[str] | None = None
+    ) -> list[ProfileCandidate]:
         if self.fallback_extractor is None:
             return []
-        return self.fallback_extractor.extract(text=text, scene=scene)
+        return self.fallback_extractor.extract(text=text, scene=scene, recent_history=recent_history)
 
     @staticmethod
     def _clamp(value: Any, default: float) -> float:

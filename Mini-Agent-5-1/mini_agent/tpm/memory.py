@@ -628,11 +628,16 @@ class TPMMemoryManager:
         self.session_id = f"session-{utc_now().strftime('%Y%m%dT%H%M%S')}-{uuid4().hex[:8]}"
         self._load_from_disk()
 
-    def begin_turn(self, text: str, scene: str = "general") -> list[ProfileMemoryUnit]:
+    def begin_turn(
+        self,
+        text: str,
+        scene: str = "general",
+        recent_history: list[str] | None = None,
+    ) -> list[ProfileMemoryUnit]:
         self._load_from_disk()
         self._active_scene = scene
         self.memory.start_session(scene, session_id=self.session_id)
-        candidates = self.extractor.extract(text, scene=scene)
+        candidates = self.extractor.extract(text, scene=scene, recent_history=recent_history)
         self.memory.ingest_candidates(candidates, scene=scene, session_id=self.session_id)
         self.memory.run_evolution_engine(scene, include_long_term_decay=False)
         self._save_to_disk()

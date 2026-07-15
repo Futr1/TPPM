@@ -121,7 +121,16 @@ class Agent:
 
         if self.memory_manager is not None:
             try:
-                retrieved = self.memory_manager.begin_turn(content, scene=self.current_scene)
+                window = self.memory_manager.history_window
+                prior_user = [
+                    m.content
+                    for m in self.messages
+                    if m.role == "user" and isinstance(m.content, str)
+                ]
+                recent_history = prior_user[-window:] if window > 0 else []
+                retrieved = self.memory_manager.begin_turn(
+                    content, scene=self.current_scene, recent_history=recent_history
+                )
                 message_content = self.memory_manager.augment_user_message(content, retrieved)
                 self._memory_turn_pending = True
             except Exception:

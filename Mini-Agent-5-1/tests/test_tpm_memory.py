@@ -716,3 +716,85 @@ def test_llm_extractor_prompt_requests_dual_fields():
     assert "relevance" in user_msg
     assert "utility" in user_msg
     assert "risk" in user_msg  # 心理/风险导向提示
+
+
+def test_begin_turn_forwards_recent_history_to_extractor():
+    from mini_agent.tpm import TPMMemoryManager
+    from mini_agent.tpm.extractor import ProfileExtractor
+
+    class RecordingExtractor(ProfileExtractor):
+        def __init__(self):
+            self.seen_history = None
+
+        def extract(self, text, scene="general", recent_history=None):
+            self.seen_history = recent_history
+            return []
+
+    workspace = make_test_workspace()
+    rec = RecordingExtractor()
+    manager = TPMMemoryManager(memory_file=workspace / ".agent_memory.json", extractor=rec)
+    manager.begin_turn("current message", scene="general", recent_history=["prev1", "prev2"])
+    assert rec.seen_history == ["prev1", "prev2"]
+
+
+@pytest.mark.asyncio
+async def test_agent_passes_recent_user_history_to_begin_turn():
+    from mini_agent.tpm import TPMMemoryManager
+    from mini_agent.tpm.extractor import ProfileExtractor
+
+    class RecordingExtractor(ProfileExtractor):
+        def __init__(self):
+            self.seen_history = None
+
+        def extract(self, text, scene="general", recent_history=None):
+            self.seen_history = recent_history
+            return []
+
+    workspace = make_test_workspace()
+    rec = RecordingExtractor()
+    manager = TPMMemoryManager(memory_file=workspace / ".agent_memory.json", extractor=rec)
+
+    agent = Agent(
+        llm_client=DummyLLM(),
+        system_prompt="You are a helpful assistant.",
+        tools=[],
+        workspace_dir=workspace,
+        memory_manager=manager,
+    )
+    agent.add_user_message("I like tea")
+    agent.add_user_message("Tell me about tea")
+    assert rec.seen_history is not None
+    assert len(rec.seen_history) == 1
+    assert "I like tea" in rec.seen_history[0]
+
+
+def test_agent_caps_recent_history_to_window():
+    from mini_agent.tpm import TPMMemoryManager
+    from mini_agent.tpm.extractor import ProfileExtractor
+    from mini_agent.tpm.memory import TPMConfig
+
+    class RecordingExtractor(ProfileExtractor):
+        def __init__(self):
+            self.seen_history = None
+
+        def extract(self, text, scene="general", recent_history=None):
+            self.seen_history = recent_history
+            return []
+
+    workspace = make_test_workspace()
+    rec = RecordingExtractor()
+    manager = TPMMemoryManager(
+        memory_file=workspace / ".agent_memory.json",
+        extractor=rec,
+        config=TPMConfig(history_window=2),
+    )
+    agent = Agent(
+        llm_client=DummyLLM(),
+        system_prompt="helper",
+        tools=[],
+        workspace_dir=workspace,
+        memory_manager=manager,
+    )
+    for i in range(5):
+        agent.add_user_message(f"msg {i}")
+    assert len(rec.seen_history) == 2
