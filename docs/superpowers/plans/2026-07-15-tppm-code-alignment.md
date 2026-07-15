@@ -1362,9 +1362,9 @@ Expected: FAIL（中文正则不存在；prompt 仍要 profile_type/recency/user
             (r"\bfor this project[, ]+([^.,;!?]+)", "project_constraint", "behavior", "coping", 0.76, 0.62),
             # --- 中文心理/风险信号 ---
             (r"自伤|割腕|不想活|想死|自杀|轻生", "self_harm_risk", "risk", "affect", 0.95, 0.6),
-            (r"我(?:很)?焦虑|焦虑症|恐慌", "anxiety", "affect", "affect", 0.85, 0.55),
+            (r"焦虑|焦虑症|恐慌", "anxiety", "affect", "affect", 0.85, 0.55),
             (r"抑郁|很丧|没(?:有)?动力|提不起劲", "depression", "affect", "affect", 0.82, 0.55),
-            (r"压力(?:很|太)?大|压力大|喘不过气", "stress", "stressor", "stressor", 0.84, 0.58),
+            (r"压力(?:很|太)?大|喘不过气", "stress", "stressor", "stressor", 0.84, 0.58),
             (r"失眠|睡不着|睡不好|多梦", "sleep", "behavior", "affect", 0.8, 0.6),
             (r"我(?:叫|的名字是)\s*([^.,;!?]+)", "identity", "support", "trait", 0.9, 0.9),
             (r"我(?:喜欢|爱好)\s*([^.,;!?]+)", "interest", "behavior", "trait", 0.78, 0.7),
@@ -1905,4 +1905,4 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 > 11. `_promote_stable_memories` 中把 `evidence_strength = min(1.0, len(unit.evidence) / 4.0)` 重命名为 `explicitness = min(1.0, len(unit.evidence) / 4.0)`（对齐主文式12 的 $X$ 因子；计算不变），并把 `score = (... promote_weights[1] * evidence_strength ...)` 改为 `promote_weights[1] * explicitness`。
 
-并在 Task 7 **Step 3(b)** 中明确：`specs` 列表必须包含 Task 6 Step 3 完成后的全部条目（英文 8 条 + 中文 9 条），逐字保留，不得省略。
+并在 Task 7 **Step 3(b)** 中明确：`specs` 列表必须包含 Task 6 Step 3 完成后的全部条目（英文 8 条 + 中文 8 条，共 16 条），逐字保留，不得省略。
