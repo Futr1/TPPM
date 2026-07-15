@@ -31,9 +31,11 @@
 
 ## 3. 范围
 
-**改**：`tpm/models.py`、`tpm/memory.py`、`tpm/extractor.py`、`agent.py`、`cli.py`、`config.py`、`config/config.yaml`、`tests/test_tpm_memory.py`。
+**代码根目录**：所有代码改动限于 `/root/autodl-tmp/wangqihao/Mini-Agent-5-1/` 目录下；下文路径均相对该目录。
 
-**不改**：`LoRA/` 全部、`tools/note_tool.py`（接口不变，自动受益）、`skills/`、`mcp/`、`acp/`、`schema/`、`utils/`。
+**改**：`tpm/models.py`、`tpm/memory.py`、`tpm/extractor.py`、`cli.py`、`config.py`、`config/config.yaml`、`tests/test_tpm_memory.py`；`agent.py` 仅限 TPM 轮次生命周期接线（`add_user_message` 传历史、`_finalize_memory_turn` 的 `complete_turn` 调用），不触碰其 LoRA 逻辑。
+
+**不改（LoRA 已放弃）**：`LoRA/` 全部、`mini_agent/llm/local_lora_client.py`、`agent.py` 中 LoRA 相关逻辑（`_check_and_load_adapter`、`enable_background_distillation` 触发的蒸馏子进程）。LoRA 微调为早期放弃的尝试，本文不含微调；实验运行于基座 DeepSeek-V4-Flash（非 `local_lora` provider，`enable_background_distillation=False`），蒸馏子进程不触发，规则驱动 TPM 独立运行。另：`tools/note_tool.py`（接口不变，自动受益）、`skills/`、`mcp/`、`acp/`、`schema/`、`utils/`。
 
 **不触碰**：任何现有数据文件（`Table*/*_memory_bank.json`、`workspace/.agent_memory.json`、`Figure-data/` 等）。
 
@@ -138,7 +140,7 @@
 - `from_dict`：**只读向后兼容**，按 §4.2 把旧 `profile_type` 解析为双字段；支持新 schema 直读。**不回写、不迁移任何源文件**。
 - **不提供** `Table*/*_memory_bank.json` 批量迁移脚本；不修改任何现有数据文件。
 - 运行时 `workspace/.agent_memory.json`：agent 下次运行时会以新 schema 保存（新格式是旧格式的超集，**无损加字段**）；建议首次运行前备份该文件。
-- LoRA 蒸馏器（`LoRA/tppm_distiller.py`）读取 `long_term_memory` 的 `strength`/`confidence` 两键，双字段重构不改这两键 → 不影响蒸馏链路（且 LoRA 不在范围内）。
+- LoRA 蒸馏链路已放弃、不在范围内；双字段为新增字段，不影响既有 `strength`/`confidence` 等键。
 - 兼容性风险：若有其它代码（如 `Table*/` 评测脚本）直接读 `profile_type` 字段，会在新 schema 下失效 → 列为 out-of-scope 风险，需另行对齐。
 
 ## 11. 测试计划
