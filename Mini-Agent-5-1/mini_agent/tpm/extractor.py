@@ -1,0 +1,259 @@
+"""Candidate extraction for Temporal Profile Memory."""
+
+from __future__ import annotations
+
+import json
+import re
+from dataclasses import dataclass
+from typing import Any
+
+try:
+    import requests
+except ModuleNotFoundError:  # pragma: no cover - environment dependent
+    requests = None
+
+from .models import ProfileCandidate
+
+
+class ProfileExtractor:
+    """Candidate extractor interface."""
+
+    def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
+        raise NotImplementedError
+
+
+@dataclass(slots=True)
+class RegexProfileExtractor(ProfileExtractor):
+    """Heuristic extractor used to bootstrap TPM on top of Mini-Agent."""
+
+    def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
+        candidates: list[ProfileCandidate] = []
+        specs = [
+            (r"\bmy name is ([^.,;!?]+)", "identity", "background", 0.96, 0.95),
+            (r"\bI am (?:a|an) ([^.,;!?]+)", "identity", "background", 0.82, 0.86),
+            (r"\bI like ([^.,;!?]+)", "interest", "preference", 0.78, 0.72),
+            (r"\bI love ([^.,;!?]+)", "interest", "preference", 0.86, 0.78),
+            (r"\bI prefer ([^.,;!?]+)", "style", "preference", 0.87, 0.82),
+            (r"\bI work (?:on|with) ([^.,;!?]+)", "project_focus", "goal", 0.82, 0.68),
+            (r"\bI (?:need|want) ([^.,;!?]+)", "current_goal", "goal", 0.8, 0.54),
+            (r"\bfor this project[, ]+([^.,;!?]+)", "project_constraint", "goal", 0.76, 0.62),
+        ]
+
+        for pattern, attribute, profile_type, confidence, stability in specs:
+            for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+                value = self._clean_value(match.group(1))
+                if not value:
+                    continue
+                candidates.append(
+                    ProfileCandidate(
+                        attribute=attribute,
+                        value=value,
+                        context=text,
+                        profile_type=profile_type,
+                        scene=scene,
+                        confidence=confidence,
+                        stability=stability,
+                        explicitness=0.92,
+                        user_relevance=0.9,
+                    )
+                )
+
+        return candidates
+
+    @staticmethod
+    def _clean_value(value: str) -> str:
+        return value.strip().strip("\"'` ").rstrip(".")
+
+
+@dataclass(slots=True)
+class LLMProfileExtractor(ProfileExtractor):
+    """LLM-powered extractor that asks Qwen to emit structured profile candidates."""
+
+    api_key: str
+    api_base: str
+    model: str
+    timeout: float = 30.0
+    max_candidates: int = 8
+    fallback_extractor: ProfileExtractor | None = None
+
+    def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
+        if requests is None or not self.api_key:
+            return self._fallback(text, scene)
+
+        try:
+            payload = self._build_payload(text=text, scene=scene)
+            response = requests.post(
+                self._chat_completions_url(),
+                headers={
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json",
+                },
+                json=payload,
+                timeout=self.timeout,
+            )
+            response.raise_for_status()
+            content = self._extract_response_content(response.json())
+            candidates = self._parse_candidates(content=content, original_text=text, scene=scene)
+            if candidates:
+                return candidates[: self.max_candidates]
+        except Exception:
+            return self._fallback(text, scene)
+
+        return self._fallback(text, scene)
+
+    def _build_payload(self, text: str, scene: str) -> dict[str, Any]:
+        schema_hint = {
+            "candidates": [
+                {
+                    "attribute": "short_attribute_name",
+                    "value": "profile_value",
+                    "context": "supporting_span_or_short_reason",
+                    "profile_type": "background|preference|goal|style|interest|general",
+                    "scene": scene,
+                    "confidence": 0.0,
+                    "stability": 0.0,
+                    "recency": 1.0,
+                    "explicitness": 0.0,
+                    "user_relevance": 0.0,
+                    "source": "llm_qwen",
+                }
+            ]
+        }
+        system_prompt = (
+            "You are a profile candidate extractor for Temporal Profile Memory (TPM). "
+            "Extract stable, reusable, and scene-conditioned user profile information from the latest user utterance. "
+            "Return ONLY valid JSON, no markdown, no explanation."
+        )
+        user_prompt = (
+            "Task: extract profile candidates for TPM.\n"
+            f"Current scene: {scene}\n"
+            f"Latest user utterance:\n{text}\n\n"
+            "Extraction rules:\n"
+            "1. Keep only user-related profile facts, preferences, goals, style tendencies, identity, or stable project context.\n"
+            "2. Ignore assistant behavior, transient tool output requests, and generic conversational filler.\n"
+            "3. Use concise attribute names like identity, interest, current_goal, style, project_focus, preference.\n"
+            "4. profile_type must be one of: background, preference, goal, style, interest, general.\n"
+            "5. confidence, stability, recency, explicitness, user_relevance must be numbers in [0,1].\n"
+            "6. user_relevance measures how central this fact is to the user's enduring profile.\n"
+            "7. Prefer higher stability for repeated or enduring traits; lower stability for short-term goals.\n"
+            "8. If there is no useful profile memory candidate, return {\"candidates\": []}.\n\n"
+            f"Output JSON schema example:\n{json.dumps(schema_hint, ensure_ascii=False)}"
+        )
+        return {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": 0,
+        }
+
+    def _chat_completions_url(self) -> str:
+        return self.api_base.rstrip("/") + "/chat/completions"
+
+    def _extract_response_content(self, payload: dict[str, Any]) -> str:
+        choices = payload.get("choices") or []
+        if not choices:
+            return ""
+        message = choices[0].get("message") or {}
+        content = message.get("content")
+        if isinstance(content, str):
+            return content
+        if isinstance(content, list):
+            text_parts = []
+            for item in content:
+                if isinstance(item, dict) and item.get("type") == "text":
+                    text_parts.append(item.get("text", ""))
+            return "\n".join(text_parts)
+        return ""
+
+    def _parse_candidates(self, content: str, original_text: str, scene: str) -> list[ProfileCandidate]:
+        parsed = self._extract_json(content)
+        if isinstance(parsed, dict):
+            raw_candidates = parsed.get("candidates", [])
+        elif isinstance(parsed, list):
+            raw_candidates = parsed
+        else:
+            raw_candidates = []
+
+        candidates: list[ProfileCandidate] = []
+        for item in raw_candidates:
+            if not isinstance(item, dict):
+                continue
+            attribute = str(item.get("attribute", "")).strip()
+            value = str(item.get("value", "")).strip()
+            if not attribute or not value:
+                continue
+
+            profile_type = str(item.get("profile_type", "general")).strip().lower()
+            if profile_type not in {"background", "preference", "goal", "style", "interest", "general"}:
+                profile_type = "general"
+
+            candidates.append(
+                ProfileCandidate(
+                    attribute=attribute,
+                    value=value,
+                    context=str(item.get("context") or original_text).strip() or original_text,
+                    profile_type=profile_type,
+                    scene=str(item.get("scene") or scene).strip() or scene,
+                    confidence=self._clamp(item.get("confidence"), default=0.72),
+                    stability=self._clamp(item.get("stability"), default=self._default_stability(profile_type)),
+                    recency=self._clamp(item.get("recency"), default=1.0),
+                    explicitness=self._clamp(item.get("explicitness"), default=0.8),
+                    user_relevance=self._clamp(item.get("user_relevance"), default=0.82),
+                    source=str(item.get("source") or "llm_qwen").strip() or "llm_qwen",
+                )
+            )
+
+        return candidates
+
+    def _extract_json(self, content: str) -> Any:
+        stripped = content.strip()
+        if stripped.startswith("```"):
+            stripped = re.sub(r"^```(?:json)?", "", stripped, flags=re.IGNORECASE).strip()
+            stripped = re.sub(r"```$", "", stripped).strip()
+
+        try:
+            return json.loads(stripped)
+        except Exception:
+            pass
+
+        first_obj = stripped.find("{")
+        last_obj = stripped.rfind("}")
+        if first_obj != -1 and last_obj != -1 and last_obj > first_obj:
+            try:
+                return json.loads(stripped[first_obj : last_obj + 1])
+            except Exception:
+                pass
+
+        first_arr = stripped.find("[")
+        last_arr = stripped.rfind("]")
+        if first_arr != -1 and last_arr != -1 and last_arr > first_arr:
+            return json.loads(stripped[first_arr : last_arr + 1])
+
+        raise ValueError("No valid JSON found in LLM extractor output.")
+
+    def _fallback(self, text: str, scene: str) -> list[ProfileCandidate]:
+        if self.fallback_extractor is None:
+            return []
+        return self.fallback_extractor.extract(text=text, scene=scene)
+
+    @staticmethod
+    def _clamp(value: Any, default: float) -> float:
+        try:
+            numeric = float(value)
+        except Exception:
+            numeric = default
+        return max(0.0, min(1.0, numeric))
+
+    @staticmethod
+    def _default_stability(profile_type: str) -> float:
+        defaults = {
+            "background": 0.9,
+            "style": 0.78,
+            "preference": 0.72,
+            "interest": 0.7,
+            "goal": 0.56,
+            "general": 0.6,
+        }
+        return defaults.get(profile_type, 0.6)
