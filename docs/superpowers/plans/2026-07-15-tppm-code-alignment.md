@@ -896,6 +896,19 @@ def test_non_risk_affect_unit_decays_over_time():
     memory.decay_long_term()
     # affect 衰减率最大，30 天后强度应明显下降
     assert unit.stability_score < 0.8
+
+
+def test_decay_lambdas_default_keys_are_g_i_per_paper_eq15():
+    from mini_agent.tpm.memory import TPMConfig
+
+    cfg = TPMConfig()
+    # spec §5.1：decay_lambdas 键改为 g_i（不再是旧 profile_type 键）
+    assert set(cfg.decay_lambdas.keys()) == {"affect", "stressor", "coping", "support", "trait"}
+    # 论文式(15) 排序：affect > stressor > coping ≈ support > trait
+    assert cfg.decay_lambdas["affect"] > cfg.decay_lambdas["stressor"]
+    assert cfg.decay_lambdas["stressor"] > cfg.decay_lambdas["coping"]
+    assert cfg.decay_lambdas["coping"] == cfg.decay_lambdas["support"]
+    assert cfg.decay_lambdas["support"] > cfg.decay_lambdas["trait"]
 ```
 
 在 `tests/test_tpm_memory.py` 顶部 import 区追加（若尚未导入）：
@@ -910,11 +923,27 @@ from mini_agent.tpm.models import utc_now
 - [ ] **Step 2: 运行测试，确认失败**
 
 Run: `cd /root/autodl-tmp/wangqihao/Mini-Agent-5-1 && python -m pytest tests/test_tpm_memory.py::test_risk_unit_skips_time_decay_but_drops_on_contradiction tests/test_tpm_memory.py::test_non_risk_affect_unit_decays_over_time -v`
-Expected: 风险测试 FAIL（当前 `decay_long_term` 对 risk 单元也做 exp 衰减 → 强度下降，断言 `==0.8` 失败）。
+Expected: 风险测试 FAIL（当前 `decay_long_term` 对 risk 单元也做 exp 衰减 → 强度下降，断言 `==0.8` 失败）；`test_decay_lambdas_default_keys_are_g_i_per_paper_eq15` 也 FAIL（当前默认键仍是 legacy profile_type 键，不等于 g_i 集合）。
 
-- [ ] **Step 3: 在 `decay_long_term` 实现风险旁路**
+- [ ] **Step 3: 实现风险旁路 + 把 `decay_lambdas` 默认键改为 g_i（论文式15）**
 
-把 `mini_agent/tpm/memory.py` 的 `decay_long_term` 方法整体替换为：
+**(a) 先把 `TPMConfig.decay_lambdas` 默认值从旧 profile_type 键改为 g_i 键**（spec §5.1；当前仍是 legacy `{goal, interest, style, background, preference, general}`，会导致 `decay_long_term` 中 `decay_lambdas.get(unit.memory_type, ...)` 全部回退到 0.03，类型条件衰减失效）。在 `mini_agent/tpm/memory.py` 把 `decay_lambdas` 字段整体替换为：
+
+```python
+    decay_lambdas: dict[str, float] = field(
+        default_factory=lambda: {
+            "affect": 0.10,
+            "stressor": 0.07,
+            "coping": 0.05,
+            "support": 0.05,
+            "trait": 0.03,
+        }
+    )
+```
+
+满足论文式(15) 排序：$\lambda_{\text{affect}}>\lambda_{\text{stressor}}>\lambda_{\text{coping}}\approx\lambda_{\text{support}}>\lambda_{\text{trait}}$。
+
+**(b) 再把 `decay_long_term` 方法整体替换为**：
 
 ```python
     def decay_long_term(self) -> None:
@@ -955,10 +984,12 @@ Expected: 全部 PASS。
 ```bash
 cd /root/autodl-tmp/wangqihao
 git add Mini-Agent-5-1/mini_agent/tpm/memory.py Mini-Agent-5-1/tests/test_tpm_memory.py
-git commit -m "feat(tpm): risk-signal safety rule skips time decay (paper eq 14/15, R1)
+git commit -m "feat(tpm): risk-signal safety rule + g_i decay_lambdas (paper eq 14/15, R1)
 
 risk units (slot=risk) bypass normal s·exp(-λΔt) decay; stability drops only
 via -γ⁻·ψ⁻ when contradiction is hit. non-risk units decay by memory_type λ.
+decay_lambdas default keys switched to g_i {affect,stressor,coping,support,trait}
+per paper eq 15, so type-conditional decay is effective (was silently 0.03).
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
