@@ -39,7 +39,7 @@ class LLMConfig(BaseModel):
 class MemoryExtractorConfig(BaseModel):
     """TPM 记忆抽取器配置。
 
-    该配置只控制“记忆抽取”这条链路，和主对话模型分离。
+    该配置只控制"记忆抽取"这条链路，和主对话模型分离。
     如果启用，它会优先作为 TPM 的 LLM 抽取后端使用。
     """
 
@@ -49,6 +49,55 @@ class MemoryExtractorConfig(BaseModel):
     api_key: str | None = None
     timeout: float = 30.0
     max_candidates: int = 8
+
+
+class TPMSettings(BaseModel):
+    """TPM 引擎可调参数（映射到 tpm.memory.TPMConfig）。
+
+    decay_lambdas 为空 dict 时，build_tpm_config 回退到 TPMConfig 默认值。
+    """
+
+    write_threshold: float = 0.68
+    context_threshold: float = 0.62
+    promote_threshold: float = 0.72
+    promotion_min_sessions: int = 2
+    conflict_context_threshold: float = 0.62
+    conflict_value_threshold: float = 0.35
+    T_fresh: float = 168.0
+    history_window: int = 3
+    write_weights: list[float] = [0.25, 0.3, 0.25, 0.2]
+    promote_weights: list[float] = [0.35, 0.2, 0.15, 0.25, 0.2]
+    retrieve_weights: list[float] = [0.35, 0.2, 0.15, 0.2, 0.1]
+    decay_lambdas: dict[str, float] = Field(default_factory=dict)
+    positive_reinforcement: float = 0.08
+    negative_penalty: float = 0.12
+    working_decay: float = 0.015
+    short_term_decay: float = 0.03
+
+
+def build_tpm_config(settings: TPMSettings) -> "TPMConfig":
+    """把 pydantic TPMSettings 转成 tpm.memory.TPMConfig（list→tuple）。"""
+    from .tpm.memory import TPMConfig
+
+    defaults = TPMConfig()
+    return TPMConfig(
+        write_threshold=settings.write_threshold,
+        context_threshold=settings.context_threshold,
+        promote_threshold=settings.promote_threshold,
+        promotion_min_sessions=settings.promotion_min_sessions,
+        conflict_context_threshold=settings.conflict_context_threshold,
+        conflict_value_threshold=settings.conflict_value_threshold,
+        T_fresh=settings.T_fresh,
+        history_window=settings.history_window,
+        write_weights=tuple(settings.write_weights),
+        promote_weights=tuple(settings.promote_weights),
+        retrieve_weights=tuple(settings.retrieve_weights),
+        decay_lambdas=dict(settings.decay_lambdas) if settings.decay_lambdas else defaults.decay_lambdas,
+        positive_reinforcement=settings.positive_reinforcement,
+        negative_penalty=settings.negative_penalty,
+        working_decay=settings.working_decay,
+        short_term_decay=settings.short_term_decay,
+    )
 
 
 class AgentConfig(BaseModel):
@@ -92,6 +141,7 @@ class Config(BaseModel):
     agent: AgentConfig
     tools: ToolsConfig
     memory_extractor: MemoryExtractorConfig = Field(default_factory=MemoryExtractorConfig)
+    tpm: TPMSettings = Field(default_factory=TPMSettings)
 
     @classmethod
     def load(cls) -> "Config":
@@ -170,6 +220,11 @@ class Config(BaseModel):
             max_candidates=memory_extractor_data.get("max_candidates", 8),
         )
 
+        tpm_data = data.get("tpm") or {}
+        if not isinstance(tpm_data, dict):
+            raise ValueError("tpm must be a mapping if provided")
+        tpm_settings = TPMSettings(**tpm_data)
+
         # Parse Agent configuration
         agent_config = AgentConfig(
             max_steps=data.get("max_steps", 50),
@@ -204,6 +259,7 @@ class Config(BaseModel):
             agent=agent_config,
             tools=tools_config,
             memory_extractor=memory_extractor_config,
+            tpm=tpm_settings,
         )
 
     @staticmethod

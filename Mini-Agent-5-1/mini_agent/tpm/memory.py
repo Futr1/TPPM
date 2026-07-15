@@ -68,6 +68,11 @@ class TPMConfig:
     negative_penalty: float = 0.12
     working_decay: float = 0.015
     short_term_decay: float = 0.03
+    # --- 论文主文对齐新增（Task 1）---
+    conflict_context_threshold: float = 0.62   # δ_ctx：情境重叠阈值
+    conflict_value_threshold: float = 0.35     # 极性分歧阈值
+    T_fresh: float = 168.0                      # Fresh 衰减时间常数（小时）
+    history_window: int = 3                     # 历史感知窗口 N
 
 
 class TemporalProfileMemory:
@@ -207,6 +212,10 @@ class TemporalProfileMemory:
                 "negative_penalty": self.config.negative_penalty,
                 "working_decay": self.config.working_decay,
                 "short_term_decay": self.config.short_term_decay,
+                "conflict_context_threshold": self.config.conflict_context_threshold,
+                "conflict_value_threshold": self.config.conflict_value_threshold,
+                "T_fresh": self.config.T_fresh,
+                "history_window": self.config.history_window,
             },
             "working_memory": [unit.to_dict() for unit in self.working_memory],
             "short_term_memory": [unit.to_dict() for unit in self.short_term_memory],
@@ -246,6 +255,14 @@ class TemporalProfileMemory:
             negative_penalty=config_data.get("negative_penalty", default_config.negative_penalty),
             working_decay=config_data.get("working_decay", default_config.working_decay),
             short_term_decay=config_data.get("short_term_decay", default_config.short_term_decay),
+            conflict_context_threshold=config_data.get(
+                "conflict_context_threshold", default_config.conflict_context_threshold
+            ),
+            conflict_value_threshold=config_data.get(
+                "conflict_value_threshold", default_config.conflict_value_threshold
+            ),
+            T_fresh=config_data.get("T_fresh", default_config.T_fresh),
+            history_window=config_data.get("history_window", default_config.history_window),
         )
         memory = cls(config=config)
         memory.working_memory = [ProfileMemoryUnit.from_dict(item) for item in data.get("working_memory", [])]
@@ -581,7 +598,9 @@ class TPMMemoryManager:
         self.memory_file = Path(memory_file)
         self.extractor = extractor or RegexProfileExtractor()
         self.retrieval_top_k = retrieval_top_k
-        self.memory = TemporalProfileMemory(config=config)
+        self.config = config or TPMConfig()
+        self.memory = TemporalProfileMemory(config=self.config)
+        self.history_window = self.config.history_window
         self._active_scene: str | None = None
         self.session_id = f"session-{utc_now().strftime('%Y%m%dT%H%M%S')}-{uuid4().hex[:8]}"
         self._load_from_disk()

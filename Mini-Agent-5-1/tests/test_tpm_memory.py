@@ -306,3 +306,70 @@ async def test_agent_injects_temporal_profile_memory_context():
 
     assert "[Temporal Profile Memory]" in result
     assert "concise answers" in result
+
+
+def test_tpm_config_externalized_from_yaml(tmp_path):
+    from mini_agent.config import Config, build_tpm_config
+
+    yaml_text = """
+api_key: "local"
+provider: "openai"
+model: "deepseek-v4-flash"
+max_steps: 10
+workspace_dir: ./ws
+tpm:
+  write_threshold: 0.7
+  context_threshold: 0.6
+  conflict_context_threshold: 0.55
+  conflict_value_threshold: 0.3
+  T_fresh: 96.0
+  history_window: 5
+tools:
+  enable_note: true
+"""
+    cfg_path = tmp_path / "config.yaml"
+    cfg_path.write_text(yaml_text, encoding="utf-8")
+
+    config = Config.from_yaml(cfg_path)
+    assert config.tpm.T_fresh == 96.0
+    assert config.tpm.history_window == 5
+    assert config.tpm.conflict_context_threshold == 0.55
+
+    tpm_config = build_tpm_config(config.tpm)
+    assert tpm_config.T_fresh == 96.0
+    assert tpm_config.history_window == 5
+    assert tpm_config.conflict_value_threshold == 0.3
+    # weights round-trip list -> tuple
+    assert isinstance(tpm_config.write_weights, tuple)
+    assert len(tpm_config.write_weights) == 4
+    # decay_lambdas omitted in yaml -> falls back to TPMConfig defaults
+    from mini_agent.tpm.memory import TPMConfig
+    assert tpm_config.decay_lambdas == TPMConfig().decay_lambdas
+
+
+def test_tpm_manager_exposes_history_window_from_config():
+    from mini_agent.tpm import TPMMemoryManager
+    from mini_agent.tpm.memory import TPMConfig
+
+    workspace = make_test_workspace()
+    manager = TPMMemoryManager(
+        memory_file=workspace / ".agent_memory.json",
+        config=TPMConfig(history_window=7, T_fresh=120.0),
+    )
+    assert manager.history_window == 7
+    assert manager.config.T_fresh == 120.0
+
+
+def test_tpm_config_roundtrips_new_fields_through_to_dict():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.memory import TPMConfig
+
+    memory = TemporalProfileMemory(config=TPMConfig(T_fresh=72.0, history_window=4))
+    data = memory.to_dict()
+    assert data["config"]["T_fresh"] == 72.0
+    assert data["config"]["history_window"] == 4
+    assert data["config"]["conflict_context_threshold"] == TPMConfig().conflict_context_threshold
+
+    restored = TemporalProfileMemory.from_dict(data)
+    assert restored.config.T_fresh == 72.0
+    assert restored.config.history_window == 4

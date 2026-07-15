@@ -38,7 +38,7 @@ except ModuleNotFoundError:  # pragma: no cover - environment dependent
 
 from mini_agent import LLMClient
 from mini_agent.agent import Agent
-from mini_agent.config import Config
+from mini_agent.config import Config, build_tpm_config
 from mini_agent.schema import LLMProvider
 from mini_agent.tpm import LLMProfileExtractor, RegexProfileExtractor, TPMMemoryManager
 from mini_agent.tools.base import Tool
@@ -534,9 +534,11 @@ def add_workspace_tools(tools: List[Tool], config: Config, workspace_dir: Path) 
                 fallback_extractor=RegexProfileExtractor(),
             )
 
+        tpm_config = build_tpm_config(config.tpm)
         memory_manager = TPMMemoryManager(
             memory_file=str(workspace_dir / ".agent_memory.json"),
             extractor=extractor,
+            config=tpm_config,
         )
         tools.extend(
             [
