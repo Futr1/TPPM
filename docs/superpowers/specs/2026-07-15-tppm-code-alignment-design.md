@@ -105,7 +105,7 @@
 **文件**：`tpm/memory.py`（`_retrieve_score`、`retrieve`、`TPMConfig.retrieve_weights`）
 
 - 5 因子：`η1·Rel + η2·stability + η3·Ctx + η4·Fresh + η5·confidence`
-- `Ctx` = **场景匹配**（现 `w4·scene_score` 上移到第3位）；纯文本 `ctx_score` 并入 `Rel`。
+- `Rel = max(sim(query, value), sim(query, context))`（把原 `ctx_score` 文本相似度并入相关性）。`Ctx` = **场景匹配**（现 `w4·scene_score` 上移到第3位）。
 - 新增 `Fresh(unit) = exp(−Δt / T_fresh)`，`Δt` 取 `last_accessed` 距今小时数；`T_fresh=168h`（可配）。
 - 第5因子由 `quality_score` 改为 `confidence_score`($q$)。
 - `retrieve_weights` 重命名 `(rel, stability, ctx, fresh, confidence)`，权重 `(0.35, 0.2, 0.15, 0.2, 0.1)`。
@@ -115,7 +115,7 @@
 
 **文件**：`tpm/extractor.py`、`tpm/memory.py`（`begin_turn`）、`agent.py`（`add_user_message`）
 
-- `LLMProfileExtractor` prompt/schema：输出 `slot`(7类)+`memory_type`(5类)，抽取规则改为情绪/压力/认知/应对/支持/节律/风险导向；`profile_type` 校验集合替换为 slot+memory_type 校验。
+- `LLMProfileExtractor` prompt/schema：输出 `slot`(7类)+`memory_type`(5类)，抽取规则改为情绪/压力/认知/应对/支持/节律/风险导向；`profile_type` 校验集合替换为 slot+memory_type 校验；评分字段同步重命名为 `relevance`/`utility`（见 §5.2）。
 - `RegexProfileExtractor`：补**中文心理信号**正则（焦虑/压力大/失眠/自伤念头等）+ risk 识别，使中文回退可用。
 - **历史感知**：`TPMMemoryManager` 增加 `recent_history` 入口；`begin_turn` 除当前 `text` 外传入最近 `N=3` 轮用户消息，落地 $f_{\text{ext}}(x_t, \mathcal{H}_{t-1})$；`agent.add_user_message` 喂入。
 
@@ -129,7 +129,7 @@
 
 ## 9. 模型表述与安全
 
-- 基座模型统一为真实型号（`Qwen2.5-7B-Instruct` 或 `DeepSeek-V3`），论文附录与 `config.yaml` 一致；替换占位名 "DeepSeek-V4-Flash / deepseek-v4-pro / Qwen3.5-9B"。
+- 基座模型表述统一：**需你确认实验实际使用的基座模型**（代码侧 `local_lora` 路径指向 `Qwen2.5-7B-Instruct`，抽取器可配置独立 API 模型）。确定后，`config.yaml` 与论文附录统一为该真实型号，替换占位名 "DeepSeek-V4-Flash / deepseek-v4-pro / Qwen3.5-9B"。
 - 移除 `config.yaml:37` 明文 DeepSeek API key（`sk-abdc93...`），改环境变量读取。
 
 ## 10. 持久化迁移与兼容
