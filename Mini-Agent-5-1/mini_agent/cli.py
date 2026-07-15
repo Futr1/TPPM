@@ -12,6 +12,7 @@ Examples:
 
 import argparse
 import asyncio
+import os
 import platform
 import shutil
 import subprocess
@@ -464,6 +465,14 @@ async def initialize_base_tools(config: Config):
     return tools, skill_loader
 
 
+def _extractor_api_key(memory_extractor_cfg, llm_config) -> str | None:
+    """解析抽取器 API key：显式配置 > 环境变量 DEEPSEEK_API_KEY > 主对话 key。"""
+    primary = getattr(memory_extractor_cfg, "api_key", None)
+    if primary:
+        return primary
+    return os.environ.get("DEEPSEEK_API_KEY") or getattr(llm_config, "api_key", None)
+
+
 def add_workspace_tools(tools: List[Tool], config: Config, workspace_dir: Path) -> TPMMemoryManager | None:
     """Add workspace-dependent tools
 
@@ -507,7 +516,7 @@ def add_workspace_tools(tools: List[Tool], config: Config, workspace_dir: Path) 
             and getattr(memory_extractor_cfg, "api_base", None)
         ):
             extractor = LLMProfileExtractor(
-                api_key=getattr(memory_extractor_cfg, "api_key", None) or config.llm.api_key,
+                api_key=_extractor_api_key(memory_extractor_cfg, config.llm),
                 api_base=memory_extractor_cfg.api_base,
                 model=memory_extractor_cfg.model or config.llm.model,
                 timeout=getattr(memory_extractor_cfg, "timeout", 30.0),
@@ -517,7 +526,7 @@ def add_workspace_tools(tools: List[Tool], config: Config, workspace_dir: Path) 
         # 2) Backward-compatible: use the existing openai_compat block on llm config.
         elif getattr(config.llm, "openai_compat_enabled", False) and getattr(config.llm, "openai_compat_api_base", None):
             extractor = LLMProfileExtractor(
-                api_key=getattr(config.llm, "openai_compat_api_key", None) or config.llm.api_key,
+                api_key=_extractor_api_key(memory_extractor_cfg, config.llm),
                 api_base=config.llm.openai_compat_api_base,
                 model=config.llm.openai_compat_model or config.llm.model,
                 timeout=getattr(memory_extractor_cfg, "timeout", 30.0) if memory_extractor_cfg else 30.0,
@@ -526,7 +535,7 @@ def add_workspace_tools(tools: List[Tool], config: Config, workspace_dir: Path) 
             )
         elif config.llm.provider.lower() in {"openai", "deepseek", "glm"} and config.llm.api_key:
             extractor = LLMProfileExtractor(
-                api_key=config.llm.api_key,
+                api_key=_extractor_api_key(memory_extractor_cfg, config.llm),
                 api_base=config.llm.api_base,
                 model=config.llm.model,
                 timeout=getattr(memory_extractor_cfg, "timeout", 30.0) if memory_extractor_cfg else 30.0,

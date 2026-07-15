@@ -798,3 +798,30 @@ def test_agent_caps_recent_history_to_window():
     for i in range(5):
         agent.add_user_message(f"msg {i}")
     assert len(rec.seen_history) == 2
+
+
+def test_config_yaml_has_no_plaintext_deepseek_key():
+    from mini_agent.config import Config
+
+    leaked = "REDACTED_DEEPSEEK_KEY"
+    cfg_path = Config.get_default_config_path()
+    text = cfg_path.read_text(encoding="utf-8")
+    assert leaked not in text
+
+
+def test_extractor_api_key_env_fallback(monkeypatch):
+    from mini_agent.cli import _extractor_api_key
+
+    class FakeLLM:
+        api_key = "fallback-llm-key"
+
+    class FakeME:
+        api_key = None  # yaml 已清空
+
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "sk-from-env")
+    assert _extractor_api_key(FakeME(), FakeLLM()) == "sk-from-env"
+
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    assert _extractor_api_key(FakeME(), FakeLLM()) == "fallback-llm-key"
+
+    assert _extractor_api_key(type("M", (), {"api_key": "explicit"})(), FakeLLM()) == "explicit"
