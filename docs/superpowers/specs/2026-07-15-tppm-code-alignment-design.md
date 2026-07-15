@@ -39,7 +39,7 @@
 
 **保持**：TPPM 规则驱动、三层记忆主干、情境分支结构、证据集合、`SceneProfileBranch` 结构。
 
-**Out of scope（建议另起任务）**：修订论文 TeX 附录使之与主文/代码一致（附录现写 recency/历史证据量/scene/quality，与主文矛盾）；对齐 `Table*/` 评测脚本中对 `profile_type` 字段的读取（若其依赖旧字段名）。
+**Out of scope**：论文 TeX 不做任何修改（用户指令；主文/附录既有矛盾不在本次处理，代码一律以主文为准）；对齐 `Table*/` 评测脚本中对 `profile_type` 字段的读取（若其依赖旧字段名）。
 
 ## 4. 数据模型：`slot` + `memory_type` 双字段
 
@@ -127,10 +127,11 @@
 - `config.py` 解析为 `TPMConfig`；`cli.py:add_workspace_tools` 构造 `TPMMemoryManager(memory_file=..., extractor=..., config=tpm_config, retrieval_top_k=...)`。
 - `TPMConfig` 现有默认值作为配置缺失时的回退。
 
-## 9. 模型表述与安全
+## 9. 安全（基座模型与论文均不改）
 
-- 基座模型表述统一：**需你确认实验实际使用的基座模型**（代码侧 `local_lora` 路径指向 `Qwen2.5-7B-Instruct`，抽取器可配置独立 API 模型）。确定后，`config.yaml` 与论文附录统一为该真实型号，替换占位名 "DeepSeek-V4-Flash / deepseek-v4-pro / Qwen3.5-9B"。
-- 移除 `config.yaml:37` 明文 DeepSeek API key（`sk-abdc93...`），改环境变量读取。
+- 已确认：实验基座模型为 **DeepSeek-V4-Flash**（与论文附录一致）；**论文不做任何修改**。
+- `tpm` 模块对 LLM 后端无关（method 对齐不要求改动代码的 LLM provider / 基座配置）；代码侧 `local_lora`(Qwen) 仅为本地 demo 运行时，与实验用 DeepSeek-V4-Flash 是部署层面差异，不在本次方法对齐范围内。
+- 唯一动作（安全）：移除 `config.yaml:37` 明文 DeepSeek API key（`sk-abdc93...`），改环境变量读取。
 
 ## 10. 持久化迁移与兼容
 
@@ -177,7 +178,7 @@
 ## 14. 风险与缓解
 
 - **数据兼容**：双字段改变 schema。缓解：`from_dict` 只读兼容旧格式；不迁移任何现有数据；运行时保存为无损超集。评测脚本若读 `profile_type` 需另行对齐（out of scope）。
-- **论文自洽**：主文与附录在检索公式、δ_ctx、因子命名上矛盾。本次以主文为准实现代码；附录修订建议另起任务，否则论文仍内部不一致。
+- **论文不改**：主文与附录在检索公式、δ_ctx、因子命名上存在既有矛盾；按用户指令论文不做修改，代码一律以主文为准实现。附录与代码/主文的差异为已知遗留项。
 - **slot→type 迁移主观性**：legacy 映射为 best-effort，`general` 等模糊项默认值可能不准；仅影响旧数据加载后的标签，可人工重标。
 - **风险规则 R1 的反证判定**：以 contradiction 作为安全反证是简化；若需"明确安全证据"语义，后续可升级为 R2（`EvidenceItem.safety_counter` 标签）。
 - **耦合**：`retrieve()` 的 `touch_access` 副作用影响固化，保留并文档化。
