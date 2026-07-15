@@ -650,3 +650,69 @@ def test_fuse_candidate_uses_configurable_thresholds():
     ev = EvidenceItem(source="test", content=contra.context, scene="general")
     memory._fuse_candidate(unit, contra, ev, session_id="s1")
     assert unit.contradiction_count == 0
+
+
+def test_regex_extractor_detects_chinese_psych_and_risk_signals():
+    extractor = RegexProfileExtractor()
+
+    risk = extractor.extract("我最近总是想死，觉得没意思", scene="general")
+    assert any(c.slot == "risk" for c in risk)
+
+    anxiety = extractor.extract("我最近很焦虑，压力大", scene="general")
+    assert any(c.slot == "affect" for c in anxiety)
+    assert any(c.slot == "stressor" for c in anxiety)
+
+
+def test_llm_extractor_backfills_memory_type_when_only_slot_given():
+    extractor = LLMProfileExtractor(
+        api_key="dummy",
+        api_base="https://dashscope.aliyuncs.com/compatible-mode/v1",
+        model="deepseek-v4-flash",
+        fallback_extractor=RegexProfileExtractor(),
+    )
+    payload = {
+        "choices": [
+            {
+                "message": {
+                    "content": """
+                    {
+                      "candidates": [
+                        {
+                          "attribute": "stress",
+                          "value": "工作压力很大",
+                          "context": "用户描述工作压力",
+                          "slot": "stressor",
+                          "scene": "work",
+                          "confidence": 0.88,
+                          "stability": 0.6,
+                          "relevance": 1.0,
+                          "explicitness": 0.9,
+                          "utility": 0.85
+                        }
+                      ]
+                    }
+                    """
+                }
+            }
+        ]
+    }
+    with patch("mini_agent.tpm.extractor.requests.post", return_value=DummyHTTPResponse(payload)):
+        candidates = extractor.extract("工作压力很大", scene="work")
+    assert len(candidates) == 1
+    assert candidates[0].slot == "stressor"
+    assert candidates[0].memory_type == "stressor"  # §4.1 回填
+
+
+def test_llm_extractor_prompt_requests_dual_fields():
+    extractor = LLMProfileExtractor(
+        api_key="dummy",
+        api_base="https://dashscope.aliyuncs.com/compatible-mode/v1",
+        model="deepseek-v4-flash",
+    )
+    payload = extractor._build_payload(text="我最近失眠", scene="general")
+    user_msg = payload["messages"][-1]["content"]
+    assert "slot" in user_msg
+    assert "memory_type" in user_msg
+    assert "relevance" in user_msg
+    assert "utility" in user_msg
+    assert "risk" in user_msg  # 心理/风险导向提示

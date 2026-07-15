@@ -43,6 +43,15 @@ class RegexProfileExtractor(ProfileExtractor):
             (r"\bI work (?:on|with) ([^.,;!?]+)", "project_focus", "behavior", "coping", 0.82, 0.68),
             (r"\bI (?:need|want) ([^.,;!?]+)", "current_goal", "behavior", "coping", 0.8, 0.54),
             (r"\bfor this project[, ]+([^.,;!?]+)", "project_constraint", "behavior", "coping", 0.76, 0.62),
+            # --- 中文心理/风险信号 ---
+            (r"自伤|割腕|不想活|想死|自杀|轻生", "self_harm_risk", "risk", "affect", 0.95, 0.6),
+            (r"焦虑|焦虑症|恐慌", "anxiety", "affect", "affect", 0.85, 0.55),
+            (r"抑郁|很丧|没(?:有)?动力|提不起劲", "depression", "affect", "affect", 0.82, 0.55),
+            (r"压力(?:很|太)?大|喘不过气", "stress", "stressor", "stressor", 0.84, 0.58),
+            (r"失眠|睡不着|睡不好|多梦", "sleep", "behavior", "affect", 0.8, 0.6),
+            (r"我(?:叫|的名字是)\s*([^.,;!?]+)", "identity", "support", "trait", 0.9, 0.9),
+            (r"我(?:喜欢|爱好)\s*([^.,;!?]+)", "interest", "behavior", "trait", 0.78, 0.7),
+            (r"我(?:倾向|偏好)\s*([^.,;!?]+)", "style", "cognitive", "trait", 0.8, 0.78),
         ]
 
         for pattern, attribute, slot, memory_type, confidence, stability in specs:
@@ -124,30 +133,31 @@ class LLMProfileExtractor(ProfileExtractor):
                     "relevance": 1.0,
                     "explicitness": 0.0,
                     "utility": 0.0,
-                    "source": "llm_qwen",
+                    "source": "llm_extractor",
                 }
             ]
         }
         system_prompt = (
-            "You are a profile candidate extractor for Temporal Profile Memory (TPM). "
-            "Extract stable, reusable, and scene-conditioned user profile information from the latest user utterance. "
-            "Return ONLY valid JSON, no markdown, no explanation."
+            "你是时间心理画像记忆（TPM）的候选抽取器，服务于长期心理健康支持。"
+            "从用户最新发言中抽取稳定、可复用、情境相关的心理画像信息。"
+            "只输出合法 JSON，不要 markdown，不要解释。"
         )
         user_prompt = (
-            "Task: extract profile candidates for TPM.\n"
-            f"Current scene: {scene}\n"
-            f"Latest user utterance:\n{text}\n\n"
-            "Extraction rules:\n"
-            "1. Keep only user-related profile facts, preferences, goals, style tendencies, identity, or stable project context.\n"
-            "2. Ignore assistant behavior, transient tool output requests, and generic conversational filler.\n"
-            "3. Use concise attribute names like identity, interest, current_goal, style, project_focus, preference.\n"
-            "4. slot must be one of: affect, stressor, cognitive, coping, support, behavior, risk.\n"
-            "5. memory_type must be one of: affect, stressor, coping, support, trait.\n"
-            "6. confidence, stability, relevance, explicitness, utility must be numbers in [0,1].\n"
-            "7. utility measures how central this fact is to the user's enduring profile.\n"
-            "8. Prefer higher stability for repeated or enduring traits; lower stability for short-term goals.\n"
-            "9. If there is no useful profile memory candidate, return {\"candidates\": []}.\n\n"
-            f"Output JSON schema example:\n{json.dumps(schema_hint, ensure_ascii=False)}"
+            "任务：为 TPM 抽取心理画像候选。\n"
+            f"当前场景：{scene}\n"
+            f"最新用户发言：\n{text}\n\n"
+            "抽取规则：\n"
+            "1. slot 必须是 7 个心理子空间之一：affect(情绪)/stressor(压力源)/cognitive(认知信念)/"
+            "coping(应对方式)/support(社会支持)/behavior(行为节律)/risk(风险信号，如自伤/自杀念头)。\n"
+            "2. memory_type 必须是 5 个时间–安全类型之一：affect/stressor/coping/support/trait；"
+            "若不确定，可只给 slot，系统会按默认回填 memory_type。\n"
+            "3. 只保留与用户心理画像相关的事实：情绪状态、压力源、应对方式、社会支持、行为节律、稳定信念、风险信号。\n"
+            "4. 忽略助手行为、工具输出请求、无意义寒暄。\n"
+            "5. relevance/utility/explicitness/confidence/stability 取 [0,1] 数值；"
+            "relevance 衡量与用户持久画像的相关性，utility 衡量对支持的实用性。\n"
+            "6. risk 信号（自伤/自杀等）必须置 slot=risk 并提高 confidence。\n"
+            "7. 无可用候选时返回 {\"candidates\": []}。\n\n"
+            f"输出 JSON schema 示例：\n{json.dumps(schema_hint, ensure_ascii=False)}"
         )
         return {
             "model": self.model,
