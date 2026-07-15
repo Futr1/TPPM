@@ -13,6 +13,50 @@ def utc_now() -> datetime:
     return datetime.utcnow()
 
 
+# 论文表1：7 个心理子空间 a_i
+SLOT_VALUES = {"affect", "stressor", "cognitive", "coping", "support", "behavior", "risk"}
+# 论文式(15)：5 个时间–安全类型 g_i
+MEMORY_TYPE_VALUES = {"affect", "stressor", "coping", "support", "trait"}
+
+# §4.1 默认 slot -> memory_type 映射（抽取器只给 slot 时回填 g_i）
+DEFAULT_MEMORY_TYPE = {
+    "affect": "affect",
+    "stressor": "stressor",
+    "coping": "coping",
+    "support": "support",
+    "cognitive": "trait",
+    "behavior": "coping",
+    "risk": "affect",
+}
+
+# §4.2 旧 profile_type -> {slot, memory_type} 迁移表（仅 from_dict 内存解析，不回写）
+LEGACY_PROFILE_TYPE_MAP = {
+    "background": ("support", "trait"),
+    "preference": ("cognitive", "trait"),
+    "goal": ("behavior", "coping"),
+    "style": ("cognitive", "trait"),
+    "interest": ("behavior", "trait"),
+    "general": ("coping", "trait"),
+}
+
+
+def default_memory_type(slot: str) -> str:
+    """按 §4.1 回填 memory_type；未知 slot 默认 trait。"""
+    return DEFAULT_MEMORY_TYPE.get(slot, "trait")
+
+
+def migrate_profile_type(legacy: str) -> tuple[str, str]:
+    """把旧 profile_type（或裸 slot/g_i）解析为 (slot, memory_type)。best-effort。"""
+    legacy = (legacy or "general").strip().lower()
+    if legacy in LEGACY_PROFILE_TYPE_MAP:
+        return LEGACY_PROFILE_TYPE_MAP[legacy]
+    if legacy in SLOT_VALUES:
+        return (legacy, default_memory_type(legacy))
+    if legacy in MEMORY_TYPE_VALUES:
+        return ("coping", legacy)
+    return ("coping", "trait")
+
+
 @dataclass(slots=True)
 class EvidenceItem:
     """Evidence supporting a profile memory unit."""
@@ -38,37 +82,52 @@ class ProfileCandidate:
     attribute: str
     value: str
     context: str
-    profile_type: str
+    slot: str
+    memory_type: str
     scene: str = "general"
     confidence: float = 0.7
     stability: float = 0.5
-    recency: float = 1.0
+    relevance: float = 1.0
     explicitness: float = 0.7
-    user_relevance: float = 0.75
+    utility: float = 0.75
     source: str = "user_utterance"
     timestamp: str = field(default_factory=lambda: utc_now().isoformat())
 
     def write_score(self, weights: tuple[float, float, float, float]) -> float:
-        """Compute the write score used by TPM candidate admission."""
+        """Compute the write score (论文式8: φ = α1·r + α2·e + α3·u + α4·b)."""
         alpha1, alpha2, alpha3, alpha4 = weights
         return (
-            alpha1 * self.recency
+            alpha1 * self.relevance
             + alpha2 * self.explicitness
-            + alpha3 * self.user_relevance
+            + alpha3 * self.utility
             + alpha4 * self.stability
         )
 
     @property
     def quality_score(self) -> float:
         """Quality proxy used by explicit TPM rules."""
-        return (self.confidence + self.explicitness + self.user_relevance) / 3.0
+        return (self.confidence + self.explicitness + self.utility) / 3.0
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "ProfileCandidate":
-        return cls(**data)
+        payload = dict(data)
+        if "slot" not in payload:
+            legacy = payload.pop("profile_type", "general")
+            payload["slot"], payload["memory_type"] = migrate_profile_type(legacy)
+        elif "memory_type" not in payload:
+            payload["memory_type"] = default_memory_type(payload["slot"])
+        payload.pop("profile_type", None)
+        # 重命名因子向后兼容
+        if "relevance" not in payload and "recency" in payload:
+            payload["relevance"] = payload.pop("recency")
+        if "utility" not in payload and "user_relevance" in payload:
+            payload["utility"] = payload.pop("user_relevance")
+        payload.pop("recency", None)
+        payload.pop("user_relevance", None)
+        return cls(**payload)
 
 
 @dataclass(slots=True)
@@ -125,7 +184,8 @@ class ProfileMemoryUnit:
     attribute: str
     value: str
     context: str
-    profile_type: str
+    slot: str
+    memory_type: str
     stability_score: float
     confidence_score: float
     scene: str
@@ -142,6 +202,11 @@ class ProfileMemoryUnit:
     last_accessed: str = field(default_factory=lambda: utc_now().isoformat())
     last_evolved: str = field(default_factory=lambda: utc_now().isoformat())
     memory_level: str = "working"
+
+    @property
+    def is_risk(self) -> bool:
+        """论文风险安全规则：slot 属于风险信号子空间时为真。"""
+        return self.slot == "risk"
 
     def ensure_branch(
         self,
@@ -236,7 +301,8 @@ class ProfileMemoryUnit:
             "attribute": self.attribute,
             "value": self.value,
             "context": self.context,
-            "profile_type": self.profile_type,
+            "slot": self.slot,
+            "memory_type": self.memory_type,
             "stability_score": self.stability_score,
             "confidence_score": self.confidence_score,
             "scene": self.scene,
@@ -262,6 +328,13 @@ class ProfileMemoryUnit:
         payload = dict(data)
         payload["evidence"] = [EvidenceItem.from_dict(item) for item in payload.get("evidence", [])]
 
+        if "slot" not in payload:
+            legacy = payload.pop("profile_type", "general")
+            payload["slot"], payload["memory_type"] = migrate_profile_type(legacy)
+        elif "memory_type" not in payload:
+            payload["memory_type"] = default_memory_type(payload["slot"])
+        payload.pop("profile_type", None)
+
         raw_branches = payload.get("scene_branches") or {}
         payload["scene_branches"] = {
             scene: SceneProfileBranch.from_dict(branch) for scene, branch in raw_branches.items()
@@ -271,7 +344,8 @@ class ProfileMemoryUnit:
             attribute=payload["attribute"],
             value=payload["value"],
             context=payload.get("context", ""),
-            profile_type=payload.get("profile_type", "general"),
+            slot=payload["slot"],
+            memory_type=payload["memory_type"],
             stability_score=payload.get("stability_score", 0.5),
             confidence_score=payload.get("confidence_score", 0.7),
             scene=payload.get("scene", "general"),

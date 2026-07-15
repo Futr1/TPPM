@@ -12,7 +12,13 @@ try:
 except ModuleNotFoundError:  # pragma: no cover - environment dependent
     requests = None
 
-from .models import ProfileCandidate
+from .models import (
+    MEMORY_TYPE_VALUES,
+    SLOT_VALUES,
+    ProfileCandidate,
+    default_memory_type,
+    migrate_profile_type,
+)
 
 
 class ProfileExtractor:
@@ -29,19 +35,19 @@ class RegexProfileExtractor(ProfileExtractor):
     def extract(self, text: str, scene: str = "general") -> list[ProfileCandidate]:
         candidates: list[ProfileCandidate] = []
         specs = [
-            (r"\bmy name is ([^.,;!?]+)", "identity", "background", 0.96, 0.95),
-            (r"\bI am (?:a|an) ([^.,;!?]+)", "identity", "background", 0.82, 0.86),
-            (r"\bI like ([^.,;!?]+)", "interest", "preference", 0.78, 0.72),
-            (r"\bI love ([^.,;!?]+)", "interest", "preference", 0.86, 0.78),
-            (r"\bI prefer ([^.,;!?]+)", "style", "preference", 0.87, 0.82),
-            (r"\bI work (?:on|with) ([^.,;!?]+)", "project_focus", "goal", 0.82, 0.68),
-            (r"\bI (?:need|want) ([^.,;!?]+)", "current_goal", "goal", 0.8, 0.54),
-            (r"\bfor this project[, ]+([^.,;!?]+)", "project_constraint", "goal", 0.76, 0.62),
+            (r"\bmy name is ([^.,;!?]+)", "identity", "support", "trait", 0.96, 0.95),
+            (r"\bI am (?:a|an) ([^.,;!?]+)", "identity", "support", "trait", 0.82, 0.86),
+            (r"\bI like ([^.,;!?]+)", "interest", "behavior", "trait", 0.78, 0.72),
+            (r"\bI love ([^.,;!?]+)", "interest", "behavior", "trait", 0.86, 0.78),
+            (r"\bI prefer ([^.,;!?]+)", "style", "cognitive", "trait", 0.87, 0.82),
+            (r"\bI work (?:on|with) ([^.,;!?]+)", "project_focus", "behavior", "coping", 0.82, 0.68),
+            (r"\bI (?:need|want) ([^.,;!?]+)", "current_goal", "behavior", "coping", 0.8, 0.54),
+            (r"\bfor this project[, ]+([^.,;!?]+)", "project_constraint", "behavior", "coping", 0.76, 0.62),
         ]
 
-        for pattern, attribute, profile_type, confidence, stability in specs:
+        for pattern, attribute, slot, memory_type, confidence, stability in specs:
             for match in re.finditer(pattern, text, flags=re.IGNORECASE):
-                value = self._clean_value(match.group(1))
+                value = self._clean_value(match.group(1)) if match.groups() else match.group(0).strip()
                 if not value:
                     continue
                 candidates.append(
@@ -49,12 +55,14 @@ class RegexProfileExtractor(ProfileExtractor):
                         attribute=attribute,
                         value=value,
                         context=text,
-                        profile_type=profile_type,
+                        slot=slot,
+                        memory_type=memory_type,
                         scene=scene,
                         confidence=confidence,
                         stability=stability,
                         explicitness=0.92,
-                        user_relevance=0.9,
+                        relevance=1.0,
+                        utility=0.9,
                     )
                 )
 
@@ -108,13 +116,14 @@ class LLMProfileExtractor(ProfileExtractor):
                     "attribute": "short_attribute_name",
                     "value": "profile_value",
                     "context": "supporting_span_or_short_reason",
-                    "profile_type": "background|preference|goal|style|interest|general",
+                    "slot": "affect|stressor|cognitive|coping|support|behavior|risk",
+                    "memory_type": "affect|stressor|coping|support|trait",
                     "scene": scene,
                     "confidence": 0.0,
                     "stability": 0.0,
-                    "recency": 1.0,
+                    "relevance": 1.0,
                     "explicitness": 0.0,
-                    "user_relevance": 0.0,
+                    "utility": 0.0,
                     "source": "llm_qwen",
                 }
             ]
@@ -132,11 +141,12 @@ class LLMProfileExtractor(ProfileExtractor):
             "1. Keep only user-related profile facts, preferences, goals, style tendencies, identity, or stable project context.\n"
             "2. Ignore assistant behavior, transient tool output requests, and generic conversational filler.\n"
             "3. Use concise attribute names like identity, interest, current_goal, style, project_focus, preference.\n"
-            "4. profile_type must be one of: background, preference, goal, style, interest, general.\n"
-            "5. confidence, stability, recency, explicitness, user_relevance must be numbers in [0,1].\n"
-            "6. user_relevance measures how central this fact is to the user's enduring profile.\n"
-            "7. Prefer higher stability for repeated or enduring traits; lower stability for short-term goals.\n"
-            "8. If there is no useful profile memory candidate, return {\"candidates\": []}.\n\n"
+            "4. slot must be one of: affect, stressor, cognitive, coping, support, behavior, risk.\n"
+            "5. memory_type must be one of: affect, stressor, coping, support, trait.\n"
+            "6. confidence, stability, relevance, explicitness, utility must be numbers in [0,1].\n"
+            "7. utility measures how central this fact is to the user's enduring profile.\n"
+            "8. Prefer higher stability for repeated or enduring traits; lower stability for short-term goals.\n"
+            "9. If there is no useful profile memory candidate, return {\"candidates\": []}.\n\n"
             f"Output JSON schema example:\n{json.dumps(schema_hint, ensure_ascii=False)}"
         )
         return {
@@ -185,22 +195,28 @@ class LLMProfileExtractor(ProfileExtractor):
             if not attribute or not value:
                 continue
 
-            profile_type = str(item.get("profile_type", "general")).strip().lower()
-            if profile_type not in {"background", "preference", "goal", "style", "interest", "general"}:
-                profile_type = "general"
+            slot = str(item.get("slot", "")).strip().lower()
+            memory_type = str(item.get("memory_type", "")).strip().lower()
+            if not slot and item.get("profile_type"):
+                slot, memory_type = migrate_profile_type(str(item["profile_type"]))
+            if slot not in SLOT_VALUES:
+                slot = "coping"
+            if memory_type not in MEMORY_TYPE_VALUES:
+                memory_type = default_memory_type(slot)
 
             candidates.append(
                 ProfileCandidate(
                     attribute=attribute,
                     value=value,
                     context=str(item.get("context") or original_text).strip() or original_text,
-                    profile_type=profile_type,
+                    slot=slot,
+                    memory_type=memory_type,
                     scene=str(item.get("scene") or scene).strip() or scene,
                     confidence=self._clamp(item.get("confidence"), default=0.72),
-                    stability=self._clamp(item.get("stability"), default=self._default_stability(profile_type)),
-                    recency=self._clamp(item.get("recency"), default=1.0),
+                    stability=self._clamp(item.get("stability"), default=self._default_stability(slot)),
+                    relevance=self._clamp(item.get("relevance", item.get("recency")), default=1.0),
                     explicitness=self._clamp(item.get("explicitness"), default=0.8),
-                    user_relevance=self._clamp(item.get("user_relevance"), default=0.82),
+                    utility=self._clamp(item.get("utility", item.get("user_relevance")), default=0.82),
                     source=str(item.get("source") or "llm_qwen").strip() or "llm_qwen",
                 )
             )
@@ -247,13 +263,14 @@ class LLMProfileExtractor(ProfileExtractor):
         return max(0.0, min(1.0, numeric))
 
     @staticmethod
-    def _default_stability(profile_type: str) -> float:
+    def _default_stability(slot: str) -> float:
         defaults = {
-            "background": 0.9,
-            "style": 0.78,
-            "preference": 0.72,
-            "interest": 0.7,
-            "goal": 0.56,
-            "general": 0.6,
+            "affect": 0.5,
+            "stressor": 0.56,
+            "cognitive": 0.82,
+            "coping": 0.7,
+            "support": 0.75,
+            "behavior": 0.68,
+            "risk": 0.6,
         }
-        return defaults.get(profile_type, 0.6)
+        return defaults.get(slot, 0.6)

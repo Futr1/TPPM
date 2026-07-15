@@ -138,7 +138,7 @@ class TemporalProfileMemory:
             delta_hours = max((now - _parse_timestamp(unit.last_evolved)).total_seconds() / 3600.0, 0.0)
             if delta_hours <= 0:
                 continue
-            decay = self.config.decay_lambdas.get(unit.profile_type, self.config.decay_lambdas["general"])
+            decay = self.config.decay_lambdas.get(unit.memory_type, self.config.decay_lambdas.get("trait", 0.03))
             positive_signal = min(1.0, unit.reinforcement_count / max(1, unit.session_count * 2))
             negative_signal = min(1.0, unit.contradiction_count / max(1, unit.reinforcement_count))
             unit.stability_score = _clamp(
@@ -185,7 +185,8 @@ class TemporalProfileMemory:
                     "attribute": unit.attribute,
                     "value": branch.value,
                     "scene": branch.scene,
-                    "profile_type": unit.profile_type,
+                    "slot": unit.slot,
+                    "memory_type": unit.memory_type,
                     "stability_score": unit.stability_score,
                     "quality_score": unit.quality_score,
                     "session_count": unit.session_count,
@@ -362,7 +363,8 @@ class TemporalProfileMemory:
                 attribute=candidate.attribute,
                 value=candidate.value,
                 context=candidate.context,
-                profile_type=candidate.profile_type,
+                slot=candidate.slot,
+                memory_type=candidate.memory_type,
                 stability_score=candidate.stability,
                 confidence_score=candidate.confidence,
                 scene=candidate.scene,
@@ -421,7 +423,7 @@ class TemporalProfileMemory:
     def _similarity(self, candidate: ProfileCandidate, unit: ProfileMemoryUnit) -> float:
         branch = unit.scene_view(candidate.scene)
         attr_score = 1.0 if candidate.attribute == unit.attribute else 0.0
-        type_score = 1.0 if candidate.profile_type == unit.profile_type else 0.35
+        type_score = 1.0 if candidate.slot == unit.slot else 0.35
         value_score = max(_similarity(candidate.value, branch.value), _similarity(candidate.value, unit.value))
         context_score = max(_similarity(candidate.context, branch.context), _similarity(candidate.context, unit.context))
         if candidate.scene == branch.scene:
@@ -438,7 +440,7 @@ class TemporalProfileMemory:
                 existing.unit_id == unit.unit_id
                 or (
                     existing.attribute == unit.attribute
-                    and existing.profile_type == unit.profile_type
+                    and existing.slot == unit.slot
                     and _normalize(existing.value) == _normalize(unit.value)
                     and existing.scene == unit.scene
                 )
@@ -451,13 +453,14 @@ class TemporalProfileMemory:
         promote_weights = self.config.promote_weights
         kept_short_term: list[ProfileMemoryUnit] = []
         for unit in self.short_term_memory:
-            evidence_strength = min(1.0, len(unit.evidence) / 4.0)
+            # 显式度 X（论文式12 的 β2 因子；原 evidence_strength，对齐主文命名）
+            explicitness = min(1.0, len(unit.evidence) / 4.0)
             usage_strength = min(1.0, unit.access_count / 3.0)
             reinforcement_strength = min(1.0, unit.reinforcement_count / 4.0)
             contradiction_strength = min(1.0, unit.contradiction_count / 3.0)
             score = (
                 promote_weights[0] * reinforcement_strength
-                + promote_weights[1] * evidence_strength
+                + promote_weights[1] * explicitness
                 + promote_weights[2] * usage_strength
                 + promote_weights[3] * unit.stability_score
                 - promote_weights[4] * contradiction_strength
@@ -476,7 +479,6 @@ class TemporalProfileMemory:
         ctx_score = max(
             _similarity(query_norm, branch.context),
             _similarity(query_norm, unit.context),
-            1.0 if unit.attribute in query_norm or unit.profile_type in query_norm else 0.0,
         )
         w1, w2, w3, w4, w5 = self.config.retrieve_weights
         return (
@@ -629,7 +631,7 @@ class TPMMemoryManager:
                 evidence_note = f", evidence_time={latest.timestamp}, evidence={latest.content[:80]}"
             lines.append(
                 f"- {item.attribute}: {branch.value} "
-                f"(type={item.profile_type}, scene={branch.scene}, "
+                f"(slot={item.slot}, type={item.memory_type}, scene={branch.scene}, "
                 f"stability={item.stability_score:.2f}, level={item.memory_level}{evidence_note})"
             )
         return f"{original_text}\n\n[Temporal Profile Memory]\n" + "\n".join(lines)
@@ -670,7 +672,7 @@ class TPMMemoryManager:
                 branch_scenes = {scene_name.lower() for scene_name in item.scene_branches}
                 if (
                     category_norm in item.attribute.lower()
-                    or category_norm in item.profile_type.lower()
+                    or category_norm in item.slot.lower() or category_norm in item.memory_type.lower()
                     or category_norm == item.scene.lower()
                     or category_norm in branch_scenes
                 ):
@@ -692,7 +694,7 @@ class TPMMemoryManager:
             evidence_lines = " | ".join(f"{entry.timestamp}: {entry.content}" for entry in evidence)
             formatted.append(
                 f"{idx}. [{branch.scene}] {item.attribute}: {branch.value}\n"
-                f"   (type={item.profile_type}, level={item.memory_level}, "
+                f"   (slot={item.slot}, type={item.memory_type}, level={item.memory_level}, "
                 f"stability={item.stability_score:.2f}, sessions={item.session_count}, "
                 f"branches={len(item.scene_branches)})\n"
                 f"   evidence={evidence_lines}"
@@ -739,26 +741,28 @@ class TPMMemoryManager:
 
     def _fallback_candidate(self, content: str, category: str) -> ProfileCandidate:
         category_norm = (category or "general").lower()
-        profile_type_map = {
-            "user_preference": "preference",
-            "preference": "preference",
-            "project_info": "goal",
-            "decision": "goal",
-            "background": "background",
-            "identity": "background",
-            "style": "style",
+        category_map = {
+            "user_preference": ("cognitive", "trait"),
+            "preference": ("cognitive", "trait"),
+            "project_info": ("behavior", "coping"),
+            "decision": ("behavior", "coping"),
+            "background": ("support", "trait"),
+            "identity": ("support", "trait"),
+            "style": ("cognitive", "trait"),
         }
-        profile_type = profile_type_map.get(category_norm, "general")
+        slot, memory_type = category_map.get(category_norm, ("coping", "trait"))
         attribute = category_norm if category_norm != "general" else "explicit_note"
         return ProfileCandidate(
             attribute=attribute,
             value=content,
             context=content,
-            profile_type=profile_type,
+            slot=slot,
+            memory_type=memory_type,
             scene=category or "general",
             confidence=0.9,
             stability=0.72,
             explicitness=0.96,
-            user_relevance=0.95,
+            relevance=1.0,
+            utility=0.95,
             source="manual_note",
         )

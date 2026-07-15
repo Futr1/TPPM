@@ -69,13 +69,14 @@ def test_llm_profile_extractor_parses_structured_candidates():
                           "attribute": "style",
                           "value": "concise answers",
                           "context": "User explicitly prefers concise answers",
-                          "profile_type": "style",
+                          "slot": "cognitive",
+                          "memory_type": "trait",
                           "scene": "coding",
                           "confidence": 0.92,
                           "stability": 0.8,
-                          "recency": 1.0,
+                          "relevance": 1.0,
                           "explicitness": 0.95,
-                          "user_relevance": 0.94,
+                          "utility": 0.94,
                           "source": "llm_qwen"
                         }
                       ]
@@ -92,7 +93,8 @@ def test_llm_profile_extractor_parses_structured_candidates():
     assert len(candidates) == 1
     assert candidates[0].attribute == "style"
     assert candidates[0].value == "concise answers"
-    assert candidates[0].profile_type == "style"
+    assert candidates[0].slot == "cognitive"
+    assert candidates[0].memory_type == "trait"
     assert candidates[0].scene == "coding"
 
 
@@ -107,12 +109,13 @@ def test_tpm_scene_branches_and_session_count_are_explicit():
                 attribute="style",
                 value="concise answers",
                 context="User prefers concise answers while coding",
-                profile_type="style",
+                slot="cognitive",
+                memory_type="trait",
                 scene="coding",
                 confidence=0.92,
                 stability=0.84,
                 explicitness=0.95,
-                user_relevance=0.93,
+                utility=0.93,
             )
         ],
         scene="coding",
@@ -127,12 +130,13 @@ def test_tpm_scene_branches_and_session_count_are_explicit():
                 attribute="style",
                 value="concise answers",
                 context="User still prefers concise answers in research planning",
-                profile_type="style",
+                slot="cognitive",
+                memory_type="trait",
                 scene="research",
                 confidence=0.9,
                 stability=0.82,
                 explicitness=0.94,
-                user_relevance=0.9,
+                utility=0.9,
             )
         ],
         scene="research",
@@ -154,12 +158,13 @@ def test_tpm_scene_branches_and_session_count_are_explicit():
                 attribute="style",
                 value="concise answers",
                 context="User repeats concise answers preference",
-                profile_type="style",
+                slot="cognitive",
+                memory_type="trait",
                 scene="coding",
                 confidence=0.91,
                 stability=0.85,
                 explicitness=0.95,
-                user_relevance=0.92,
+                utility=0.92,
             )
         ],
         scene="coding",
@@ -373,3 +378,80 @@ def test_tpm_config_roundtrips_new_fields_through_to_dict():
     restored = TemporalProfileMemory.from_dict(data)
     assert restored.config.T_fresh == 72.0
     assert restored.config.history_window == 4
+
+
+def test_profile_candidate_from_legacy_profile_type_migrates_to_dual_fields():
+    from mini_agent.tpm.models import ProfileCandidate
+
+    candidate = ProfileCandidate.from_dict({
+        "attribute": "style",
+        "value": "concise answers",
+        "context": "User prefers concise answers",
+        "profile_type": "style",
+        "scene": "coding",
+        "confidence": 0.9,
+        "stability": 0.8,
+        "recency": 1.0,
+        "explicitness": 0.9,
+        "user_relevance": 0.9,
+    })
+    assert candidate.slot == "cognitive"
+    assert candidate.memory_type == "trait"
+    assert candidate.relevance == 1.0
+    assert candidate.utility == 0.9
+    assert not hasattr(candidate, "profile_type")
+
+
+def test_profile_memory_unit_from_legacy_profile_type_migrates_and_is_risk():
+    from mini_agent.tpm.models import ProfileMemoryUnit
+
+    unit = ProfileMemoryUnit.from_dict({
+        "attribute": "mood",
+        "value": "anxious",
+        "context": "user reports anxiety",
+        "profile_type": "general",
+        "stability_score": 0.6,
+        "confidence_score": 0.7,
+        "scene": "general",
+        "quality_score": 0.6,
+    })
+    assert unit.slot == "coping"
+    assert unit.memory_type == "trait"
+    assert unit.is_risk is False
+
+    risk_unit = ProfileMemoryUnit.from_dict({
+        "attribute": "self_harm",
+        "value": "ideation present",
+        "context": "user mentions self-harm",
+        "slot": "risk",
+        "memory_type": "affect",
+        "stability_score": 0.6,
+        "confidence_score": 0.9,
+        "scene": "general",
+        "quality_score": 0.7,
+    })
+    assert risk_unit.is_risk is True
+
+
+def test_profile_unit_to_dict_writes_dual_fields_not_profile_type():
+    from mini_agent.tpm.models import ProfileMemoryUnit
+
+    unit = ProfileMemoryUnit(
+        attribute="mood", value="calm", context="ok",
+        slot="affect", memory_type="affect",
+        stability_score=0.6, confidence_score=0.7, scene="general", quality_score=0.6,
+    )
+    data = unit.to_dict()
+    assert "slot" in data and data["slot"] == "affect"
+    assert "memory_type" in data and data["memory_type"] == "affect"
+    assert "profile_type" not in data
+
+
+def test_default_memory_type_backfill_for_each_slot():
+    from mini_agent.tpm.models import default_memory_type
+
+    assert default_memory_type("affect") == "affect"
+    assert default_memory_type("stressor") == "stressor"
+    assert default_memory_type("cognitive") == "trait"
+    assert default_memory_type("behavior") == "coping"
+    assert default_memory_type("risk") == "affect"
