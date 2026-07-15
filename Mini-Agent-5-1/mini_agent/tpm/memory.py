@@ -53,6 +53,7 @@ class TPMConfig:
     distill_session_threshold: int = 3
     write_weights: tuple[float, float, float, float] = (0.25, 0.3, 0.25, 0.2)
     promote_weights: tuple[float, float, float, float, float] = (0.35, 0.2, 0.15, 0.25, 0.2)
+    # (rel, stability, ctx, fresh, confidence) — 论文主文式(16)
     retrieve_weights: tuple[float, float, float, float, float] = (0.35, 0.2, 0.15, 0.2, 0.1)
     decay_lambdas: dict[str, float] = field(
         default_factory=lambda: {
@@ -483,20 +484,25 @@ class TemporalProfileMemory:
         self.short_term_memory = kept_short_term
 
     def _retrieve_score(self, query_norm: str, unit: ProfileMemoryUnit, scene: str) -> float:
+        # 论文主文式(16): Score = η1·Rel + η2·stability + η3·Ctx + η4·Fresh + η5·confidence
         branch = unit.scene_view(scene)
-        rel = max(_similarity(query_norm, branch.value), _similarity(query_norm, unit.value))
-        scene_score = 1.0 if branch.scene == scene else 0.7 if branch.scene == "general" or scene == "general" else 0.4
-        ctx_score = max(
+        rel = max(
+            _similarity(query_norm, branch.value),
+            _similarity(query_norm, unit.value),
             _similarity(query_norm, branch.context),
             _similarity(query_norm, unit.context),
         )
+        ctx = 1.0 if branch.scene == scene else (0.7 if branch.scene == "general" or scene == "general" else 0.4)
+        now = utc_now()
+        delta_hours = max((now - _parse_timestamp(unit.last_accessed)).total_seconds() / 3600.0, 0.0)
+        fresh = math.exp(-delta_hours / self.config.T_fresh)
         w1, w2, w3, w4, w5 = self.config.retrieve_weights
         return (
             w1 * rel
             + w2 * unit.stability_score
-            + w3 * ctx_score
-            + w4 * scene_score
-            + w5 * max(unit.quality_score, branch.quality_score)
+            + w3 * ctx
+            + w4 * fresh
+            + w5 * unit.confidence_score
         )
 
     def _fuse_candidate(

@@ -520,3 +520,59 @@ def test_decay_lambdas_default_keys_are_g_i_per_paper_eq15():
     assert cfg.decay_lambdas["stressor"] > cfg.decay_lambdas["coping"]
     assert cfg.decay_lambdas["coping"] == cfg.decay_lambdas["support"]
     assert cfg.decay_lambdas["support"] > cfg.decay_lambdas["trait"]
+
+
+def test_freshness_breaks_tie_toward_recently_accessed_unit():
+    from datetime import timedelta
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.memory import TPMConfig
+    from mini_agent.tpm.models import ProfileMemoryUnit
+
+    memory = TemporalProfileMemory(config=TPMConfig())
+    now = utc_now()
+    old = (now - timedelta(hours=240)).isoformat()
+
+    fresh_unit = ProfileMemoryUnit(
+        attribute="mood", value="calm", context="feeling calm",
+        slot="affect", memory_type="affect",
+        stability_score=0.6, confidence_score=0.7, scene="general", quality_score=0.6,
+        last_accessed=now.isoformat(), last_evolved=now.isoformat(),
+        memory_level="long_term",
+    )
+    stale_unit = ProfileMemoryUnit(
+        attribute="mood", value="calm", context="feeling calm",
+        slot="affect", memory_type="affect",
+        stability_score=0.6, confidence_score=0.7, scene="general", quality_score=0.6,
+        last_accessed=old, last_evolved=old,
+        memory_level="long_term",
+    )
+    memory.long_term_memory.extend([fresh_unit, stale_unit])
+
+    results = memory.retrieve("calm", scene="general", top_k=2)
+    assert results[0].unit_id == fresh_unit.unit_id
+    assert results[1].unit_id == stale_unit.unit_id
+
+
+def test_retrieve_score_uses_confidence_not_quality():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.memory import TPMConfig
+    from mini_agent.tpm.models import ProfileMemoryUnit
+
+    # retrieve_weights 默认第5因子=0.1；confidence 高的应排前
+    memory = TemporalProfileMemory(config=TPMConfig())
+    now = utc_now().isoformat()
+    hi = ProfileMemoryUnit(
+        attribute="mood", value="calm", context="calm",
+        slot="affect", memory_type="affect",
+        stability_score=0.6, confidence_score=0.95, scene="general", quality_score=0.2,
+        last_accessed=now, last_evolved=now, memory_level="long_term",
+    )
+    lo = ProfileMemoryUnit(
+        attribute="mood", value="calm", context="calm",
+        slot="affect", memory_type="affect",
+        stability_score=0.6, confidence_score=0.2, scene="general", quality_score=0.95,
+        last_accessed=now, last_evolved=now, memory_level="long_term",
+    )
+    memory.long_term_memory.extend([hi, lo])
+    results = memory.retrieve("calm", scene="general", top_k=2)
+    assert results[0].unit_id == hi.unit_id
