@@ -1,5 +1,6 @@
 """Tests for TPM-backed Mini-Agent memory."""
 
+from datetime import timedelta
 from pathlib import Path
 from unittest.mock import patch
 from uuid import uuid4
@@ -10,7 +11,7 @@ from mini_agent.agent import Agent
 from mini_agent.schema import LLMResponse
 from mini_agent.tpm import TPMMemoryManager, TemporalProfileMemory
 from mini_agent.tpm.extractor import LLMProfileExtractor, RegexProfileExtractor
-from mini_agent.tpm.models import ProfileCandidate
+from mini_agent.tpm.models import ProfileCandidate, utc_now
 from mini_agent.tools.note_tool import RecallNoteTool, SessionNoteTool
 
 
@@ -455,3 +456,67 @@ def test_default_memory_type_backfill_for_each_slot():
     assert default_memory_type("cognitive") == "trait"
     assert default_memory_type("behavior") == "coping"
     assert default_memory_type("risk") == "affect"
+
+
+def test_risk_unit_skips_time_decay_but_drops_on_contradiction():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.memory import TPMConfig
+    from mini_agent.tpm.models import ProfileMemoryUnit
+
+    memory = TemporalProfileMemory(config=TPMConfig())
+    old_time = (utc_now() - timedelta(days=30)).isoformat()
+
+    risk_unit = ProfileMemoryUnit(
+        attribute="self_harm", value="ideation", context="risk signal",
+        slot="risk", memory_type="affect",
+        stability_score=0.8, confidence_score=0.9, scene="general", quality_score=0.7,
+        last_evolved=old_time, last_accessed=old_time,
+        memory_level="long_term", session_count=2,
+    )
+    memory.long_term_memory.append(risk_unit)
+
+    memory.decay_long_term()
+    # 风险单元跳过常规时间衰减，contradiction=0 -> 强度不变
+    assert risk_unit.stability_score == pytest.approx(0.8, abs=1e-6)
+
+    # 命中 contradiction 后降强度
+    risk_unit.contradiction_count = 2
+    risk_unit.reinforcement_count = 1
+    risk_unit.last_evolved = old_time
+    memory.decay_long_term()
+    expected = max(0.0, min(1.0, 0.8 - memory.config.negative_penalty * 1.0))
+    assert risk_unit.stability_score == pytest.approx(expected, abs=1e-6)
+    assert risk_unit.stability_score < 0.8
+
+
+def test_non_risk_affect_unit_decays_over_time():
+    from mini_agent.tpm import TemporalProfileMemory
+    from mini_agent.tpm.memory import TPMConfig
+    from mini_agent.tpm.models import ProfileMemoryUnit
+
+    memory = TemporalProfileMemory(config=TPMConfig())
+    old_time = (utc_now() - timedelta(days=30)).isoformat()
+    unit = ProfileMemoryUnit(
+        attribute="mood", value="anxious", context="anxiety",
+        slot="affect", memory_type="affect",
+        stability_score=0.8, confidence_score=0.7, scene="general", quality_score=0.6,
+        last_evolved=old_time, last_accessed=old_time,
+        memory_level="long_term", session_count=2, reinforcement_count=2,
+    )
+    memory.long_term_memory.append(unit)
+    memory.decay_long_term()
+    # affect 衰减率最大，30 天后强度应明显下降
+    assert unit.stability_score < 0.8
+
+
+def test_decay_lambdas_default_keys_are_g_i_per_paper_eq15():
+    from mini_agent.tpm.memory import TPMConfig
+
+    cfg = TPMConfig()
+    # spec §5.1：decay_lambdas 键改为 g_i（不再是旧 profile_type 键）
+    assert set(cfg.decay_lambdas.keys()) == {"affect", "stressor", "coping", "support", "trait"}
+    # 论文式(15) 排序：affect > stressor > coping ≈ support > trait
+    assert cfg.decay_lambdas["affect"] > cfg.decay_lambdas["stressor"]
+    assert cfg.decay_lambdas["stressor"] > cfg.decay_lambdas["coping"]
+    assert cfg.decay_lambdas["coping"] == cfg.decay_lambdas["support"]
+    assert cfg.decay_lambdas["support"] > cfg.decay_lambdas["trait"]

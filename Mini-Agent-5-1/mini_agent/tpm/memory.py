@@ -56,12 +56,11 @@ class TPMConfig:
     retrieve_weights: tuple[float, float, float, float, float] = (0.35, 0.2, 0.15, 0.2, 0.1)
     decay_lambdas: dict[str, float] = field(
         default_factory=lambda: {
-            "goal": 0.1,
-            "interest": 0.07,
-            "style": 0.04,
-            "background": 0.04,
-            "preference": 0.05,
-            "general": 0.05,
+            "affect": 0.10,
+            "stressor": 0.07,
+            "coping": 0.05,
+            "support": 0.05,
+            "trait": 0.03,
         }
     )
     positive_reinforcement: float = 0.08
@@ -138,6 +137,17 @@ class TemporalProfileMemory:
             delta_hours = max((now - _parse_timestamp(unit.last_evolved)).total_seconds() / 3600.0, 0.0)
             if delta_hours <= 0:
                 continue
+
+            if unit.is_risk:
+                # 论文风险安全规则：风险信号子空间关闭常规时间衰减；
+                # 仅当命中 contradiction(ψ⁻) 时由 -γ⁻·ψ⁻ 降低强度（R1 反证）。
+                negative_signal = min(1.0, unit.contradiction_count / max(1, unit.reinforcement_count))
+                unit.stability_score = _clamp(
+                    unit.stability_score - self.config.negative_penalty * negative_signal
+                )
+                unit.last_evolved = now.isoformat()
+                continue
+
             decay = self.config.decay_lambdas.get(unit.memory_type, self.config.decay_lambdas.get("trait", 0.03))
             positive_signal = min(1.0, unit.reinforcement_count / max(1, unit.session_count * 2))
             negative_signal = min(1.0, unit.contradiction_count / max(1, unit.reinforcement_count))
