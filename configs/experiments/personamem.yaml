@@ -1,0 +1,31 @@
+# TPPM Experiment: PersonaMem (dynamic profile modeling)
+# References paper baseline for all memory hyperparameters.
+# Only benchmark-specific settings are defined here.
+
+benchmark: personamem
+description: "Dynamic psychological profile modeling with 589 4-choice MCQ questions"
+
+extends: configs/paper/baseline.yaml
+
+data:
+  base_dir: data/datasets/personamem
+  contexts: shared_contexts_32k.jsonl
+  questions: questions_32k.csv
+
+output:
+  run_dir: runs/personamem
+  candidates_dir: benchmarks/personamem/candidates
+
+phases:
+  phase1:
+    script: benchmarks/personamem/scripts/phase1_extract_candidates.py
+    description: "Extract TPPM profile candidates from shared contexts"
+
+  phase2:
+    script: benchmarks/personamem/scripts/phase2_replay_evolution.py
+    description: "Replay dialogue evolution — memory snapshots"
+
+  phase3:
+    script: benchmarks/personamem/scripts/phase3_eval_qa.py
+    description: "4-choice MCQ evaluation (589 questions, 6 query types)"
+    backend: deepseek

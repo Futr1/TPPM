@@ -1,0 +1,20 @@
+# TPPM Ablation: Semantic-Only Retrieval
+# Keeps full TPPM extraction, but at evaluation time uses only semantic relevance.
+# Reuses baseline snapshots — retrieval scoring change applied during Phase 3.
+# Diagnostic metric: PersonaMem Generalization (Q7), Reasons (Q5)
+
+id: semantic_only
+description: "Semantic-Only Retrieval (reuses baseline snapshots)"
+paper_reported: true
+mechanism: retrieval
+reuse_baseline: true
+
+extends: configs/paper/baseline.yaml
+
+overrides:
+  retrieve_weights:
+    semantic_relevance: 1.0
+    strength: 0.0
+    context_match: 0.0
+    temporal_freshness: 0.0
+    confidence: 0.0

@@ -1,0 +1,20 @@
+# TPPM Ablation: w/o Type-Conditioned Decay
+# Replace type-specific decay rates with a uniform rate (average of defaults).
+# Tests whether different psychological dimensions need different temporal stabilities.
+# Diagnostic metric: PersonaMem Evolution (Q4), Generalization (Q7)
+
+id: uniform_decay
+description: "w/o Type-Conditioned Decay (uniform rates)"
+paper_reported: true
+mechanism: decay
+
+extends: configs/paper/baseline.yaml
+
+overrides:
+  decay_lambdas:
+    goal: 0.058
+    interest: 0.058
+    style: 0.058
+    background: 0.058
+    preference: 0.058
+    general: 0.058

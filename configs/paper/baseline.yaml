@@ -1,0 +1,40 @@
+# TPPM Paper Baseline Configuration
+# Single source of truth for all paper-reported hyperparameters.
+# All experiment and ablation configs reference this baseline.
+#
+# Paper: write_threshold=0.68, promote_threshold=0.72, context_threshold=0.62,
+#        promotion_min_sessions=2, top_k=5
+#
+# DO NOT duplicate these values in benchmark scripts.
+# DO NOT store API keys in this file.
+
+memory:
+  write_threshold: 0.68
+  promote_threshold: 0.72
+  context_threshold: 0.62
+  promotion_min_sessions: 2
+  top_k: 5
+
+  write_weights:
+    semantic_relevance: 0.25
+    novelty: 0.30
+    psychological_salience: 0.25
+    reliability: 0.20
+
+  retrieve_weights:
+    semantic_relevance: 0.35
+    strength: 0.20
+    context_match: 0.15
+    temporal_freshness: 0.20
+    confidence: 0.10
+
+models:
+  generation:
+    provider: deepseek
+    display_name: DeepSeek-V4-Flash
+    model_env: DEEPSEEK_GENERATION_MODEL
+
+  judge:
+    provider: deepseek
+    display_name: DeepSeek-V4-Pro
+    model_env: DEEPSEEK_JUDGE_MODEL

@@ -1,0 +1,29 @@
+# TPPM Experiment: LoCoMo (long-range dialogue memory)
+# References paper baseline for all memory hyperparameters.
+# Only benchmark-specific settings are defined here.
+
+benchmark: locomo
+description: "Long-range conversational memory with 10 multi-session dialogues"
+
+extends: configs/paper/baseline.yaml
+
+data:
+  base_dir: data/datasets/locomo
+  dialogues: locomo10.json
+
+output:
+  run_dir: runs/locomo
+  memory_bank: benchmarks/locomo/outputs/locomo_memory_bank.json
+
+phases:
+  extract:
+    script: benchmarks/locomo/scripts/locomo_tppm_extract.py
+    description: "Extract TPPM memories from LoCoMo dialogues"
+
+  qa:
+    script: benchmarks/locomo/scripts/locomo_qa_eval.py
+    description: "QA evaluation with TPPM-augmented context"
+
+  events:
+    script: benchmarks/locomo/scripts/locomo_event_eval.py
+    description: "Event extraction evaluation"

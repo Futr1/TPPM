@@ -1,0 +1,22 @@
+# TPPM Ablation: Flat PPMU Pool
+# All PMUs go into a single pool — no working/short-term/long-term distinction.
+# Alignment, fusion, branching, evidence, and decay are applied uniformly.
+# Promotion is disabled; decay uses a single uniform rate.
+# Diagnostic metric: PersonaMem Evolution (Q4), Generalization (Q7)
+
+id: flat_pool
+description: "Flat PPMU Pool (no tiers)"
+paper_reported: true
+mechanism: hierarchy
+architecture: flat
+
+extends: configs/paper/baseline.yaml
+
+overrides:
+  decay_lambdas:
+    goal: 0.05
+    interest: 0.05
+    style: 0.05
+    background: 0.05
+    preference: 0.05
+    general: 0.05

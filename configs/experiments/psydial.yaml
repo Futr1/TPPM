@@ -1,0 +1,29 @@
+# TPPM Experiment: PsyDial (psychological support quality)
+# References paper baseline for all memory hyperparameters.
+# Only benchmark-specific settings are defined here.
+
+benchmark: psydial
+description: "Psychological support dialogue quality evaluation with 101 dialogues"
+
+extends: configs/paper/baseline.yaml
+
+data:
+  base_dir: data/datasets/psydial
+  dialogues: PsyDial-D101.json
+
+output:
+  run_dir: runs/psydial
+  memory_bank: benchmarks/psydial/outputs/d101_tppm_memory_bank.json
+
+phases:
+  extract:
+    script: benchmarks/psydial/scripts/tppm_extract_d101.py
+    description: "TPPM memory extraction from PsyDial D101"
+
+  generate:
+    script: benchmarks/psydial/scripts/generate_responses.py
+    description: "Generate responses with TPPM memories"
+
+  judge:
+    script: benchmarks/psydial/scripts/llm_judge_scoring.py
+    description: "LLM Judge scoring (DeepSeek-V4-Pro, 9 API calls per case)"

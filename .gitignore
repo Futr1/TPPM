@@ -31,31 +31,35 @@ Mini-Agent-5-1/workspace/
 Mini-Agent-5-1/.pytest-tmp*/
 Mini-Agent-5-1/.tmp-*/
 
-# --- Claude / Agent internals (keep only what's needed) ---
+# --- Claude / Agent internals ---
 .claude/
 .agents/
 
 # --- Datasets (download separately) ---
 datasets/
-Table3-data/PersonaMem_repo/
+data/datasets/*
+!data/datasets/.gitkeep
 
 # --- Generated outputs (large, reproducible) ---
-Table1-data/outputs/
-Table1-data_split/outputs/
-Table2-data/outputs/
-Table3-data/outputs/
-Table3-data/eval_results/
-Table3-data/memory_snapshots/
-Table3-data/candidates/
-Ablation/outputs/
-Ablation/eval_results/
-Ablation/memory_snapshots/
+benchmarks/psydial/outputs/
+benchmarks/psydial/eval_results/
+benchmarks/locomo/outputs/
+benchmarks/locomo/eval_results/
+benchmarks/personamem/outputs/
+benchmarks/personamem/eval_results/
+benchmarks/personamem/memory_snapshots/
+benchmarks/personamem/candidates/
+benchmarks/ablations/outputs/
+benchmarks/ablations/eval_results/
+benchmarks/ablations/memory_snapshots/
+
+# --- Run artifacts ---
+runs/*
+!runs/.gitkeep
 
 # --- Directories excluded from repo (local-only) ---
 Figure-data/
-Table1-data_split/
 data_trans/
-docs/
 draft/
 revise/
 sources/
@@ -80,5 +84,7 @@ AAAI27/
 *.tmp
 ge.py
 skills-lock.json
-智能体记忆.pdf
 常用命令.md
+
+# --- Local split outputs ---
+Table1-data_split/outputs/

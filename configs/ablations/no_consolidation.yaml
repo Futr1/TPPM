@@ -1,0 +1,15 @@
+# TPPM Ablation: w/o State→Trait Consolidation
+# Sets promote_threshold to +∞ so NO memories are ever promoted to long-term.
+# Memories accumulate evidence but never pass the threshold — consolidation disabled.
+# Diagnostic metric: PersonaMem Q4 (preference evolution tracking)
+
+id: no_consolidation
+description: "w/o State→Trait Consolidation"
+paper_reported: true
+mechanism: consolidation
+
+extends: configs/paper/baseline.yaml
+
+overrides:
+  promote_threshold: 999.0
+  promotion_min_sessions: 999

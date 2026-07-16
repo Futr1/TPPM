@@ -1,0 +1,14 @@
+# TPPM Ablation: w/o Scene-Conditional Branching
+# Sets context_threshold to 1.0 so NO conflict is ever considered "same scene".
+# System degenerates to "always overwrite on conflict".
+# Diagnostic metric: PersonaMem Q7 (cross-scene generalization)
+
+id: no_branching
+description: "w/o Scene-Conditional Branching"
+paper_reported: true
+mechanism: branching
+
+extends: configs/paper/baseline.yaml
+
+overrides:
+  context_threshold: 1.0

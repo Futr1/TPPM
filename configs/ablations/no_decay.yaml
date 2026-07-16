@@ -1,0 +1,20 @@
+# TPPM Ablation: w/o Temporal Decay
+# All decay lambdas set to 0 + skip decay_long_term() in replay loop.
+# Phase 2 script handles the skip logic via config_id detection.
+# Diagnostic metric: LoCoMo Temporal F1 (PersonaMem has limited temporal span)
+
+id: no_decay
+description: "w/o Temporal Decay"
+paper_reported: true
+mechanism: decay
+
+extends: configs/paper/baseline.yaml
+
+overrides:
+  decay_lambdas:
+    goal: 0.0
+    interest: 0.0
+    style: 0.0
+    background: 0.0
+    preference: 0.0
+    general: 0.0

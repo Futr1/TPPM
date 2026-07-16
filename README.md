@@ -38,19 +38,21 @@ TPPM is evaluated on PersonaMem (dynamic profile modeling), LoCoMo (long-range d
 ## Installation
 
 ```bash
+git clone https://github.com/Futr1/TPPM.git
 cd TPPM
 
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+source .venv/bin/activate        # Linux/macOS
+# .venv\Scripts\Activate.ps1     # Windows PowerShell
 
 python -m pip install -U pip
-pip install -e ./Mini-Agent-5-1
+pip install -e .
 ```
 
-For development dependencies (testing):
+For development dependencies:
 
 ```bash
-pip install -e "./Mini-Agent-5-1[dev]"
+pip install -e ".[dev]"
 ```
 
 ### API Keys
@@ -70,15 +72,15 @@ export DEEPSEEK_JUDGE_MODEL="deepseek-v4-pro"                   # optional (has 
 
 ## Datasets
 
-Datasets are not distributed with this repository. Download from official sources and place under `datasets/`.
+Datasets are not distributed with this repository. Download from official sources and place under `data/datasets/`.
 
-| Dataset | Local input | Evaluation split | Acquisition |
-|---------|-------------|-----------------|-------------|
-| **PersonaMem** | `datasets/PersonaMem/shared_contexts_32k.jsonl` + `questions_32k.csv` | 589 questions, 6 query types | [GitHub](https://github.com/bowen-upenn/PersonaMem) |
-| **LoCoMo** | `datasets/LoCoMo/data/locomo10.json` | 10 conversations, QA + Event | [GitHub](https://github.com/snap-research/LoCoMo) |
-| **PsyDial** | `datasets/PsyDial/PsyDial-D101/PsyDial-D101.json` | 101 dialogues, 1,278 evaluation cases | [GitHub](https://github.com/qiuhuachuan/PsyDial) |
+| Dataset | Local Path | Source |
+|---------|-----------|--------|
+| **PersonaMem** | `data/datasets/personamem/` | [GitHub](https://github.com/bowen-upenn/PersonaMem) |
+| **LoCoMo** | `data/datasets/locomo/` | [GitHub](https://github.com/snap-research/LoCoMo) |
+| **PsyDial** | `data/datasets/psydial/` | [GitHub](https://github.com/qiuhuachuan/PsyDial) |
 
-Repository directories map to benchmarks as `Table3-data/` → PersonaMem, `Table2-data/` → LoCoMo, `Table1-data/` → PsyDial. Third-party dataset licenses are listed in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
+See `data/README.md` for path migration and [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for license details.
 
 ## Quick Reproduction
 
@@ -95,18 +97,15 @@ export DEEPSEEK_API_KEY="your-api-key"
 
 ```bash
 cd "$REPO_ROOT"
-python3 -c "import sys; sys.path.insert(0, 'Mini-Agent-5-1'); \
-from mini_agent.tpm.memory import TemporalProfileMemory, TPMConfig; \
-print('TPM module OK')"
+python3 -c "from tppm.core.memory import TemporalProfileMemory, TPMConfig; print('TPM module OK')"
 
-cd "$REPO_ROOT/Mini-Agent-5-1"
-python -m pytest tests/test_tpm_memory.py tests/test_paper_configuration.py -q
+pytest tests/test_paper_configuration.py -q
 ```
 
 ### 3. PersonaMem
 
 ```bash
-cd "$REPO_ROOT/Table3-data"
+cd "$REPO_ROOT/benchmarks/personamem"
 
 # Phase 1: Extract TPPM candidates from shared contexts
 # Smoke test: add --max-contexts 2
@@ -126,7 +125,7 @@ python3 scripts/summarize.py
 ### 4. LoCoMo
 
 ```bash
-cd "$REPO_ROOT/Table2-data"
+cd "$REPO_ROOT/benchmarks/locomo"
 
 # Extraction (smoke test: add --max-convs 1)
 python3 scripts/locomo_tppm_extract.py
@@ -141,7 +140,7 @@ python3 scripts/locomo_event_eval.py
 ### 5. PsyDial
 
 ```bash
-cd "$REPO_ROOT/Table1-data"
+cd "$REPO_ROOT/benchmarks/psydial"
 
 # Phase 1: TPPM memory extraction (smoke test: add --max-cases 30)
 python3 scripts/tppm_extract_d101.py
@@ -157,7 +156,7 @@ python3 scripts/llm_judge_scoring.py
 ### 6. Ablation
 
 ```bash
-cd "$REPO_ROOT/Table3-data"
+cd "$REPO_ROOT/benchmarks/personamem"
 
 # Run with an ablation config (example)
 python3 scripts/phase2_replay_evolution.py --config-id ablation_consolidation
@@ -171,7 +170,7 @@ See [Main Reproduction Configurations](#main-reproduction-configurations) for al
 
 ### Core Configuration
 
-All parameters from `TPMConfig` (`Mini-Agent-5-1/mini_agent/tpm/memory.py`) and `Ablation/configs/ablation.yaml`:
+All parameters from `TPMConfig` (`src/tppm/core/memory.py`) and `configs/paper/baseline.yaml`:
 
 | Parameter | Paper baseline |
 |-----------|---------------|
@@ -191,13 +190,13 @@ Type-specific decay lambdas are implementation defaults, not individually report
 
 | Benchmark | Directory | Main scripts |
 |-----------|-----------|-------------|
-| PersonaMem | `Table3-data/` | `phase1_extract_candidates.py`, `phase2_replay_evolution.py`, `phase3_eval_qa.py`, `summarize.py` |
-| LoCoMo | `Table2-data/` | `locomo_tppm_extract.py`, `locomo_qa_eval.py`, `locomo_event_eval.py` |
-| PsyDial | `Table1-data/` | `tppm_extract_d101.py`, `generate_responses.py`, `llm_judge_scoring.py` |
+| PersonaMem | `benchmarks/personamem/` | `phase1_extract_candidates.py`, `phase2_replay_evolution.py`, `phase3_eval_qa.py`, `summarize.py` |
+| LoCoMo | `benchmarks/locomo/` | `locomo_tppm_extract.py`, `locomo_qa_eval.py`, `locomo_event_eval.py` |
+| PsyDial | `benchmarks/psydial/` | `tppm_extract_d101.py`, `generate_responses.py`, `llm_judge_scoring.py` |
 
 ### Ablation Configurations
 
-From `Ablation/configs/ablation.yaml`:
+From `configs/ablations/` (split from the original monolithic YAML):
 
 | Config ID | Mechanism |
 |-----------|-----------|
@@ -210,11 +209,11 @@ From `Ablation/configs/ablation.yaml`:
 | `ablation_flat_pool` | Flat PPMU Pool (no tiers) |
 | `ablation_two_level` | Two-Level Memory (merged working+short) |
 
-The "w/o Evidence Set" variant is implemented via post-processing (`Ablation/scripts/psydial_ablation_banks.py`) rather than a YAML config entry.
+The "w/o Evidence Set" variant is implemented via post-processing (`benchmarks/ablations/scripts/psydial_ablation_banks.py`) rather than a YAML config entry.
 
 ## Main Code Path
 
-1. **Extraction** — `Mini-Agent-5-1/mini_agent/tpm/extractor.py` → LLM or regex-based candidate extraction
+1. **Extraction** — `src/tppm/core/extractor.py` → LLM or regex-based candidate extraction
 2. **Write gating** — `TemporalProfileMemory.ingest()` → scores and filters candidates
 3. **Alignment & branching** — `TemporalProfileMemory._align_and_merge()` → matches against existing PMUs, creates context branches
 4. **Turn decay** — `TemporalProfileMemory._decay_working()` → per-turn exponential decay
@@ -224,27 +223,16 @@ The "w/o Evidence Set" variant is implemented via post-processing (`Ablation/scr
 
 ## Output Artifacts
 
-| Benchmark | Main artifacts | Typical path |
-|-----------|---------------|-------------|
-| PersonaMem | Memory snapshots | `Table3-data/memory_snapshots/<config-id>/` |
-| PersonaMem | Per-question accuracy CSV | `Table3-data/eval_results/deepseek/<config-id>/results.csv` |
-| LoCoMo | Memory bank JSON | `Table2-data/outputs/locomo_memory_bank.json` |
-| LoCoMo | QA results JSON | `Table2-data/outputs/locomo_qa_results.json` |
-| LoCoMo | Event results JSON | `Table2-data/outputs/locomo_event_results.json` |
-| PsyDial | Memory bank JSON | `Table1-data/outputs/d101_tppm_memory_bank.json` |
-| PsyDial | Generated responses | `Table1-data/outputs/eval/d101_full/tppm_memory_generations.json` |
-| PsyDial | 8-dim + OA Judge scores | `Table1-data/outputs/eval/d101_full/tppm_memory_judge_scores.json` |
-| Ablation | Per-config snapshots + results | `Table3-data/eval_results/deepseek/<config-id>/results.csv` |
+All run artifacts are written to `runs/<benchmark>/<run-id>/`. Summary metrics go to `result/`.
 
-Previously generated local outputs may use legacy configurations (e.g., promote_threshold=0.58). Paper tables and full analysis are available in `draft/TPPM-draft.pdf`.
+Previously generated local outputs may use legacy configurations (e.g., promote_threshold=0.58).
 
 ## Notes
 
 - API model versions may produce different results over time as the underlying service is updated
 - LLM Judge scoring has inherent stochasticity
 - Full experiments incur non-trivial API costs
-- Datasets are subject to their original licenses (see [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md))
-- `data_trans/` contains exploratory SFT dataset generation code, not part of the paper's evaluation
+- Datasets are subject to their original licenses (see [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) and [third_party/README.md](third_party/README.md))
 - Large output files and third-party datasets are excluded from Git via `.gitignore`
 
 ## Privacy, Ethics, and Safety
