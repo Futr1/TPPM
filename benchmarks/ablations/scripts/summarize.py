@@ -55,7 +55,6 @@ DIAGNOSTIC = {
     "ablation_no_ltm": "track_full_preference_evolution",          # Q4
 }
 
-
 def load_results(csv_path: Path) -> dict[str, dict[str, int]]:
     """Load results CSV → {question_id: {score, question_type, ...}}."""
     results: dict[str, dict[str, int]] = {}
@@ -69,7 +68,6 @@ def load_results(csv_path: Path) -> dict[str, dict[str, int]]:
             score = 1 if row.get("score", "").strip().lower() in ("true", "1") else 0
             results[qid] = {"score": score, "question_type": qtype}
     return results
-
 
 EXCLUDED_TYPES = {"recalling_facts_mentioned_by_the_user"}  # Q3 not used in paper
 
@@ -88,7 +86,6 @@ def compute_accuracy(results: dict[str, dict[str, int]],
     correct = sum(v["score"] for v in filtered.values())
     total = len(filtered)
     return correct, total, correct / total * 100
-
 
 def main() -> int:
     # Load baseline first
@@ -182,7 +179,6 @@ def main() -> int:
             print(line)
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

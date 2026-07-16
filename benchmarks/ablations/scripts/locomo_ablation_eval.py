@@ -73,7 +73,6 @@ QA_SYSTEM_PROMPT = (
     "If you don't know the answer, please don't share false information."
 )
 
-
 # ===== Data loading =====
 
 def load_memory_bank(path: Path) -> dict[str, dict[str, Any]]:
@@ -89,11 +88,9 @@ def load_memory_bank(path: Path) -> dict[str, dict[str, Any]]:
             indexed[cid] = entry
     return indexed
 
-
 def load_locomo(path: Path) -> list[dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def get_sorted_sessions(conv: dict[str, Any]) -> list[tuple[int, str, list[dict]]]:
     conv_data = conv["conversation"]
@@ -107,7 +104,6 @@ def get_sorted_sessions(conv: dict[str, Any]) -> list[tuple[int, str, list[dict]
             sessions.append((num, key, conv_data[key]))
     sessions.sort(key=lambda x: x[0])
     return sessions
-
 
 # ===== Session mapping from evidence =====
 
@@ -130,7 +126,6 @@ def get_evidence_session(evidence: list[str]) -> int | None:
                     return int(m.group(1))
     return None
 
-
 def get_session_text(conv: dict[str, Any], session_num: int) -> str:
     """Get full text of a specific session."""
     key = f"session_{session_num}"
@@ -147,7 +142,6 @@ def get_session_text(conv: dict[str, Any], session_num: int) -> str:
             lines.append(f"{speaker}: {text}")
     return "\n".join(lines)
 
-
 # ===== TPPM memory retrieval (Mini-Agent-5-1 style) =====
 
 def _text_similarity(a: str, b: str) -> float:
@@ -161,7 +155,6 @@ def _text_similarity(a: str, b: str) -> float:
     intersection = tokens_a & tokens_b
     union = tokens_a | tokens_b
     return len(intersection) / len(union)
-
 
 def _get_scene_branch_value(pmu: dict[str, Any], scene: str) -> tuple[str, str]:
     """Get the best branch value for a given scene.
@@ -178,7 +171,6 @@ def _get_scene_branch_value(pmu: dict[str, Any], scene: str) -> tuple[str, str]:
                          key=lambda s: branches[s].get("reinforcement_count", 0))
         return str(branches[best_scene].get("value", pmu.get("value", ""))), best_scene
     return str(pmu.get("value", "")), pmu.get("scene", "general")
-
 
 def _retrieve_score(pmu: dict[str, Any], question: str, scene: str) -> float:
     """Compute retrieval score for a PMU given a question and scene."""
@@ -223,7 +215,6 @@ def _retrieve_score(pmu: dict[str, Any], question: str, scene: str) -> float:
     return (0.35 * rel + 0.20 * stability + 0.15 * ctx_score
             + 0.20 * scene_score + 0.10 * quality)
 
-
 def retrieve_top_k(
     memory_entry: dict[str, Any],
     question: str,
@@ -246,7 +237,6 @@ def retrieve_top_k(
         scored.append((score, pmu))
     scored.sort(key=lambda x: x[0], reverse=True)
     return [pmu for _, pmu in scored[:top_k]]
-
 
 # ===== Memory formatting (Mini-Agent-5-1 modular format) =====
 
@@ -310,7 +300,6 @@ def format_tppm_memory_block(
 
     return "\n".join(lines)
 
-
 # ===== Context builder =====
 
 def build_ablation_context(
@@ -361,7 +350,6 @@ def build_ablation_context(
 
     return "\n".join(parts)
 
-
 # ===== Async QA generation =====
 
 async def _generate_one(
@@ -388,7 +376,6 @@ async def _generate_one(
                     raise
                 await asyncio.sleep(min(30.0, 2 ** attempt))
     return conv_idx, qa_idx, ""
-
 
 async def generate_qa_answers(
     conversations: list[dict[str, Any]],
@@ -485,7 +472,6 @@ async def generate_qa_answers(
 
     return results
 
-
 # ===== Evaluation =====
 
 def evaluate_and_save(
@@ -548,7 +534,6 @@ def evaluate_and_save(
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
     return summary
-
 
 # ===== CLI =====
 
@@ -627,7 +612,6 @@ def main() -> int:
         print(f"  {name}: {score:.1f}")
     print(f"{'='*60}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

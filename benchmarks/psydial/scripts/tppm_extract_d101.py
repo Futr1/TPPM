@@ -76,18 +76,14 @@ MIN_HISTORY_TURNS = 3  # len(messages) must be >= 3 to have history
 
 VALID_ATTRIBUTES = {"stressor", "affective_state", "coping_style"}
 
-
 class EmptyLLMResponseError(ValueError):
     pass
-
 
 class LLMJSONParseError(ValueError):
     pass
 
-
 class LLMSchemaError(ValueError):
     pass
-
 
 @dataclass(slots=True)
 class CandidateMemory:
@@ -101,10 +97,8 @@ class CandidateMemory:
     phi: float
     tier: str  # "context_only" | "stable" | "long_term"
 
-
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
-
 
 def clamp(value: Any, default: float = 0.0) -> float:
     try:
@@ -112,10 +106,8 @@ def clamp(value: Any, default: float = 0.0) -> float:
     except (TypeError, ValueError):
         return default
 
-
 def compute_phi(r: float, e: float, u: float, b: float) -> float:
     return ALPHA_1 * r + ALPHA_2 * e + ALPHA_3 * u + ALPHA_4 * b
-
 
 def assign_tier(phi: float) -> str:
     """Assign memory tier based on phi value."""
@@ -126,14 +118,12 @@ def assign_tier(phi: float) -> str:
     else:
         return "context_only"
 
-
 def load_d101(path: Path) -> list[dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
     if not isinstance(data, list):
         raise ValueError("D101 must be a JSON array.")
     return data
-
 
 def format_messages_for_extraction(case: dict[str, Any]) -> tuple[str | None, int]:
     """Extract messages[:-1] as dialogue text. Returns (text, num_messages)."""
@@ -156,13 +146,10 @@ def format_messages_for_extraction(case: dict[str, Any]) -> tuple[str | None, in
         return None, len(msgs)
     return "\n".join(lines), len(msgs)
 
-
 def build_client(api_key: str = API_KEY, api_base: str = API_BASE) -> AsyncOpenAI:
     return AsyncOpenAI(api_key=api_key, base_url=api_base, timeout=REQUEST_TIMEOUT)
 
-
 # ===== LLM Extraction Core =====
-
 
 def build_system_prompt() -> str:
     return """
@@ -192,7 +179,6 @@ Required schema:
 {"candidates":[{"attribute":"stressor|affective_state|coping_style","value":"...","evidence":"...","r_score":0.0,"e_score":0.0,"u_score":0.0,"b_score":0.0}]}
 """.strip()
 
-
 def clean_json_text(content: str) -> str:
     stripped = (content or "").lstrip("﻿").strip()
     fence = re.fullmatch(r"```(?:json|JSON)?\s*(.*?)\s*```", stripped, flags=re.DOTALL)
@@ -200,10 +186,8 @@ def clean_json_text(content: str) -> str:
         stripped = fence.group(1).strip()
     return stripped
 
-
 def remove_trailing_commas(text: str) -> str:
     return re.sub(r",\s*([}\]])", r"\1", text)
-
 
 def first_json_object(text: str) -> dict[str, Any]:
     decoder = json.JSONDecoder()
@@ -217,7 +201,6 @@ def first_json_object(text: str) -> dict[str, Any]:
         if isinstance(payload, dict):
             return payload
     raise LLMJSONParseError("No complete JSON object found.")
-
 
 def parse_llm_json(content: str) -> dict[str, Any]:
     stripped = clean_json_text(content)
@@ -237,7 +220,6 @@ def parse_llm_json(content: str) -> dict[str, Any]:
             return first_json_object(repaired)
         except Exception as e2:
             raise LLMJSONParseError(f"Cannot parse: {str(e)[:200]}") from e2
-
 
 def normalize_candidate(raw: dict) -> tuple[CandidateMemory | None, str | None]:
     """Validate one raw LLM candidate, compute phi, and assign tier."""
@@ -272,7 +254,6 @@ def normalize_candidate(raw: dict) -> tuple[CandidateMemory | None, str | None]:
     tier = assign_tier(phi)
     return CandidateMemory(attr, value.strip(), evidence.strip(), r, e, u, b, phi, tier), None
 
-
 def append_invalid_response(*, case_idx: int, model: str, attempt: int,
                             content: str, error: Exception) -> None:
     DEFAULT_DEBUG.parent.mkdir(parents=True, exist_ok=True)
@@ -286,7 +267,6 @@ def append_invalid_response(*, case_idx: int, model: str, attempt: int,
     }
     with DEFAULT_DEBUG.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
-
 
 async def get_llm_candidates(
     dialogue_text: str,
@@ -339,9 +319,7 @@ async def get_llm_candidates(
 
     raise RuntimeError(f"LLM extraction failed after {max_retries} attempts.")
 
-
 # ===== Async Batch Processing =====
-
 
 async def process_case(
     case_idx: int,
@@ -360,7 +338,6 @@ async def process_case(
         if candidate is not None:
             accepted.append(candidate)
     return case_idx, accepted
-
 
 async def run_extraction(
     dataset: list[dict[str, Any]],
@@ -431,9 +408,7 @@ async def run_extraction(
     results.sort(key=lambda r: r["case_idx"])
     return results, skipped, failed[0], empty_memory[0]
 
-
 # ===== CLI Entry Point =====
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="TPPM memory extraction for D101 (DeepSeek-V4-Pro).")
@@ -503,7 +478,6 @@ def main() -> int:
     if failed:
         print(f"[DONE] Failure log: {args.failed_output}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

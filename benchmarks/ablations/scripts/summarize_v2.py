@@ -69,7 +69,6 @@ KEY_TYPES = [
 
 EXCLUDED_TYPES = {"recalling_facts_mentioned_by_the_user"}  # Q3 not used
 
-
 def load_results(csv_path: Path) -> dict[str, dict[str, int]]:
     results: dict[str, dict[str, int]] = {}
     if not csv_path.exists():
@@ -83,7 +82,6 @@ def load_results(csv_path: Path) -> dict[str, dict[str, int]]:
             results[qid] = {"score": score, "question_type": qtype}
     return results
 
-
 def compute_accuracy(results: dict[str, dict[str, int]],
                      filter_type: str | None = None) -> tuple[int, int, float]:
     filtered = {
@@ -96,7 +94,6 @@ def compute_accuracy(results: dict[str, dict[str, int]],
     correct = sum(v["score"] for v in filtered.values())
     total = len(filtered)
     return correct, total, correct / total * 100
-
 
 def print_section(title: str, conditions: list[tuple[str, str, Path]],
                   baseline_results: dict | None = None) -> None:
@@ -165,7 +162,6 @@ def print_section(title: str, conditions: list[tuple[str, str, Path]],
                   f"{deltas.get('recall_user_shared_facts', 0.0):>+9.2f}% "
                   f"{delta_overall:>+9.2f}%")
 
-
 def main() -> int:
     import argparse
     parser = argparse.ArgumentParser(description="Summarize ablation results (v2)")
@@ -194,7 +190,6 @@ def main() -> int:
             HIERARCHY_CONDITIONS, baseline_results)
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

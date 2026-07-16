@@ -61,13 +61,11 @@ ATTRIBUTE_LABELS = {
     "coping_style": "应对方式",
 }
 
-
 # ===== Data loading =====
 
 def load_d101(path: Path) -> list[dict]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def load_memory_bank(path: Path) -> dict[int, list[dict]]:
     if not path.exists():
@@ -82,7 +80,6 @@ def load_memory_bank(path: Path) -> dict[int, list[dict]]:
         if case_idx is not None and isinstance(memories, list):
             indexed[int(case_idx)] = [m for m in memories if isinstance(m, dict)]
     return indexed
-
 
 # ===== Memory formatting =====
 
@@ -115,7 +112,6 @@ def format_memory_block(memories: list[dict], include_evidence: bool = True) -> 
         lines.append("；".join(parts))
 
     return "\n".join(lines) if lines else ""
-
 
 # ===== Message building =====
 
@@ -170,7 +166,6 @@ def build_messages(
         *msgs,
     ], None
 
-
 # ===== Async generation =====
 
 async def _generate_one(
@@ -196,7 +191,6 @@ async def _generate_one(
                     raise
                 await asyncio.sleep(min(30.0, 2 ** attempt))
     return case_idx, ""
-
 
 async def generate_all(
     test_cases: list[dict],
@@ -254,7 +248,6 @@ async def generate_all(
         results.append(entry)
 
     return results
-
 
 # ===== CLI =====
 
@@ -322,7 +315,6 @@ def main() -> int:
     print(f"[DONE] Generated: {len(results)}, fallback: {n_fallback}, empty: {n_empty}")
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

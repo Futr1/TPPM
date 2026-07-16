@@ -57,7 +57,6 @@ RATING_DESC = (
     "3=一般: 基本展示但有明显不足  4=良好: 较好展示  5=优秀: 出色展示"
 )
 
-
 def format_dialogue(messages):
     """Format dialogue history for spreadsheet display."""
     lines = []
@@ -70,7 +69,6 @@ def format_dialogue(messages):
             lines.append(f"咨询师: {content}")
     return "\n".join(lines)
 
-
 def _get_rating(entry, dim_key):
     """Extract rating from a dimension entry (handles dict or int)."""
     v = entry.get(dim_key, {})
@@ -78,12 +76,10 @@ def _get_rating(entry, dim_key):
         return v.get("rating", 0)
     return v if isinstance(v, (int, float)) else 0
 
-
 def _mean_score(entry):
     """Compute mean score across all 9 dimensions."""
     ratings = [_get_rating(entry, k) for k, _ in DIMS]
     return sum(ratings) / len(ratings) if ratings else 0
-
 
 def stratified_sample(scored_cases, sample_size, seed=42):
     """Stratified sampling by mean score across all 9 dimensions."""
@@ -117,7 +113,6 @@ def stratified_sample(scored_cases, sample_size, seed=42):
 
     random.shuffle(sampled)
     return sampled, tiers
-
 
 def build_instructions_sheet(wb):
     """Create 标注说明 sheet."""
@@ -166,7 +161,6 @@ def build_instructions_sheet(wb):
         cell.font = font
 
     ws.column_dimensions["A"].width = 90
-
 
 def build_scoring_sheet(wb, sampled, d101_index):
     """Create 人工评分表 sheet."""
@@ -241,7 +235,6 @@ def build_scoring_sheet(wb, sampled, d101_index):
     # Add auto-filter
     ws.auto_filter.ref = f"A1:N{row - 1}"
 
-
 def build_reference_sheet(wb, sampled, d101_index):
     """Create LLM评分参考 sheet (hidden from annotators during scoring)."""
     ws = wb.create_sheet("LLM评分参考")
@@ -312,7 +305,6 @@ def build_reference_sheet(wb, sampled, d101_index):
 
     ws.freeze_panes = "A2"
 
-
 def main():
     parser = argparse.ArgumentParser(description="Human evaluation sampling")
     parser.add_argument("--generations", type=Path, default=GENERATIONS_PATH)
@@ -376,7 +368,6 @@ def main():
         bar = "█" * count
         print(f"  {score}: {count:2d} {bar}")
     print(f"  Mean: {sum(oa_vals)/len(oa_vals):.2f}")
-
 
 if __name__ == "__main__":
     main()

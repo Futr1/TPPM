@@ -39,7 +39,6 @@ SNAPSHOT_DIR = SNAPSHOTS_ABLATION / COND["config_id"]
 
 EXISTING_CSV = REPO_ROOT / 'benchmarks/ablations'/eval_results/deepseek/ablation_flat_pool/results.csv")
 
-
 def build_context_full_history(conversation, end_index, memory_snapshot, question,
                                all_options, retrieve_weights, top_k):
     """Same as P3.build_context_window but with FULL history (conversation[:end_index])."""
@@ -82,7 +81,6 @@ def build_context_full_history(conversation, end_index, memory_snapshot, questio
         {"role": "system", "content": system_content},
         {"role": "user", "content": "\n\n".join(user_content_parts)},
     ]
-
 
 def main():
     client = OpenAI(base_url=P3.API_BASE, api_key=P3.API_KEY)
@@ -177,7 +175,6 @@ def main():
         print(f"   Fresh flat_pool Recall = {new_acc:.2f}% (was {old_acc:.2f}%).")
         baseline_recall = 75.97
         print(f"   Fresh delta vs Full TPPM Recall({baseline_recall}%) = {new_acc - baseline_recall:+.2f}")
-
 
 if __name__ == "__main__":
     main()

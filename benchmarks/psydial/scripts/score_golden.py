@@ -85,14 +85,12 @@ DIMENSION_KEYS = [
     "non_judgmental_accepting_attitude", "overall_assessment",
 ]
 
-
 def format_dialogue_history(messages):
     lines = []
     for msg in messages:
         role_label = "来访者" if msg["role"] == "user" else "咨询师"
         lines.append(f"{role_label}: {msg['content']}")
     return "\n".join(lines)
-
 
 def format_metric_text(key):
     m = METRICS_DEFINITIONS[key]
@@ -101,7 +99,6 @@ def format_metric_text(key):
         text += f"Evaluation Principles:\n{m['evaluation_principles']}\n\n"
     text += f"Rating Criteria:\n{m['criteria']}"
     return text
-
 
 def build_scoring_prompt(ctx, response, metric_key):
     metric_text = format_metric_text(metric_key)
@@ -114,7 +111,6 @@ Provide a brief reasoning for your rating based on these criteria, and then assi
 
 - Reasoning: (Your explanation here)
 - Rating: (Ranging from 1 to 5)"""
-
 
 def call_api(system_prompt, user_prompt, max_retries=3):
     import requests
@@ -144,7 +140,6 @@ def call_api(system_prompt, user_prompt, max_retries=3):
                 time.sleep(5)
     return None
 
-
 def parse_response(content):
     reason_match = re.search(r'- Reasoning:\s*(.+?)(?=\n- Rating:|\Z)', content, re.DOTALL)
     reasoning = reason_match.group(1).strip() if reason_match else ""
@@ -156,7 +151,6 @@ def parse_response(content):
         if 1 <= rating <= 5:
             return {"reasoning": reasoning, "rating": rating}
     return None
-
 
 def main():
     parser = argparse.ArgumentParser()

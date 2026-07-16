@@ -105,12 +105,10 @@ CONDITIONS = {
     },
 }
 
-
 # ===== Helper functions (same as Mini-Agent) =====
 
 def _normalize(text: str) -> str:
     return " ".join((text or "").lower().split())
-
 
 def _similarity(left: str, right: str) -> float:
     left_norm = _normalize(left)
@@ -118,7 +116,6 @@ def _similarity(left: str, right: str) -> float:
     if not left_norm or not right_norm:
         return 0.0
     return SequenceMatcher(None, left_norm, right_norm).ratio()
-
 
 def _get_pmu_value(pmu: dict) -> str:
     """Extract the best value from a PMU dict."""
@@ -129,7 +126,6 @@ def _get_pmu_value(pmu: dict) -> str:
     if branches:
         return str(branches[0].get("value", pmu.get("value", "?"))).strip()
     return str(pmu.get("value", "?")).strip()
-
 
 # ===== Retrieval scoring (mirrors _retrieve_score from memory.py) =====
 
@@ -190,7 +186,6 @@ def retrieve_score(
     w1, w2, w3, w4, w5 = weights
     return w1 * rel + w2 * stability + w3 * ctx_score + w4 * scene_score + w5 * quality
 
-
 # ===== JSONL Index =====
 
 def build_jsonl_index(jsonl_path: Path) -> dict[str, int]:
@@ -205,13 +200,11 @@ def build_jsonl_index(jsonl_path: Path) -> dict[str, int]:
             index[key] = offset
     return index
 
-
 def load_context_by_id(jsonl_path: Path, offset: int) -> list[dict]:
     with jsonl_path.open("r", encoding="utf-8") as f:
         f.seek(offset)
         item = json.loads(f.readline())
         return next(iter(item.values()))
-
 
 # ===== Session boundary detection =====
 
@@ -226,7 +219,6 @@ def find_current_session_start(messages: list[dict], end_index: int) -> int:
         if messages[i].get("role") == "system":
             last_session_start = i
     return last_session_start
-
 
 # ===== Memory retrieval and formatting (mirrors TPMMemoryManager) =====
 
@@ -253,7 +245,6 @@ def retrieve_memories(
 
     scored.sort(key=lambda x: x[0], reverse=True)
     return scored[:top_k]
-
 
 def format_memory_block(
     memories: list[tuple[float, dict, str]],
@@ -292,7 +283,6 @@ def format_memory_block(
         )
 
     return "[Temporal Profile Memory]\n" + "\n".join(lines)
-
 
 # ===== Context builder (current session only, mirrors full TPPM) =====
 
@@ -363,7 +353,6 @@ def build_context_window(
         {"role": "user", "content": "\n\n".join(user_content_parts)},
     ]
 
-
 def _messages_to_text(messages: list[dict]) -> str:
     lines: list[str] = []
     for msg in messages:
@@ -383,7 +372,6 @@ def _messages_to_text(messages: list[dict]) -> str:
         elif role == "assistant":
             lines.append(f"Assistant: {content}")
     return "\n".join(lines)
-
 
 # ===== Answer extraction =====
 
@@ -412,7 +400,6 @@ def extract_answer(predicted_answer: str, correct_answer: str) -> tuple[bool, st
         return True, predicted_answer
 
     return False, predicted_answer
-
 
 # ===== Evaluation runner =====
 
@@ -543,7 +530,6 @@ def run_evaluation(
     print(f"[DONE] {condition} ({label}): {total_correct}/{total_questions} = {accuracy:.2f}%")
     return output_path, total_correct, total_questions
 
-
 # ===== CLI =====
 
 def main() -> int:
@@ -592,7 +578,6 @@ def main() -> int:
         )
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

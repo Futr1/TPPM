@@ -49,7 +49,6 @@ QA_SYSTEM_PROMPT = (
     "say 'no information available'."
 )
 
-
 # ===== Data loading =====
 
 def load_memory_bank(path: Path) -> dict[str, dict[str, Any]]:
@@ -66,11 +65,9 @@ def load_memory_bank(path: Path) -> dict[str, dict[str, Any]]:
             indexed[cid] = entry
     return indexed
 
-
 def load_locomo(path: Path) -> list[dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def get_sorted_sessions(conv: dict[str, Any]) -> list[tuple[int, str, list[dict]]]:
     """Extract sorted session info from a conversation."""
@@ -85,7 +82,6 @@ def get_sorted_sessions(conv: dict[str, Any]) -> list[tuple[int, str, list[dict]
             sessions.append((num, key, conv_data[key]))
     sessions.sort(key=lambda x: x[0])
     return sessions
-
 
 # ===== TPPM profile formatting =====
 
@@ -120,7 +116,6 @@ def format_tppm_profile(memory_entry: dict[str, Any], top_k: int = 10) -> str:
             f"[stability={stability:.2f}, sessions={session_count}, level={level}]"
         )
     return "\n".join(lines) if len(lines) > 1 else "No profile information available."
-
 
 # ===== Hybrid context builder =====
 
@@ -180,7 +175,6 @@ def build_hybrid_context(
         parts.append("")
 
     return "\n".join(parts)
-
 
 # ===== vLLM generation =====
 
@@ -264,7 +258,6 @@ def generate_qa_answers(
 
     return results
 
-
 # ===== Evaluation =====
 
 def evaluate_and_save(
@@ -329,7 +322,6 @@ def evaluate_and_save(
 
     return summary
 
-
 # ===== CLI =====
 
 def main() -> int:
@@ -360,7 +352,6 @@ def main() -> int:
         print(f"  {name}: {score:.1f}")
     print(f"{'='*50}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

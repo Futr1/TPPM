@@ -38,18 +38,15 @@ VARIANTS = [
     "ablation_no_ltm",
 ]
 
-
 def load_baseline() -> dict:
     if not BASELINE_BANK.exists():
         raise FileNotFoundError(f"Baseline memory bank not found: {BASELINE_BANK}")
     with BASELINE_BANK.open("r", encoding="utf-8") as f:
         return json.load(f)
 
-
 def create_baseline(bank: dict) -> dict:
     """Copy as-is."""
     return copy.deepcopy(bank)
-
 
 def create_consolidation(bank: dict) -> dict:
     """w/o Consolidation: all tiers → context_only (consolidation disabled, memories never promote)."""
@@ -61,7 +58,6 @@ def create_consolidation(bank: dict) -> dict:
     result["metadata"]["note"] = "All tiers forced to context_only (consolidation disabled, no promotion)"
     return result
 
-
 def create_no_evidence(bank: dict) -> dict:
     """w/o Evidence: strip evidence field from all memories."""
     result = copy.deepcopy(bank)
@@ -71,7 +67,6 @@ def create_no_evidence(bank: dict) -> dict:
     result["metadata"]["variant"] = "ablation_no_evidence"
     result["metadata"]["note"] = "Evidence field stripped from all memories"
     return result
-
 
 def create_no_ltm(bank: dict) -> dict:
     """w/o LTM: filter out tier=long_term memories."""
@@ -88,14 +83,12 @@ def create_no_ltm(bank: dict) -> dict:
     result["metadata"]["note"] = f"Filtered out long_term memories ({total_before} → {total_after})"
     return result
 
-
 CREATORS = {
     "baseline": create_baseline,
     "ablation_consolidation": create_consolidation,
     "ablation_no_evidence": create_no_evidence,
     "ablation_no_ltm": create_no_ltm,
 }
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(
@@ -139,7 +132,6 @@ def main() -> int:
         print(f"  Tiers: {tiers}")
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -22,12 +22,9 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 from typing import Any
 
 # Allow importing Mini-Agent-5-1 TPPM modules
-_AGENT_ROOT = Path("/root/autodl-tmp/wangqihao/Mini-Agent-5-1")
-if str(_AGENT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_AGENT_ROOT))
 
-from mini_agent.tpm.memory import TemporalProfileMemory, TPMConfig
-from mini_agent.tpm.models import ProfileCandidate
+from tppm.core.memory import TemporalProfileMemory, TPMConfig
+from tppm.core.models import ProfileCandidate
 
 import yaml
 from tqdm import tqdm
@@ -41,14 +38,12 @@ SWEEP_CONFIG_PATH = ROOT / "configs" / "param_sweep.yaml"
 # ===== Simulated time between sessions (for long-term decay) =====
 SESSION_INTERVAL_HOURS = 24  # Simulate 1 day between sessions
 
-
 # ===== Config loading =====
 
 def load_sweep_configs(sweep_path: Path) -> dict[str, Any]:
     """Load parameter sweep definitions from YAML."""
     with sweep_path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f.read())
-
 
 def resolve_configs(
     sweep_data: dict[str, Any],
@@ -94,7 +89,6 @@ def resolve_configs(
 
     return configs
 
-
 def _make_config(params: dict[str, Any]) -> TPMConfig:
     """Create TPMConfig from parameter dict, handling decay_lambdas scaling."""
     decay_lambdas = dict(params.get("decay_lambdas", {
@@ -116,7 +110,6 @@ def _make_config(params: dict[str, Any]) -> TPMConfig:
         promotion_min_sessions=1,  # PersonaMem: each context = one persona, sessions are segments
     )
 
-
 # ===== Candidate loading =====
 
 def load_context_candidates(context_dir: Path) -> list[tuple[int, list[dict[str, Any]]]]:
@@ -132,7 +125,6 @@ def load_context_candidates(context_dir: Path) -> list[tuple[int, list[dict[str,
         sessions.append((data["session_idx"], data.get("candidates", [])))
     sessions.sort(key=lambda x: x[0])
     return sessions
-
 
 def candidates_to_objects(raw_list: list[dict[str, Any]]) -> list[ProfileCandidate]:
     """Convert candidate dicts to ProfileCandidate objects."""
@@ -156,7 +148,6 @@ def candidates_to_objects(raw_list: list[dict[str, Any]]) -> list[ProfileCandida
             tqdm.write(f"[WARN] Skipping malformed candidate: {e}")
             continue
     return objs
-
 
 # ===== Replay engine =====
 
@@ -223,7 +214,6 @@ def replay_context(
     snapshot["num_sessions"] = len(sessions)
     return snapshot
 
-
 def run_replay(
     configs: list[tuple[str, TPMConfig]],
 ) -> dict[str, int]:
@@ -269,7 +259,6 @@ def run_replay(
 
     return stats
 
-
 # ===== CLI =====
 
 def main() -> int:
@@ -302,7 +291,6 @@ def main() -> int:
         print(f"  {cid}: {n} contexts")
     print(f"[DONE] Output: {SNAPSHOTS_DIR}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -105,7 +105,6 @@ SCORING_SYSTEM_PROMPT = (
     "Evaluate the counselor's response based on the given dimension and criteria."
 )
 
-
 # ===== Helpers =====
 
 def format_dialogue_history(messages: list[dict]) -> str:
@@ -116,7 +115,6 @@ def format_dialogue_history(messages: list[dict]) -> str:
         if content:
             lines.append(f"{role}: {content}")
     return "\n".join(lines) if lines else "[No dialogue history]"
-
 
 def build_scoring_prompt(ctx: str, response: str, metric_key: str) -> str:
     m = METRICS_DEFINITIONS[metric_key]
@@ -133,7 +131,6 @@ def build_scoring_prompt(ctx: str, response: str, metric_key: str) -> str:
         f"- Rating: (Ranging from 1 to 5)"
     )
 
-
 def parse_response(content: str) -> dict | None:
     reason_match = re.search(r'- Reasoning:\s*(.+?)(?=\n- Rating:|\Z)', content, re.DOTALL)
     reasoning = reason_match.group(1).strip() if reason_match else ""
@@ -143,7 +140,6 @@ def parse_response(content: str) -> dict | None:
         if 1 <= rating <= 5:
             return {"reasoning": reasoning, "rating": rating}
     return None
-
 
 # ===== Async scoring =====
 
@@ -196,7 +192,6 @@ async def score_one_dimension(
 
     return {"reasoning": "MAX_RETRIES", "rating": 0}
 
-
 async def score_case(
     session: aiohttp.ClientSession,
     sem: asyncio.Semaphore,
@@ -211,7 +206,6 @@ async def score_case(
 
     results = await asyncio.gather(*tasks)
     return {DIMENSION_KEYS[i]: r for i, r in enumerate(results)}
-
 
 async def score_all_cases(
     results: list[dict],
@@ -279,7 +273,6 @@ async def score_all_cases(
 
     return scores_list
 
-
 # ===== Checkpoint / Summary =====
 
 def save_checkpoint(output_path: Path, metadata: dict, scores: list[dict]):
@@ -289,7 +282,6 @@ def save_checkpoint(output_path: Path, metadata: dict, scores: list[dict]):
             "metadata": metadata,
             "scores": sorted(scores, key=lambda x: x["idx"]),
         }, f, ensure_ascii=False, indent=2)
-
 
 def compute_summary(scores: list[dict]) -> dict:
     summary = {}
@@ -305,7 +297,6 @@ def compute_summary(scores: list[dict]) -> dict:
         else:
             summary[key] = {"mean": 0, "std": 0, "count": 0}
     return summary
-
 
 # ===== CLI =====
 
@@ -375,7 +366,6 @@ def main() -> int:
         print(f"{'=' * 60}")
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

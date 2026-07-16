@@ -32,12 +32,9 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 from typing import Any
 
 # Allow importing Mini-Agent-5-1 TPPM modules
-_AGENT_ROOT = Path("/root/autodl-tmp/wangqihao/Mini-Agent-5-1")
-if str(_AGENT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_AGENT_ROOT))
 
-from mini_agent.tpm.memory import TemporalProfileMemory, TPMConfig, _clamp, _parse_timestamp
-from mini_agent.tpm.models import ProfileCandidate, ProfileMemoryUnit, EvidenceItem, utc_now
+from tppm.core.memory import TemporalProfileMemory, TPMConfig, _clamp, _parse_timestamp
+from tppm.core.models import ProfileCandidate, ProfileMemoryUnit, EvidenceItem, utc_now
 
 import yaml
 from tqdm import tqdm
@@ -55,12 +52,10 @@ SESSION_INTERVAL_HOURS = 24
 # ===== New variant config IDs =====
 SKIP_EXTRACTION_CONFIGS = {"ablation_semantic_retrieval"}  # reuse baseline
 
-
 # ===== Helper functions (copied from phase2_ablation.py for independence) =====
 
 def _normalize(text: str) -> str:
     return " ".join((text or "").lower().split())
-
 
 def _similarity(left: str, right: str) -> float:
     left_norm = _normalize(left)
@@ -69,13 +64,11 @@ def _similarity(left: str, right: str) -> float:
         return 0.0
     return SequenceMatcher(None, left_norm, right_norm).ratio()
 
-
 # ===== Config loading =====
 
 def load_ablation_configs() -> dict[str, dict[str, Any]]:
     with ABLATION_CONFIG_PATH.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f.read())
-
 
 def _make_config(params: dict[str, Any]) -> TPMConfig:
     decay_lambdas = dict(params.get("decay_lambdas", {
@@ -91,7 +84,6 @@ def _make_config(params: dict[str, Any]) -> TPMConfig:
         promotion_min_sessions=int(params.get("promotion_min_sessions", 1)),
     )
 
-
 # ===== Candidate loading =====
 
 def load_context_candidates(context_dir: Path) -> list[tuple[int, list[dict[str, Any]]]]:
@@ -102,7 +94,6 @@ def load_context_candidates(context_dir: Path) -> list[tuple[int, list[dict[str,
         sessions.append((data["session_idx"], data.get("candidates", [])))
     sessions.sort(key=lambda x: x[0])
     return sessions
-
 
 def candidates_to_objects(raw_list: list[dict[str, Any]]) -> list[ProfileCandidate]:
     objs: list[ProfileCandidate] = []
@@ -125,7 +116,6 @@ def candidates_to_objects(raw_list: list[dict[str, Any]]) -> list[ProfileCandida
             tqdm.write(f"[WARN] Skipping malformed candidate: {e}")
             continue
     return objs
-
 
 # ===== Flat PPMU Pool Architecture =====
 
@@ -363,7 +353,6 @@ class FlatTPPM:
             "current_session_id": self.current_session_id,
             "architecture": "flat",
         }
-
 
 # ===== Two-Level Memory Architecture =====
 
@@ -679,7 +668,6 @@ class TwoLevelTPPM:
             "architecture": "two_level",
         }
 
-
 # ===== Replay engine =====
 
 def replay_context(
@@ -748,7 +736,6 @@ def replay_context(
     snapshot["num_sessions"] = len(sessions)
     return snapshot
 
-
 def run_replay(
     configs: list[tuple[str, TPMConfig, str]],
 ) -> dict[str, int]:
@@ -787,7 +774,6 @@ def run_replay(
         stats[config_id] = n_processed
 
     return stats
-
 
 # ===== CLI =====
 
@@ -849,7 +835,6 @@ def main() -> int:
         print(f"  {cid}: {n} contexts")
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

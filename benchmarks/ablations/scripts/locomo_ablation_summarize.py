@@ -25,14 +25,12 @@ VARIANTS = [
 
 CATEGORIES = ["multi_hop", "single_hop", "temporal", "open_domain", "adversarial", "overall"]
 
-
 def load_results(variant_id: str) -> dict | None:
     path = EVAL_DIR / variant_id / "qa_results.json"
     if not path.exists():
         return None
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def main() -> int:
     print("=" * 90)
@@ -116,7 +114,6 @@ def main() -> int:
             print(line)
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

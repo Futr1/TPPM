@@ -25,11 +25,8 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 from typing import Any
 
 # Allow importing Mini-Agent-5-1 TPPM modules
-_AGENT_ROOT = Path("/root/autodl-tmp/wangqihao/Mini-Agent-5-1")
-if str(_AGENT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_AGENT_ROOT))
 
-from mini_agent.tpm.models import ProfileCandidate
+from tppm.core.models import ProfileCandidate
 
 from openai import AsyncOpenAI
 from tqdm import tqdm
@@ -52,7 +49,6 @@ MAX_TOKENS = 4096
 INITIAL_BACKOFF = 1.0
 MAX_BACKOFF = 30.0
 
-
 # ===== Data loading =====
 
 def load_shared_contexts(path: Path) -> list[tuple[str, list[dict]]]:
@@ -72,7 +68,6 @@ def load_shared_contexts(path: Path) -> list[tuple[str, list[dict]]]:
             for key, msgs in obj.items():
                 contexts.append((key, msgs))
     return contexts
-
 
 def detect_sessions(messages: list[dict]) -> list[tuple[int, list[dict]]]:
     """Split flat message list into sessions at role=system boundaries.
@@ -100,7 +95,6 @@ def detect_sessions(messages: list[dict]) -> list[tuple[int, list[dict]]]:
 
     return sessions
 
-
 def format_session_for_extraction(session_messages: list[dict]) -> str:
     """Format session messages into a single dialogue text block for LLM extraction."""
     lines: list[str] = []
@@ -119,7 +113,6 @@ def format_session_for_extraction(session_messages: list[dict]) -> str:
         elif role == "assistant":
             lines.append(f"Assistant: {content}")
     return "\n".join(lines)
-
 
 # ===== Async LLM extraction =====
 
@@ -181,7 +174,6 @@ def build_extraction_payload(dialogue_text: str, scene: str = "general") -> dict
         "max_tokens": MAX_TOKENS,
         "response_format": {"type": "json_object"},
     }
-
 
 def parse_candidates_from_response(
     content: str, scene: str, original_text: str
@@ -254,7 +246,6 @@ def parse_candidates_from_response(
         })
     return candidates
 
-
 async def extract_candidates_async(
     client: AsyncOpenAI,
     dialogue_text: str,
@@ -290,7 +281,6 @@ async def extract_candidates_async(
             await asyncio.sleep(sleep_s)
 
     return []
-
 
 # ===== Per-context processing =====
 
@@ -343,7 +333,6 @@ async def process_context(
 
     return context_hash, len(sessions), total_candidates
 
-
 # ===== Main runner =====
 
 async def run_extraction(
@@ -378,7 +367,6 @@ async def run_extraction(
 
     return total_contexts, total_sessions, total_candidates
 
-
 # ===== CLI =====
 
 def main() -> int:
@@ -411,7 +399,6 @@ def main() -> int:
     print(f"\n[DONE] Processed {n_ctx} contexts, {n_sessions} sessions, {n_cands} candidates")
     print(f"[DONE] Output: {CANDIDATES_DIR}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -109,14 +109,12 @@ METRICS_DEFINITIONS = {
     },
 }
 
-
 def format_dialogue_history(messages):
     lines = []
     for msg in messages:
         role_label = "来访者" if msg["role"] == "user" else "咨询师"
         lines.append(f"{role_label}: {msg['content']}")
     return "\n".join(lines)
-
 
 def format_metric_text(key):
     m = METRICS_DEFINITIONS[key]
@@ -125,7 +123,6 @@ def format_metric_text(key):
         text += f"Evaluation Principles:\n{m['evaluation_principles']}\n\n"
     text += f"Rating Criteria:\n{m['criteria']}"
     return text
-
 
 def build_scoring_prompt(ctx, response, metric_key):
     metric_text = format_metric_text(metric_key)
@@ -139,7 +136,6 @@ Provide a brief reasoning for your rating based on these criteria, and then assi
 - Reasoning: (Your explanation here)
 - Rating: (Ranging from 1 to 5)"""
 
-
 def parse_response(content):
     reason_match = re.search(r'- Reasoning:\s*(.+?)(?=\n- Rating:|\Z)', content, re.DOTALL)
     reasoning = reason_match.group(1).strip() if reason_match else ""
@@ -152,7 +148,6 @@ def parse_response(content):
             return {"reasoning": reasoning, "rating": rating}
     return None
 
-
 CONCURRENCY = 12  # max concurrent API calls across all dimensions
 
 _clients: list = []
@@ -164,7 +159,6 @@ async def get_client():
         if not _clients:
             _clients.append(AsyncOpenAI(api_key=API_KEY, base_url=API_BASE, timeout=120.0))
         return _clients[0]
-
 
 async def call_one_dim(
     sem: asyncio.Semaphore,
@@ -199,7 +193,6 @@ async def call_one_dim(
                 await asyncio.sleep(min(30, 1.0 * (2 ** (attempt - 1)) + random.uniform(0, 2)))
         return {"reasoning": "API_FAILED", "rating": 0}
 
-
 async def score_one_case(
     sem: asyncio.Semaphore,
     client: AsyncOpenAI,
@@ -216,7 +209,6 @@ async def score_one_case(
     scores = {dim_key: result for dim_key, result in zip(DIM_KEYS, results)}
     scores["idx"] = case_idx
     return scores
-
 
 def main():
     parser = argparse.ArgumentParser(description="Cross-validate with deepseek-v4-pro")
@@ -396,7 +388,6 @@ def main():
         within1_pct = sum(1 for a, b in zip(all_old, all_new) if abs(a - b) <= 1) / len(all_old) * 100
         print("-" * 70)
         print(f"{'ALL':<20} {r:>10.3f} {rho:>10.3f} {mae:>6.2f} {exact_pct:>6.1f}% {within1_pct:>5.1f}%")
-
 
 if __name__ == "__main__":
     main()

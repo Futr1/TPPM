@@ -28,12 +28,9 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 from typing import Any
 
 # Allow importing Mini-Agent-5-1 TPPM modules
-_AGENT_ROOT = Path("/root/autodl-tmp/wangqihao/Mini-Agent-5-1")
-if str(_AGENT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_AGENT_ROOT))
 
-from mini_agent.tpm.memory import TemporalProfileMemory, TPMConfig
-from mini_agent.tpm.models import ProfileCandidate, utc_now
+from tppm.core.memory import TemporalProfileMemory, TPMConfig
+from tppm.core.models import ProfileCandidate, utc_now
 
 from openai import AsyncOpenAI
 from tqdm import tqdm
@@ -56,7 +53,6 @@ MAX_TOKENS = 2048
 INITIAL_BACKOFF = 1.0
 MAX_BACKOFF = 30.0
 
-
 # ===== Data loading =====
 
 def load_locomo(path: Path) -> list[dict[str, Any]]:
@@ -65,7 +61,6 @@ def load_locomo(path: Path) -> list[dict[str, Any]]:
     if not isinstance(data, list):
         raise ValueError("locomo10.json must be a JSON array.")
     return data
-
 
 def get_sorted_sessions(conv: dict[str, Any]) -> list[tuple[int, str, list[dict], str]]:
     """Extract sorted session info from a conversation.
@@ -90,7 +85,6 @@ def get_sorted_sessions(conv: dict[str, Any]) -> list[tuple[int, str, list[dict]
     sessions.sort(key=lambda x: x[0])
     return sessions
 
-
 def format_turns_for_extraction(turns: list[dict]) -> str:
     """Format a session's turn list into a single text block."""
     lines: list[str] = []
@@ -102,7 +96,6 @@ def format_turns_for_extraction(turns: list[dict]) -> str:
         if speaker and text:
             lines.append(f"{speaker}: {text}")
     return "\n".join(lines)
-
 
 # ===== Async LLM extraction =====
 
@@ -159,7 +152,6 @@ def build_extraction_payload(dialogue_text: str, scene: str = "general") -> dict
         "max_tokens": MAX_TOKENS,
         "response_format": {"type": "json_object"},
     }
-
 
 def parse_candidates_from_response(
     content: str, scene: str, original_text: str
@@ -229,7 +221,6 @@ def parse_candidates_from_response(
         ))
     return candidates
 
-
 async def extract_candidates_async(
     client: AsyncOpenAI,
     dialogue_text: str,
@@ -267,7 +258,6 @@ async def extract_candidates_async(
             await asyncio.sleep(sleep_s)
 
     return []
-
 
 # ===== Cross-session TPPM engine =====
 
@@ -333,7 +323,6 @@ async def process_conversation(
     memory_dict["num_sessions"] = len(sessions)
     return conv_id, memory_dict, error_msg
 
-
 async def run_extraction(
     conversations: list[dict[str, Any]],
     concurrency: int = CONCURRENCY,
@@ -367,7 +356,6 @@ async def run_extraction(
             tqdm.write(f"[WARN] {conv_id}: {error}")
 
     return memory_entries, failed, total_pmus
-
 
 # ===== CLI =====
 
@@ -425,7 +413,6 @@ def main() -> int:
     print(f"[DONE] Extracted: {len(memory_entries)} conversations, {total_pmus} total PMUs")
     print(f"[DONE] Failed: {failed}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

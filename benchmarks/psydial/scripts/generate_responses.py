@@ -71,18 +71,14 @@ SYSTEM_PROMPT = (
     "只输出回复文本本身，不要输出思考过程、分析、解释或任何额外内容。"
 )
 
-
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
-
 # ===== Memory Bank Loading =====
-
 
 def load_d101(path: Path) -> list[dict]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def load_memory_bank(path: Path) -> dict[int, list[dict]]:
     """Load D101 TPPM memory bank and index by case_idx.
@@ -104,7 +100,6 @@ def load_memory_bank(path: Path) -> dict[int, list[dict]]:
         if case_idx is not None and isinstance(memories, list):
             indexed[int(case_idx)] = [m for m in memories if isinstance(m, dict)]
     return indexed
-
 
 def format_memory_background(memories: list[dict]) -> str:
     """Format TPPM memories as structured psychological profile text block."""
@@ -128,9 +123,7 @@ def format_memory_background(memories: list[dict]) -> str:
         lines.append(f"{i}. {label}: {value}{suffix}")
     return "\n".join(lines) if lines else "暂无可用的长期画像背景。"
 
-
 # ===== Prompt Construction =====
-
 
 def build_messages_no_memory(case: dict) -> list[dict]:
     """Fallback: only the last user turn."""
@@ -147,14 +140,12 @@ def build_messages_no_memory(case: dict) -> list[dict]:
         {"role": "user", "content": last_user["content"]},
     ]
 
-
 def build_messages_long_context(case: dict) -> list[dict]:
     """Fallback: full conversation history."""
     return [
         {"role": "system", "content": SYSTEM_PROMPT},
         *case["messages"],
     ]
-
 
 def build_messages_tppm_memory(
     case: dict,
@@ -202,13 +193,10 @@ def build_messages_tppm_memory(
         *case["messages"],
     ], None
 
-
 # ===== DeepSeek API Generation =====
-
 
 def build_client(api_key: str = API_KEY, api_base: str = API_BASE) -> AsyncOpenAI:
     return AsyncOpenAI(api_key=api_key, base_url=api_base, timeout=REQUEST_TIMEOUT)
-
 
 async def generate_one_response(
     messages: list[dict],
@@ -244,7 +232,6 @@ async def generate_one_response(
             await asyncio.sleep(sleep_s)
 
     return None
-
 
 async def run_generation(
     test_cases: list[dict],
@@ -304,9 +291,7 @@ async def run_generation(
     results.sort(key=lambda r: r["idx"])
     return results, skipped
 
-
 # ===== Checkpoint Support =====
-
 
 def load_checkpoint(output_path: Path) -> dict[int, dict]:
     if not output_path.exists():
@@ -314,7 +299,6 @@ def load_checkpoint(output_path: Path) -> dict[int, dict]:
     with output_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
     return {r["idx"]: r for r in data.get("results", [])}
-
 
 def save_checkpoint(output_path: Path, metadata: dict, results: list[dict]):
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -325,9 +309,7 @@ def save_checkpoint(output_path: Path, metadata: dict, results: list[dict]):
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-
 # ===== Main =====
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(
@@ -422,7 +404,6 @@ def main() -> int:
     print(f"[SAVED] {args.output}")
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

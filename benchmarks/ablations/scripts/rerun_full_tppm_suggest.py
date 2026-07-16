@@ -53,7 +53,6 @@ MEMORY_TOKEN_BUDGET = 2048
 
 TOKENIZER = tiktoken.encoding_for_model("gpt-4o")
 
-
 # ===== JSONL Index (same as phase3_ablation.py) =====
 
 def build_jsonl_index(jsonl_path: Path) -> dict[str, int]:
@@ -68,13 +67,11 @@ def build_jsonl_index(jsonl_path: Path) -> dict[str, int]:
             index[key] = offset
     return index
 
-
 def load_context_by_id(jsonl_path: Path, offset: int) -> list[dict]:
     with jsonl_path.open("r", encoding="utf-8") as f:
         f.seek(offset)
         item = json.loads(f.readline())
         return next(iter(item.values()))
-
 
 # ===== Memory formatting (same as phase3_ablation.py) =====
 
@@ -151,7 +148,6 @@ def format_memory_block(
 
     return header + "\n".join(entries) + "\n"
 
-
 def build_context_window(
     conversation: list[dict],
     end_index: int,
@@ -208,7 +204,6 @@ def build_context_window(
         {"role": "user", "content": "\n\n".join(user_content_parts)},
     ]
 
-
 def _messages_to_text(messages: list[dict]) -> str:
     lines: list[str] = []
     for msg in messages:
@@ -228,7 +223,6 @@ def _messages_to_text(messages: list[dict]) -> str:
         elif role == "assistant":
             lines.append(f"Assistant: {content}")
     return "\n".join(lines)
-
 
 # ===== Answer extraction (same as phase3_ablation.py) =====
 
@@ -257,7 +251,6 @@ def extract_answer(predicted_answer: str, correct_answer: str) -> tuple[bool, st
         return True, predicted_answer
 
     return False, predicted_answer
-
 
 # ===== Main =====
 
@@ -390,7 +383,6 @@ def main() -> int:
     print(f"\n[DONE] Full TPPM Suggest: {total_correct}/{total_questions} = {accuracy:.2f}%")
     print(f"  Output: {output_path}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

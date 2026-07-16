@@ -24,7 +24,6 @@ ROOT = REPO_ROOT / 'benchmarks/personamem'
 EVAL_DIR = ROOT / "eval_results"
 DEFAULT_OUTPUT = ROOT / "eval_summary.json"
 
-
 def load_results(config_dir: Path) -> list[dict]:
     """Load all result rows from a config's results CSV."""
     results: list[dict] = []
@@ -37,7 +36,6 @@ def load_results(config_dir: Path) -> list[dict]:
             row["score"] = row.get("score", "").strip().lower() in ("true", "1", "yes")
             results.append(row)
     return results
-
 
 def compute_accuracy(rows: list[dict], group_by: str | None = None) -> dict:
     """Compute accuracy, optionally grouped by a column.
@@ -64,7 +62,6 @@ def compute_accuracy(rows: list[dict], group_by: str | None = None) -> dict:
         groups[key]["accuracy"] = round(groups[key]["correct"] / total * 100, 2) if total > 0 else 0
 
     return dict(groups)
-
 
 def generate_latex_table(
     summary: dict,
@@ -122,7 +119,6 @@ def generate_latex_table(
         "\\end{tabular}\n"
         "\\end{table}"
     )
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(
@@ -198,7 +194,6 @@ def main() -> int:
     print(f"[DONE] LaTeX tables saved to {latex_path}")
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -47,7 +47,6 @@ MEMORY_TOKEN_BUDGET = 2048  # Max tokens for TPPM memory block
 # ===== Tokenizer =====
 TOKENIZER = tiktoken.encoding_for_model("gpt-4o")  # Approximate token counter
 
-
 # ===== JSONL Index =====
 
 def build_jsonl_index(jsonl_path: Path) -> dict[str, int]:
@@ -63,14 +62,12 @@ def build_jsonl_index(jsonl_path: Path) -> dict[str, int]:
             index[key] = offset
     return index
 
-
 def load_context_by_id(jsonl_path: Path, offset: int) -> list[dict]:
     """Load a single shared context from JSONL by byte offset."""
     with jsonl_path.open("r", encoding="utf-8") as f:
         f.seek(offset)
         item = json.loads(f.readline())
         return next(iter(item.values()))
-
 
 # ===== Context window builder =====
 
@@ -141,7 +138,6 @@ def format_memory_block(memory_snapshot: dict[str, Any], max_tokens: int) -> str
         return ""
 
     return header + "\n".join(entries) + "\n"
-
 
 def build_context_window(
     conversation: list[dict],
@@ -221,7 +217,6 @@ def build_context_window(
         {"role": "user", "content": user_content},
     ]
 
-
 def _messages_to_text(messages: list[dict]) -> str:
     """Convert message list to compact text format."""
     lines: list[str] = []
@@ -243,7 +238,6 @@ def _messages_to_text(messages: list[dict]) -> str:
         elif role == "assistant":
             lines.append(f"Assistant: {content}")
     return "\n".join(lines)
-
 
 # ===== Answer extraction =====
 
@@ -279,7 +273,6 @@ def extract_answer(predicted_answer: str, correct_answer: str) -> tuple[bool, st
         return True, predicted_answer
 
     return False, predicted_answer
-
 
 # ===== Evaluation runner =====
 
@@ -405,7 +398,6 @@ def run_evaluation(
     print(f"[DONE] {config_id}: {total_correct}/{total_questions} = {accuracy:.2f}%")
     return output_path, total_correct, total_questions
 
-
 # ===== CLI =====
 
 def main() -> int:
@@ -430,7 +422,6 @@ def main() -> int:
 
     print(f"\n[DONE] Results saved to {output_path}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

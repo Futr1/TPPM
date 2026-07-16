@@ -294,7 +294,6 @@ SYSTEM_PROMPT = (
     "in a counseling context."
 )
 
-
 def format_dialogue_history(messages: List[Dict]) -> str:
     """Format the dialogue history messages into a readable text."""
     lines = []
@@ -302,7 +301,6 @@ def format_dialogue_history(messages: List[Dict]) -> str:
         role_label = "来访者" if msg["role"] == "user" else "咨询师"
         lines.append(f"{role_label}: {msg['content']}")
     return "\n".join(lines)
-
 
 def format_metric_text(key: str) -> str:
     """Format a single metric definition + criteria, exactly as PsyDial Appendix J.
@@ -325,7 +323,6 @@ Definition: {m['definition']}
     text += f"""Rating Criteria:
 {m['criteria']}"""
     return text
-
 
 def build_scoring_prompt(ctx: str, response: str, metric_key: str) -> str:
     """Build scoring prompt for ONE metric — exactly matches PsyDial Figure 19.
@@ -351,7 +348,6 @@ Provide a brief reasoning for your rating based on these criteria, and then assi
 - Reasoning: (Your explanation here)
 - Rating: (Ranging from 1 to 5)"""
     return prompt
-
 
 # ============================================================
 # LLM Judge API Client
@@ -420,7 +416,6 @@ def call_judge(
 
     return None
 
-
 def parse_response_json(content: str) -> Optional[Dict]:
     """Parse the PsyDial Figure 19 output format:
 
@@ -454,7 +449,6 @@ def parse_response_json(content: str) -> Optional[Dict]:
 
     return None
 
-
 # ============================================================
 # Main Scoring Pipeline
 # ============================================================
@@ -463,7 +457,6 @@ def load_generations(filepath: str) -> Dict:
     """Load TPPM generation results."""
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def load_d101_data(filepath: str) -> Dict[int, List[Dict]]:
     """Load D101 dataset and index by idx for dialogue history lookup.
@@ -474,7 +467,6 @@ def load_d101_data(filepath: str) -> Dict[int, List[Dict]]:
         data = json.load(f)
     return {item["idx"]: item["messages"] for item in data}
 
-
 def load_checkpoint(output_path: str) -> Dict[int, Dict]:
     """Load existing scores from a checkpoint file."""
     if not os.path.exists(output_path):
@@ -482,7 +474,6 @@ def load_checkpoint(output_path: str) -> Dict[int, Dict]:
     with open(output_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return {item["idx"]: item for item in data.get("scores", [])}
-
 
 def save_checkpoint(output_path: str, metadata: Dict, scores: List[Dict]):
     """Save current progress."""
@@ -498,7 +489,6 @@ def save_checkpoint(output_path: str, metadata: Dict, scores: List[Dict]):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-
 def compute_summary(scores: List[Dict]) -> Dict:
     """Compute mean and std for each dimension."""
     summary = {}
@@ -513,7 +503,6 @@ def compute_summary(scores: List[Dict]) -> Dict:
     oa_ratings = [s["overall_assessment"]["rating"] for s in scores]
     summary["overall_assessment"]["mean"] = sum(oa_ratings) / len(oa_ratings) if oa_ratings else 0
     return summary
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -721,7 +710,6 @@ def main():
             fb_summary = compute_summary(fallback_scores)
             print(f"\nValid (TPPM memory): OA mean = {valid_summary['overall_assessment']['mean']:.3f} (N={len(valid_scores)})")
             print(f"Fallback:           OA mean = {fb_summary['overall_assessment']['mean']:.3f} (N={len(fallback_scores)})")
-
 
 if __name__ == "__main__":
     main()

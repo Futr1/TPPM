@@ -39,13 +39,11 @@ EVENT_SYSTEM_PROMPT = (
     "connected when possible. Only output the JSON object, nothing else."
 )
 
-
 # ===== Data loading =====
 
 def load_locomo(path: Path) -> list[dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def load_memory_bank(path: Path) -> dict[str, dict[str, Any]]:
     if not path.exists():
@@ -54,7 +52,6 @@ def load_memory_bank(path: Path) -> dict[str, dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
         bank = json.load(f)
     return {e.get("conv_id", ""): e for e in bank.get("conversations", [])}
-
 
 def format_tppm_profile(memory_entry: dict[str, Any], top_k: int = 10) -> str:
     """Format TPPM memories as profile text."""
@@ -81,7 +78,6 @@ def format_tppm_profile(memory_entry: dict[str, Any], top_k: int = 10) -> str:
         lines.append(f"- {attr}: {value}")
     return "\n".join(lines) if len(lines) > 1 else "No profile information available."
 
-
 # ===== ROUGE computation =====
 
 def compute_rouge_l(predictions: list[str], references: list[str]) -> float:
@@ -102,7 +98,6 @@ def compute_rouge_l(predictions: list[str], references: list[str]) -> float:
         return float(np.mean(all_scores))
     except Exception:
         return 0.0
-
 
 # ===== Generation =====
 
@@ -198,7 +193,6 @@ def generate_event_summaries(
 
     return results
 
-
 # ===== Evaluation =====
 
 def evaluate_events(results: list[dict[str, Any]]) -> dict[str, float]:
@@ -225,7 +219,6 @@ def evaluate_events(results: list[dict[str, Any]]) -> dict[str, float]:
         "rouge_l": round(rouge_l * 100, 1),
         "num_evaluated": len(all_preds),
     }
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(
@@ -270,7 +263,6 @@ def main() -> int:
         print(f"  {k}: {v}")
     print(f"{'='*50}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
