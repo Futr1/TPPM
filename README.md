@@ -4,7 +4,6 @@
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![DeepSeek](https://img.shields.io/badge/Base%20Model-DeepSeek--V4--Flash-4B8BF5.svg)](https://www.deepseek.com/)
 
 </div>
 
@@ -55,21 +54,6 @@ For development dependencies:
 pip install -e ".[dev]"
 ```
 
-### API Keys
-
-```bash
-export DEEPSEEK_API_KEY="your-deepseek-api-key"
-export DEEPSEEK_API_BASE="https://api.deepseek.com"             # optional (has default)
-export DEEPSEEK_JUDGE_MODEL="deepseek-v4-pro"                   # optional (has default)
-```
-
-| Role | Model | Environment variable |
-|------|-------|---------------------|
-| Base generation | DeepSeek-V4-Flash | `DEEPSEEK_API_KEY` |
-| PsyDial Judge | DeepSeek-V4-Pro | `DEEPSEEK_API_KEY` + `DEEPSEEK_JUDGE_MODEL` |
-
-> Never commit API keys. Configure credentials through environment variables.
-
 ## Datasets
 
 Datasets are not distributed with this repository. Download from official sources and place under `data/datasets/`.
@@ -107,18 +91,12 @@ pytest tests/test_paper_configuration.py -q
 ```bash
 cd "$REPO_ROOT/benchmarks/personamem"
 
-# Phase 1: Extract TPPM candidates from shared contexts
-# Smoke test: add --max-contexts 2
 python3 scripts/phase1_extract_candidates.py
 
-# Phase 2: Replay dialogue evolution — produces memory_snapshots/<config-id>/
 python3 scripts/phase2_replay_evolution.py --config-id baseline
 
-# Phase 3: 4-choice MCQ evaluation (589 questions, 6 query types)
-# Smoke test: add --max-questions 10
 python3 scripts/phase3_eval_qa.py --config-id baseline --backend deepseek
 
-# Summarize all configs
 python3 scripts/summarize.py
 ```
 
@@ -127,13 +105,10 @@ python3 scripts/summarize.py
 ```bash
 cd "$REPO_ROOT/benchmarks/locomo"
 
-# Extraction (smoke test: add --max-convs 1)
 python3 scripts/locomo_tppm_extract.py
 
-# QA evaluation
 python3 scripts/locomo_qa_eval.py
 
-# Event extraction evaluation
 python3 scripts/locomo_event_eval.py
 ```
 
@@ -142,14 +117,10 @@ python3 scripts/locomo_event_eval.py
 ```bash
 cd "$REPO_ROOT/benchmarks/psydial"
 
-# Phase 1: TPPM memory extraction (smoke test: add --max-cases 30)
 python3 scripts/tppm_extract_d101.py
 
-# Phase 2: Generate responses with TPPM memories
 python3 scripts/generate_responses.py
 
-# Phase 3: LLM Judge scoring (DeepSeek-V4-Pro, 9 API calls per case)
-# Default input: outputs/eval/d101_full/tppm_memory_generations.json
 python3 scripts/llm_judge_scoring.py
 ```
 
