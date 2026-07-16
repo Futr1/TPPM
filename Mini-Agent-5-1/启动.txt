@@ -1,0 +1,88 @@
+有适配器
+CUDA_VISIBLE_DEVICES=0,1 python -m vllm.entrypoints.openai.api_server \
+  --model /root/autodl-tmp/wangqihao/base_model/Qwen3.5-9B \
+  --served-model-name tppm \
+  --port 8000 \
+  --tensor-parallel-size 2 \
+  --gpu-memory-utilization 0.8 \
+  --max-model-len 8192 \
+  --enable-lora \
+  --lora-modules tppm=/root/autodl-tmp/wangqihao/data_trans/lora_adapters/psydial_d4_00000 \
+  --reasoning-parser qwen3 \
+  --enable-auto-tool-choice \
+  --tool-call-parser qwen3_coder \
+  --language-model-only
+
+无适配器
+CUDA_VISIBLE_DEVICES=0,1 python -m vllm.entrypoints.openai.api_server \
+  --model /root/autodl-tmp/wangqihao/base_model/Qwen3.5-9B \
+  --served-model-name tppm \
+  --port 8000 \
+  --tensor-parallel-size 2 \
+  --gpu-memory-utilization 0.8 \
+  --max-model-len 8192 \
+  --language-model-only
+
+完整启动命令
+CUDA_VISIBLE_DEVICES=0,1 \
+python -m vllm.entrypoints.openai.api_server \
+  --model /root/autodl-tmp/wangqihao/base_model/Qwen3.5-9B \
+  --served-model-name tppm \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --tensor-parallel-size 2 \
+  --gpu-memory-utilization 0.85 \
+  --max-model-len 8192 \
+  --dtype bfloat16 \
+  --enforce-eager \
+  --enable-lora \
+  --lora-modules tppm=/root/autodl-tmp/wangqihao/data_trans/lora_adapters/psydial_d4_00000 \
+  --language-model-only
+
+nvidia-smi
+
+source /etc/network_turbo
+export HF_ENDPOINT=https://hf-mirror.com
+
+#智能体启动 指定工作空间
+mini-agent --workspace /root/autodl-tmp/wangqihao/Mini-Agent-5-1/workspace
+
+测试参数化效果
+curl http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model":"tppm",
+    "temperature":0,
+    "top_p":1,
+    "messages":[
+      {"role":"system","content":"你是一个温和、反思型的心理支持助手。"},
+      {"role":"user","content":"我每天都会想起那些不好的事情，尤其是和父母相关的片段，晚上常常睡不着。现在我的身体有什么感觉？请以 80–120 字给出同理性回应并提出一个开放式跟进问题。"}
+    ]
+  }'
+
+
+  第一步：预提取 TPPM 记忆（一次性）
+
+  cd /root/autodl-tmp/wangqihao/Table1-data_split
+
+  # 完整运行 1278 条（约 5-8 分钟）
+  python3 scripts/tppm_extract_d101.py
+
+  # 或者先跑 30 条试试
+  python3 scripts/tppm_extract_d101.py --max-cases 30
+
+  产物：outputs/d101_tppm_memory_bank.json
+
+  ---
+  第二步：BERTScore 评估（可反复跑）
+  
+  # 全部 1278 条
+  python3 scripts/eval_bertscore.py --method tppm_memory
+
+  # 或者先跑 30 条试试
+  python3 scripts/eval_bertscore.py --method tppm_memory --max-cases 30 --min-turns 3
+
+  产物：
+  - outputs/eval/tppm_memory_generations.json
+  - outputs/eval/tppm_memory_bertscore.json
+

@@ -1,0 +1,161 @@
+# TPPM Ablation Experiment — Config Definitions
+# Each config defines a single ablation variant by overriding baseline parameters.
+
+# === Baseline (Full TPPM — paper-reported hyperparameters) ===
+# Paper: write_threshold=0.68, promote_threshold=0.72, context_threshold=0.62, promotion_min_sessions=2
+# Phase 2 snapshots: Table3-data/memory_snapshots/baseline/
+# Phase 3 results:  Table3-data/eval_results/deepseek/baseline/
+baseline:
+  write_threshold: 0.68
+  promote_threshold: 0.72
+  context_threshold: 0.62
+  promotion_min_sessions: 2
+  promote_weights: [0.35, 0.20, 0.15, 0.25, 0.20]
+  decay_lambdas:
+    goal: 0.1
+    interest: 0.07
+    style: 0.04
+    background: 0.04
+    preference: 0.05
+    general: 0.05
+
+# === Ablation 2: w/o State→Trait Consolidation ===
+# Sets promote_threshold to +∞ so NO memories are ever promoted to long-term.
+# Memories accumulate evidence but never pass the threshold — consolidation disabled.
+# Diagnostic metric: PersonaMem Q4 (preference evolution tracking)
+ablation_consolidation:
+  description: "w/o State→Trait Consolidation"
+  write_threshold: 0.68
+  promote_threshold: 999.0        # ← never promote (consolidation disabled)
+  context_threshold: 0.62
+  promotion_min_sessions: 999     # ← never eligible
+  promote_weights: [0.35, 0.20, 0.15, 0.25, 0.20]
+  decay_lambdas:
+    goal: 0.1
+    interest: 0.07
+    style: 0.04
+    background: 0.04
+    preference: 0.05
+    general: 0.05
+
+# === Ablation 3: w/o Scene-Conditional Branching ===
+# Sets context_threshold to 1.0 so NO conflict is ever considered "same scene".
+# System degenerates to "always overwrite on conflict".
+# Diagnostic metric: PersonaMem Q7 (cross-scene generalization)
+ablation_branching:
+  description: "w/o Scene-Conditional Branching"
+  write_threshold: 0.68
+  promote_threshold: 0.72           # paper baseline
+  context_threshold: 1.0           # ← no scene match → always overwrite
+  promotion_min_sessions: 2
+  promote_weights: [0.35, 0.20, 0.15, 0.25, 0.20]
+  decay_lambdas:
+    goal: 0.1
+    interest: 0.07
+    style: 0.04
+    background: 0.04
+    preference: 0.05
+    general: 0.05
+
+# === Ablation 4: w/o Temporal Decay ===
+# All decay lambdas set to 0 + skip decay_long_term() in replay loop.
+# Phase 2 script handles the skip logic via config_id detection.
+# Diagnostic metric: LoCoMo Temporal F1 (PersonaMem has limited temporal span)
+ablation_decay:
+  description: "w/o Temporal Decay"
+  write_threshold: 0.68
+  promote_threshold: 0.72           # paper baseline
+  context_threshold: 0.62
+  promotion_min_sessions: 2
+  promote_weights: [0.35, 0.20, 0.15, 0.25, 0.20]
+  decay_lambdas:
+    goal: 0.0                    # ← all zero
+    interest: 0.0
+    style: 0.0
+    background: 0.0
+    preference: 0.0
+    general: 0.0
+
+# ============================================================
+# New ablation variants — Fine-grained mechanism ablation
+# ============================================================
+
+# === Ablation 5: w/o Type-Conditioned Decay ===
+# Replace type-specific decay rates with a uniform rate (average of defaults).
+# This tests whether different psychological dimensions need different temporal stabilities.
+# Average of baseline: (0.1 + 0.07 + 0.04 + 0.04 + 0.05 + 0.05) / 6 ≈ 0.058
+# Diagnostic metric: PersonaMem Evolution (Q4), Generalization (Q7)
+ablation_uniform_decay:
+  description: "w/o Type-Conditioned Decay"
+  write_threshold: 0.68
+  promote_threshold: 0.72           # paper baseline
+  context_threshold: 0.62
+  promotion_min_sessions: 2
+  promote_weights: [0.35, 0.20, 0.15, 0.25, 0.20]
+  decay_lambdas:
+    goal: 0.058                  # ← all same (average of defaults)
+    interest: 0.058
+    style: 0.058
+    background: 0.058
+    preference: 0.058
+    general: 0.058
+
+# === Ablation 6: Semantic-Only Retrieval ===
+# Keep full TPPM extraction, but at evaluation time use only Rel(qt,mi) for retrieval.
+# This variant does NOT need separate snapshots — it reuses baseline snapshots.
+# The retrieval scoring change is applied during Phase 3 evaluation.
+# Diagnostic metric: PersonaMem Generalization (Q7), Reasons (Q5)
+# NOTE: No extraction needed. Uses baseline snapshots. Only eval-time change.
+ablation_semantic_retrieval:
+  description: "Semantic-Only Retrieval"
+  reuse_baseline: true           # ← flag: reuse baseline snapshots
+  # retrieval_weights override applied at eval time:
+  # Full: (0.35, 0.2, 0.15, 0.2, 0.1) → Rel, Stability, Ctx, Scene, Quality
+  # Semantic-only: (1.0, 0.0, 0.0, 0.0, 0.0) → only Rel
+  retrieval_weights: [1.0, 0.0, 0.0, 0.0, 0.0]
+
+# ============================================================
+# New ablation variants — Memory hierarchy ablation
+# ============================================================
+
+# === Hierarchy 1: Flat PPMU Pool ===
+# All PMUs go into a single pool — no working/short-term/long-term distinction.
+# Alignment, fusion, branching, evidence, and decay are all applied uniformly.
+# Promotion is disabled (everything is in one pool already).
+# Decay uses a single uniform rate.
+# Diagnostic metric: PersonaMem Evolution (Q4), Generalization (Q7)
+ablation_flat_pool:
+  description: "Flat PPMU Pool"
+  architecture: "flat"           # ← flag: flat architecture (no tiers)
+  write_threshold: 0.68
+  context_threshold: 0.62
+  # No promote_threshold needed (flat pool has no promotion)
+  # No promotion_min_sessions needed
+  decay_lambdas:
+    goal: 0.05                   # ← single moderate decay for all
+    interest: 0.05
+    style: 0.05
+    background: 0.05
+    preference: 0.05
+    general: 0.05
+
+# === Hierarchy 2: Two-Level Memory ===
+# Merge working + short-term into a single "transient" memory.
+# Long-term memory remains separate with its own consolidation/promotion.
+# Transient → long-term promotion still works.
+# Diagnostic metric: PersonaMem Evolution (Q4)
+ablation_two_level:
+  description: "Two-Level Memory"
+  architecture: "two_level"      # ← flag: two-level architecture
+  write_threshold: 0.68
+  promote_threshold: 0.72           # paper baseline
+  context_threshold: 0.62
+  promotion_min_sessions: 2
+  promote_weights: [0.35, 0.20, 0.15, 0.25, 0.20]
+  decay_lambdas:
+    goal: 0.1
+    interest: 0.07
+    style: 0.04
+    background: 0.04
+    preference: 0.05
+    general: 0.05
