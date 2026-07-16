@@ -222,5 +222,3 @@ Deploy only after safety evaluation in the specific deployment context, with hum
 ## License
 
 Original TPPM code is licensed under the MIT License. See [LICENSE](LICENSE).
-
-Third-party components remain subject to their original licenses. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
