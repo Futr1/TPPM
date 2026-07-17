@@ -1,4 +1,4 @@
-# TPPM: Temporal Psychological Profile Memory for Long-Term Mental Health Support
+ # TPPM: Temporal Psychological Profile Memory for Long-Term Mental Health Support
 
 <div align="center">
 
@@ -64,8 +64,6 @@ Datasets are not distributed with this repository. Download from official source
 | **LoCoMo** | `data/datasets/locomo/` | [GitHub](https://github.com/snap-research/LoCoMo) |
 | **PsyDial** | `data/datasets/psydial/` | [GitHub](https://github.com/qiuhuachuan/PsyDial) |
 
-See `data/README.md` for path migration and [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for license details.
-
 ## Quick Reproduction
 
 The baseline configuration matches the paper-reported hyperparameters (write_threshold=0.68, promote_threshold=0.72, context_threshold=0.62, promotion_min_sessions=2).
@@ -90,13 +88,9 @@ pytest tests/test_paper_configuration.py -q
 
 ```bash
 cd "$REPO_ROOT/benchmarks/personamem"
-
 python3 scripts/phase1_extract_candidates.py
-
 python3 scripts/phase2_replay_evolution.py --config-id baseline
-
 python3 scripts/phase3_eval_qa.py --config-id baseline --backend deepseek
-
 python3 scripts/summarize.py
 ```
 
@@ -104,11 +98,8 @@ python3 scripts/summarize.py
 
 ```bash
 cd "$REPO_ROOT/benchmarks/locomo"
-
 python3 scripts/locomo_tppm_extract.py
-
 python3 scripts/locomo_qa_eval.py
-
 python3 scripts/locomo_event_eval.py
 ```
 
@@ -116,11 +107,8 @@ python3 scripts/locomo_event_eval.py
 
 ```bash
 cd "$REPO_ROOT/benchmarks/psydial"
-
 python3 scripts/tppm_extract_d101.py
-
 python3 scripts/generate_responses.py
-
 python3 scripts/llm_judge_scoring.py
 ```
 
