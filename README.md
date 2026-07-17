@@ -80,7 +80,6 @@ export DEEPSEEK_API_KEY="your-api-key"
 ```bash
 cd "$REPO_ROOT"
 python3 -c "from tppm.core.memory import TemporalProfileMemory, TPMConfig; print('TPM module OK')"
-
 pytest tests/test_paper_configuration.py -q
 ```
 
