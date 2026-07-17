@@ -1,0 +1,1519 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.025,
+      "interest": 0.0175,
+      "style": 0.01,
+      "background": 0.01,
+      "preference": 0.0125,
+      "general": 0.0125
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "fitness_and_outdoor_activity",
+      "value": "interested in fitness classes and hiking for health and social connections",
+      "context": "joined a fitness class, went hiking with friends",
+      "profile_type": "interest",
+      "stability_score": 0.5999999515235435,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a fitness class, went hiking with friends",
+          "scene": "session_0",
+          "evidence_id": "694d9c16e817474eb6f19c71ec5f6578",
+          "timestamp": "2026-06-09T02:21:19.566277"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "interested in fitness classes and hiking for health and social connections",
+          "context": "joined a fitness class, went hiking with friends",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a fitness class, went hiking with friends",
+              "scene": "session_0",
+              "evidence_id": "694d9c16e817474eb6f19c71ec5f6578",
+              "timestamp": "2026-06-09T02:21:19.566277"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:19.566277",
+          "last_accessed": "2026-06-09T02:21:19.796992"
+        }
+      },
+      "unit_id": "765e1547aad44cbbb6f95bf75c062cf2",
+      "timestamp": "2026-06-09T02:21:19.568213",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.796989",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "dating_experience_emotion",
+      "value": "feels overwhelmed and often anxious about dating, seeks genuine connection",
+      "context": "navigating dating scene feels overwhelming; anxiety at karaoke; disappointment when events lack depth",
+      "profile_type": "general",
+      "stability_score": 0.5999999519837518,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "navigating dating scene feels overwhelming; anxiety at karaoke; disappointment when events lack depth",
+          "scene": "session_0",
+          "evidence_id": "16d14f01b3744abe8d44f166338ec250",
+          "timestamp": "2026-06-09T02:21:19.566280"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "feels overwhelmed and often anxious about dating, seeks genuine connection",
+          "context": "navigating dating scene feels overwhelming; anxiety at karaoke; disappointment when events lack depth",
+          "confidence_score": 0.7,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "navigating dating scene feels overwhelming; anxiety at karaoke; disappointment when events lack depth",
+              "scene": "session_0",
+              "evidence_id": "16d14f01b3744abe8d44f166338ec250",
+              "timestamp": "2026-06-09T02:21:19.566280"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:19.566280",
+          "last_accessed": "2026-06-09T02:21:19.797236"
+        }
+      },
+      "unit_id": "9dff930dcc4641d1a01c5b073df112c6",
+      "timestamp": "2026-06-09T02:21:19.570422",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.797233",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "social_gathering_preference",
+      "value": "prefers intimate, participatory gatherings (e.g., potlucks, game nights) over formal events for deeper connection",
+      "context": "Cancelled big dinner party, organized potluck; turned to cozy game nights instead of comedy shows; but also enjoyed returning to comedy club",
+      "profile_type": "preference",
+      "stability_score": 0.5999999545020851,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Cancelled big dinner party, organized potluck; turned to cozy game nights instead of comedy shows; but also enjoyed returning to comedy club",
+          "scene": "session_1",
+          "evidence_id": "929a78d43ea5434b9afed597f18b5c69",
+          "timestamp": "2026-06-09T02:21:19.577543"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers intimate, participatory gatherings (e.g., potlucks, game nights) over formal events for deeper connection",
+          "context": "Cancelled big dinner party, organized potluck; turned to cozy game nights instead of comedy shows; but also enjoyed returning to comedy club",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Cancelled big dinner party, organized potluck; turned to cozy game nights instead of comedy shows; but also enjoyed returning to comedy club",
+              "scene": "session_1",
+              "evidence_id": "929a78d43ea5434b9afed597f18b5c69",
+              "timestamp": "2026-06-09T02:21:19.577543"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:19.577543",
+          "last_accessed": "2026-06-09T02:21:19.797476"
+        }
+      },
+      "unit_id": "8be0f70313a04e1cb3e736d01409e350",
+      "timestamp": "2026-06-09T02:21:19.582510",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.797473",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "interest_hobby",
+      "value": "underwater hockey",
+      "context": "new persona as an underwater hockey enthusiast",
+      "profile_type": "interest",
+      "stability_score": 0.49999996639774413,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "new persona as an underwater hockey enthusiast",
+          "scene": "session_2",
+          "evidence_id": "61975f7c1a8443d89609fc87a4d3d644",
+          "timestamp": "2026-06-09T02:21:19.604614"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "underwater hockey",
+          "context": "new persona as an underwater hockey enthusiast",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "new persona as an underwater hockey enthusiast",
+              "scene": "session_2",
+              "evidence_id": "61975f7c1a8443d89609fc87a4d3d644",
+              "timestamp": "2026-06-09T02:21:19.604614"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:21:19.604614",
+          "last_accessed": "2026-06-09T02:21:19.797624"
+        }
+      },
+      "unit_id": "4a4c3f59e511433a850a650bc64e5c77",
+      "timestamp": "2026-06-09T02:21:19.607351",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.797621",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "preference_writing_clarity",
+      "value": "clear and direct sentences",
+      "context": "user prefers clearer and more direct sentences after revisions",
+      "profile_type": "preference",
+      "stability_score": 0.5999999613350011,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user prefers clearer and more direct sentences after revisions",
+          "scene": "session_2",
+          "evidence_id": "b9edd40589cc483984e1ad3fecf4258b",
+          "timestamp": "2026-06-09T02:21:19.604620"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "clear and direct sentences",
+          "context": "user prefers clearer and more direct sentences after revisions",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user prefers clearer and more direct sentences after revisions",
+              "scene": "session_2",
+              "evidence_id": "b9edd40589cc483984e1ad3fecf4258b",
+              "timestamp": "2026-06-09T02:21:19.604620"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:21:19.604620",
+          "last_accessed": "2026-06-09T02:21:19.797786"
+        }
+      },
+      "unit_id": "e3276c55e3904530b3b766d5885f9814",
+      "timestamp": "2026-06-09T02:21:19.615309",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.797783",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "dating_approach",
+      "value": "stepping out of comfort zone, exploring new activities to meet people",
+      "context": "experimenting with new activities, stepping outside comfort zone in dating scene",
+      "profile_type": "style",
+      "stability_score": 0.5999999638235427,
+      "confidence_score": 0.75,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "experimenting with new activities, stepping outside comfort zone in dating scene",
+          "scene": "session_3",
+          "evidence_id": "a53945f4aa81473b9e7186489f494e99",
+          "timestamp": "2026-06-09T02:21:19.621400"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "stepping out of comfort zone, exploring new activities to meet people",
+          "context": "experimenting with new activities, stepping outside comfort zone in dating scene",
+          "confidence_score": 0.75,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "experimenting with new activities, stepping outside comfort zone in dating scene",
+              "scene": "session_3",
+              "evidence_id": "a53945f4aa81473b9e7186489f494e99",
+              "timestamp": "2026-06-09T02:21:19.621400"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:19.621400",
+          "last_accessed": "2026-06-09T02:21:19.797954"
+        }
+      },
+      "unit_id": "bc308af582c846238f4407d9d68e47ac",
+      "timestamp": "2026-06-09T02:21:19.627253",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.797951",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "creative_pursuit_style",
+      "value": "prefers home-based self-directed learning (online tutorials) for painting",
+      "context": "started painting again from home using online tutorials for freedom to experiment",
+      "profile_type": "style",
+      "stability_score": 0.5999999682577092,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started painting again from home using online tutorials for freedom to experiment",
+          "scene": "session_3",
+          "evidence_id": "63b198890e28471d9f98902f10bd0fc5",
+          "timestamp": "2026-06-09T02:21:19.621409"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers home-based self-directed learning (online tutorials) for painting",
+          "context": "started painting again from home using online tutorials for freedom to experiment",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started painting again from home using online tutorials for freedom to experiment",
+              "scene": "session_3",
+              "evidence_id": "63b198890e28471d9f98902f10bd0fc5",
+              "timestamp": "2026-06-09T02:21:19.621409"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:19.621409",
+          "last_accessed": "2026-06-09T02:21:19.798123"
+        }
+      },
+      "unit_id": "48bef8d76d6245fab8196796074a5123",
+      "timestamp": "2026-06-09T02:21:19.648537",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.798120",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "literary_group_interest",
+      "value": "modern relational dynamics in fiction",
+      "context": "rejoined a literary group that focuses on modern relational dynamics found in fiction",
+      "profile_type": "interest",
+      "stability_score": 0.5999999719529172,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "rejoined a literary group that focuses on modern relational dynamics found in fiction",
+          "scene": "session_4",
+          "evidence_id": "eadd4dce1be14ee4858e4dd93864cc33",
+          "timestamp": "2026-06-09T02:21:19.658530"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "modern relational dynamics in fiction",
+          "context": "rejoined a literary group that focuses on modern relational dynamics found in fiction",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "rejoined a literary group that focuses on modern relational dynamics found in fiction",
+              "scene": "session_4",
+              "evidence_id": "eadd4dce1be14ee4858e4dd93864cc33",
+              "timestamp": "2026-06-09T02:21:19.658530"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:19.658530",
+          "last_accessed": "2026-06-09T02:21:19.798313"
+        }
+      },
+      "unit_id": "54214e35ddeb43528f6026702413e845",
+      "timestamp": "2026-06-09T02:21:19.666273",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.798310",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "socializing_style",
+      "value": "prefers casual low-pressure gatherings like cafes over formal dinner parties",
+      "context": "found hosting dinner parties stressful; switched to casual hangouts at cafes to enjoy intimate conversations without pressure",
+      "profile_type": "style",
+      "stability_score": 0.5999999797437503,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "found hosting dinner parties stressful; switched to casual hangouts at cafes to enjoy intimate conversations without pressure",
+          "scene": "session_4",
+          "evidence_id": "9c593f148d504c4db5c35ed4335e3dcb",
+          "timestamp": "2026-06-09T02:21:19.658539"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers casual low-pressure gatherings like cafes over formal dinner parties",
+          "context": "found hosting dinner parties stressful; switched to casual hangouts at cafes to enjoy intimate conversations without pressure",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "found hosting dinner parties stressful; switched to casual hangouts at cafes to enjoy intimate conversations without pressure",
+              "scene": "session_4",
+              "evidence_id": "9c593f148d504c4db5c35ed4335e3dcb",
+              "timestamp": "2026-06-09T02:21:19.658539"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:19.658539",
+          "last_accessed": "2026-06-09T02:21:19.798549"
+        }
+      },
+      "unit_id": "80ecbc96842748538f81c8c07543bb53",
+      "timestamp": "2026-06-09T02:21:19.703670",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.798546",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "travel_preference",
+      "value": "day trips over extended weekend getaways due to exhaustion",
+      "context": "realized weekend getaways were too exhausting; decided day trips suit current lifestyle better",
+      "profile_type": "preference",
+      "stability_score": 0.49999998512934046,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "realized weekend getaways were too exhausting; decided day trips suit current lifestyle better",
+          "scene": "session_4",
+          "evidence_id": "59a236185379406d97ba1ea8a7194046",
+          "timestamp": "2026-06-09T02:21:19.658541"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "day trips over extended weekend getaways due to exhaustion",
+          "context": "realized weekend getaways were too exhausting; decided day trips suit current lifestyle better",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "realized weekend getaways were too exhausting; decided day trips suit current lifestyle better",
+              "scene": "session_4",
+              "evidence_id": "59a236185379406d97ba1ea8a7194046",
+              "timestamp": "2026-06-09T02:21:19.658541"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:19.658541",
+          "last_accessed": "2026-06-09T02:21:19.798742"
+        }
+      },
+      "unit_id": "0066eeca5c654e0b9f85b7fd5980d532",
+      "timestamp": "2026-06-09T02:21:19.715245",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.798739",
+      "last_evolved": "2026-06-09T02:21:19.800904",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "social_style_preference",
+      "value": "prefers intimate, engaging social settings over competitive or isolated ones",
+      "context": "intimate dinner party perfect for deep conversations; negative reactions to competitive board game night, rushed wine tasting, isolated crafting event",
+      "profile_type": "style",
+      "stability_score": 0.8933436681504779,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "intimate dinner party perfect for deep conversations; negative reactions to competitive board game night, rushed wine tasting, isolated crafting event",
+          "scene": "session_0",
+          "evidence_id": "d46692c36c064f53a05d79b7892edee1",
+          "timestamp": "2026-06-09T02:21:19.566267"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers intimate, engaging social settings over competitive or isolated ones",
+          "context": "intimate dinner party perfect for deep conversations; negative reactions to competitive board game night, rushed wine tasting, isolated crafting event",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "intimate dinner party perfect for deep conversations; negative reactions to competitive board game night, rushed wine tasting, isolated crafting event",
+              "scene": "session_0",
+              "evidence_id": "d46692c36c064f53a05d79b7892edee1",
+              "timestamp": "2026-06-09T02:21:19.566267"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:19.566267",
+          "last_accessed": "2026-06-09T02:21:19.799027"
+        }
+      },
+      "unit_id": "b22776397f1e4255a6ba65ca807659ef",
+      "timestamp": "2026-06-09T02:21:19.566306",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.799024",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "creative_activities_interest",
+      "value": "enjoys cooking, painting, storytelling, and music",
+      "context": "joined weekend cooking class, enrolled in painting class, participated in storytelling workshop, attended live music event",
+      "profile_type": "interest",
+      "stability_score": 0.9500885643659448,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined weekend cooking class, enrolled in painting class, participated in storytelling workshop, attended live music event",
+          "scene": "session_0",
+          "evidence_id": "335733a164644abd8b2da3227c6eba5c",
+          "timestamp": "2026-06-09T02:21:19.566274"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "enjoys cooking, painting, storytelling, and music",
+          "context": "joined weekend cooking class, enrolled in painting class, participated in storytelling workshop, attended live music event",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined weekend cooking class, enrolled in painting class, participated in storytelling workshop, attended live music event",
+              "scene": "session_0",
+              "evidence_id": "335733a164644abd8b2da3227c6eba5c",
+              "timestamp": "2026-06-09T02:21:19.566274"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:19.566274",
+          "last_accessed": "2026-06-09T02:21:19.799225"
+        }
+      },
+      "unit_id": "98aee153175a4598b9e21d45eddc6a84",
+      "timestamp": "2026-06-09T02:21:19.567197",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.799222",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "self_improvement_approach",
+      "value": "proactive in trying new activities to improve dating prospects",
+      "context": "tried mindfulness, language learning, fitness class, cooking class, etc.",
+      "profile_type": "goal",
+      "stability_score": 0.914231012674161,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "tried mindfulness, language learning, fitness class, cooking class, etc.",
+          "scene": "session_0",
+          "evidence_id": "768b41b49a84469289a810ea13274d2c",
+          "timestamp": "2026-06-09T02:21:19.566282"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "proactive in trying new activities to improve dating prospects",
+          "context": "tried mindfulness, language learning, fitness class, cooking class, etc.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "tried mindfulness, language learning, fitness class, cooking class, etc.",
+              "scene": "session_0",
+              "evidence_id": "768b41b49a84469289a810ea13274d2c",
+              "timestamp": "2026-06-09T02:21:19.566282"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:19.566282",
+          "last_accessed": "2026-06-09T02:21:19.799381"
+        }
+      },
+      "unit_id": "f62f14d2c8da4ed9bbb0d9c4bef82d32",
+      "timestamp": "2026-06-09T02:21:19.572103",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.799378",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "creative_expression_interest",
+      "value": "actively seeks artistic and creative outlets (pottery, painting, karaoke, book club on narratives)",
+      "context": "Enrolled in painting workshop, attended pottery class, rejoined book club, planned art city trip",
+      "profile_type": "interest",
+      "stability_score": 0.88034435111995,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Enrolled in painting workshop, attended pottery class, rejoined book club, planned art city trip",
+          "scene": "session_1",
+          "evidence_id": "9f19fbf0e8bb4f9c917d928b77a646c2",
+          "timestamp": "2026-06-09T02:21:19.577546"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "actively seeks artistic and creative outlets (pottery, painting, karaoke, book club on narratives)",
+          "context": "Enrolled in painting workshop, attended pottery class, rejoined book club, planned art city trip",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Enrolled in painting workshop, attended pottery class, rejoined book club, planned art city trip",
+              "scene": "session_1",
+              "evidence_id": "9f19fbf0e8bb4f9c917d928b77a646c2",
+              "timestamp": "2026-06-09T02:21:19.577546"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:19.577546",
+          "last_accessed": "2026-06-09T02:21:19.799563"
+        }
+      },
+      "unit_id": "57f20c9065344cf8a4bee587a0cdbfc1",
+      "timestamp": "2026-06-09T02:21:19.586781",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.799561",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "dining_preference",
+      "value": "prefers home-cooked meals with friends for meaningful conversations over restaurant dining",
+      "context": "Shifted from exploring restaurants to having home-cooked meals to foster deeper connections",
+      "profile_type": "preference",
+      "stability_score": 0.8526815829669708,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Shifted from exploring restaurants to having home-cooked meals to foster deeper connections",
+          "scene": "session_1",
+          "evidence_id": "2f408ca1501f4655a30fe4398a99e8ed",
+          "timestamp": "2026-06-09T02:21:19.577549"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers home-cooked meals with friends for meaningful conversations over restaurant dining",
+          "context": "Shifted from exploring restaurants to having home-cooked meals to foster deeper connections",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Shifted from exploring restaurants to having home-cooked meals to foster deeper connections",
+              "scene": "session_1",
+              "evidence_id": "2f408ca1501f4655a30fe4398a99e8ed",
+              "timestamp": "2026-06-09T02:21:19.577549"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:19.577549",
+          "last_accessed": "2026-06-09T02:21:19.799764"
+        }
+      },
+      "unit_id": "3660422d85ae480b99749ebcc43cbd8d",
+      "timestamp": "2026-06-09T02:21:19.591634",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.799761",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "personal_growth_goal",
+      "value": "exploring new activities to enhance social life, self-expression, and personal growth",
+      "context": "Trying pottery, karaoke, painting, book club, and fitness shifts to mix up dating life and foster connections",
+      "profile_type": "goal",
+      "stability_score": 0.8963622837616362,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Trying pottery, karaoke, painting, book club, and fitness shifts to mix up dating life and foster connections",
+          "scene": "session_1",
+          "evidence_id": "eb21218539d8431a94ee02e003c3150a",
+          "timestamp": "2026-06-09T02:21:19.577551"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "exploring new activities to enhance social life, self-expression, and personal growth",
+          "context": "Trying pottery, karaoke, painting, book club, and fitness shifts to mix up dating life and foster connections",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Trying pottery, karaoke, painting, book club, and fitness shifts to mix up dating life and foster connections",
+              "scene": "session_1",
+              "evidence_id": "eb21218539d8431a94ee02e003c3150a",
+              "timestamp": "2026-06-09T02:21:19.577551"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 19,
+          "last_seen": "2026-06-09T02:21:19.577551",
+          "last_accessed": "2026-06-09T02:21:19.799981"
+        }
+      },
+      "unit_id": "0caaddd461e946ca9b79aaf6bcc16c34",
+      "timestamp": "2026-06-09T02:21:19.597242",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 19,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.799978",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "style_writing_tone",
+      "value": "conversational and engaging",
+      "context": "maintain a more approachable and engaging style while avoiding jargon",
+      "profile_type": "style",
+      "stability_score": 0.9262592942974244,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "maintain a more approachable and engaging style while avoiding jargon",
+          "scene": "session_2",
+          "evidence_id": "5d0da6fa44e8485f8c88193ae898fa03",
+          "timestamp": "2026-06-09T02:21:19.604617"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "conversational and engaging",
+          "context": "maintain a more approachable and engaging style while avoiding jargon",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "maintain a more approachable and engaging style while avoiding jargon",
+              "scene": "session_2",
+              "evidence_id": "5d0da6fa44e8485f8c88193ae898fa03",
+              "timestamp": "2026-06-09T02:21:19.604617"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 15,
+          "last_seen": "2026-06-09T02:21:19.604617",
+          "last_accessed": "2026-06-09T02:21:19.800142"
+        }
+      },
+      "unit_id": "0f2d399a0499486c9c98717b07d194e4",
+      "timestamp": "2026-06-09T02:21:19.611199",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 15,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.800139",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "reading_preference",
+      "value": "prefers intimate solo reading over analytical book clubs",
+      "context": "miss intimacy of reading solo, left book club due to shift to academic analysis",
+      "profile_type": "preference",
+      "stability_score": 0.7927515833562259,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "miss intimacy of reading solo, left book club due to shift to academic analysis",
+          "scene": "session_3",
+          "evidence_id": "bfd766357d3f4f2ba198d95f49846cb2",
+          "timestamp": "2026-06-09T02:21:19.621403"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers intimate solo reading over analytical book clubs",
+          "context": "miss intimacy of reading solo, left book club due to shift to academic analysis",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "miss intimacy of reading solo, left book club due to shift to academic analysis",
+              "scene": "session_3",
+              "evidence_id": "bfd766357d3f4f2ba198d95f49846cb2",
+              "timestamp": "2026-06-09T02:21:19.621403"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:19.621403",
+          "last_accessed": "2026-06-09T02:21:19.800337"
+        }
+      },
+      "unit_id": "bf740fe75b424ba28f7aa4377762f920",
+      "timestamp": "2026-06-09T02:21:19.633309",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.800334",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_motivation",
+      "value": "seeks community and shared enthusiasm in activities",
+      "context": "food tour, Zumba, hiking, dinner gathering all emphasize shared experiences and connection",
+      "profile_type": "interest",
+      "stability_score": 0.8770137365272527,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666665,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "food tour, Zumba, hiking, dinner gathering all emphasize shared experiences and connection",
+          "scene": "session_3",
+          "evidence_id": "2b5b664c067c4ce49e336792a3773a4a",
+          "timestamp": "2026-06-09T02:21:19.621406"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "seeks community and shared enthusiasm in activities",
+          "context": "food tour, Zumba, hiking, dinner gathering all emphasize shared experiences and connection",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666665,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "food tour, Zumba, hiking, dinner gathering all emphasize shared experiences and connection",
+              "scene": "session_3",
+              "evidence_id": "2b5b664c067c4ce49e336792a3773a4a",
+              "timestamp": "2026-06-09T02:21:19.621406"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:19.621406",
+          "last_accessed": "2026-06-09T02:21:19.800504"
+        }
+      },
+      "unit_id": "88ed5a49da7a4965bc49a2cab65e8923",
+      "timestamp": "2026-06-09T02:21:19.640082",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.800501",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "comedy_show_preference",
+      "value": "intimate smaller crowds over large shows",
+      "context": "skipped larger comedy shows because loud atmosphere left me disconnected; prefer candid moments in small settings",
+      "profile_type": "preference",
+      "stability_score": 0.7622200379104709,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "skipped larger comedy shows because loud atmosphere left me disconnected; prefer candid moments in small settings",
+          "scene": "session_4",
+          "evidence_id": "b5d1ced8c458438f8564815975a2f7d1",
+          "timestamp": "2026-06-09T02:21:19.658534"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "intimate smaller crowds over large shows",
+          "context": "skipped larger comedy shows because loud atmosphere left me disconnected; prefer candid moments in small settings",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "skipped larger comedy shows because loud atmosphere left me disconnected; prefer candid moments in small settings",
+              "scene": "session_4",
+              "evidence_id": "b5d1ced8c458438f8564815975a2f7d1",
+              "timestamp": "2026-06-09T02:21:19.658534"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:19.658534",
+          "last_accessed": "2026-06-09T02:21:19.800704"
+        }
+      },
+      "unit_id": "6100d02f59974fc08c6ca28ac439890f",
+      "timestamp": "2026-06-09T02:21:19.678073",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.800700",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "exercise_habit",
+      "value": "hiking over fitness classes for social connection and nature",
+      "context": "switched from fitness classes to a hiking club for a more welcoming, interactive environment and outdoor experience",
+      "profile_type": "preference",
+      "stability_score": 0.7622200391138187,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "switched from fitness classes to a hiking club for a more welcoming, interactive environment and outdoor experience",
+          "scene": "session_4",
+          "evidence_id": "33f25f0628dd4d6892afb7af29359ba5",
+          "timestamp": "2026-06-09T02:21:19.658536"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "hiking over fitness classes for social connection and nature",
+          "context": "switched from fitness classes to a hiking club for a more welcoming, interactive environment and outdoor experience",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "switched from fitness classes to a hiking club for a more welcoming, interactive environment and outdoor experience",
+              "scene": "session_4",
+              "evidence_id": "33f25f0628dd4d6892afb7af29359ba5",
+              "timestamp": "2026-06-09T02:21:19.658536"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:19.658536",
+          "last_accessed": "2026-06-09T02:21:19.800856"
+        }
+      },
+      "unit_id": "e836570204ff43a6b98a6f2a32f5c228",
+      "timestamp": "2026-06-09T02:21:19.690257",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.800853",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_discovery_preference",
+      "value": "enjoys exploring diverse genres and discovering new artists through live performances, record stores, and festivals",
+      "context": "User described attending concerts, festivals, record stores, and discovering new artists; also expressed eagerness to explore genres further.",
+      "profile_type": "preference",
+      "stability_score": 0.8300622346133173,
+      "confidence_score": 0.85,
+      "scene": "session_5",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User described attending concerts, festivals, record stores, and discovering new artists; also expressed eagerness to explore genres further.",
+          "scene": "session_5",
+          "evidence_id": "3c4dc8ce85c841f196da65f807e6d9c2",
+          "timestamp": "2026-06-09T02:21:19.732085"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "enjoys exploring diverse genres and discovering new artists through live performances, record stores, and festivals",
+          "context": "User described attending concerts, festivals, record stores, and discovering new artists; also expressed eagerness to explore genres further.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User described attending concerts, festivals, record stores, and discovering new artists; also expressed eagerness to explore genres further.",
+              "scene": "session_5",
+              "evidence_id": "3c4dc8ce85c841f196da65f807e6d9c2",
+              "timestamp": "2026-06-09T02:21:19.732085"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:21:19.732085",
+          "last_accessed": "2026-06-09T02:21:19.796413"
+        }
+      },
+      "unit_id": "2916a419ed0a455c930f9ab1d1215072",
+      "timestamp": "2026-06-09T02:21:19.750355",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.796410",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_music_style",
+      "value": "prefers intimate, community-based music interactions over large, overwhelming events; enjoys sharing music in small groups or through curated playlists",
+      "context": "User expressed discomfort at karaoke bar, dancing at wedding, and open mic night; found fulfillment in music club and lyric workshop.",
+      "profile_type": "style",
+      "stability_score": 0.7330348811314172,
+      "confidence_score": 0.75,
+      "scene": "session_5",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User expressed discomfort at karaoke bar, dancing at wedding, and open mic night; found fulfillment in music club and lyric workshop.",
+          "scene": "session_5",
+          "evidence_id": "425f815e0e0042c98db8c85eee1f8a5d",
+          "timestamp": "2026-06-09T02:21:19.732088"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "prefers intimate, community-based music interactions over large, overwhelming events; enjoys sharing music in small groups or through curated playlists",
+          "context": "User expressed discomfort at karaoke bar, dancing at wedding, and open mic night; found fulfillment in music club and lyric workshop.",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User expressed discomfort at karaoke bar, dancing at wedding, and open mic night; found fulfillment in music club and lyric workshop.",
+              "scene": "session_5",
+              "evidence_id": "425f815e0e0042c98db8c85eee1f8a5d",
+              "timestamp": "2026-06-09T02:21:19.732088"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:21:19.732088",
+          "last_accessed": "2026-06-09T02:21:19.796662"
+        }
+      },
+      "unit_id": "18017f8024014222831d875908ae324f",
+      "timestamp": "2026-06-09T02:21:19.769859",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.796660",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "performance_comfort_level",
+      "value": "uncomfortable with performing or dancing in public; experiences anxiety in performance settings",
+      "context": "User reported feeling out of place at karaoke, nervous at open mic night, and self-conscious dancing at wedding.",
+      "profile_type": "style",
+      "stability_score": 0.7330348825697052,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User reported feeling out of place at karaoke, nervous at open mic night, and self-conscious dancing at wedding.",
+          "scene": "session_5",
+          "evidence_id": "d21365fe31b14c179f4d64a2fb207ab9",
+          "timestamp": "2026-06-09T02:21:19.732091"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "uncomfortable with performing or dancing in public; experiences anxiety in performance settings",
+          "context": "User reported feeling out of place at karaoke, nervous at open mic night, and self-conscious dancing at wedding.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User reported feeling out of place at karaoke, nervous at open mic night, and self-conscious dancing at wedding.",
+              "scene": "session_5",
+              "evidence_id": "d21365fe31b14c179f4d64a2fb207ab9",
+              "timestamp": "2026-06-09T02:21:19.732091"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:21:19.732091",
+          "last_accessed": "2026-06-09T02:21:19.796829"
+        }
+      },
+      "unit_id": "4c1616ccda7048fb97ebf3b94049c989",
+      "timestamp": "2026-06-09T02:21:19.787789",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:19.796827",
+      "last_evolved": "2026-06-09T02:21:19.800943",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "d46692c36c064f53a05d79b7892edee1": {
+      "source": "llm_deepseek",
+      "content": "intimate dinner party perfect for deep conversations; negative reactions to competitive board game night, rushed wine tasting, isolated crafting event",
+      "scene": "session_0",
+      "evidence_id": "d46692c36c064f53a05d79b7892edee1",
+      "timestamp": "2026-06-09T02:21:19.566267"
+    },
+    "335733a164644abd8b2da3227c6eba5c": {
+      "source": "llm_deepseek",
+      "content": "joined weekend cooking class, enrolled in painting class, participated in storytelling workshop, attended live music event",
+      "scene": "session_0",
+      "evidence_id": "335733a164644abd8b2da3227c6eba5c",
+      "timestamp": "2026-06-09T02:21:19.566274"
+    },
+    "694d9c16e817474eb6f19c71ec5f6578": {
+      "source": "llm_deepseek",
+      "content": "joined a fitness class, went hiking with friends",
+      "scene": "session_0",
+      "evidence_id": "694d9c16e817474eb6f19c71ec5f6578",
+      "timestamp": "2026-06-09T02:21:19.566277"
+    },
+    "16d14f01b3744abe8d44f166338ec250": {
+      "source": "llm_deepseek",
+      "content": "navigating dating scene feels overwhelming; anxiety at karaoke; disappointment when events lack depth",
+      "scene": "session_0",
+      "evidence_id": "16d14f01b3744abe8d44f166338ec250",
+      "timestamp": "2026-06-09T02:21:19.566280"
+    },
+    "768b41b49a84469289a810ea13274d2c": {
+      "source": "llm_deepseek",
+      "content": "tried mindfulness, language learning, fitness class, cooking class, etc.",
+      "scene": "session_0",
+      "evidence_id": "768b41b49a84469289a810ea13274d2c",
+      "timestamp": "2026-06-09T02:21:19.566282"
+    },
+    "929a78d43ea5434b9afed597f18b5c69": {
+      "source": "llm_deepseek",
+      "content": "Cancelled big dinner party, organized potluck; turned to cozy game nights instead of comedy shows; but also enjoyed returning to comedy club",
+      "scene": "session_1",
+      "evidence_id": "929a78d43ea5434b9afed597f18b5c69",
+      "timestamp": "2026-06-09T02:21:19.577543"
+    },
+    "9f19fbf0e8bb4f9c917d928b77a646c2": {
+      "source": "llm_deepseek",
+      "content": "Enrolled in painting workshop, attended pottery class, rejoined book club, planned art city trip",
+      "scene": "session_1",
+      "evidence_id": "9f19fbf0e8bb4f9c917d928b77a646c2",
+      "timestamp": "2026-06-09T02:21:19.577546"
+    },
+    "2f408ca1501f4655a30fe4398a99e8ed": {
+      "source": "llm_deepseek",
+      "content": "Shifted from exploring restaurants to having home-cooked meals to foster deeper connections",
+      "scene": "session_1",
+      "evidence_id": "2f408ca1501f4655a30fe4398a99e8ed",
+      "timestamp": "2026-06-09T02:21:19.577549"
+    },
+    "eb21218539d8431a94ee02e003c3150a": {
+      "source": "llm_deepseek",
+      "content": "Trying pottery, karaoke, painting, book club, and fitness shifts to mix up dating life and foster connections",
+      "scene": "session_1",
+      "evidence_id": "eb21218539d8431a94ee02e003c3150a",
+      "timestamp": "2026-06-09T02:21:19.577551"
+    },
+    "61975f7c1a8443d89609fc87a4d3d644": {
+      "source": "llm_deepseek",
+      "content": "new persona as an underwater hockey enthusiast",
+      "scene": "session_2",
+      "evidence_id": "61975f7c1a8443d89609fc87a4d3d644",
+      "timestamp": "2026-06-09T02:21:19.604614"
+    },
+    "5d0da6fa44e8485f8c88193ae898fa03": {
+      "source": "llm_deepseek",
+      "content": "maintain a more approachable and engaging style while avoiding jargon",
+      "scene": "session_2",
+      "evidence_id": "5d0da6fa44e8485f8c88193ae898fa03",
+      "timestamp": "2026-06-09T02:21:19.604617"
+    },
+    "b9edd40589cc483984e1ad3fecf4258b": {
+      "source": "llm_deepseek",
+      "content": "user prefers clearer and more direct sentences after revisions",
+      "scene": "session_2",
+      "evidence_id": "b9edd40589cc483984e1ad3fecf4258b",
+      "timestamp": "2026-06-09T02:21:19.604620"
+    },
+    "a53945f4aa81473b9e7186489f494e99": {
+      "source": "llm_deepseek",
+      "content": "experimenting with new activities, stepping outside comfort zone in dating scene",
+      "scene": "session_3",
+      "evidence_id": "a53945f4aa81473b9e7186489f494e99",
+      "timestamp": "2026-06-09T02:21:19.621400"
+    },
+    "bfd766357d3f4f2ba198d95f49846cb2": {
+      "source": "llm_deepseek",
+      "content": "miss intimacy of reading solo, left book club due to shift to academic analysis",
+      "scene": "session_3",
+      "evidence_id": "bfd766357d3f4f2ba198d95f49846cb2",
+      "timestamp": "2026-06-09T02:21:19.621403"
+    },
+    "2b5b664c067c4ce49e336792a3773a4a": {
+      "source": "llm_deepseek",
+      "content": "food tour, Zumba, hiking, dinner gathering all emphasize shared experiences and connection",
+      "scene": "session_3",
+      "evidence_id": "2b5b664c067c4ce49e336792a3773a4a",
+      "timestamp": "2026-06-09T02:21:19.621406"
+    },
+    "63b198890e28471d9f98902f10bd0fc5": {
+      "source": "llm_deepseek",
+      "content": "started painting again from home using online tutorials for freedom to experiment",
+      "scene": "session_3",
+      "evidence_id": "63b198890e28471d9f98902f10bd0fc5",
+      "timestamp": "2026-06-09T02:21:19.621409"
+    },
+    "eadd4dce1be14ee4858e4dd93864cc33": {
+      "source": "llm_deepseek",
+      "content": "rejoined a literary group that focuses on modern relational dynamics found in fiction",
+      "scene": "session_4",
+      "evidence_id": "eadd4dce1be14ee4858e4dd93864cc33",
+      "timestamp": "2026-06-09T02:21:19.658530"
+    },
+    "b5d1ced8c458438f8564815975a2f7d1": {
+      "source": "llm_deepseek",
+      "content": "skipped larger comedy shows because loud atmosphere left me disconnected; prefer candid moments in small settings",
+      "scene": "session_4",
+      "evidence_id": "b5d1ced8c458438f8564815975a2f7d1",
+      "timestamp": "2026-06-09T02:21:19.658534"
+    },
+    "33f25f0628dd4d6892afb7af29359ba5": {
+      "source": "llm_deepseek",
+      "content": "switched from fitness classes to a hiking club for a more welcoming, interactive environment and outdoor experience",
+      "scene": "session_4",
+      "evidence_id": "33f25f0628dd4d6892afb7af29359ba5",
+      "timestamp": "2026-06-09T02:21:19.658536"
+    },
+    "9c593f148d504c4db5c35ed4335e3dcb": {
+      "source": "llm_deepseek",
+      "content": "found hosting dinner parties stressful; switched to casual hangouts at cafes to enjoy intimate conversations without pressure",
+      "scene": "session_4",
+      "evidence_id": "9c593f148d504c4db5c35ed4335e3dcb",
+      "timestamp": "2026-06-09T02:21:19.658539"
+    },
+    "59a236185379406d97ba1ea8a7194046": {
+      "source": "llm_deepseek",
+      "content": "realized weekend getaways were too exhausting; decided day trips suit current lifestyle better",
+      "scene": "session_4",
+      "evidence_id": "59a236185379406d97ba1ea8a7194046",
+      "timestamp": "2026-06-09T02:21:19.658541"
+    },
+    "3c4dc8ce85c841f196da65f807e6d9c2": {
+      "source": "llm_deepseek",
+      "content": "User described attending concerts, festivals, record stores, and discovering new artists; also expressed eagerness to explore genres further.",
+      "scene": "session_5",
+      "evidence_id": "3c4dc8ce85c841f196da65f807e6d9c2",
+      "timestamp": "2026-06-09T02:21:19.732085"
+    },
+    "425f815e0e0042c98db8c85eee1f8a5d": {
+      "source": "llm_deepseek",
+      "content": "User expressed discomfort at karaoke bar, dancing at wedding, and open mic night; found fulfillment in music club and lyric workshop.",
+      "scene": "session_5",
+      "evidence_id": "425f815e0e0042c98db8c85eee1f8a5d",
+      "timestamp": "2026-06-09T02:21:19.732088"
+    },
+    "d21365fe31b14c179f4d64a2fb207ab9": {
+      "source": "llm_deepseek",
+      "content": "User reported feeling out of place at karaoke, nervous at open mic night, and self-conscious dancing at wedding.",
+      "scene": "session_5",
+      "evidence_id": "d21365fe31b14c179f4d64a2fb207ab9",
+      "timestamp": "2026-06-09T02:21:19.732091"
+    }
+  },
+  "current_session": "session_5",
+  "current_session_id": "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d_session_5",
+  "config_id": "decay_0.25x",
+  "context_hash": "06f12a0c4085193a32bd1658c5f4b8a5e6e7e1f5221d7169f296130c8d69480d",
+  "num_sessions": 6
+}

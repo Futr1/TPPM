@@ -1,0 +1,1641 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.5,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "learning_style_hands_on",
+      "value": "prefers practical, hands-on workshops and courses over theoretical study",
+      "context": "Found practical workshop exciting; enrolled in audio production workshop to learn mixing/mastering; felt hands-on activities bring subjects to life.",
+      "profile_type": "style",
+      "stability_score": 0.599999943662711,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Found practical workshop exciting; enrolled in audio production workshop to learn mixing/mastering; felt hands-on activities bring subjects to life.",
+          "scene": "session_1",
+          "evidence_id": "9d84fc6be44641c4b2f299fbe57b81c8",
+          "timestamp": "2026-06-09T02:22:00.974189"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers practical, hands-on workshops and courses over theoretical study",
+          "context": "Found practical workshop exciting; enrolled in audio production workshop to learn mixing/mastering; felt hands-on activities bring subjects to life.",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Found practical workshop exciting; enrolled in audio production workshop to learn mixing/mastering; felt hands-on activities bring subjects to life.",
+              "scene": "session_1",
+              "evidence_id": "9d84fc6be44641c4b2f299fbe57b81c8",
+              "timestamp": "2026-06-09T02:22:00.974189"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:22:00.974189",
+          "last_accessed": "2026-06-09T02:22:01.257095"
+        }
+      },
+      "unit_id": "9c98c31856964bb08f29d7e8e72ad37c",
+      "timestamp": "2026-06-09T02:22:00.989121",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257092",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_review_activity",
+      "value": "publishes reviews of albums merging Pacific sounds and electronic music",
+      "context": "I just published a review on an album that beautifully merges Pacific sounds and electronic music",
+      "profile_type": "interest",
+      "stability_score": 0.5999999497837522,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I just published a review on an album that beautifully merges Pacific sounds and electronic music",
+          "scene": "session_2",
+          "evidence_id": "b1c5b42ae8a447baaedf9379cdcc136d",
+          "timestamp": "2026-06-09T02:22:01.003601"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "publishes reviews of albums merging Pacific sounds and electronic music",
+          "context": "I just published a review on an album that beautifully merges Pacific sounds and electronic music",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I just published a review on an album that beautifully merges Pacific sounds and electronic music",
+              "scene": "session_2",
+              "evidence_id": "b1c5b42ae8a447baaedf9379cdcc136d",
+              "timestamp": "2026-06-09T02:22:01.003601"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:22:01.003601",
+          "last_accessed": "2026-06-09T02:22:01.257212"
+        }
+      },
+      "unit_id": "d8466986213f4dbdb6c25877bfb482c8",
+      "timestamp": "2026-06-09T02:22:01.018501",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257209",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "learning_style",
+      "value": "prefers self-study or less intense methods over structured courses",
+      "context": "dropped out of the audio production course after the first week, feeling overwhelmed... thinking about self-study or online resources",
+      "profile_type": "background",
+      "stability_score": 0.4999999596635433,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "dropped out of the audio production course after the first week, feeling overwhelmed... thinking about self-study or online resources",
+          "scene": "session_2",
+          "evidence_id": "1130c860239640898b9d76e7346dd0d3",
+          "timestamp": "2026-06-09T02:22:01.003603"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers self-study or less intense methods over structured courses",
+          "context": "dropped out of the audio production course after the first week, feeling overwhelmed... thinking about self-study or online resources",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "dropped out of the audio production course after the first week, feeling overwhelmed... thinking about self-study or online resources",
+              "scene": "session_2",
+              "evidence_id": "1130c860239640898b9d76e7346dd0d3",
+              "timestamp": "2026-06-09T02:22:01.003603"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:22:01.003603",
+          "last_accessed": "2026-06-09T02:22:01.257329"
+        }
+      },
+      "unit_id": "c076951a87ab42f09ad224049b03dae2",
+      "timestamp": "2026-06-09T02:22:01.027201",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257326",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "cultural_heritage_connection",
+      "value": "integrates Pacific instruments to connect with roots",
+      "context": "remixed a popular track, integrating traditional Pacific instruments... connect with my roots",
+      "profile_type": "background",
+      "stability_score": 0.5999999530233351,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "remixed a popular track, integrating traditional Pacific instruments... connect with my roots",
+          "scene": "session_2",
+          "evidence_id": "814f7d4dca1e46d0b91bffc7a9a6a1cc",
+          "timestamp": "2026-06-09T02:22:01.003606"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "integrates Pacific instruments to connect with roots",
+          "context": "remixed a popular track, integrating traditional Pacific instruments... connect with my roots",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "remixed a popular track, integrating traditional Pacific instruments... connect with my roots",
+              "scene": "session_2",
+              "evidence_id": "814f7d4dca1e46d0b91bffc7a9a6a1cc",
+              "timestamp": "2026-06-09T02:22:01.003606"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:22:01.003606",
+          "last_accessed": "2026-06-09T02:22:01.257429"
+        }
+      },
+      "unit_id": "7abcb6e59eea440d89cd30367d5c48b7",
+      "timestamp": "2026-06-09T02:22:01.034052",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257426",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "community_engagement",
+      "value": "promotes emerging Pacific artists via forums and radio playlists",
+      "context": "contributed to a discussion about Pacific Islander music fusion techniques... playlist featured emerging Pacific artists",
+      "profile_type": "interest",
+      "stability_score": 0.5999999549597934,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.6666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "contributed to a discussion about Pacific Islander music fusion techniques... playlist featured emerging Pacific artists",
+          "scene": "session_2",
+          "evidence_id": "f44d0f2dbb1145feb1479dde5c925eb7",
+          "timestamp": "2026-06-09T02:22:01.003608"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "promotes emerging Pacific artists via forums and radio playlists",
+          "context": "contributed to a discussion about Pacific Islander music fusion techniques... playlist featured emerging Pacific artists",
+          "confidence_score": 0.7,
+          "quality_score": 0.6666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "contributed to a discussion about Pacific Islander music fusion techniques... playlist featured emerging Pacific artists",
+              "scene": "session_2",
+              "evidence_id": "f44d0f2dbb1145feb1479dde5c925eb7",
+              "timestamp": "2026-06-09T02:22:01.003608"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:22:01.003608",
+          "last_accessed": "2026-06-09T02:22:01.257542"
+        }
+      },
+      "unit_id": "0eca23b3c154465b97971b7019996dc7",
+      "timestamp": "2026-06-09T02:22:01.043346",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257539",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "collaboration_experience",
+      "value": "Had challenges with band due to artistic direction disagreements, leading to decision to leave",
+      "context": "Felt stifled in collaboration, disagreements over artistic direction, questioned abilities, sought autonomy.",
+      "profile_type": "background",
+      "stability_score": 0.5999999622466679,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Felt stifled in collaboration, disagreements over artistic direction, questioned abilities, sought autonomy.",
+          "scene": "session_3",
+          "evidence_id": "d33b21c59f524e2795bcd50bd112a6d4",
+          "timestamp": "2026-06-09T02:22:01.059106"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Had challenges with band due to artistic direction disagreements, leading to decision to leave",
+          "context": "Felt stifled in collaboration, disagreements over artistic direction, questioned abilities, sought autonomy.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Felt stifled in collaboration, disagreements over artistic direction, questioned abilities, sought autonomy.",
+              "scene": "session_3",
+              "evidence_id": "d33b21c59f524e2795bcd50bd112a6d4",
+              "timestamp": "2026-06-09T02:22:01.059106"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059106",
+          "last_accessed": "2026-06-09T02:22:01.257683"
+        }
+      },
+      "unit_id": "7b734ea1222f4d6aace0836324a159df",
+      "timestamp": "2026-06-09T02:22:01.078323",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257680",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_education_interest",
+      "value": "Participated in workshops on Pacific Island music theory and Indian music fusion, explores cross-cultural learning",
+      "context": "Attended workshop series on music theory focused on Pacific Island texts/rhythms, explored Indian music fusion via workshops and collaborations.",
+      "profile_type": "interest",
+      "stability_score": 0.599999970399584,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Attended workshop series on music theory focused on Pacific Island texts/rhythms, explored Indian music fusion via workshops and collaborations.",
+          "scene": "session_3",
+          "evidence_id": "a32e397901284dec9bfadb00b67cecac",
+          "timestamp": "2026-06-09T02:22:01.059113"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Participated in workshops on Pacific Island music theory and Indian music fusion, explores cross-cultural learning",
+          "context": "Attended workshop series on music theory focused on Pacific Island texts/rhythms, explored Indian music fusion via workshops and collaborations.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Attended workshop series on music theory focused on Pacific Island texts/rhythms, explored Indian music fusion via workshops and collaborations.",
+              "scene": "session_3",
+              "evidence_id": "a32e397901284dec9bfadb00b67cecac",
+              "timestamp": "2026-06-09T02:22:01.059113"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059113",
+          "last_accessed": "2026-06-09T02:22:01.257799"
+        }
+      },
+      "unit_id": "23cae624efbb4be6b5d526e7be23bcbb",
+      "timestamp": "2026-06-09T02:22:01.117456",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257797",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_mentorship",
+      "value": "Found mentor connecting music theory to cultural background",
+      "context": "Found mentor who used Pacific Island examples to make theory relatable and enjoyable.",
+      "profile_type": "background",
+      "stability_score": 0.49999997714878525,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Found mentor who used Pacific Island examples to make theory relatable and enjoyable.",
+          "scene": "session_3",
+          "evidence_id": "b37d2eb1f388486fb7dc55bd94aa8b6b",
+          "timestamp": "2026-06-09T02:22:01.059115"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Found mentor connecting music theory to cultural background",
+          "context": "Found mentor who used Pacific Island examples to make theory relatable and enjoyable.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Found mentor who used Pacific Island examples to make theory relatable and enjoyable.",
+              "scene": "session_3",
+              "evidence_id": "b37d2eb1f388486fb7dc55bd94aa8b6b",
+              "timestamp": "2026-06-09T02:22:01.059115"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059115",
+          "last_accessed": "2026-06-09T02:22:01.257905"
+        }
+      },
+      "unit_id": "af16560c6f6d45c29d18cb5b46e6848a",
+      "timestamp": "2026-06-09T02:22:01.127915",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.257903",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "music_research_habit",
+      "value": "Watches documentaries on evolution of cultural music worldwide",
+      "context": "Delves deeper by watching documentaries showcasing cultural music evolution, geography, history.",
+      "profile_type": "interest",
+      "stability_score": 0.4999999792302088,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.6666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Delves deeper by watching documentaries showcasing cultural music evolution, geography, history.",
+          "scene": "session_3",
+          "evidence_id": "80e1e957335541b48ebbeeabaa9166be",
+          "timestamp": "2026-06-09T02:22:01.059118"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Watches documentaries on evolution of cultural music worldwide",
+          "context": "Delves deeper by watching documentaries showcasing cultural music evolution, geography, history.",
+          "confidence_score": 0.7,
+          "quality_score": 0.6666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Delves deeper by watching documentaries showcasing cultural music evolution, geography, history.",
+              "scene": "session_3",
+              "evidence_id": "80e1e957335541b48ebbeeabaa9166be",
+              "timestamp": "2026-06-09T02:22:01.059118"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059118",
+          "last_accessed": "2026-06-09T02:22:01.258019"
+        }
+      },
+      "unit_id": "b770934563e54ff9a4b0fcabfae6fb32",
+      "timestamp": "2026-06-09T02:22:01.139900",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258016",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "physical_dating_activity",
+      "value": "dislikes strenuous outdoor dates like hiking",
+      "context": "hiking date was tiring and not enjoyable",
+      "profile_type": "preference",
+      "stability_score": 0.49999999078836815,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "hiking date was tiring and not enjoyable",
+          "scene": "session_4",
+          "evidence_id": "5e2191dbc24e4e71a3fca33b9cc5973d",
+          "timestamp": "2026-06-09T02:22:01.184839"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "dislikes strenuous outdoor dates like hiking",
+          "context": "hiking date was tiring and not enjoyable",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "hiking date was tiring and not enjoyable",
+              "scene": "session_4",
+              "evidence_id": "5e2191dbc24e4e71a3fca33b9cc5973d",
+              "timestamp": "2026-06-09T02:22:01.184839"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:22:01.184839",
+          "last_accessed": "2026-06-09T02:22:01.256777"
+        }
+      },
+      "unit_id": "e9a05c6b49594cc78882e0aecf67dcbd",
+      "timestamp": "2026-06-09T02:22:01.206480",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.256775",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "self_expression_habit",
+      "value": "uses writing and vision boards to reflect on dating experiences",
+      "context": "wrote a blog post and created a vision board for relationship goals",
+      "profile_type": "style",
+      "stability_score": 0.5999999914939583,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "wrote a blog post and created a vision board for relationship goals",
+          "scene": "session_4",
+          "evidence_id": "18d2f312a7704c259b45fadd00da1cfb",
+          "timestamp": "2026-06-09T02:22:01.184842"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "uses writing and vision boards to reflect on dating experiences",
+          "context": "wrote a blog post and created a vision board for relationship goals",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "wrote a blog post and created a vision board for relationship goals",
+              "scene": "session_4",
+              "evidence_id": "18d2f312a7704c259b45fadd00da1cfb",
+              "timestamp": "2026-06-09T02:22:01.184842"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:22:01.184842",
+          "last_accessed": "2026-06-09T02:22:01.256860"
+        }
+      },
+      "unit_id": "e39b292f3478436ca21e70ae57f50abd",
+      "timestamp": "2026-06-09T02:22:01.218709",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.256858",
+      "last_evolved": "2026-06-09T02:22:01.259543",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "music_emotional_preference",
+      "value": "prefers emotional connection over technical analysis",
+      "context": "disliked music theory and audio production technicalities; finds joy in creating own tracks",
+      "profile_type": "preference",
+      "stability_score": 0.7655206957792434,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "disliked music theory and audio production technicalities; finds joy in creating own tracks",
+          "scene": "session_0",
+          "evidence_id": "dc037d3f0e8e48589a7e10180b7cc8c3",
+          "timestamp": "2026-06-09T02:22:00.969475"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers emotional connection over technical analysis",
+          "context": "disliked music theory and audio production technicalities; finds joy in creating own tracks",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "disliked music theory and audio production technicalities; finds joy in creating own tracks",
+              "scene": "session_0",
+              "evidence_id": "dc037d3f0e8e48589a7e10180b7cc8c3",
+              "timestamp": "2026-06-09T02:22:00.969475"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 29,
+          "last_seen": "2026-06-09T02:22:00.969475",
+          "last_accessed": "2026-06-09T02:22:01.258113"
+        }
+      },
+      "unit_id": "54ed867c5f224dafbca68a0c3330a9ba",
+      "timestamp": "2026-06-09T02:22:00.969513",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 29,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258110",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "cultural_music_roots",
+      "value": "interested in blending traditional Pacific Islander music with electronic/modern sounds",
+      "context": "attended festivals, sampled traditional music, produced fusion track, developing app to help others",
+      "profile_type": "interest",
+      "stability_score": 0.8089439121069408,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.9333333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "attended festivals, sampled traditional music, produced fusion track, developing app to help others",
+          "scene": "session_0",
+          "evidence_id": "332e331d8edf48e8bd187c075ad63e04",
+          "timestamp": "2026-06-09T02:22:00.969483"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "interested in blending traditional Pacific Islander music with electronic/modern sounds",
+          "context": "attended festivals, sampled traditional music, produced fusion track, developing app to help others",
+          "confidence_score": 0.9,
+          "quality_score": 0.9333333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "attended festivals, sampled traditional music, produced fusion track, developing app to help others",
+              "scene": "session_0",
+              "evidence_id": "332e331d8edf48e8bd187c075ad63e04",
+              "timestamp": "2026-06-09T02:22:00.969483"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 29,
+          "last_seen": "2026-06-09T02:22:00.969483",
+          "last_accessed": "2026-06-09T02:22:01.258223"
+        }
+      },
+      "unit_id": "535c0af649f945c0a738394e32b35b78",
+      "timestamp": "2026-06-09T02:22:00.970141",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 29,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258220",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_activity_exploration",
+      "value": "experimented with various music activities but many unfulfilling; currently focused on original creation and app development",
+      "context": "tried podcast, album reviews, jam sessions, history research, audio production; now blending traditional and modern",
+      "profile_type": "goal",
+      "stability_score": 0.5899595494773644,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "tried podcast, album reviews, jam sessions, history research, audio production; now blending traditional and modern",
+          "scene": "session_0",
+          "evidence_id": "d087521dfb1f4898be68b5cbb11bc066",
+          "timestamp": "2026-06-09T02:22:00.969486"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "experimented with various music activities but many unfulfilling; currently focused on original creation and app development",
+          "context": "tried podcast, album reviews, jam sessions, history research, audio production; now blending traditional and modern",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "tried podcast, album reviews, jam sessions, history research, audio production; now blending traditional and modern",
+              "scene": "session_0",
+              "evidence_id": "d087521dfb1f4898be68b5cbb11bc066",
+              "timestamp": "2026-06-09T02:22:00.969486"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 29,
+          "last_seen": "2026-06-09T02:22:00.969486",
+          "last_accessed": "2026-06-09T02:22:01.258352"
+        }
+      },
+      "unit_id": "354b24b109154877bebf6c1f2745b047",
+      "timestamp": "2026-06-09T02:22:00.971704",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 29,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258349",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_taste_fusion",
+      "value": "blends traditional Pacific Islander sounds with modern electronic and other genres",
+      "context": "Attended electronic music festival featuring Pacific Islander artists; uses traditional instruments like ukulele and pahu drum with Latin rhythms; experiments with software to enhance traditional sounds.",
+      "profile_type": "preference",
+      "stability_score": 0.8036554772410002,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Attended electronic music festival featuring Pacific Islander artists; uses traditional instruments like ukulele and pahu drum with Latin rhythms; experiments with software to enhance traditional sounds.",
+          "scene": "session_1",
+          "evidence_id": "fd3288b6a1a54be6b183e03ea8da5015",
+          "timestamp": "2026-06-09T02:22:00.974181"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "blends traditional Pacific Islander sounds with modern electronic and other genres",
+          "context": "Attended electronic music festival featuring Pacific Islander artists; uses traditional instruments like ukulele and pahu drum with Latin rhythms; experiments with software to enhance traditional sounds.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Attended electronic music festival featuring Pacific Islander artists; uses traditional instruments like ukulele and pahu drum with Latin rhythms; experiments with software to enhance traditional sounds.",
+              "scene": "session_1",
+              "evidence_id": "fd3288b6a1a54be6b183e03ea8da5015",
+              "timestamp": "2026-06-09T02:22:00.974181"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:22:00.974181",
+          "last_accessed": "2026-06-09T02:22:01.258460"
+        }
+      },
+      "unit_id": "d05931a007ab42c58acf9f7b75254eb4",
+      "timestamp": "2026-06-09T02:22:00.977204",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258457",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "heritage_engagement",
+      "value": "actively explores and incorporates Pacific Islander cultural heritage into music projects",
+      "context": "Feel pride and connection to roots; discovered a book on Pacific music theory; launched podcast discussing fusion; watched documentary on Pacific music history.",
+      "profile_type": "interest",
+      "stability_score": 0.7869094721933789,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Feel pride and connection to roots; discovered a book on Pacific music theory; launched podcast discussing fusion; watched documentary on Pacific music history.",
+          "scene": "session_1",
+          "evidence_id": "d9369e3c7a0544349127c169530ac39a",
+          "timestamp": "2026-06-09T02:22:00.974184"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "actively explores and incorporates Pacific Islander cultural heritage into music projects",
+          "context": "Feel pride and connection to roots; discovered a book on Pacific music theory; launched podcast discussing fusion; watched documentary on Pacific music history.",
+          "confidence_score": 0.8,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Feel pride and connection to roots; discovered a book on Pacific music theory; launched podcast discussing fusion; watched documentary on Pacific music history.",
+              "scene": "session_1",
+              "evidence_id": "d9369e3c7a0544349127c169530ac39a",
+              "timestamp": "2026-06-09T02:22:00.974184"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:22:00.974184",
+          "last_accessed": "2026-06-09T02:22:01.258595"
+        }
+      },
+      "unit_id": "62b794434dc5460dbfb720be199977c1",
+      "timestamp": "2026-06-09T02:22:00.980103",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258592",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "creative_goal_authenticity",
+      "value": "aims to honor traditional sounds while making music accessible to contemporary audiences",
+      "context": "Merging old with innovative to strike balance between nostalgia and modernity; wants track to resonate with both roots and contemporary listeners.",
+      "profile_type": "goal",
+      "stability_score": 0.6077993187406556,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Merging old with innovative to strike balance between nostalgia and modernity; wants track to resonate with both roots and contemporary listeners.",
+          "scene": "session_1",
+          "evidence_id": "c46813f9a5cf4604abda5f1db30e2707",
+          "timestamp": "2026-06-09T02:22:00.974187"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "aims to honor traditional sounds while making music accessible to contemporary audiences",
+          "context": "Merging old with innovative to strike balance between nostalgia and modernity; wants track to resonate with both roots and contemporary listeners.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Merging old with innovative to strike balance between nostalgia and modernity; wants track to resonate with both roots and contemporary listeners.",
+              "scene": "session_1",
+              "evidence_id": "c46813f9a5cf4604abda5f1db30e2707",
+              "timestamp": "2026-06-09T02:22:00.974187"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:22:00.974187",
+          "last_accessed": "2026-06-09T02:22:01.258729"
+        }
+      },
+      "unit_id": "12fdcb8915914bc1a63bde797ee06256",
+      "timestamp": "2026-06-09T02:22:00.984038",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258726",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "collaboration_preference",
+      "value": "enjoys collaborating with other musicians and sharing ideas in group settings",
+      "context": "Collaborated with local musician; joined online group for Pacific musical innovations; launched podcast with interviews; values exchange of ideas.",
+      "profile_type": "preference",
+      "stability_score": 0.7217824213266477,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Collaborated with local musician; joined online group for Pacific musical innovations; launched podcast with interviews; values exchange of ideas.",
+          "scene": "session_1",
+          "evidence_id": "8af6eb49a3144d03bcd1a5b5ee0fd454",
+          "timestamp": "2026-06-09T02:22:00.974191"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "enjoys collaborating with other musicians and sharing ideas in group settings",
+          "context": "Collaborated with local musician; joined online group for Pacific musical innovations; launched podcast with interviews; values exchange of ideas.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Collaborated with local musician; joined online group for Pacific musical innovations; launched podcast with interviews; values exchange of ideas.",
+              "scene": "session_1",
+              "evidence_id": "8af6eb49a3144d03bcd1a5b5ee0fd454",
+              "timestamp": "2026-06-09T02:22:00.974191"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:22:00.974191",
+          "last_accessed": "2026-06-09T02:22:01.258855"
+        }
+      },
+      "unit_id": "100e677cec6045bc815d569a290ef64b",
+      "timestamp": "2026-06-09T02:22:00.995337",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258852",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_creation_style",
+      "value": "nature-inspired ambient music",
+      "context": "developed a new track using unique sound layers that incorporated recordings from nature",
+      "profile_type": "style",
+      "stability_score": 0.7362004598504505,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "developed a new track using unique sound layers that incorporated recordings from nature",
+          "scene": "session_2",
+          "evidence_id": "d6a4c3bb18a4424a9f794cb80924dabf",
+          "timestamp": "2026-06-09T02:22:01.003595"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "nature-inspired ambient music",
+          "context": "developed a new track using unique sound layers that incorporated recordings from nature",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "developed a new track using unique sound layers that incorporated recordings from nature",
+              "scene": "session_2",
+              "evidence_id": "d6a4c3bb18a4424a9f794cb80924dabf",
+              "timestamp": "2026-06-09T02:22:01.003595"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:22:01.003595",
+          "last_accessed": "2026-06-09T02:22:01.258958"
+        }
+      },
+      "unit_id": "dd34e157441f47f5aa746aa58b7451f4",
+      "timestamp": "2026-06-09T02:22:01.007292",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.258955",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_collaboration_preference",
+      "value": "joins bands fusing traditional and contemporary styles",
+      "context": "I actually joined a local band that focuses on fusing traditional and contemporary styles",
+      "profile_type": "preference",
+      "stability_score": 0.7167381651486894,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I actually joined a local band that focuses on fusing traditional and contemporary styles",
+          "scene": "session_2",
+          "evidence_id": "f3939087f2694e2bbda1fb185b0673a2",
+          "timestamp": "2026-06-09T02:22:01.003598"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "joins bands fusing traditional and contemporary styles",
+          "context": "I actually joined a local band that focuses on fusing traditional and contemporary styles",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I actually joined a local band that focuses on fusing traditional and contemporary styles",
+              "scene": "session_2",
+              "evidence_id": "f3939087f2694e2bbda1fb185b0673a2",
+              "timestamp": "2026-06-09T02:22:01.003598"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:22:01.003598",
+          "last_accessed": "2026-06-09T02:22:01.259063"
+        }
+      },
+      "unit_id": "6c65eab06f4440bdbbf1641573b556a6",
+      "timestamp": "2026-06-09T02:22:01.012342",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.259060",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_style",
+      "value": "Blend of contemporary electronic music with traditional Pacific Islander melodies",
+      "context": "Released remix album blending electronic with Pacific Islander melodies, explores fusion.",
+      "profile_type": "style",
+      "stability_score": 0.8169245875023479,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Released remix album blending electronic with Pacific Islander melodies, explores fusion.",
+          "scene": "session_3",
+          "evidence_id": "e23998dd6ce645f28274d5f20b29e3ae",
+          "timestamp": "2026-06-09T02:22:01.059102"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Blend of contemporary electronic music with traditional Pacific Islander melodies",
+          "context": "Released remix album blending electronic with Pacific Islander melodies, explores fusion.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Released remix album blending electronic with Pacific Islander melodies, explores fusion.",
+              "scene": "session_3",
+              "evidence_id": "e23998dd6ce645f28274d5f20b29e3ae",
+              "timestamp": "2026-06-09T02:22:01.059102"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059102",
+          "last_accessed": "2026-06-09T02:22:01.259173"
+        }
+      },
+      "unit_id": "b2ab2b9f31a64ad59b3745d015a6c913",
+      "timestamp": "2026-06-09T02:22:01.067000",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.259170",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "music_project_focus",
+      "value": "Prefers original compositions over remixes; on hiatus from remixing to focus on personal projects",
+      "context": "Announced hiatus from remixing to concentrate on original compositions and personal projects.",
+      "profile_type": "goal",
+      "stability_score": 0.6493049085102746,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Announced hiatus from remixing to concentrate on original compositions and personal projects.",
+          "scene": "session_3",
+          "evidence_id": "705733cd250f4f5b91f7441837509d6b",
+          "timestamp": "2026-06-09T02:22:01.059108"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Prefers original compositions over remixes; on hiatus from remixing to focus on personal projects",
+          "context": "Announced hiatus from remixing to concentrate on original compositions and personal projects.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Announced hiatus from remixing to concentrate on original compositions and personal projects.",
+              "scene": "session_3",
+              "evidence_id": "705733cd250f4f5b91f7441837509d6b",
+              "timestamp": "2026-06-09T02:22:01.059108"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059108",
+          "last_accessed": "2026-06-09T02:22:01.259286"
+        }
+      },
+      "unit_id": "87d8982d94ca4370bcd7b5bfe3feb607",
+      "timestamp": "2026-06-09T02:22:01.090375",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.259283",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "cultural_engagement",
+      "value": "Organized festival highlighting Pacific Islander artists in modern setting",
+      "context": "Organized a festival showcasing Pacific Islander artists, fusion works, fostering community.",
+      "profile_type": "interest",
+      "stability_score": 0.6858464371182639,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Organized a festival showcasing Pacific Islander artists, fusion works, fostering community.",
+          "scene": "session_3",
+          "evidence_id": "9161d356a2bf4a639df68c953ccb7a8e",
+          "timestamp": "2026-06-09T02:22:01.059111"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Organized festival highlighting Pacific Islander artists in modern setting",
+          "context": "Organized a festival showcasing Pacific Islander artists, fusion works, fostering community.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Organized a festival showcasing Pacific Islander artists, fusion works, fostering community.",
+              "scene": "session_3",
+              "evidence_id": "9161d356a2bf4a639df68c953ccb7a8e",
+              "timestamp": "2026-06-09T02:22:01.059111"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059111",
+          "last_accessed": "2026-06-09T02:22:01.259397"
+        }
+      },
+      "unit_id": "ed68e6d201dc4dc8a71995babe79d0c8",
+      "timestamp": "2026-06-09T02:22:01.100978",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.259394",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "identity_expression",
+      "value": "Proud of Pacific Islander heritage; uses music to connect with roots and express identity",
+      "context": "Expresses identity through music, tribute to cultures that shaped him, feels empowered.",
+      "profile_type": "background",
+      "stability_score": 0.9092362480079261,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Expresses identity through music, tribute to cultures that shaped him, feels empowered.",
+          "scene": "session_3",
+          "evidence_id": "a943ca8f6d2f482dae98a942bfacb86a",
+          "timestamp": "2026-06-09T02:22:01.059120"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "Proud of Pacific Islander heritage; uses music to connect with roots and express identity",
+          "context": "Expresses identity through music, tribute to cultures that shaped him, feels empowered.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Expresses identity through music, tribute to cultures that shaped him, feels empowered.",
+              "scene": "session_3",
+              "evidence_id": "a943ca8f6d2f482dae98a942bfacb86a",
+              "timestamp": "2026-06-09T02:22:01.059120"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:22:01.059120",
+          "last_accessed": "2026-06-09T02:22:01.259494"
+        }
+      },
+      "unit_id": "caa90389778641fa9d3cba2fb4b3125e",
+      "timestamp": "2026-06-09T02:22:01.155648",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.259491",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_event_preference",
+      "value": "enjoys casual and spontaneous social gatherings over forced structured events",
+      "context": "social mixer felt forced and awkward, while game night and singles club were delightful",
+      "profile_type": "preference",
+      "stability_score": 0.7058605735914429,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "social mixer felt forced and awkward, while game night and singles club were delightful",
+          "scene": "session_4",
+          "evidence_id": "fb28789b7fe84a59843dcd7b18b19ceb",
+          "timestamp": "2026-06-09T02:22:01.184836"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys casual and spontaneous social gatherings over forced structured events",
+          "context": "social mixer felt forced and awkward, while game night and singles club were delightful",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "social mixer felt forced and awkward, while game night and singles club were delightful",
+              "scene": "session_4",
+              "evidence_id": "fb28789b7fe84a59843dcd7b18b19ceb",
+              "timestamp": "2026-06-09T02:22:01.184836"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:22:01.184836",
+          "last_accessed": "2026-06-09T02:22:01.256700"
+        }
+      },
+      "unit_id": "28b5b8dedb5f4dc093245ecf56082ba8",
+      "timestamp": "2026-06-09T02:22:01.198442",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.256698",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "dating_goal",
+      "value": "seeking meaningful relationship through self-discovery and social learning",
+      "context": "multiple statements about wanting a meaningful relationship and using experiences to understand preferences",
+      "profile_type": "goal",
+      "stability_score": 0.7638699137029643,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "multiple statements about wanting a meaningful relationship and using experiences to understand preferences",
+          "scene": "session_4",
+          "evidence_id": "9ea325d8438046e09a96cc4afcce060a",
+          "timestamp": "2026-06-09T02:22:01.184850"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "seeking meaningful relationship through self-discovery and social learning",
+          "context": "multiple statements about wanting a meaningful relationship and using experiences to understand preferences",
+          "confidence_score": 0.8,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "multiple statements about wanting a meaningful relationship and using experiences to understand preferences",
+              "scene": "session_4",
+              "evidence_id": "9ea325d8438046e09a96cc4afcce060a",
+              "timestamp": "2026-06-09T02:22:01.184850"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:22:01.184850",
+          "last_accessed": "2026-06-09T02:22:01.256967"
+        }
+      },
+      "unit_id": "c8af90e5cc944f6f854fb3a6f5b4c3d5",
+      "timestamp": "2026-06-09T02:22:01.234842",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:22:01.256965",
+      "last_evolved": "2026-06-09T02:22:01.259585",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "dc037d3f0e8e48589a7e10180b7cc8c3": {
+      "source": "llm_deepseek",
+      "content": "disliked music theory and audio production technicalities; finds joy in creating own tracks",
+      "scene": "session_0",
+      "evidence_id": "dc037d3f0e8e48589a7e10180b7cc8c3",
+      "timestamp": "2026-06-09T02:22:00.969475"
+    },
+    "332e331d8edf48e8bd187c075ad63e04": {
+      "source": "llm_deepseek",
+      "content": "attended festivals, sampled traditional music, produced fusion track, developing app to help others",
+      "scene": "session_0",
+      "evidence_id": "332e331d8edf48e8bd187c075ad63e04",
+      "timestamp": "2026-06-09T02:22:00.969483"
+    },
+    "d087521dfb1f4898be68b5cbb11bc066": {
+      "source": "llm_deepseek",
+      "content": "tried podcast, album reviews, jam sessions, history research, audio production; now blending traditional and modern",
+      "scene": "session_0",
+      "evidence_id": "d087521dfb1f4898be68b5cbb11bc066",
+      "timestamp": "2026-06-09T02:22:00.969486"
+    },
+    "fd3288b6a1a54be6b183e03ea8da5015": {
+      "source": "llm_deepseek",
+      "content": "Attended electronic music festival featuring Pacific Islander artists; uses traditional instruments like ukulele and pahu drum with Latin rhythms; experiments with software to enhance traditional sounds.",
+      "scene": "session_1",
+      "evidence_id": "fd3288b6a1a54be6b183e03ea8da5015",
+      "timestamp": "2026-06-09T02:22:00.974181"
+    },
+    "d9369e3c7a0544349127c169530ac39a": {
+      "source": "llm_deepseek",
+      "content": "Feel pride and connection to roots; discovered a book on Pacific music theory; launched podcast discussing fusion; watched documentary on Pacific music history.",
+      "scene": "session_1",
+      "evidence_id": "d9369e3c7a0544349127c169530ac39a",
+      "timestamp": "2026-06-09T02:22:00.974184"
+    },
+    "c46813f9a5cf4604abda5f1db30e2707": {
+      "source": "llm_deepseek",
+      "content": "Merging old with innovative to strike balance between nostalgia and modernity; wants track to resonate with both roots and contemporary listeners.",
+      "scene": "session_1",
+      "evidence_id": "c46813f9a5cf4604abda5f1db30e2707",
+      "timestamp": "2026-06-09T02:22:00.974187"
+    },
+    "9d84fc6be44641c4b2f299fbe57b81c8": {
+      "source": "llm_deepseek",
+      "content": "Found practical workshop exciting; enrolled in audio production workshop to learn mixing/mastering; felt hands-on activities bring subjects to life.",
+      "scene": "session_1",
+      "evidence_id": "9d84fc6be44641c4b2f299fbe57b81c8",
+      "timestamp": "2026-06-09T02:22:00.974189"
+    },
+    "8af6eb49a3144d03bcd1a5b5ee0fd454": {
+      "source": "llm_deepseek",
+      "content": "Collaborated with local musician; joined online group for Pacific musical innovations; launched podcast with interviews; values exchange of ideas.",
+      "scene": "session_1",
+      "evidence_id": "8af6eb49a3144d03bcd1a5b5ee0fd454",
+      "timestamp": "2026-06-09T02:22:00.974191"
+    },
+    "d6a4c3bb18a4424a9f794cb80924dabf": {
+      "source": "llm_deepseek",
+      "content": "developed a new track using unique sound layers that incorporated recordings from nature",
+      "scene": "session_2",
+      "evidence_id": "d6a4c3bb18a4424a9f794cb80924dabf",
+      "timestamp": "2026-06-09T02:22:01.003595"
+    },
+    "f3939087f2694e2bbda1fb185b0673a2": {
+      "source": "llm_deepseek",
+      "content": "I actually joined a local band that focuses on fusing traditional and contemporary styles",
+      "scene": "session_2",
+      "evidence_id": "f3939087f2694e2bbda1fb185b0673a2",
+      "timestamp": "2026-06-09T02:22:01.003598"
+    },
+    "b1c5b42ae8a447baaedf9379cdcc136d": {
+      "source": "llm_deepseek",
+      "content": "I just published a review on an album that beautifully merges Pacific sounds and electronic music",
+      "scene": "session_2",
+      "evidence_id": "b1c5b42ae8a447baaedf9379cdcc136d",
+      "timestamp": "2026-06-09T02:22:01.003601"
+    },
+    "1130c860239640898b9d76e7346dd0d3": {
+      "source": "llm_deepseek",
+      "content": "dropped out of the audio production course after the first week, feeling overwhelmed... thinking about self-study or online resources",
+      "scene": "session_2",
+      "evidence_id": "1130c860239640898b9d76e7346dd0d3",
+      "timestamp": "2026-06-09T02:22:01.003603"
+    },
+    "814f7d4dca1e46d0b91bffc7a9a6a1cc": {
+      "source": "llm_deepseek",
+      "content": "remixed a popular track, integrating traditional Pacific instruments... connect with my roots",
+      "scene": "session_2",
+      "evidence_id": "814f7d4dca1e46d0b91bffc7a9a6a1cc",
+      "timestamp": "2026-06-09T02:22:01.003606"
+    },
+    "f44d0f2dbb1145feb1479dde5c925eb7": {
+      "source": "llm_deepseek",
+      "content": "contributed to a discussion about Pacific Islander music fusion techniques... playlist featured emerging Pacific artists",
+      "scene": "session_2",
+      "evidence_id": "f44d0f2dbb1145feb1479dde5c925eb7",
+      "timestamp": "2026-06-09T02:22:01.003608"
+    },
+    "e23998dd6ce645f28274d5f20b29e3ae": {
+      "source": "llm_deepseek",
+      "content": "Released remix album blending electronic with Pacific Islander melodies, explores fusion.",
+      "scene": "session_3",
+      "evidence_id": "e23998dd6ce645f28274d5f20b29e3ae",
+      "timestamp": "2026-06-09T02:22:01.059102"
+    },
+    "d33b21c59f524e2795bcd50bd112a6d4": {
+      "source": "llm_deepseek",
+      "content": "Felt stifled in collaboration, disagreements over artistic direction, questioned abilities, sought autonomy.",
+      "scene": "session_3",
+      "evidence_id": "d33b21c59f524e2795bcd50bd112a6d4",
+      "timestamp": "2026-06-09T02:22:01.059106"
+    },
+    "705733cd250f4f5b91f7441837509d6b": {
+      "source": "llm_deepseek",
+      "content": "Announced hiatus from remixing to concentrate on original compositions and personal projects.",
+      "scene": "session_3",
+      "evidence_id": "705733cd250f4f5b91f7441837509d6b",
+      "timestamp": "2026-06-09T02:22:01.059108"
+    },
+    "9161d356a2bf4a639df68c953ccb7a8e": {
+      "source": "llm_deepseek",
+      "content": "Organized a festival showcasing Pacific Islander artists, fusion works, fostering community.",
+      "scene": "session_3",
+      "evidence_id": "9161d356a2bf4a639df68c953ccb7a8e",
+      "timestamp": "2026-06-09T02:22:01.059111"
+    },
+    "a32e397901284dec9bfadb00b67cecac": {
+      "source": "llm_deepseek",
+      "content": "Attended workshop series on music theory focused on Pacific Island texts/rhythms, explored Indian music fusion via workshops and collaborations.",
+      "scene": "session_3",
+      "evidence_id": "a32e397901284dec9bfadb00b67cecac",
+      "timestamp": "2026-06-09T02:22:01.059113"
+    },
+    "b37d2eb1f388486fb7dc55bd94aa8b6b": {
+      "source": "llm_deepseek",
+      "content": "Found mentor who used Pacific Island examples to make theory relatable and enjoyable.",
+      "scene": "session_3",
+      "evidence_id": "b37d2eb1f388486fb7dc55bd94aa8b6b",
+      "timestamp": "2026-06-09T02:22:01.059115"
+    },
+    "80e1e957335541b48ebbeeabaa9166be": {
+      "source": "llm_deepseek",
+      "content": "Delves deeper by watching documentaries showcasing cultural music evolution, geography, history.",
+      "scene": "session_3",
+      "evidence_id": "80e1e957335541b48ebbeeabaa9166be",
+      "timestamp": "2026-06-09T02:22:01.059118"
+    },
+    "a943ca8f6d2f482dae98a942bfacb86a": {
+      "source": "llm_deepseek",
+      "content": "Expresses identity through music, tribute to cultures that shaped him, feels empowered.",
+      "scene": "session_3",
+      "evidence_id": "a943ca8f6d2f482dae98a942bfacb86a",
+      "timestamp": "2026-06-09T02:22:01.059120"
+    },
+    "fb28789b7fe84a59843dcd7b18b19ceb": {
+      "source": "llm_deepseek",
+      "content": "social mixer felt forced and awkward, while game night and singles club were delightful",
+      "scene": "session_4",
+      "evidence_id": "fb28789b7fe84a59843dcd7b18b19ceb",
+      "timestamp": "2026-06-09T02:22:01.184836"
+    },
+    "5e2191dbc24e4e71a3fca33b9cc5973d": {
+      "source": "llm_deepseek",
+      "content": "hiking date was tiring and not enjoyable",
+      "scene": "session_4",
+      "evidence_id": "5e2191dbc24e4e71a3fca33b9cc5973d",
+      "timestamp": "2026-06-09T02:22:01.184839"
+    },
+    "18d2f312a7704c259b45fadd00da1cfb": {
+      "source": "llm_deepseek",
+      "content": "wrote a blog post and created a vision board for relationship goals",
+      "scene": "session_4",
+      "evidence_id": "18d2f312a7704c259b45fadd00da1cfb",
+      "timestamp": "2026-06-09T02:22:01.184842"
+    },
+    "9ea325d8438046e09a96cc4afcce060a": {
+      "source": "llm_deepseek",
+      "content": "multiple statements about wanting a meaningful relationship and using experiences to understand preferences",
+      "scene": "session_4",
+      "evidence_id": "9ea325d8438046e09a96cc4afcce060a",
+      "timestamp": "2026-06-09T02:22:01.184850"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b_session_4",
+  "config_id": "ctx_0.50",
+  "context_hash": "1b0b224347aea71887603d63880b90c8d37b1f58073098513b839209034c2f3b",
+  "num_sessions": 5
+}

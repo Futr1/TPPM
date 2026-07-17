@@ -1,0 +1,909 @@
+{
+  "config": {
+    "write_threshold": 0.74,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "study_technique_preference",
+      "value": "prefers structured methods like Pomodoro and flashcards; finds mind maps tedious",
+      "context": "Pomodoro Technique catch attention, flashcards worked better, mind maps tedious",
+      "profile_type": "preference",
+      "stability_score": 0.5999999789789586,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Pomodoro Technique catch attention, flashcards worked better, mind maps tedious",
+          "scene": "session_0",
+          "evidence_id": "1637966f50dc496cb87b04284346133d",
+          "timestamp": "2026-06-09T02:20:26.376461"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers structured methods like Pomodoro and flashcards; finds mind maps tedious",
+          "context": "Pomodoro Technique catch attention, flashcards worked better, mind maps tedious",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Pomodoro Technique catch attention, flashcards worked better, mind maps tedious",
+              "scene": "session_0",
+              "evidence_id": "1637966f50dc496cb87b04284346133d",
+              "timestamp": "2026-06-09T02:20:26.376461"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:20:26.376461",
+          "last_accessed": "2026-06-09T02:20:26.476078"
+        }
+      },
+      "unit_id": "51f07b91c794436082ddd3e9a772e4b7",
+      "timestamp": "2026-06-09T02:20:26.376495",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476075",
+      "last_evolved": "2026-06-09T02:20:26.477400",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "communication_skill_focus",
+      "value": "prioritizing written communication over public speaking",
+      "context": "User stepped back from public speaking due to anxiety and decided to focus on improving written presentation skills.",
+      "profile_type": "goal",
+      "stability_score": 0.5999999811872919,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stepped back from public speaking due to anxiety and decided to focus on improving written presentation skills.",
+          "scene": "session_2",
+          "evidence_id": "f6cbf869310f40c8a2aeee9e62b63bd8",
+          "timestamp": "2026-06-09T02:20:26.378758"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prioritizing written communication over public speaking",
+          "context": "User stepped back from public speaking due to anxiety and decided to focus on improving written presentation skills.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stepped back from public speaking due to anxiety and decided to focus on improving written presentation skills.",
+              "scene": "session_2",
+              "evidence_id": "f6cbf869310f40c8a2aeee9e62b63bd8",
+              "timestamp": "2026-06-09T02:20:26.378758"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:26.378758",
+          "last_accessed": "2026-06-09T02:20:26.476213"
+        }
+      },
+      "unit_id": "1a967ceb5d1d4fbd8d953b80d52f128a",
+      "timestamp": "2026-06-09T02:20:26.387094",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476210",
+      "last_evolved": "2026-06-09T02:20:26.477400",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "social_learning_style",
+      "value": "engages in collaborative learning communities like book clubs, study groups, and workshops",
+      "context": "joined local book club, participated in study group, attended workshops and lectures, blogged for community",
+      "profile_type": "style",
+      "stability_score": 0.7683075014644025,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined local book club, participated in study group, attended workshops and lectures, blogged for community",
+          "scene": "session_0",
+          "evidence_id": "283cabc8075c41849b8ada4d3cf89d4c",
+          "timestamp": "2026-06-09T02:20:26.376468"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "engages in collaborative learning communities like book clubs, study groups, and workshops",
+          "context": "joined local book club, participated in study group, attended workshops and lectures, blogged for community",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined local book club, participated in study group, attended workshops and lectures, blogged for community",
+              "scene": "session_0",
+              "evidence_id": "283cabc8075c41849b8ada4d3cf89d4c",
+              "timestamp": "2026-06-09T02:20:26.376468"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:20:26.376468",
+          "last_accessed": "2026-06-09T02:20:26.476347"
+        }
+      },
+      "unit_id": "aad0ad0ace324c85be30b25df6825a60",
+      "timestamp": "2026-06-09T02:20:26.377191",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476344",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "study_method_preference",
+      "value": "detailed outlines over mind maps",
+      "context": "User explicitly states abandoning mind maps and switching to detailed outlines for study preparations.",
+      "profile_type": "preference",
+      "stability_score": 0.721782483536142,
+      "confidence_score": 0.95,
+      "scene": "session_2",
+      "quality_score": 0.9333333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User explicitly states abandoning mind maps and switching to detailed outlines for study preparations.",
+          "scene": "session_2",
+          "evidence_id": "f730d7ae8fa14feca0a40c2e3785ef2d",
+          "timestamp": "2026-06-09T02:20:26.378750"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "detailed outlines over mind maps",
+          "context": "User explicitly states abandoning mind maps and switching to detailed outlines for study preparations.",
+          "confidence_score": 0.95,
+          "quality_score": 0.9333333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User explicitly states abandoning mind maps and switching to detailed outlines for study preparations.",
+              "scene": "session_2",
+              "evidence_id": "f730d7ae8fa14feca0a40c2e3785ef2d",
+              "timestamp": "2026-06-09T02:20:26.378750"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:26.378750",
+          "last_accessed": "2026-06-09T02:20:26.476462"
+        }
+      },
+      "unit_id": "9c011f36b726425e9e338110aef29a25",
+      "timestamp": "2026-06-09T02:20:26.379717",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476459",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_learning_style",
+      "value": "prefers peer tutoring and collaborative study guides",
+      "context": "User initiated a peer tutoring program and engaged in designing a collaborative study guide with classmates.",
+      "profile_type": "style",
+      "stability_score": 0.7899408589560997,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User initiated a peer tutoring program and engaged in designing a collaborative study guide with classmates.",
+          "scene": "session_2",
+          "evidence_id": "1381f316fa524c92a383ccd6acb74152",
+          "timestamp": "2026-06-09T02:20:26.378753"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers peer tutoring and collaborative study guides",
+          "context": "User initiated a peer tutoring program and engaged in designing a collaborative study guide with classmates.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User initiated a peer tutoring program and engaged in designing a collaborative study guide with classmates.",
+              "scene": "session_2",
+              "evidence_id": "1381f316fa524c92a383ccd6acb74152",
+              "timestamp": "2026-06-09T02:20:26.378753"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:26.378753",
+          "last_accessed": "2026-06-09T02:20:26.476601"
+        }
+      },
+      "unit_id": "74df949c096e4ef1bb30ef98c1770fbe",
+      "timestamp": "2026-06-09T02:20:26.381405",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476598",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "meditation_practice",
+      "value": "daily meditation and community group participation",
+      "context": "User started a daily meditation routine and joined a community meditation group for support.",
+      "profile_type": "general",
+      "stability_score": 0.7217824848263061,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User started a daily meditation routine and joined a community meditation group for support.",
+          "scene": "session_2",
+          "evidence_id": "d22f91bee3da44a2b5a7c03950165ac0",
+          "timestamp": "2026-06-09T02:20:26.378756"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "daily meditation and community group participation",
+          "context": "User started a daily meditation routine and joined a community meditation group for support.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User started a daily meditation routine and joined a community meditation group for support.",
+              "scene": "session_2",
+              "evidence_id": "d22f91bee3da44a2b5a7c03950165ac0",
+              "timestamp": "2026-06-09T02:20:26.378756"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:26.378756",
+          "last_accessed": "2026-06-09T02:20:26.476748"
+        }
+      },
+      "unit_id": "1b7de6a4fc844cdd882cfbc03596f47f",
+      "timestamp": "2026-06-09T02:20:26.383608",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476746",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "communication_style_preference",
+      "value": "energetic and enthusiastic, avoiding formal language",
+      "context": "User repeatedly expresses dislike for formal tone and wants email to be more energetic and engaging",
+      "profile_type": "style",
+      "stability_score": 0.8248925517908731,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User repeatedly expresses dislike for formal tone and wants email to be more energetic and engaging",
+          "scene": "session_3",
+          "evidence_id": "e047a2121fac4647b315dbecfdc611fa",
+          "timestamp": "2026-06-09T02:20:26.391278"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "energetic and enthusiastic, avoiding formal language",
+          "context": "User repeatedly expresses dislike for formal tone and wants email to be more energetic and engaging",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User repeatedly expresses dislike for formal tone and wants email to be more energetic and engaging",
+              "scene": "session_3",
+              "evidence_id": "e047a2121fac4647b315dbecfdc611fa",
+              "timestamp": "2026-06-09T02:20:26.391278"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:26.391278",
+          "last_accessed": "2026-06-09T02:20:26.476866"
+        }
+      },
+      "unit_id": "59e473cb752744ecb67771ebd46efee1",
+      "timestamp": "2026-06-09T02:20:26.394708",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.476863",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "email_engagement_approach",
+      "value": "direct yet friendly requests, avoids impersonal phrasing",
+      "context": "User states 'I like direct requests but want it to feel more engaging' and dislikes 'Dear Madam or Sir'",
+      "profile_type": "preference",
+      "stability_score": 0.7167382277732874,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User states 'I like direct requests but want it to feel more engaging' and dislikes 'Dear Madam or Sir'",
+          "scene": "session_3",
+          "evidence_id": "0fca9181ae8941cf9300a7ff76baf696",
+          "timestamp": "2026-06-09T02:20:26.391281"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "direct yet friendly requests, avoids impersonal phrasing",
+          "context": "User states 'I like direct requests but want it to feel more engaging' and dislikes 'Dear Madam or Sir'",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User states 'I like direct requests but want it to feel more engaging' and dislikes 'Dear Madam or Sir'",
+              "scene": "session_3",
+              "evidence_id": "0fca9181ae8941cf9300a7ff76baf696",
+              "timestamp": "2026-06-09T02:20:26.391281"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:26.391281",
+          "last_accessed": "2026-06-09T02:20:26.477002"
+        }
+      },
+      "unit_id": "3c02272dd2ac47808be5f274b33d3039",
+      "timestamp": "2026-06-09T02:20:26.399495",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.477000",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "identity_football_fan",
+      "value": "die-hard college football fan",
+      "context": "User explicitly says 'transform my email into a version that fits my persona as a die-hard college football fan'",
+      "profile_type": "interest",
+      "stability_score": 0.84159585755339,
+      "confidence_score": 0.95,
+      "scene": "session_3",
+      "quality_score": 0.9833333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User explicitly says 'transform my email into a version that fits my persona as a die-hard college football fan'",
+          "scene": "session_3",
+          "evidence_id": "bbd77434b2b14047ab1e65bfc59a103a",
+          "timestamp": "2026-06-09T02:20:26.391283"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "die-hard college football fan",
+          "context": "User explicitly says 'transform my email into a version that fits my persona as a die-hard college football fan'",
+          "confidence_score": 0.95,
+          "quality_score": 0.9833333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User explicitly says 'transform my email into a version that fits my persona as a die-hard college football fan'",
+              "scene": "session_3",
+              "evidence_id": "bbd77434b2b14047ab1e65bfc59a103a",
+              "timestamp": "2026-06-09T02:20:26.391283"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:26.391283",
+          "last_accessed": "2026-06-09T02:20:26.477112"
+        }
+      },
+      "unit_id": "42d5013c66a74954894f91a73e9d85a2",
+      "timestamp": "2026-06-09T02:20:26.404711",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.477109",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "health_management_style",
+      "value": "proactive and evidence-based",
+      "context": "User attended diabetes workshop, prioritizes reliable sources, uses fitness journal, and feels overwhelmed by conflicting info",
+      "profile_type": "preference",
+      "stability_score": 0.7114353461947496,
+      "confidence_score": 0.75,
+      "scene": "session_4",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User attended diabetes workshop, prioritizes reliable sources, uses fitness journal, and feels overwhelmed by conflicting info",
+          "scene": "session_4",
+          "evidence_id": "d997d649b3864504bfbc9590c3599263",
+          "timestamp": "2026-06-09T02:20:26.409662"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "proactive and evidence-based",
+          "context": "User attended diabetes workshop, prioritizes reliable sources, uses fitness journal, and feels overwhelmed by conflicting info",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User attended diabetes workshop, prioritizes reliable sources, uses fitness journal, and feels overwhelmed by conflicting info",
+              "scene": "session_4",
+              "evidence_id": "d997d649b3864504bfbc9590c3599263",
+              "timestamp": "2026-06-09T02:20:26.409662"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:20:26.409662",
+          "last_accessed": "2026-06-09T02:20:26.477234"
+        }
+      },
+      "unit_id": "05cfaa7c3a1a494197413937d91640f7",
+      "timestamp": "2026-06-09T02:20:26.415833",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.477231",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "community_engagement_tendency",
+      "value": "high, actively participates in health initiatives",
+      "context": "User volunteered for vaccination drive, organized workshops for parents and kids, started health challenge among friends",
+      "profile_type": "interest",
+      "stability_score": 0.6858464893492753,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User volunteered for vaccination drive, organized workshops for parents and kids, started health challenge among friends",
+          "scene": "session_4",
+          "evidence_id": "74926486f8874fd0881cd75563ec8b91",
+          "timestamp": "2026-06-09T02:20:26.409665"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "high, actively participates in health initiatives",
+          "context": "User volunteered for vaccination drive, organized workshops for parents and kids, started health challenge among friends",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User volunteered for vaccination drive, organized workshops for parents and kids, started health challenge among friends",
+              "scene": "session_4",
+              "evidence_id": "74926486f8874fd0881cd75563ec8b91",
+              "timestamp": "2026-06-09T02:20:26.409665"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:20:26.409665",
+          "last_accessed": "2026-06-09T02:20:26.477369"
+        }
+      },
+      "unit_id": "61b94c0542624f069d9f8707c065163f",
+      "timestamp": "2026-06-09T02:20:26.422498",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.477366",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "study_preference",
+      "value": "prefers reading books and articles over listening to educational podcasts",
+      "context": "User transitioned to reading books and articles instead of listening to podcasts due to overwhelming volume and rapid pace.",
+      "profile_type": "preference",
+      "stability_score": 0.7058605859819215,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User transitioned to reading books and articles instead of listening to podcasts due to overwhelming volume and rapid pace.",
+          "scene": "session_5",
+          "evidence_id": "defbf5b148184883bc1f5ebbdb156d2b",
+          "timestamp": "2026-06-09T02:20:26.439491"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "prefers reading books and articles over listening to educational podcasts",
+          "context": "User transitioned to reading books and articles instead of listening to podcasts due to overwhelming volume and rapid pace.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User transitioned to reading books and articles instead of listening to podcasts due to overwhelming volume and rapid pace.",
+              "scene": "session_5",
+              "evidence_id": "defbf5b148184883bc1f5ebbdb156d2b",
+              "timestamp": "2026-06-09T02:20:26.439491"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:26.439491",
+          "last_accessed": "2026-06-09T02:20:26.475694"
+        }
+      },
+      "unit_id": "65874cb2229a4f4c8b5b438c6b2a639d",
+      "timestamp": "2026-06-09T02:20:26.448436",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.475692",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_style",
+      "value": "actively mentors and engages with community through teaching and sharing knowledge",
+      "context": "User initiated a summer mentoring program for high school students, and enjoys presenting at workshops and engaging with audiences.",
+      "profile_type": "style",
+      "stability_score": 0.8086315443981253,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User initiated a summer mentoring program for high school students, and enjoys presenting at workshops and engaging with audiences.",
+          "scene": "session_5",
+          "evidence_id": "fd0ca308333c4772b7e923e4ae3472e6",
+          "timestamp": "2026-06-09T02:20:26.439497"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "actively mentors and engages with community through teaching and sharing knowledge",
+          "context": "User initiated a summer mentoring program for high school students, and enjoys presenting at workshops and engaging with audiences.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User initiated a summer mentoring program for high school students, and enjoys presenting at workshops and engaging with audiences.",
+              "scene": "session_5",
+              "evidence_id": "fd0ca308333c4772b7e923e4ae3472e6",
+              "timestamp": "2026-06-09T02:20:26.439497"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:26.439497",
+          "last_accessed": "2026-06-09T02:20:26.475839"
+        }
+      },
+      "unit_id": "b6e2d30306604a2d8bea515f794c10c4",
+      "timestamp": "2026-06-09T02:20:26.457963",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.475837",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "interest_tech",
+      "value": "enjoys building custom software tools to enhance personal productivity and learning",
+      "context": "User developed a custom study app to track progress and incorporate advanced techniques, igniting passion for programming.",
+      "profile_type": "interest",
+      "stability_score": 0.692675668918608,
+      "confidence_score": 0.8,
+      "scene": "session_5",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User developed a custom study app to track progress and incorporate advanced techniques, igniting passion for programming.",
+          "scene": "session_5",
+          "evidence_id": "2fc33b92ea4946e294c163a13e8c1e68",
+          "timestamp": "2026-06-09T02:20:26.439501"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "enjoys building custom software tools to enhance personal productivity and learning",
+          "context": "User developed a custom study app to track progress and incorporate advanced techniques, igniting passion for programming.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User developed a custom study app to track progress and incorporate advanced techniques, igniting passion for programming.",
+              "scene": "session_5",
+              "evidence_id": "2fc33b92ea4946e294c163a13e8c1e68",
+              "timestamp": "2026-06-09T02:20:26.439501"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 5,
+          "last_seen": "2026-06-09T02:20:26.439501",
+          "last_accessed": "2026-06-09T02:20:26.475977"
+        }
+      },
+      "unit_id": "4fe6ec65a0cd47639fa4a190d2511b13",
+      "timestamp": "2026-06-09T02:20:26.467936",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 5,
+      "seen_session_ids": [
+        "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:20:26.475975",
+      "last_evolved": "2026-06-09T02:20:26.477425",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "1637966f50dc496cb87b04284346133d": {
+      "source": "llm_deepseek",
+      "content": "Pomodoro Technique catch attention, flashcards worked better, mind maps tedious",
+      "scene": "session_0",
+      "evidence_id": "1637966f50dc496cb87b04284346133d",
+      "timestamp": "2026-06-09T02:20:26.376461"
+    },
+    "283cabc8075c41849b8ada4d3cf89d4c": {
+      "source": "llm_deepseek",
+      "content": "joined local book club, participated in study group, attended workshops and lectures, blogged for community",
+      "scene": "session_0",
+      "evidence_id": "283cabc8075c41849b8ada4d3cf89d4c",
+      "timestamp": "2026-06-09T02:20:26.376468"
+    },
+    "f730d7ae8fa14feca0a40c2e3785ef2d": {
+      "source": "llm_deepseek",
+      "content": "User explicitly states abandoning mind maps and switching to detailed outlines for study preparations.",
+      "scene": "session_2",
+      "evidence_id": "f730d7ae8fa14feca0a40c2e3785ef2d",
+      "timestamp": "2026-06-09T02:20:26.378750"
+    },
+    "1381f316fa524c92a383ccd6acb74152": {
+      "source": "llm_deepseek",
+      "content": "User initiated a peer tutoring program and engaged in designing a collaborative study guide with classmates.",
+      "scene": "session_2",
+      "evidence_id": "1381f316fa524c92a383ccd6acb74152",
+      "timestamp": "2026-06-09T02:20:26.378753"
+    },
+    "d22f91bee3da44a2b5a7c03950165ac0": {
+      "source": "llm_deepseek",
+      "content": "User started a daily meditation routine and joined a community meditation group for support.",
+      "scene": "session_2",
+      "evidence_id": "d22f91bee3da44a2b5a7c03950165ac0",
+      "timestamp": "2026-06-09T02:20:26.378756"
+    },
+    "f6cbf869310f40c8a2aeee9e62b63bd8": {
+      "source": "llm_deepseek",
+      "content": "User stepped back from public speaking due to anxiety and decided to focus on improving written presentation skills.",
+      "scene": "session_2",
+      "evidence_id": "f6cbf869310f40c8a2aeee9e62b63bd8",
+      "timestamp": "2026-06-09T02:20:26.378758"
+    },
+    "e047a2121fac4647b315dbecfdc611fa": {
+      "source": "llm_deepseek",
+      "content": "User repeatedly expresses dislike for formal tone and wants email to be more energetic and engaging",
+      "scene": "session_3",
+      "evidence_id": "e047a2121fac4647b315dbecfdc611fa",
+      "timestamp": "2026-06-09T02:20:26.391278"
+    },
+    "0fca9181ae8941cf9300a7ff76baf696": {
+      "source": "llm_deepseek",
+      "content": "User states 'I like direct requests but want it to feel more engaging' and dislikes 'Dear Madam or Sir'",
+      "scene": "session_3",
+      "evidence_id": "0fca9181ae8941cf9300a7ff76baf696",
+      "timestamp": "2026-06-09T02:20:26.391281"
+    },
+    "bbd77434b2b14047ab1e65bfc59a103a": {
+      "source": "llm_deepseek",
+      "content": "User explicitly says 'transform my email into a version that fits my persona as a die-hard college football fan'",
+      "scene": "session_3",
+      "evidence_id": "bbd77434b2b14047ab1e65bfc59a103a",
+      "timestamp": "2026-06-09T02:20:26.391283"
+    },
+    "d997d649b3864504bfbc9590c3599263": {
+      "source": "llm_deepseek",
+      "content": "User attended diabetes workshop, prioritizes reliable sources, uses fitness journal, and feels overwhelmed by conflicting info",
+      "scene": "session_4",
+      "evidence_id": "d997d649b3864504bfbc9590c3599263",
+      "timestamp": "2026-06-09T02:20:26.409662"
+    },
+    "74926486f8874fd0881cd75563ec8b91": {
+      "source": "llm_deepseek",
+      "content": "User volunteered for vaccination drive, organized workshops for parents and kids, started health challenge among friends",
+      "scene": "session_4",
+      "evidence_id": "74926486f8874fd0881cd75563ec8b91",
+      "timestamp": "2026-06-09T02:20:26.409665"
+    },
+    "defbf5b148184883bc1f5ebbdb156d2b": {
+      "source": "llm_deepseek",
+      "content": "User transitioned to reading books and articles instead of listening to podcasts due to overwhelming volume and rapid pace.",
+      "scene": "session_5",
+      "evidence_id": "defbf5b148184883bc1f5ebbdb156d2b",
+      "timestamp": "2026-06-09T02:20:26.439491"
+    },
+    "fd0ca308333c4772b7e923e4ae3472e6": {
+      "source": "llm_deepseek",
+      "content": "User initiated a summer mentoring program for high school students, and enjoys presenting at workshops and engaging with audiences.",
+      "scene": "session_5",
+      "evidence_id": "fd0ca308333c4772b7e923e4ae3472e6",
+      "timestamp": "2026-06-09T02:20:26.439497"
+    },
+    "2fc33b92ea4946e294c163a13e8c1e68": {
+      "source": "llm_deepseek",
+      "content": "User developed a custom study app to track progress and incorporate advanced techniques, igniting passion for programming.",
+      "scene": "session_5",
+      "evidence_id": "2fc33b92ea4946e294c163a13e8c1e68",
+      "timestamp": "2026-06-09T02:20:26.439501"
+    }
+  },
+  "current_session": "session_5",
+  "current_session_id": "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829_session_5",
+  "config_id": "write_0.74",
+  "context_hash": "8c336cac503ae78c7fe58a6aef0965963041cd579d1a885db4709293b1853829",
+  "num_sessions": 6
+}

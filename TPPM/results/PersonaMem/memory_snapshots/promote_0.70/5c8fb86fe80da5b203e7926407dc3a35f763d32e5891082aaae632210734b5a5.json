@@ -1,0 +1,1579 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.7,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "reading_community_involvement",
+      "value": "active in book clubs, literature festivals, and library volunteer work",
+      "context": "joined a local book club, attended a national literature festival, volunteered at a library",
+      "profile_type": "interest",
+      "stability_score": 0.7999999341727805,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a local book club, attended a national literature festival, volunteered at a library",
+          "scene": "session_0",
+          "evidence_id": "099c14ae5ec84dd89a864ea389a21c13",
+          "timestamp": "2026-06-09T02:21:07.021699"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "active in book clubs, literature festivals, and library volunteer work",
+          "context": "joined a local book club, attended a national literature festival, volunteered at a library",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a local book club, attended a national literature festival, volunteered at a library",
+              "scene": "session_0",
+              "evidence_id": "099c14ae5ec84dd89a864ea389a21c13",
+              "timestamp": "2026-06-09T02:21:07.021699"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:07.021699",
+          "last_accessed": "2026-06-09T02:21:07.255727"
+        }
+      },
+      "unit_id": "f1f20d61d1da429483591f9c68a07b64",
+      "timestamp": "2026-06-09T02:21:07.021738",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.255724",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_pressure_sensitivity",
+      "value": "easily overwhelmed by deadlines and high-volume reading tasks; prefers relaxed pace",
+      "context": "reading marathon became overwhelming, book blog felt like a chore, reading challenge deadlines caused stress",
+      "profile_type": "style",
+      "stability_score": 0.6999999425931966,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "reading marathon became overwhelming, book blog felt like a chore, reading challenge deadlines caused stress",
+          "scene": "session_0",
+          "evidence_id": "a72e06784f0841f493f66d8f8b82afa3",
+          "timestamp": "2026-06-09T02:21:07.021706"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "easily overwhelmed by deadlines and high-volume reading tasks; prefers relaxed pace",
+          "context": "reading marathon became overwhelming, book blog felt like a chore, reading challenge deadlines caused stress",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "reading marathon became overwhelming, book blog felt like a chore, reading challenge deadlines caused stress",
+              "scene": "session_0",
+              "evidence_id": "a72e06784f0841f493f66d8f8b82afa3",
+              "timestamp": "2026-06-09T02:21:07.021706"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:07.021706",
+          "last_accessed": "2026-06-09T02:21:07.255892"
+        }
+      },
+      "unit_id": "12601d5b4a62485fb3a1ca8d8aeb5b9b",
+      "timestamp": "2026-06-09T02:21:07.022527",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.255889",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_genre_preference",
+      "value": "exploring fantasy, science fiction, and non-fiction on psychology and history",
+      "context": "diving deep into the realms of fantasy, science fiction, and even non-fiction works that delve into the intricacies of human psychology and history",
+      "profile_type": "interest",
+      "stability_score": 0.6999999432436133,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "diving deep into the realms of fantasy, science fiction, and even non-fiction works that delve into the intricacies of human psychology and history",
+          "scene": "session_1",
+          "evidence_id": "cf874856eba948e090a30f742b9bbf8b",
+          "timestamp": "2026-06-09T02:21:07.023393"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "exploring fantasy, science fiction, and non-fiction on psychology and history",
+          "context": "diving deep into the realms of fantasy, science fiction, and even non-fiction works that delve into the intricacies of human psychology and history",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "diving deep into the realms of fantasy, science fiction, and even non-fiction works that delve into the intricacies of human psychology and history",
+              "scene": "session_1",
+              "evidence_id": "cf874856eba948e090a30f742b9bbf8b",
+              "timestamp": "2026-06-09T02:21:07.023393"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023393",
+          "last_accessed": "2026-06-09T02:21:07.256092"
+        }
+      },
+      "unit_id": "bf120df1725c4451ae7d3b4eb7f971b4",
+      "timestamp": "2026-06-09T02:21:07.025204",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.256089",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "blogging_engagement",
+      "value": "stepped back from blogging due to pressure, prefers direct interactions",
+      "context": "stepping back from blogging has allowed me to rediscover that enthusiasm in different ways",
+      "profile_type": "style",
+      "stability_score": 0.5999999517541685,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stepping back from blogging has allowed me to rediscover that enthusiasm in different ways",
+          "scene": "session_1",
+          "evidence_id": "4ea0ce76c243447b9f004237a85a8a4b",
+          "timestamp": "2026-06-09T02:21:07.023399"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "stepped back from blogging due to pressure, prefers direct interactions",
+          "context": "stepping back from blogging has allowed me to rediscover that enthusiasm in different ways",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stepping back from blogging has allowed me to rediscover that enthusiasm in different ways",
+              "scene": "session_1",
+              "evidence_id": "4ea0ce76c243447b9f004237a85a8a4b",
+              "timestamp": "2026-06-09T02:21:07.023399"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023399",
+          "last_accessed": "2026-06-09T02:21:07.256304"
+        }
+      },
+      "unit_id": "62ca7469f2d14d3493ed7b4f385cea67",
+      "timestamp": "2026-06-09T02:21:07.027137",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.256301",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "review_writing_style",
+      "value": "abandoned formal reviews, prefers casual discussions",
+      "context": "abandoned the idea of writing reviews... Discussions offer a much more fluid space",
+      "profile_type": "style",
+      "stability_score": 0.5999999522158352,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "abandoned the idea of writing reviews... Discussions offer a much more fluid space",
+          "scene": "session_1",
+          "evidence_id": "659e13f1fee448e0a6b72b8c33ded98a",
+          "timestamp": "2026-06-09T02:21:07.023402"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "abandoned formal reviews, prefers casual discussions",
+          "context": "abandoned the idea of writing reviews... Discussions offer a much more fluid space",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "abandoned the idea of writing reviews... Discussions offer a much more fluid space",
+              "scene": "session_1",
+              "evidence_id": "659e13f1fee448e0a6b72b8c33ded98a",
+              "timestamp": "2026-06-09T02:21:07.023402"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023402",
+          "last_accessed": "2026-06-09T02:21:07.256452"
+        }
+      },
+      "unit_id": "59f65e98646f4f56904b9efe81d6b68d",
+      "timestamp": "2026-06-09T02:21:07.029352",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.256449",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "creative_merchandise_activity",
+      "value": "designs and sells book-themed merchandise",
+      "context": "designed a line of book-themed merchandise for a local fair... successfully launched a small line of book-related products",
+      "profile_type": "interest",
+      "stability_score": 0.6999999451550021,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "designed a line of book-themed merchandise for a local fair... successfully launched a small line of book-related products",
+          "scene": "session_1",
+          "evidence_id": "dd585482053e469abb826e22d4c39062",
+          "timestamp": "2026-06-09T02:21:07.023404"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "designs and sells book-themed merchandise",
+          "context": "designed a line of book-themed merchandise for a local fair... successfully launched a small line of book-related products",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "designed a line of book-themed merchandise for a local fair... successfully launched a small line of book-related products",
+              "scene": "session_1",
+              "evidence_id": "dd585482053e469abb826e22d4c39062",
+              "timestamp": "2026-06-09T02:21:07.023404"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023404",
+          "last_accessed": "2026-06-09T02:21:07.256621"
+        }
+      },
+      "unit_id": "ebf09582b73c4636ab5269fb9a5472a6",
+      "timestamp": "2026-06-09T02:21:07.033066",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.256618",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_club_participation",
+      "value": "started a classic literature book club",
+      "context": "started a book club that focuses on classic literature",
+      "profile_type": "interest",
+      "stability_score": 0.5999999535097934,
+      "confidence_score": 0.9,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started a book club that focuses on classic literature",
+          "scene": "session_1",
+          "evidence_id": "59bd0085b8594da3a3b9dc05f4df55c4",
+          "timestamp": "2026-06-09T02:21:07.023406"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "started a classic literature book club",
+          "context": "started a book club that focuses on classic literature",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started a book club that focuses on classic literature",
+              "scene": "session_1",
+              "evidence_id": "59bd0085b8594da3a3b9dc05f4df55c4",
+              "timestamp": "2026-06-09T02:21:07.023406"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023406",
+          "last_accessed": "2026-06-09T02:21:07.256752"
+        }
+      },
+      "unit_id": "0ba75647fdfd4d2d859c0bea7571d74e",
+      "timestamp": "2026-06-09T02:21:07.035563",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.256749",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "podcast_interest",
+      "value": "regularly listens to a podcast on author insights",
+      "context": "discovered a new podcast that explores author insights and became a regular listener",
+      "profile_type": "interest",
+      "stability_score": 0.6999999466643769,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "discovered a new podcast that explores author insights and became a regular listener",
+          "scene": "session_1",
+          "evidence_id": "14711b6d2ec643a6a7b404a1e4c48e15",
+          "timestamp": "2026-06-09T02:21:07.023408"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "regularly listens to a podcast on author insights",
+          "context": "discovered a new podcast that explores author insights and became a regular listener",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "discovered a new podcast that explores author insights and became a regular listener",
+              "scene": "session_1",
+              "evidence_id": "14711b6d2ec643a6a7b404a1e4c48e15",
+              "timestamp": "2026-06-09T02:21:07.023408"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023408",
+          "last_accessed": "2026-06-09T02:21:07.256903"
+        }
+      },
+      "unit_id": "a5de83d50ddb4a15bc8fe2a518aafa94",
+      "timestamp": "2026-06-09T02:21:07.039279",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.256900",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_event_participation",
+      "value": "joined a charity reading marathon",
+      "context": "joined a reading marathon for charity! It was a structured event that promoted community involvement",
+      "profile_type": "background",
+      "stability_score": 0.4999999626333347,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined a reading marathon for charity! It was a structured event that promoted community involvement",
+          "scene": "session_1",
+          "evidence_id": "f2dc6be5d6e64f6695eb8cc4b4b724b9",
+          "timestamp": "2026-06-09T02:21:07.023411"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "joined a charity reading marathon",
+          "context": "joined a reading marathon for charity! It was a structured event that promoted community involvement",
+          "confidence_score": 0.8,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined a reading marathon for charity! It was a structured event that promoted community involvement",
+              "scene": "session_1",
+              "evidence_id": "f2dc6be5d6e64f6695eb8cc4b4b724b9",
+              "timestamp": "2026-06-09T02:21:07.023411"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 24,
+          "last_seen": "2026-06-09T02:21:07.023411",
+          "last_accessed": "2026-06-09T02:21:07.257076"
+        }
+      },
+      "unit_id": "ef9c8052af6043cba1afb0ff2119de9e",
+      "timestamp": "2026-06-09T02:21:07.043485",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 24,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257073",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_style",
+      "value": "leisurely_paced",
+      "context": "opted out of reading marathons; prefers savoring chapters without urgency",
+      "profile_type": "preference",
+      "stability_score": 0.5999999592529179,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "opted out of reading marathons; prefers savoring chapters without urgency",
+          "scene": "session_2",
+          "evidence_id": "1b068929073f4861b3c29ea8fadbfd06",
+          "timestamp": "2026-06-09T02:21:07.059931"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "leisurely_paced",
+          "context": "opted out of reading marathons; prefers savoring chapters without urgency",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "opted out of reading marathons; prefers savoring chapters without urgency",
+              "scene": "session_2",
+              "evidence_id": "1b068929073f4861b3c29ea8fadbfd06",
+              "timestamp": "2026-06-09T02:21:07.059931"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:21:07.059931",
+          "last_accessed": "2026-06-09T02:21:07.257209"
+        }
+      },
+      "unit_id": "cdf2a2ec790d409b83881756cdea3a39",
+      "timestamp": "2026-06-09T02:21:07.063130",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257206",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_collecting_interest",
+      "value": "first_edition_collector",
+      "context": "acquired a first edition of a classic novel; excited about expanding collection",
+      "profile_type": "interest",
+      "stability_score": 0.49999996669930663,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "acquired a first edition of a classic novel; excited about expanding collection",
+          "scene": "session_2",
+          "evidence_id": "48b09222c99c436a99022d0839c0194e",
+          "timestamp": "2026-06-09T02:21:07.059934"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "first_edition_collector",
+          "context": "acquired a first edition of a classic novel; excited about expanding collection",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "acquired a first edition of a classic novel; excited about expanding collection",
+              "scene": "session_2",
+              "evidence_id": "48b09222c99c436a99022d0839c0194e",
+              "timestamp": "2026-06-09T02:21:07.059934"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:21:07.059934",
+          "last_accessed": "2026-06-09T02:21:07.257334"
+        }
+      },
+      "unit_id": "f0cad33ee7514c1fb67698ae103a53d8",
+      "timestamp": "2026-06-09T02:21:07.066904",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257332",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "bookstore_preference",
+      "value": "indie_bookstore_lover",
+      "context": "visiting multiple indie bookstores; enjoying unique atmosphere and local authors",
+      "profile_type": "preference",
+      "stability_score": 0.5999999608693762,
+      "confidence_score": 0.75,
+      "scene": "session_2",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "visiting multiple indie bookstores; enjoying unique atmosphere and local authors",
+          "scene": "session_2",
+          "evidence_id": "75ccd214f0fe4049808c2239bc6b50e6",
+          "timestamp": "2026-06-09T02:21:07.059937"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "indie_bookstore_lover",
+          "context": "visiting multiple indie bookstores; enjoying unique atmosphere and local authors",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "visiting multiple indie bookstores; enjoying unique atmosphere and local authors",
+              "scene": "session_2",
+              "evidence_id": "75ccd214f0fe4049808c2239bc6b50e6",
+              "timestamp": "2026-06-09T02:21:07.059937"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:21:07.059937",
+          "last_accessed": "2026-06-09T02:21:07.257463"
+        }
+      },
+      "unit_id": "1696e5946235482b8989aa0703686bb2",
+      "timestamp": "2026-06-09T02:21:07.070889",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257460",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "discussion_group_preference",
+      "value": "casual_discussion",
+      "context": "found classic literature discussion group unfulfilling and overly formal; prefers relaxed settings",
+      "profile_type": "preference",
+      "stability_score": 0.6999999555030916,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.8833333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "found classic literature discussion group unfulfilling and overly formal; prefers relaxed settings",
+          "scene": "session_2",
+          "evidence_id": "0551cc91f9ab4672835c226e4b752de8",
+          "timestamp": "2026-06-09T02:21:07.059939"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "casual_discussion",
+          "context": "found classic literature discussion group unfulfilling and overly formal; prefers relaxed settings",
+          "confidence_score": 0.9,
+          "quality_score": 0.8833333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "found classic literature discussion group unfulfilling and overly formal; prefers relaxed settings",
+              "scene": "session_2",
+              "evidence_id": "0551cc91f9ab4672835c226e4b752de8",
+              "timestamp": "2026-06-09T02:21:07.059939"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:21:07.059939",
+          "last_accessed": "2026-06-09T02:21:07.257604"
+        }
+      },
+      "unit_id": "948e09b54f52460da1fffa34375aaaaf",
+      "timestamp": "2026-06-09T02:21:07.075643",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257602",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "reading_genre_preference",
+      "value": "exploring diverse genres, previously overlooked",
+      "context": "I've found myself gravitating toward genres I would have previously overlooked",
+      "profile_type": "preference",
+      "stability_score": 0.49999997055434114,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've found myself gravitating toward genres I would have previously overlooked",
+          "scene": "session_3",
+          "evidence_id": "568a6aab9c0843749cf9e051840abc0c",
+          "timestamp": "2026-06-09T02:21:07.083627"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "exploring diverse genres, previously overlooked",
+          "context": "I've found myself gravitating toward genres I would have previously overlooked",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've found myself gravitating toward genres I would have previously overlooked",
+              "scene": "session_3",
+              "evidence_id": "568a6aab9c0843749cf9e051840abc0c",
+              "timestamp": "2026-06-09T02:21:07.083627"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:07.083627",
+          "last_accessed": "2026-06-09T02:21:07.257745"
+        }
+      },
+      "unit_id": "90404733b6294dce91f5e8c90526250c",
+      "timestamp": "2026-06-09T02:21:07.089109",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257743",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "bookstore_preference",
+      "value": "prefers larger chain stores for relaxed browsing over indie bookstores",
+      "context": "indie bookstores are not really the ideal fit for me anymore... I needed a space that allowed for a more relaxed exploration",
+      "profile_type": "preference",
+      "stability_score": 0.5999999664570842,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "indie bookstores are not really the ideal fit for me anymore... I needed a space that allowed for a more relaxed exploration",
+          "scene": "session_3",
+          "evidence_id": "c2e2e974568545aa8703952923c10073",
+          "timestamp": "2026-06-09T02:21:07.083631"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers larger chain stores for relaxed browsing over indie bookstores",
+          "context": "indie bookstores are not really the ideal fit for me anymore... I needed a space that allowed for a more relaxed exploration",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "indie bookstores are not really the ideal fit for me anymore... I needed a space that allowed for a more relaxed exploration",
+              "scene": "session_3",
+              "evidence_id": "c2e2e974568545aa8703952923c10073",
+              "timestamp": "2026-06-09T02:21:07.083631"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:07.083631",
+          "last_accessed": "2026-06-09T02:21:07.257932"
+        }
+      },
+      "unit_id": "af29a86f15e24e93a7b10545f72e4719",
+      "timestamp": "2026-06-09T02:21:07.097710",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.257929",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "volunteering_activity",
+      "value": "weekly volunteer at local library for literacy programs and community events",
+      "context": "started a regular volunteering schedule at the local library... assisting with literacy programs and organizing community events",
+      "profile_type": "interest",
+      "stability_score": 0.7999999579261122,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started a regular volunteering schedule at the local library... assisting with literacy programs and organizing community events",
+          "scene": "session_3",
+          "evidence_id": "6baeb57480d94427bb3b390c2c83ff6a",
+          "timestamp": "2026-06-09T02:21:07.083633"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "weekly volunteer at local library for literacy programs and community events",
+          "context": "started a regular volunteering schedule at the local library... assisting with literacy programs and organizing community events",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started a regular volunteering schedule at the local library... assisting with literacy programs and organizing community events",
+              "scene": "session_3",
+              "evidence_id": "6baeb57480d94427bb3b390c2c83ff6a",
+              "timestamp": "2026-06-09T02:21:07.083633"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:07.083633",
+          "last_accessed": "2026-06-09T02:21:07.258140"
+        }
+      },
+      "unit_id": "8cac25caa5b54aa8a668c35ee4703eab",
+      "timestamp": "2026-06-09T02:21:07.107250",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.258137",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_club_preference",
+      "value": "prefers unstructured reading over structured book club settings",
+      "context": "decided to step back from structured book club settings... reading should be a joyful escape, not a scheduled obligation",
+      "profile_type": "preference",
+      "stability_score": 0.599999970382709,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to step back from structured book club settings... reading should be a joyful escape, not a scheduled obligation",
+          "scene": "session_3",
+          "evidence_id": "ea36de63ff9e49069bd60fd26390ca41",
+          "timestamp": "2026-06-09T02:21:07.083636"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers unstructured reading over structured book club settings",
+          "context": "decided to step back from structured book club settings... reading should be a joyful escape, not a scheduled obligation",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to step back from structured book club settings... reading should be a joyful escape, not a scheduled obligation",
+              "scene": "session_3",
+              "evidence_id": "ea36de63ff9e49069bd60fd26390ca41",
+              "timestamp": "2026-06-09T02:21:07.083636"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:07.083636",
+          "last_accessed": "2026-06-09T02:21:07.258332"
+        }
+      },
+      "unit_id": "b7198193c8b04a3cb2e5b103a6fbb07c",
+      "timestamp": "2026-06-09T02:21:07.116553",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.258329",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "business_venture",
+      "value": "launched a line of custom bookmarks inspired by literary quotes",
+      "context": "I launched a new line of custom bookmarks inspired by my favorite literary quotes, and they've gained quite a bit of popularity",
+      "profile_type": "background",
+      "stability_score": 0.5999999726816673,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I launched a new line of custom bookmarks inspired by my favorite literary quotes, and they've gained quite a bit of popularity",
+          "scene": "session_3",
+          "evidence_id": "4e076908d35049e2a801c7b28d3988fe",
+          "timestamp": "2026-06-09T02:21:07.083638"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "launched a line of custom bookmarks inspired by literary quotes",
+          "context": "I launched a new line of custom bookmarks inspired by my favorite literary quotes, and they've gained quite a bit of popularity",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I launched a new line of custom bookmarks inspired by my favorite literary quotes, and they've gained quite a bit of popularity",
+              "scene": "session_3",
+              "evidence_id": "4e076908d35049e2a801c7b28d3988fe",
+              "timestamp": "2026-06-09T02:21:07.083638"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:07.083638",
+          "last_accessed": "2026-06-09T02:21:07.258529"
+        }
+      },
+      "unit_id": "8cd1d182bca74a2bb16f17cc7b22b917",
+      "timestamp": "2026-06-09T02:21:07.127588",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.258526",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_collecting_interest",
+      "value": "collects first editions, specifically acquired first edition of The Great Gatsby",
+      "context": "acquired a first edition book from an estate sale... I found a first edition of 'The Great Gatsby'",
+      "profile_type": "interest",
+      "stability_score": 0.49999997917899347,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "acquired a first edition book from an estate sale... I found a first edition of 'The Great Gatsby'",
+          "scene": "session_3",
+          "evidence_id": "88608396ead646409e71063c9c922504",
+          "timestamp": "2026-06-09T02:21:07.083641"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "collects first editions, specifically acquired first edition of The Great Gatsby",
+          "context": "acquired a first edition book from an estate sale... I found a first edition of 'The Great Gatsby'",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "acquired a first edition book from an estate sale... I found a first edition of 'The Great Gatsby'",
+              "scene": "session_3",
+              "evidence_id": "88608396ead646409e71063c9c922504",
+              "timestamp": "2026-06-09T02:21:07.083641"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:21:07.083641",
+          "last_accessed": "2026-06-09T02:21:07.258663"
+        }
+      },
+      "unit_id": "bee0532159b44d82baef41acac09c963",
+      "timestamp": "2026-06-09T02:21:07.138787",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.258660",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "exercise_preference",
+      "value": "prefers collaborative activities over competitive atmospheres",
+      "context": "user felt uncomfortable with competitive focus in tennis clinic, charity run; prefers enjoyment and camaraderie",
+      "profile_type": "preference",
+      "stability_score": 0.6999999779745489,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user felt uncomfortable with competitive focus in tennis clinic, charity run; prefers enjoyment and camaraderie",
+          "scene": "session_4",
+          "evidence_id": "d5bb0ea48d774d34978293bf835398d8",
+          "timestamp": "2026-06-09T02:21:07.156848"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers collaborative activities over competitive atmospheres",
+          "context": "user felt uncomfortable with competitive focus in tennis clinic, charity run; prefers enjoyment and camaraderie",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user felt uncomfortable with competitive focus in tennis clinic, charity run; prefers enjoyment and camaraderie",
+              "scene": "session_4",
+              "evidence_id": "d5bb0ea48d774d34978293bf835398d8",
+              "timestamp": "2026-06-09T02:21:07.156848"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:07.156848",
+          "last_accessed": "2026-06-09T02:21:07.254830"
+        }
+      },
+      "unit_id": "f5aad56b2f044f98bd0381adfd81da79",
+      "timestamp": "2026-06-09T02:21:07.168097",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.254828",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "running_habit",
+      "value": "running is an essential part of daily routine, provides mental clarity and meditative state",
+      "context": "user states running has become essential, helps clear mind, syncs thoughts with footsteps",
+      "profile_type": "interest",
+      "stability_score": 0.7999999782111115,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user states running has become essential, helps clear mind, syncs thoughts with footsteps",
+          "scene": "session_4",
+          "evidence_id": "5b3b7e6bcd124561a7b93a51b6ea26ef",
+          "timestamp": "2026-06-09T02:21:07.156852"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "running is an essential part of daily routine, provides mental clarity and meditative state",
+          "context": "user states running has become essential, helps clear mind, syncs thoughts with footsteps",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user states running has become essential, helps clear mind, syncs thoughts with footsteps",
+              "scene": "session_4",
+              "evidence_id": "5b3b7e6bcd124561a7b93a51b6ea26ef",
+              "timestamp": "2026-06-09T02:21:07.156852"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:07.156852",
+          "last_accessed": "2026-06-09T02:21:07.254983"
+        }
+      },
+      "unit_id": "b53705ea38894c36848e1901d6d17d95",
+      "timestamp": "2026-06-09T02:21:07.180276",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.254982",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "sports_exploration",
+      "value": "enjoys trying a wide variety of sports and physical activities",
+      "context": "user tried marathon, yoga, hiking, cycling, swimming, basketball, gardening, weightlifting, soccer, rock climbing, skiing, tennis, dancing, surfing, coaching, etc.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999870806252,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user tried marathon, yoga, hiking, cycling, swimming, basketball, gardening, weightlifting, soccer, rock climbing, skiing, tennis, dancing, surfing, coaching, etc.",
+          "scene": "session_4",
+          "evidence_id": "a8b16f5a143b4a5babe57094341cbab0",
+          "timestamp": "2026-06-09T02:21:07.156854"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys trying a wide variety of sports and physical activities",
+          "context": "user tried marathon, yoga, hiking, cycling, swimming, basketball, gardening, weightlifting, soccer, rock climbing, skiing, tennis, dancing, surfing, coaching, etc.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user tried marathon, yoga, hiking, cycling, swimming, basketball, gardening, weightlifting, soccer, rock climbing, skiing, tennis, dancing, surfing, coaching, etc.",
+              "scene": "session_4",
+              "evidence_id": "a8b16f5a143b4a5babe57094341cbab0",
+              "timestamp": "2026-06-09T02:21:07.156854"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:07.156854",
+          "last_accessed": "2026-06-09T02:21:07.255173"
+        }
+      },
+      "unit_id": "f28567c9d4ec4cbcaa989c02beb8fc21",
+      "timestamp": "2026-06-09T02:21:07.196702",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.255171",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "yoga_practice",
+      "value": "practices yoga to complement running, enhance flexibility, and promote recovery",
+      "context": "user mentions doing yoga and its benefits for flexibility and mental clarity",
+      "profile_type": "preference",
+      "stability_score": 0.6999999880032639,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.6666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user mentions doing yoga and its benefits for flexibility and mental clarity",
+          "scene": "session_4",
+          "evidence_id": "aed36988bced4aa882891279b186043c",
+          "timestamp": "2026-06-09T02:21:07.156857"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "practices yoga to complement running, enhance flexibility, and promote recovery",
+          "context": "user mentions doing yoga and its benefits for flexibility and mental clarity",
+          "confidence_score": 0.7,
+          "quality_score": 0.6666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user mentions doing yoga and its benefits for flexibility and mental clarity",
+              "scene": "session_4",
+              "evidence_id": "aed36988bced4aa882891279b186043c",
+              "timestamp": "2026-06-09T02:21:07.156857"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:07.156857",
+          "last_accessed": "2026-06-09T02:21:07.255306"
+        }
+      },
+      "unit_id": "a9e24ed69ec54a0eb40dafc299d69711",
+      "timestamp": "2026-06-09T02:21:07.209357",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.255304",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "team_sports_social",
+      "value": "values social connections and camaraderie through team sports, especially soccer",
+      "context": "user joined soccer league to meet friends and stay active, enjoys team dynamics",
+      "profile_type": "style",
+      "stability_score": 0.599999992595625,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user joined soccer league to meet friends and stay active, enjoys team dynamics",
+          "scene": "session_4",
+          "evidence_id": "a60cdea577904096b2ee835845278256",
+          "timestamp": "2026-06-09T02:21:07.156859"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "values social connections and camaraderie through team sports, especially soccer",
+          "context": "user joined soccer league to meet friends and stay active, enjoys team dynamics",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user joined soccer league to meet friends and stay active, enjoys team dynamics",
+              "scene": "session_4",
+              "evidence_id": "a60cdea577904096b2ee835845278256",
+              "timestamp": "2026-06-09T02:21:07.156859"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:07.156859",
+          "last_accessed": "2026-06-09T02:21:07.255432"
+        }
+      },
+      "unit_id": "aa30352b6b9548f99f2586b161c09230",
+      "timestamp": "2026-06-09T02:21:07.223174",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.255430",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "outdoor_connection",
+      "value": "enjoys outdoor activities for relaxation and connecting with nature",
+      "context": "user describes hiking, gardening, and cycling as ways to unwind and appreciate nature",
+      "profile_type": "interest",
+      "stability_score": 0.6999999946158333,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user describes hiking, gardening, and cycling as ways to unwind and appreciate nature",
+          "scene": "session_4",
+          "evidence_id": "3fa1f0dc17f24adaa27e792fc3ae15ff",
+          "timestamp": "2026-06-09T02:21:07.156862"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys outdoor activities for relaxation and connecting with nature",
+          "context": "user describes hiking, gardening, and cycling as ways to unwind and appreciate nature",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user describes hiking, gardening, and cycling as ways to unwind and appreciate nature",
+              "scene": "session_4",
+              "evidence_id": "3fa1f0dc17f24adaa27e792fc3ae15ff",
+              "timestamp": "2026-06-09T02:21:07.156862"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 6,
+          "last_seen": "2026-06-09T02:21:07.156862",
+          "last_accessed": "2026-06-09T02:21:07.255583"
+        }
+      },
+      "unit_id": "7239742e6dcc4a85adebe9fda4772314",
+      "timestamp": "2026-06-09T02:21:07.236564",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 6,
+      "seen_session_ids": [
+        "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:07.255581",
+      "last_evolved": "2026-06-09T02:21:07.258720",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [],
+  "evidence_store": {
+    "099c14ae5ec84dd89a864ea389a21c13": {
+      "source": "llm_deepseek",
+      "content": "joined a local book club, attended a national literature festival, volunteered at a library",
+      "scene": "session_0",
+      "evidence_id": "099c14ae5ec84dd89a864ea389a21c13",
+      "timestamp": "2026-06-09T02:21:07.021699"
+    },
+    "a72e06784f0841f493f66d8f8b82afa3": {
+      "source": "llm_deepseek",
+      "content": "reading marathon became overwhelming, book blog felt like a chore, reading challenge deadlines caused stress",
+      "scene": "session_0",
+      "evidence_id": "a72e06784f0841f493f66d8f8b82afa3",
+      "timestamp": "2026-06-09T02:21:07.021706"
+    },
+    "cf874856eba948e090a30f742b9bbf8b": {
+      "source": "llm_deepseek",
+      "content": "diving deep into the realms of fantasy, science fiction, and even non-fiction works that delve into the intricacies of human psychology and history",
+      "scene": "session_1",
+      "evidence_id": "cf874856eba948e090a30f742b9bbf8b",
+      "timestamp": "2026-06-09T02:21:07.023393"
+    },
+    "4ea0ce76c243447b9f004237a85a8a4b": {
+      "source": "llm_deepseek",
+      "content": "stepping back from blogging has allowed me to rediscover that enthusiasm in different ways",
+      "scene": "session_1",
+      "evidence_id": "4ea0ce76c243447b9f004237a85a8a4b",
+      "timestamp": "2026-06-09T02:21:07.023399"
+    },
+    "659e13f1fee448e0a6b72b8c33ded98a": {
+      "source": "llm_deepseek",
+      "content": "abandoned the idea of writing reviews... Discussions offer a much more fluid space",
+      "scene": "session_1",
+      "evidence_id": "659e13f1fee448e0a6b72b8c33ded98a",
+      "timestamp": "2026-06-09T02:21:07.023402"
+    },
+    "dd585482053e469abb826e22d4c39062": {
+      "source": "llm_deepseek",
+      "content": "designed a line of book-themed merchandise for a local fair... successfully launched a small line of book-related products",
+      "scene": "session_1",
+      "evidence_id": "dd585482053e469abb826e22d4c39062",
+      "timestamp": "2026-06-09T02:21:07.023404"
+    },
+    "59bd0085b8594da3a3b9dc05f4df55c4": {
+      "source": "llm_deepseek",
+      "content": "started a book club that focuses on classic literature",
+      "scene": "session_1",
+      "evidence_id": "59bd0085b8594da3a3b9dc05f4df55c4",
+      "timestamp": "2026-06-09T02:21:07.023406"
+    },
+    "14711b6d2ec643a6a7b404a1e4c48e15": {
+      "source": "llm_deepseek",
+      "content": "discovered a new podcast that explores author insights and became a regular listener",
+      "scene": "session_1",
+      "evidence_id": "14711b6d2ec643a6a7b404a1e4c48e15",
+      "timestamp": "2026-06-09T02:21:07.023408"
+    },
+    "f2dc6be5d6e64f6695eb8cc4b4b724b9": {
+      "source": "llm_deepseek",
+      "content": "joined a reading marathon for charity! It was a structured event that promoted community involvement",
+      "scene": "session_1",
+      "evidence_id": "f2dc6be5d6e64f6695eb8cc4b4b724b9",
+      "timestamp": "2026-06-09T02:21:07.023411"
+    },
+    "1b068929073f4861b3c29ea8fadbfd06": {
+      "source": "llm_deepseek",
+      "content": "opted out of reading marathons; prefers savoring chapters without urgency",
+      "scene": "session_2",
+      "evidence_id": "1b068929073f4861b3c29ea8fadbfd06",
+      "timestamp": "2026-06-09T02:21:07.059931"
+    },
+    "48b09222c99c436a99022d0839c0194e": {
+      "source": "llm_deepseek",
+      "content": "acquired a first edition of a classic novel; excited about expanding collection",
+      "scene": "session_2",
+      "evidence_id": "48b09222c99c436a99022d0839c0194e",
+      "timestamp": "2026-06-09T02:21:07.059934"
+    },
+    "75ccd214f0fe4049808c2239bc6b50e6": {
+      "source": "llm_deepseek",
+      "content": "visiting multiple indie bookstores; enjoying unique atmosphere and local authors",
+      "scene": "session_2",
+      "evidence_id": "75ccd214f0fe4049808c2239bc6b50e6",
+      "timestamp": "2026-06-09T02:21:07.059937"
+    },
+    "0551cc91f9ab4672835c226e4b752de8": {
+      "source": "llm_deepseek",
+      "content": "found classic literature discussion group unfulfilling and overly formal; prefers relaxed settings",
+      "scene": "session_2",
+      "evidence_id": "0551cc91f9ab4672835c226e4b752de8",
+      "timestamp": "2026-06-09T02:21:07.059939"
+    },
+    "568a6aab9c0843749cf9e051840abc0c": {
+      "source": "llm_deepseek",
+      "content": "I've found myself gravitating toward genres I would have previously overlooked",
+      "scene": "session_3",
+      "evidence_id": "568a6aab9c0843749cf9e051840abc0c",
+      "timestamp": "2026-06-09T02:21:07.083627"
+    },
+    "c2e2e974568545aa8703952923c10073": {
+      "source": "llm_deepseek",
+      "content": "indie bookstores are not really the ideal fit for me anymore... I needed a space that allowed for a more relaxed exploration",
+      "scene": "session_3",
+      "evidence_id": "c2e2e974568545aa8703952923c10073",
+      "timestamp": "2026-06-09T02:21:07.083631"
+    },
+    "6baeb57480d94427bb3b390c2c83ff6a": {
+      "source": "llm_deepseek",
+      "content": "started a regular volunteering schedule at the local library... assisting with literacy programs and organizing community events",
+      "scene": "session_3",
+      "evidence_id": "6baeb57480d94427bb3b390c2c83ff6a",
+      "timestamp": "2026-06-09T02:21:07.083633"
+    },
+    "ea36de63ff9e49069bd60fd26390ca41": {
+      "source": "llm_deepseek",
+      "content": "decided to step back from structured book club settings... reading should be a joyful escape, not a scheduled obligation",
+      "scene": "session_3",
+      "evidence_id": "ea36de63ff9e49069bd60fd26390ca41",
+      "timestamp": "2026-06-09T02:21:07.083636"
+    },
+    "4e076908d35049e2a801c7b28d3988fe": {
+      "source": "llm_deepseek",
+      "content": "I launched a new line of custom bookmarks inspired by my favorite literary quotes, and they've gained quite a bit of popularity",
+      "scene": "session_3",
+      "evidence_id": "4e076908d35049e2a801c7b28d3988fe",
+      "timestamp": "2026-06-09T02:21:07.083638"
+    },
+    "88608396ead646409e71063c9c922504": {
+      "source": "llm_deepseek",
+      "content": "acquired a first edition book from an estate sale... I found a first edition of 'The Great Gatsby'",
+      "scene": "session_3",
+      "evidence_id": "88608396ead646409e71063c9c922504",
+      "timestamp": "2026-06-09T02:21:07.083641"
+    },
+    "d5bb0ea48d774d34978293bf835398d8": {
+      "source": "llm_deepseek",
+      "content": "user felt uncomfortable with competitive focus in tennis clinic, charity run; prefers enjoyment and camaraderie",
+      "scene": "session_4",
+      "evidence_id": "d5bb0ea48d774d34978293bf835398d8",
+      "timestamp": "2026-06-09T02:21:07.156848"
+    },
+    "5b3b7e6bcd124561a7b93a51b6ea26ef": {
+      "source": "llm_deepseek",
+      "content": "user states running has become essential, helps clear mind, syncs thoughts with footsteps",
+      "scene": "session_4",
+      "evidence_id": "5b3b7e6bcd124561a7b93a51b6ea26ef",
+      "timestamp": "2026-06-09T02:21:07.156852"
+    },
+    "a8b16f5a143b4a5babe57094341cbab0": {
+      "source": "llm_deepseek",
+      "content": "user tried marathon, yoga, hiking, cycling, swimming, basketball, gardening, weightlifting, soccer, rock climbing, skiing, tennis, dancing, surfing, coaching, etc.",
+      "scene": "session_4",
+      "evidence_id": "a8b16f5a143b4a5babe57094341cbab0",
+      "timestamp": "2026-06-09T02:21:07.156854"
+    },
+    "aed36988bced4aa882891279b186043c": {
+      "source": "llm_deepseek",
+      "content": "user mentions doing yoga and its benefits for flexibility and mental clarity",
+      "scene": "session_4",
+      "evidence_id": "aed36988bced4aa882891279b186043c",
+      "timestamp": "2026-06-09T02:21:07.156857"
+    },
+    "a60cdea577904096b2ee835845278256": {
+      "source": "llm_deepseek",
+      "content": "user joined soccer league to meet friends and stay active, enjoys team dynamics",
+      "scene": "session_4",
+      "evidence_id": "a60cdea577904096b2ee835845278256",
+      "timestamp": "2026-06-09T02:21:07.156859"
+    },
+    "3fa1f0dc17f24adaa27e792fc3ae15ff": {
+      "source": "llm_deepseek",
+      "content": "user describes hiking, gardening, and cycling as ways to unwind and appreciate nature",
+      "scene": "session_4",
+      "evidence_id": "3fa1f0dc17f24adaa27e792fc3ae15ff",
+      "timestamp": "2026-06-09T02:21:07.156862"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5_session_4",
+  "config_id": "promote_0.70",
+  "context_hash": "5c8fb86fe80da5b203e7926407dc3a35f763d32e5891082aaae632210734b5a5",
+  "num_sessions": 5
+}

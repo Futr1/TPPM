@@ -1,0 +1,1275 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.52,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "travel_documentation_style",
+      "value": "uses social media photography and yearly journal to document travel experiences",
+      "context": "User launched a social media account for travel photography and started a yearly travel journal.",
+      "profile_type": "style",
+      "stability_score": 0.5999999836529168,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User launched a social media account for travel photography and started a yearly travel journal.",
+          "scene": "session_2",
+          "evidence_id": "9efd6d89ca9b4e31baac47b66922fee7",
+          "timestamp": "2026-06-09T02:20:49.592721"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "uses social media photography and yearly journal to document travel experiences",
+          "context": "User launched a social media account for travel photography and started a yearly travel journal.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User launched a social media account for travel photography and started a yearly travel journal.",
+              "scene": "session_2",
+              "evidence_id": "9efd6d89ca9b4e31baac47b66922fee7",
+              "timestamp": "2026-06-09T02:20:49.592721"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 10,
+          "last_seen": "2026-06-09T02:20:49.592721",
+          "last_accessed": "2026-06-09T02:20:49.679842"
+        }
+      },
+      "unit_id": "486c5c736892491297c5ff49a76a61fe",
+      "timestamp": "2026-06-09T02:20:49.604036",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 10,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.679838",
+      "last_evolved": "2026-06-09T02:20:49.682506",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "travel_planning_style",
+      "value": "detail-oriented but overwhelmed",
+      "context": "user described creating detailed itineraries and feeling overwhelmed by planning",
+      "profile_type": "style",
+      "stability_score": 0.7580302910728524,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user described creating detailed itineraries and feeling overwhelmed by planning",
+          "scene": "session_0",
+          "evidence_id": "cd2fdeafd7c348ab83f3bb83da429574",
+          "timestamp": "2026-06-09T02:20:49.563889"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "detail-oriented but overwhelmed",
+          "context": "user described creating detailed itineraries and feeling overwhelmed by planning",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user described creating detailed itineraries and feeling overwhelmed by planning",
+              "scene": "session_0",
+              "evidence_id": "cd2fdeafd7c348ab83f3bb83da429574",
+              "timestamp": "2026-06-09T02:20:49.563889"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:49.563889",
+          "last_accessed": "2026-06-09T02:20:49.680003"
+        }
+      },
+      "unit_id": "d75cfd6bd20f45e180d78ae6337bd49f",
+      "timestamp": "2026-06-09T02:20:49.563923",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680000",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "adventure_risk_preference",
+      "value": "prefers controlled settings",
+      "context": "user stated after local adventures that they prefer more controlled settings",
+      "profile_type": "preference",
+      "stability_score": 0.7655207641032038,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user stated after local adventures that they prefer more controlled settings",
+          "scene": "session_0",
+          "evidence_id": "7d630c90dbf44d55a6fe876ae3a7fcd6",
+          "timestamp": "2026-06-09T02:20:49.563896"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefers controlled settings",
+          "context": "user stated after local adventures that they prefer more controlled settings",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user stated after local adventures that they prefer more controlled settings",
+              "scene": "session_0",
+              "evidence_id": "7d630c90dbf44d55a6fe876ae3a7fcd6",
+              "timestamp": "2026-06-09T02:20:49.563896"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:49.563896",
+          "last_accessed": "2026-06-09T02:20:49.680145"
+        }
+      },
+      "unit_id": "ded632be6e444c9cb8f69d3cee29d871",
+      "timestamp": "2026-06-09T02:20:49.564382",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680142",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "volunteer_fulfillment",
+      "value": "finds volunteering abroad fulfilling",
+      "context": "user described volunteering as incredibly fulfilling",
+      "profile_type": "interest",
+      "stability_score": 0.6327720082814051,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user described volunteering as incredibly fulfilling",
+          "scene": "session_0",
+          "evidence_id": "5e7c756d973b4267b33c001643a5f6e0",
+          "timestamp": "2026-06-09T02:20:49.563899"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "finds volunteering abroad fulfilling",
+          "context": "user described volunteering as incredibly fulfilling",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user described volunteering as incredibly fulfilling",
+              "scene": "session_0",
+              "evidence_id": "5e7c756d973b4267b33c001643a5f6e0",
+              "timestamp": "2026-06-09T02:20:49.563899"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:49.563899",
+          "last_accessed": "2026-06-09T02:20:49.680304"
+        }
+      },
+      "unit_id": "b9ce287f16f94d2b9630425222b12852",
+      "timestamp": "2026-06-09T02:20:49.564980",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680301",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "influencer_attitude",
+      "value": "skeptical of unrealistic lifestyles",
+      "context": "user said travel influencers' lifestyles felt unrealistic",
+      "profile_type": "style",
+      "stability_score": 0.6761572207389192,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "user said travel influencers' lifestyles felt unrealistic",
+          "scene": "session_0",
+          "evidence_id": "4008c9844e5047ba8af8233e0695d8f1",
+          "timestamp": "2026-06-09T02:20:49.563902"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "skeptical of unrealistic lifestyles",
+          "context": "user said travel influencers' lifestyles felt unrealistic",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "user said travel influencers' lifestyles felt unrealistic",
+              "scene": "session_0",
+              "evidence_id": "4008c9844e5047ba8af8233e0695d8f1",
+              "timestamp": "2026-06-09T02:20:49.563902"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:49.563902",
+          "last_accessed": "2026-06-09T02:20:49.680450"
+        }
+      },
+      "unit_id": "215e75e3e11b47c2ba919fde795225f9",
+      "timestamp": "2026-06-09T02:20:49.566025",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680447",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_tool_preference",
+      "value": "digital platforms over physical guides",
+      "context": "stopped collecting physical travel guides; uses online platforms, blogs, apps",
+      "profile_type": "preference",
+      "stability_score": 0.7627190134578649,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stopped collecting physical travel guides; uses online platforms, blogs, apps",
+          "scene": "session_1",
+          "evidence_id": "07efb977e5644384acd486adb89e9a72",
+          "timestamp": "2026-06-09T02:20:49.568328"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "digital platforms over physical guides",
+          "context": "stopped collecting physical travel guides; uses online platforms, blogs, apps",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stopped collecting physical travel guides; uses online platforms, blogs, apps",
+              "scene": "session_1",
+              "evidence_id": "07efb977e5644384acd486adb89e9a72",
+              "timestamp": "2026-06-09T02:20:49.568328"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:49.568328",
+          "last_accessed": "2026-06-09T02:20:49.680611"
+        }
+      },
+      "unit_id": "ad0a7d6016734f8dbada2287c9496be9",
+      "timestamp": "2026-06-09T02:20:49.569604",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680608",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_activity_interest",
+      "value": "cultural festivals",
+      "context": "started enjoying exploring cultural festivals; attended with friend",
+      "profile_type": "interest",
+      "stability_score": 0.5979636506145515,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started enjoying exploring cultural festivals; attended with friend",
+          "scene": "session_1",
+          "evidence_id": "deeee2cbe712415fbfbcccd2fb9ef079",
+          "timestamp": "2026-06-09T02:20:49.568331"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "cultural festivals",
+          "context": "started enjoying exploring cultural festivals; attended with friend",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started enjoying exploring cultural festivals; attended with friend",
+              "scene": "session_1",
+              "evidence_id": "deeee2cbe712415fbfbcccd2fb9ef079",
+              "timestamp": "2026-06-09T02:20:49.568331"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:49.568331",
+          "last_accessed": "2026-06-09T02:20:49.680754"
+        }
+      },
+      "unit_id": "50145db8b0c34de6a85ce7fe67ba5941",
+      "timestamp": "2026-06-09T02:20:49.570972",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680751",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_budget_preference",
+      "value": "flexible, no-strict-budget approach for spontaneity",
+      "context": "changed approach to budgeting; travel without strict budget feels liberating",
+      "profile_type": "preference",
+      "stability_score": 0.6399094095147849,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "changed approach to budgeting; travel without strict budget feels liberating",
+          "scene": "session_1",
+          "evidence_id": "e358eec0424640078568b635c610b98e",
+          "timestamp": "2026-06-09T02:20:49.568334"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "flexible, no-strict-budget approach for spontaneity",
+          "context": "changed approach to budgeting; travel without strict budget feels liberating",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "changed approach to budgeting; travel without strict budget feels liberating",
+              "scene": "session_1",
+              "evidence_id": "e358eec0424640078568b635c610b98e",
+              "timestamp": "2026-06-09T02:20:49.568334"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:49.568334",
+          "last_accessed": "2026-06-09T02:20:49.680913"
+        }
+      },
+      "unit_id": "abddcb4c693a4f71bc3112c28ab93d04",
+      "timestamp": "2026-06-09T02:20:49.573096",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.680910",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_documentation_style",
+      "value": "spontaneous note-taking over daily journaling",
+      "context": "stopped journaling daily; opts for spontaneous note-taking to focus on experience",
+      "profile_type": "style",
+      "stability_score": 0.7047264809898632,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stopped journaling daily; opts for spontaneous note-taking to focus on experience",
+          "scene": "session_1",
+          "evidence_id": "2d7a2894d25242acb9458eed2d97887b",
+          "timestamp": "2026-06-09T02:20:49.568336"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "spontaneous note-taking over daily journaling",
+          "context": "stopped journaling daily; opts for spontaneous note-taking to focus on experience",
+          "confidence_score": 0.8,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stopped journaling daily; opts for spontaneous note-taking to focus on experience",
+              "scene": "session_1",
+              "evidence_id": "2d7a2894d25242acb9458eed2d97887b",
+              "timestamp": "2026-06-09T02:20:49.568336"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:49.568336",
+          "last_accessed": "2026-06-09T02:20:49.681053"
+        }
+      },
+      "unit_id": "05d9b12e090b4d68a1bffcf503de0e4e",
+      "timestamp": "2026-06-09T02:20:49.575405",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.681050",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "language_learning_activity",
+      "value": "actively practicing new languages with native speakers",
+      "context": "joined language exchange program to practice new languages with native speakers",
+      "profile_type": "interest",
+      "stability_score": 0.6735420211080968,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined language exchange program to practice new languages with native speakers",
+          "scene": "session_1",
+          "evidence_id": "3c50d958182c4801b9f18ea767cff230",
+          "timestamp": "2026-06-09T02:20:49.568338"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "actively practicing new languages with native speakers",
+          "context": "joined language exchange program to practice new languages with native speakers",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined language exchange program to practice new languages with native speakers",
+              "scene": "session_1",
+              "evidence_id": "3c50d958182c4801b9f18ea767cff230",
+              "timestamp": "2026-06-09T02:20:49.568338"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:49.568338",
+          "last_accessed": "2026-06-09T02:20:49.681229"
+        }
+      },
+      "unit_id": "88c934fa68ab478a87feb381732688e5",
+      "timestamp": "2026-06-09T02:20:49.578390",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.681226",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "exploration_style",
+      "value": "local exploration and spontaneous adventures close to home",
+      "context": "joined local adventure club for weekly excursions; discovered beauty in familiar surroundings",
+      "profile_type": "style",
+      "stability_score": 0.7473336702393403,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined local adventure club for weekly excursions; discovered beauty in familiar surroundings",
+          "scene": "session_1",
+          "evidence_id": "9a46684d478e42728d6b9e8d8bf244ad",
+          "timestamp": "2026-06-09T02:20:49.568341"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "local exploration and spontaneous adventures close to home",
+          "context": "joined local adventure club for weekly excursions; discovered beauty in familiar surroundings",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined local adventure club for weekly excursions; discovered beauty in familiar surroundings",
+              "scene": "session_1",
+              "evidence_id": "9a46684d478e42728d6b9e8d8bf244ad",
+              "timestamp": "2026-06-09T02:20:49.568341"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:20:49.568341",
+          "last_accessed": "2026-06-09T02:20:49.681428"
+        }
+      },
+      "unit_id": "cb9ffedf30334741b883db41731cefbc",
+      "timestamp": "2026-06-09T02:20:49.582337",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.681426",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_sustainability_preference",
+      "value": "prioritizes sustainability in travel choices",
+      "context": "User stated: 'I've started to prioritize sustainability in my travel choices' and later reaffirmed commitment to environmentally conscious choices.",
+      "profile_type": "preference",
+      "stability_score": 0.7597736225315087,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated: 'I've started to prioritize sustainability in my travel choices' and later reaffirmed commitment to environmentally conscious choices.",
+          "scene": "session_2",
+          "evidence_id": "2f44727c136540eaabf471ed28a8b0b4",
+          "timestamp": "2026-06-09T02:20:49.592718"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prioritizes sustainability in travel choices",
+          "context": "User stated: 'I've started to prioritize sustainability in my travel choices' and later reaffirmed commitment to environmentally conscious choices.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated: 'I've started to prioritize sustainability in my travel choices' and later reaffirmed commitment to environmentally conscious choices.",
+              "scene": "session_2",
+              "evidence_id": "2f44727c136540eaabf471ed28a8b0b4",
+              "timestamp": "2026-06-09T02:20:49.592718"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 10,
+          "last_seen": "2026-06-09T02:20:49.592718",
+          "last_accessed": "2026-06-09T02:20:49.681604"
+        }
+      },
+      "unit_id": "7f3ac5855bc440a0b393fc99c0f115cd",
+      "timestamp": "2026-06-09T02:20:49.598748",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 10,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.681601",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "shopping_enthusiasm",
+      "value": "enthusiastic online shopper",
+      "context": "User stated enjoyment of online shopping and sales, frequent bargain hunting.",
+      "profile_type": "preference",
+      "stability_score": 0.8019190819049288,
+      "confidence_score": 0.9,
+      "scene": "session_3",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated enjoyment of online shopping and sales, frequent bargain hunting.",
+          "scene": "session_3",
+          "evidence_id": "e4e75db5fbd24e8e80d48f0d9595626a",
+          "timestamp": "2026-06-09T02:20:49.609127"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "enthusiastic online shopper",
+          "context": "User stated enjoyment of online shopping and sales, frequent bargain hunting.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated enjoyment of online shopping and sales, frequent bargain hunting.",
+              "scene": "session_3",
+              "evidence_id": "e4e75db5fbd24e8e80d48f0d9595626a",
+              "timestamp": "2026-06-09T02:20:49.609127"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:49.609127",
+          "last_accessed": "2026-06-09T02:20:49.681785"
+        }
+      },
+      "unit_id": "cf98b15a93f74fdabce60ba4135e097a",
+      "timestamp": "2026-06-09T02:20:49.613657",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.681782",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "deal_seeking_habit",
+      "value": "actively uses price comparison, forums, coupons, and wish lists",
+      "context": "User described comparing prices on laptop, joining forums, collecting coupon codes, creating wish lists.",
+      "profile_type": "style",
+      "stability_score": 0.8630804487833988,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User described comparing prices on laptop, joining forums, collecting coupon codes, creating wish lists.",
+          "scene": "session_3",
+          "evidence_id": "ab35916d8c004bf7aeb4337360856324",
+          "timestamp": "2026-06-09T02:20:49.609131"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "actively uses price comparison, forums, coupons, and wish lists",
+          "context": "User described comparing prices on laptop, joining forums, collecting coupon codes, creating wish lists.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User described comparing prices on laptop, joining forums, collecting coupon codes, creating wish lists.",
+              "scene": "session_3",
+              "evidence_id": "ab35916d8c004bf7aeb4337360856324",
+              "timestamp": "2026-06-09T02:20:49.609131"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:49.609131",
+          "last_accessed": "2026-06-09T02:20:49.681960"
+        }
+      },
+      "unit_id": "7825c6d9d65c43dc96bb2d4b1b116d32",
+      "timestamp": "2026-06-09T02:20:49.620084",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.681957",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "sustainable_shopping_adoption",
+      "value": "has started incorporating sustainable shopping practices",
+      "context": "User explicitly stated learning about and adopting sustainable shopping habits.",
+      "profile_type": "preference",
+      "stability_score": 0.62095160935707,
+      "confidence_score": 0.7,
+      "scene": "session_3",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User explicitly stated learning about and adopting sustainable shopping habits.",
+          "scene": "session_3",
+          "evidence_id": "786d1eb7ffe74980bdad661652ea44f7",
+          "timestamp": "2026-06-09T02:20:49.609133"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "has started incorporating sustainable shopping practices",
+          "context": "User explicitly stated learning about and adopting sustainable shopping habits.",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User explicitly stated learning about and adopting sustainable shopping habits.",
+              "scene": "session_3",
+              "evidence_id": "786d1eb7ffe74980bdad661652ea44f7",
+              "timestamp": "2026-06-09T02:20:49.609133"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:49.609133",
+          "last_accessed": "2026-06-09T02:20:49.682130"
+        }
+      },
+      "unit_id": "aba6d2eafd3841db8b06bb42866af54c",
+      "timestamp": "2026-06-09T02:20:49.625898",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.682127",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "DIY_aversion",
+      "value": "dislikes DIY gift crafting and product customization",
+      "context": "User described stressful experiences with crafting and customization, prefers buying gifts.",
+      "profile_type": "preference",
+      "stability_score": 0.7114353507715544,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User described stressful experiences with crafting and customization, prefers buying gifts.",
+          "scene": "session_3",
+          "evidence_id": "bafb10f4554d4f06bc5ca5e608409d10",
+          "timestamp": "2026-06-09T02:20:49.609136"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "dislikes DIY gift crafting and product customization",
+          "context": "User described stressful experiences with crafting and customization, prefers buying gifts.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User described stressful experiences with crafting and customization, prefers buying gifts.",
+              "scene": "session_3",
+              "evidence_id": "bafb10f4554d4f06bc5ca5e608409d10",
+              "timestamp": "2026-06-09T02:20:49.609136"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:49.609136",
+          "last_accessed": "2026-06-09T02:20:49.682278"
+        }
+      },
+      "unit_id": "99158b05de6a485e9c8b0a69f364ebc1",
+      "timestamp": "2026-06-09T02:20:49.632928",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.682275",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "auction_anxiety",
+      "value": "finds online auctions stressful and emotionally draining",
+      "context": "User twice described negative experiences with online auctions, feeling anxious and exhausted.",
+      "profile_type": "general",
+      "stability_score": 0.8019190932794887,
+      "confidence_score": 0.75,
+      "scene": "session_3",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User twice described negative experiences with online auctions, feeling anxious and exhausted.",
+          "scene": "session_3",
+          "evidence_id": "9f1e63511227411eae083bb0c26d0039",
+          "timestamp": "2026-06-09T02:20:49.609138"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "finds online auctions stressful and emotionally draining",
+          "context": "User twice described negative experiences with online auctions, feeling anxious and exhausted.",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User twice described negative experiences with online auctions, feeling anxious and exhausted.",
+              "scene": "session_3",
+              "evidence_id": "9f1e63511227411eae083bb0c26d0039",
+              "timestamp": "2026-06-09T02:20:49.609138"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:20:49.609138",
+          "last_accessed": "2026-06-09T02:20:49.682466"
+        }
+      },
+      "unit_id": "0b751e95e2f34d63a292e44cc3c25523",
+      "timestamp": "2026-06-09T02:20:49.640810",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.682463",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_planning_style",
+      "value": "flexible",
+      "context": "Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+      "profile_type": "style",
+      "stability_score": 0.6164736572006252,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.7333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+          "scene": "session_4",
+          "evidence_id": "085ae80eb2a9431b826d70624e1190a5",
+          "timestamp": "2026-06-09T02:20:49.652997"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "flexible",
+          "context": "Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+          "confidence_score": 0.7,
+          "quality_score": 0.7333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+              "scene": "session_4",
+              "evidence_id": "085ae80eb2a9431b826d70624e1190a5",
+              "timestamp": "2026-06-09T02:20:49.652997"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:49.652997",
+          "last_accessed": "2026-06-09T02:20:49.679385"
+        }
+      },
+      "unit_id": "4f5d450297bf49a4826b610d4933f2d2",
+      "timestamp": "2026-06-09T02:20:49.658962",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.679382",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "finance_learning_goal",
+      "value": "travel budgeting course",
+      "context": "I’ve committed to a personal finance course focused on travel budgeting strategies",
+      "profile_type": "goal",
+      "stability_score": 0.5829024402217825,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I’ve committed to a personal finance course focused on travel budgeting strategies",
+          "scene": "session_4",
+          "evidence_id": "955363aa938148dbacefe215ed0c43f4",
+          "timestamp": "2026-06-09T02:20:49.653000"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "travel budgeting course",
+          "context": "I’ve committed to a personal finance course focused on travel budgeting strategies",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I’ve committed to a personal finance course focused on travel budgeting strategies",
+              "scene": "session_4",
+              "evidence_id": "955363aa938148dbacefe215ed0c43f4",
+              "timestamp": "2026-06-09T02:20:49.653000"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:49.653000",
+          "last_accessed": "2026-06-09T02:20:49.679524"
+        }
+      },
+      "unit_id": "d6dd743dbb354e328c8b8632252f6882",
+      "timestamp": "2026-06-09T02:20:49.665664",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.679522",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_journaling_style",
+      "value": "emotional and story-focused",
+      "context": "I started a new travel journal focusing on emotions and stories from my adventures",
+      "profile_type": "style",
+      "stability_score": 0.7125526044122102,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I started a new travel journal focusing on emotions and stories from my adventures",
+          "scene": "session_4",
+          "evidence_id": "9f90237d54e84521b5d6ace9f764e74c",
+          "timestamp": "2026-06-09T02:20:49.653002"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "emotional and story-focused",
+          "context": "I started a new travel journal focusing on emotions and stories from my adventures",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I started a new travel journal focusing on emotions and stories from my adventures",
+              "scene": "session_4",
+              "evidence_id": "9f90237d54e84521b5d6ace9f764e74c",
+              "timestamp": "2026-06-09T02:20:49.653002"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:49.653002",
+          "last_accessed": "2026-06-09T02:20:49.679676"
+        }
+      },
+      "unit_id": "5962c7cef7cb4e0a8f1b4f611208b432",
+      "timestamp": "2026-06-09T02:20:49.672916",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:49.679674",
+      "last_evolved": "2026-06-09T02:20:49.682537",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "cd2fdeafd7c348ab83f3bb83da429574": {
+      "source": "llm_deepseek",
+      "content": "user described creating detailed itineraries and feeling overwhelmed by planning",
+      "scene": "session_0",
+      "evidence_id": "cd2fdeafd7c348ab83f3bb83da429574",
+      "timestamp": "2026-06-09T02:20:49.563889"
+    },
+    "7d630c90dbf44d55a6fe876ae3a7fcd6": {
+      "source": "llm_deepseek",
+      "content": "user stated after local adventures that they prefer more controlled settings",
+      "scene": "session_0",
+      "evidence_id": "7d630c90dbf44d55a6fe876ae3a7fcd6",
+      "timestamp": "2026-06-09T02:20:49.563896"
+    },
+    "5e7c756d973b4267b33c001643a5f6e0": {
+      "source": "llm_deepseek",
+      "content": "user described volunteering as incredibly fulfilling",
+      "scene": "session_0",
+      "evidence_id": "5e7c756d973b4267b33c001643a5f6e0",
+      "timestamp": "2026-06-09T02:20:49.563899"
+    },
+    "4008c9844e5047ba8af8233e0695d8f1": {
+      "source": "llm_deepseek",
+      "content": "user said travel influencers' lifestyles felt unrealistic",
+      "scene": "session_0",
+      "evidence_id": "4008c9844e5047ba8af8233e0695d8f1",
+      "timestamp": "2026-06-09T02:20:49.563902"
+    },
+    "07efb977e5644384acd486adb89e9a72": {
+      "source": "llm_deepseek",
+      "content": "stopped collecting physical travel guides; uses online platforms, blogs, apps",
+      "scene": "session_1",
+      "evidence_id": "07efb977e5644384acd486adb89e9a72",
+      "timestamp": "2026-06-09T02:20:49.568328"
+    },
+    "deeee2cbe712415fbfbcccd2fb9ef079": {
+      "source": "llm_deepseek",
+      "content": "started enjoying exploring cultural festivals; attended with friend",
+      "scene": "session_1",
+      "evidence_id": "deeee2cbe712415fbfbcccd2fb9ef079",
+      "timestamp": "2026-06-09T02:20:49.568331"
+    },
+    "e358eec0424640078568b635c610b98e": {
+      "source": "llm_deepseek",
+      "content": "changed approach to budgeting; travel without strict budget feels liberating",
+      "scene": "session_1",
+      "evidence_id": "e358eec0424640078568b635c610b98e",
+      "timestamp": "2026-06-09T02:20:49.568334"
+    },
+    "2d7a2894d25242acb9458eed2d97887b": {
+      "source": "llm_deepseek",
+      "content": "stopped journaling daily; opts for spontaneous note-taking to focus on experience",
+      "scene": "session_1",
+      "evidence_id": "2d7a2894d25242acb9458eed2d97887b",
+      "timestamp": "2026-06-09T02:20:49.568336"
+    },
+    "3c50d958182c4801b9f18ea767cff230": {
+      "source": "llm_deepseek",
+      "content": "joined language exchange program to practice new languages with native speakers",
+      "scene": "session_1",
+      "evidence_id": "3c50d958182c4801b9f18ea767cff230",
+      "timestamp": "2026-06-09T02:20:49.568338"
+    },
+    "9a46684d478e42728d6b9e8d8bf244ad": {
+      "source": "llm_deepseek",
+      "content": "joined local adventure club for weekly excursions; discovered beauty in familiar surroundings",
+      "scene": "session_1",
+      "evidence_id": "9a46684d478e42728d6b9e8d8bf244ad",
+      "timestamp": "2026-06-09T02:20:49.568341"
+    },
+    "2f44727c136540eaabf471ed28a8b0b4": {
+      "source": "llm_deepseek",
+      "content": "User stated: 'I've started to prioritize sustainability in my travel choices' and later reaffirmed commitment to environmentally conscious choices.",
+      "scene": "session_2",
+      "evidence_id": "2f44727c136540eaabf471ed28a8b0b4",
+      "timestamp": "2026-06-09T02:20:49.592718"
+    },
+    "9efd6d89ca9b4e31baac47b66922fee7": {
+      "source": "llm_deepseek",
+      "content": "User launched a social media account for travel photography and started a yearly travel journal.",
+      "scene": "session_2",
+      "evidence_id": "9efd6d89ca9b4e31baac47b66922fee7",
+      "timestamp": "2026-06-09T02:20:49.592721"
+    },
+    "e4e75db5fbd24e8e80d48f0d9595626a": {
+      "source": "llm_deepseek",
+      "content": "User stated enjoyment of online shopping and sales, frequent bargain hunting.",
+      "scene": "session_3",
+      "evidence_id": "e4e75db5fbd24e8e80d48f0d9595626a",
+      "timestamp": "2026-06-09T02:20:49.609127"
+    },
+    "ab35916d8c004bf7aeb4337360856324": {
+      "source": "llm_deepseek",
+      "content": "User described comparing prices on laptop, joining forums, collecting coupon codes, creating wish lists.",
+      "scene": "session_3",
+      "evidence_id": "ab35916d8c004bf7aeb4337360856324",
+      "timestamp": "2026-06-09T02:20:49.609131"
+    },
+    "786d1eb7ffe74980bdad661652ea44f7": {
+      "source": "llm_deepseek",
+      "content": "User explicitly stated learning about and adopting sustainable shopping habits.",
+      "scene": "session_3",
+      "evidence_id": "786d1eb7ffe74980bdad661652ea44f7",
+      "timestamp": "2026-06-09T02:20:49.609133"
+    },
+    "bafb10f4554d4f06bc5ca5e608409d10": {
+      "source": "llm_deepseek",
+      "content": "User described stressful experiences with crafting and customization, prefers buying gifts.",
+      "scene": "session_3",
+      "evidence_id": "bafb10f4554d4f06bc5ca5e608409d10",
+      "timestamp": "2026-06-09T02:20:49.609136"
+    },
+    "9f1e63511227411eae083bb0c26d0039": {
+      "source": "llm_deepseek",
+      "content": "User twice described negative experiences with online auctions, feeling anxious and exhausted.",
+      "scene": "session_3",
+      "evidence_id": "9f1e63511227411eae083bb0c26d0039",
+      "timestamp": "2026-06-09T02:20:49.609138"
+    },
+    "085ae80eb2a9431b826d70624e1190a5": {
+      "source": "llm_deepseek",
+      "content": "Instead of rigidly sticking to a schedule, I now allow room for spontaneous adventures",
+      "scene": "session_4",
+      "evidence_id": "085ae80eb2a9431b826d70624e1190a5",
+      "timestamp": "2026-06-09T02:20:49.652997"
+    },
+    "955363aa938148dbacefe215ed0c43f4": {
+      "source": "llm_deepseek",
+      "content": "I’ve committed to a personal finance course focused on travel budgeting strategies",
+      "scene": "session_4",
+      "evidence_id": "955363aa938148dbacefe215ed0c43f4",
+      "timestamp": "2026-06-09T02:20:49.653000"
+    },
+    "9f90237d54e84521b5d6ace9f764e74c": {
+      "source": "llm_deepseek",
+      "content": "I started a new travel journal focusing on emotions and stories from my adventures",
+      "scene": "session_4",
+      "evidence_id": "9f90237d54e84521b5d6ace9f764e74c",
+      "timestamp": "2026-06-09T02:20:49.653002"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b_session_4",
+  "config_id": "promote_0.52",
+  "context_hash": "a44f332994eedfff13f2c4870ee7e7da35a682625f25b789a5beccde572f5f0b",
+  "num_sessions": 5
+}

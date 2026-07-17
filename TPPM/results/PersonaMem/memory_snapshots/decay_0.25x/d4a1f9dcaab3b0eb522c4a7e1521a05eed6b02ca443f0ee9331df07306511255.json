@@ -1,0 +1,1519 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.025,
+      "interest": 0.0175,
+      "style": 0.01,
+      "background": 0.01,
+      "preference": 0.0125,
+      "general": 0.0125
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "writing_genre_preference",
+      "value": "avoid legal fiction, prefer other genres",
+      "context": "I've decided to avoid writing legal fiction as it felt unfulfilling.",
+      "profile_type": "preference",
+      "stability_score": 0.59999995330021,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've decided to avoid writing legal fiction as it felt unfulfilling.",
+          "scene": "session_0",
+          "evidence_id": "11f2e0bad5b5424197e0e29dadcb3028",
+          "timestamp": "2026-06-09T02:21:25.114555"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "avoid legal fiction, prefer other genres",
+          "context": "I've decided to avoid writing legal fiction as it felt unfulfilling.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've decided to avoid writing legal fiction as it felt unfulfilling.",
+              "scene": "session_0",
+              "evidence_id": "11f2e0bad5b5424197e0e29dadcb3028",
+              "timestamp": "2026-06-09T02:21:25.114555"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:25.114555",
+          "last_accessed": "2026-06-09T02:21:25.335480"
+        }
+      },
+      "unit_id": "16e08798823c4197afdf660bc5c01be0",
+      "timestamp": "2026-06-09T02:21:25.115763",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.335477",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "networking_initiative_goal",
+      "value": "starting a peer group for legal professionals",
+      "context": "I've been thinking about starting a peer group to expand my professional network",
+      "profile_type": "goal",
+      "stability_score": 0.49999996133177227,
+      "confidence_score": 0.7,
+      "scene": "session_0",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been thinking about starting a peer group to expand my professional network",
+          "scene": "session_0",
+          "evidence_id": "78d56a1982344d738b43bc053e002ea9",
+          "timestamp": "2026-06-09T02:21:25.114557"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "starting a peer group for legal professionals",
+          "context": "I've been thinking about starting a peer group to expand my professional network",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been thinking about starting a peer group to expand my professional network",
+              "scene": "session_0",
+              "evidence_id": "78d56a1982344d738b43bc053e002ea9",
+              "timestamp": "2026-06-09T02:21:25.114557"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:25.114557",
+          "last_accessed": "2026-06-09T02:21:25.335665"
+        }
+      },
+      "unit_id": "7dff389b2a0847a88a69dfb8a63ad7b2",
+      "timestamp": "2026-06-09T02:21:25.117194",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.335662",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "legal_experience_type",
+      "value": "participated in mock trial competition",
+      "context": "participated in a mock trial competition to refine my legal skills",
+      "profile_type": "background",
+      "stability_score": 0.39999996927777903,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "participated in a mock trial competition to refine my legal skills",
+          "scene": "session_0",
+          "evidence_id": "b0022abee2dc4e2893de72c82b220f3f",
+          "timestamp": "2026-06-09T02:21:25.114560"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "participated in mock trial competition",
+          "context": "participated in a mock trial competition to refine my legal skills",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "participated in a mock trial competition to refine my legal skills",
+              "scene": "session_0",
+              "evidence_id": "b0022abee2dc4e2893de72c82b220f3f",
+              "timestamp": "2026-06-09T02:21:25.114560"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:25.114560",
+          "last_accessed": "2026-06-09T02:21:25.335828"
+        }
+      },
+      "unit_id": "2c7d75cab4b648018dca632c3dfc59ba",
+      "timestamp": "2026-06-09T02:21:25.118722",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.335825",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "learning_style",
+      "value": "practical experiential learning",
+      "context": "withdrew from legal book club due to lack of practical focus, prefers direct engagement with practitioners",
+      "profile_type": "style",
+      "stability_score": 0.5999999552302101,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "withdrew from legal book club due to lack of practical focus, prefers direct engagement with practitioners",
+          "scene": "session_1",
+          "evidence_id": "1c875fc658324e3893d8572338cb7786",
+          "timestamp": "2026-06-09T02:21:25.122744"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "practical experiential learning",
+          "context": "withdrew from legal book club due to lack of practical focus, prefers direct engagement with practitioners",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "withdrew from legal book club due to lack of practical focus, prefers direct engagement with practitioners",
+              "scene": "session_1",
+              "evidence_id": "1c875fc658324e3893d8572338cb7786",
+              "timestamp": "2026-06-09T02:21:25.122744"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:21:25.122744",
+          "last_accessed": "2026-06-09T02:21:25.336021"
+        }
+      },
+      "unit_id": "c67f4e82c6444c918bb943cb2eef01e3",
+      "timestamp": "2026-06-09T02:21:25.125027",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.336018",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "legal_interest_adr",
+      "value": "alternative dispute resolution",
+      "context": "enrolled in weekend ADR course and finds it fascinating, emphasizes collaboration",
+      "profile_type": "interest",
+      "stability_score": 0.49999996314948053,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "enrolled in weekend ADR course and finds it fascinating, emphasizes collaboration",
+          "scene": "session_1",
+          "evidence_id": "f47ee36ae42f4eb2b55f72dc48f0c7ad",
+          "timestamp": "2026-06-09T02:21:25.122748"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "alternative dispute resolution",
+          "context": "enrolled in weekend ADR course and finds it fascinating, emphasizes collaboration",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "enrolled in weekend ADR course and finds it fascinating, emphasizes collaboration",
+              "scene": "session_1",
+              "evidence_id": "f47ee36ae42f4eb2b55f72dc48f0c7ad",
+              "timestamp": "2026-06-09T02:21:25.122748"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:21:25.122748",
+          "last_accessed": "2026-06-09T02:21:25.336233"
+        }
+      },
+      "unit_id": "480db635ef0a483f879206e136665b00",
+      "timestamp": "2026-06-09T02:21:25.127663",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.336230",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "community_engagement_style",
+      "value": "prefers direct community involvement over bureaucratic legal aid",
+      "context": "stepped away from legal aid due to bureaucratic processes, wants direct engagement with community",
+      "profile_type": "style",
+      "stability_score": 0.5999999594539597,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stepped away from legal aid due to bureaucratic processes, wants direct engagement with community",
+          "scene": "session_2",
+          "evidence_id": "91b5364da849404e82ae159db9655e5a",
+          "timestamp": "2026-06-09T02:21:25.140674"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "prefers direct community involvement over bureaucratic legal aid",
+          "context": "stepped away from legal aid due to bureaucratic processes, wants direct engagement with community",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stepped away from legal aid due to bureaucratic processes, wants direct engagement with community",
+              "scene": "session_2",
+              "evidence_id": "91b5364da849404e82ae159db9655e5a",
+              "timestamp": "2026-06-09T02:21:25.140674"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:21:25.140674",
+          "last_accessed": "2026-06-09T02:21:25.336438"
+        }
+      },
+      "unit_id": "9c03efb2dd0241e2ad68475a0f8fd27f",
+      "timestamp": "2026-06-09T02:21:25.145301",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.336435",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_educational_preference",
+      "value": "prefers dynamic, engaging film courses over slow, technical, or dry lectures",
+      "context": "found the film history class tedious and unengaging; started a film appreciation course but it moved too slowly",
+      "profile_type": "style",
+      "stability_score": 0.5999999662966676,
+      "confidence_score": 0.75,
+      "scene": "session_3",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "found the film history class tedious and unengaging; started a film appreciation course but it moved too slowly",
+          "scene": "session_3",
+          "evidence_id": "d8a9a7dbb0814472aab5ca4daae6e493",
+          "timestamp": "2026-06-09T02:21:25.154386"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers dynamic, engaging film courses over slow, technical, or dry lectures",
+          "context": "found the film history class tedious and unengaging; started a film appreciation course but it moved too slowly",
+          "confidence_score": 0.75,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "found the film history class tedious and unengaging; started a film appreciation course but it moved too slowly",
+              "scene": "session_3",
+              "evidence_id": "d8a9a7dbb0814472aab5ca4daae6e493",
+              "timestamp": "2026-06-09T02:21:25.154386"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:21:25.154386",
+          "last_accessed": "2026-06-09T02:21:25.336679"
+        }
+      },
+      "unit_id": "d054c7729c4847e7bdf8e817d9f93195",
+      "timestamp": "2026-06-09T02:21:25.178145",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.336676",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "filmmaking_experience",
+      "value": "found filmmaking stressful and uninteresting, prefers other creative outlets",
+      "context": "I did try filming a short skit before, but I found it too stressful and uninteresting.",
+      "profile_type": "general",
+      "stability_score": 0.4999999732487854,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I did try filming a short skit before, but I found it too stressful and uninteresting.",
+          "scene": "session_3",
+          "evidence_id": "9ec7c776362d4cfb8b1c94c70081c616",
+          "timestamp": "2026-06-09T02:21:25.154388"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "found filmmaking stressful and uninteresting, prefers other creative outlets",
+          "context": "I did try filming a short skit before, but I found it too stressful and uninteresting.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I did try filming a short skit before, but I found it too stressful and uninteresting.",
+              "scene": "session_3",
+              "evidence_id": "9ec7c776362d4cfb8b1c94c70081c616",
+              "timestamp": "2026-06-09T02:21:25.154388"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:21:25.154388",
+          "last_accessed": "2026-06-09T02:21:25.336909"
+        }
+      },
+      "unit_id": "871524555266433a8da9ccdd9d7d0543",
+      "timestamp": "2026-06-09T02:21:25.185835",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.336906",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "collectibles_interest",
+      "value": "collects rare movie memorabilia",
+      "context": "I decided to enhance my collection with some rare movie memorabilia I found at a fair.",
+      "profile_type": "interest",
+      "stability_score": 0.5999999692329174,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I decided to enhance my collection with some rare movie memorabilia I found at a fair.",
+          "scene": "session_3",
+          "evidence_id": "4ee676b006d64104a704c5f330d99817",
+          "timestamp": "2026-06-09T02:21:25.154391"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "collects rare movie memorabilia",
+          "context": "I decided to enhance my collection with some rare movie memorabilia I found at a fair.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I decided to enhance my collection with some rare movie memorabilia I found at a fair.",
+              "scene": "session_3",
+              "evidence_id": "4ee676b006d64104a704c5f330d99817",
+              "timestamp": "2026-06-09T02:21:25.154391"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:21:25.154391",
+          "last_accessed": "2026-06-09T02:21:25.337101"
+        }
+      },
+      "unit_id": "ebca22ba99aa469990e068da58e999a1",
+      "timestamp": "2026-06-09T02:21:25.192240",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.337098",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_review_blog",
+      "value": "started a blog to share film reviews and encourage dialogue",
+      "context": "User mentioned reignited passion for writing film reviews and starting a blog.",
+      "profile_type": "interest",
+      "stability_score": 0.49999998133159756,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User mentioned reignited passion for writing film reviews and starting a blog.",
+          "scene": "session_4",
+          "evidence_id": "2b462711cd3641989146fc4463366fd7",
+          "timestamp": "2026-06-09T02:21:25.205623"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "started a blog to share film reviews and encourage dialogue",
+          "context": "User mentioned reignited passion for writing film reviews and starting a blog.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User mentioned reignited passion for writing film reviews and starting a blog.",
+              "scene": "session_4",
+              "evidence_id": "2b462711cd3641989146fc4463366fd7",
+              "timestamp": "2026-06-09T02:21:25.205623"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:25.205623",
+          "last_accessed": "2026-06-09T02:21:25.337250"
+        }
+      },
+      "unit_id": "0eeb926c915241b09ec6432f117789dc",
+      "timestamp": "2026-06-09T02:21:25.232392",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.337247",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "foreign_film_enjoyment",
+      "value": "enjoys foreign films after previous struggles, now finds them refreshing",
+      "context": "User reported thoroughly enjoying a foreign film, which was a positive surprise after past difficulties with foreign cinema.",
+      "profile_type": "preference",
+      "stability_score": 0.5999999830577085,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User reported thoroughly enjoying a foreign film, which was a positive surprise after past difficulties with foreign cinema.",
+          "scene": "session_4",
+          "evidence_id": "3fd7c759de6245878632fbc1cf59dff3",
+          "timestamp": "2026-06-09T02:21:25.205627"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys foreign films after previous struggles, now finds them refreshing",
+          "context": "User reported thoroughly enjoying a foreign film, which was a positive surprise after past difficulties with foreign cinema.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User reported thoroughly enjoying a foreign film, which was a positive surprise after past difficulties with foreign cinema.",
+              "scene": "session_4",
+              "evidence_id": "3fd7c759de6245878632fbc1cf59dff3",
+              "timestamp": "2026-06-09T02:21:25.205627"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:25.205627",
+          "last_accessed": "2026-06-09T02:21:25.337495"
+        }
+      },
+      "unit_id": "d544a9fd27ce42748f023ca52b6e91f9",
+      "timestamp": "2026-06-09T02:21:25.258599",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.337491",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "director_biography_reading",
+      "value": "reading biography of a famous director, interested in their life and creative process",
+      "context": "User picked up a director biography and finds it captivating, providing insight into filmmaking challenges and artistic vision.",
+      "profile_type": "interest",
+      "stability_score": 0.49999998850763905,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User picked up a director biography and finds it captivating, providing insight into filmmaking challenges and artistic vision.",
+          "scene": "session_4",
+          "evidence_id": "3441a5ed3c3e4d4bb829fa29b03d1eee",
+          "timestamp": "2026-06-09T02:21:25.205630"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "reading biography of a famous director, interested in their life and creative process",
+          "context": "User picked up a director biography and finds it captivating, providing insight into filmmaking challenges and artistic vision.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User picked up a director biography and finds it captivating, providing insight into filmmaking challenges and artistic vision.",
+              "scene": "session_4",
+              "evidence_id": "3441a5ed3c3e4d4bb829fa29b03d1eee",
+              "timestamp": "2026-06-09T02:21:25.205630"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:25.205630",
+          "last_accessed": "2026-06-09T02:21:25.337730"
+        }
+      },
+      "unit_id": "3a6ec2f9f53a4c95b061349fee9aa7b7",
+      "timestamp": "2026-06-09T02:21:25.273720",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.337720",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "community_service_engagement",
+      "value": "Volunteers at a legal aid clinic and organized a networking event on social justice",
+      "context": "returning to volunteering at a legal aid clinic and organizing a networking event for law students and practitioners to focus on social justice issues",
+      "profile_type": "background",
+      "stability_score": 0.6999999977563541,
+      "confidence_score": 0.85,
+      "scene": "session_5",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "returning to volunteering at a legal aid clinic and organizing a networking event for law students and practitioners to focus on social justice issues",
+          "scene": "session_5",
+          "evidence_id": "e339d2da1b0148e09d221412f9b8a7e6",
+          "timestamp": "2026-06-09T02:21:25.296275"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "Volunteers at a legal aid clinic and organized a networking event on social justice",
+          "context": "returning to volunteering at a legal aid clinic and organizing a networking event for law students and practitioners to focus on social justice issues",
+          "confidence_score": 0.85,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "returning to volunteering at a legal aid clinic and organizing a networking event for law students and practitioners to focus on social justice issues",
+              "scene": "session_5",
+              "evidence_id": "e339d2da1b0148e09d221412f9b8a7e6",
+              "timestamp": "2026-06-09T02:21:25.296275"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:21:25.296275",
+          "last_accessed": "2026-06-09T02:21:25.335310"
+        }
+      },
+      "unit_id": "42cb15052dee42f39b19f45be3310fcc",
+      "timestamp": "2026-06-09T02:21:25.330691",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 2,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.335308",
+      "last_evolved": "2026-06-09T02:21:25.339926",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "legal_interest_area",
+      "value": "public interest law with focus on social justice and environmental protection",
+      "context": "I explored options to pursue a legal career in public interest law. I feel strongly about making a difference.",
+      "profile_type": "interest",
+      "stability_score": 0.9500885658266577,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I explored options to pursue a legal career in public interest law. I feel strongly about making a difference.",
+          "scene": "session_0",
+          "evidence_id": "7edd6441f5f746eb9265fce32ebf1107",
+          "timestamp": "2026-06-09T02:21:25.114546"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "public interest law with focus on social justice and environmental protection",
+          "context": "I explored options to pursue a legal career in public interest law. I feel strongly about making a difference.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I explored options to pursue a legal career in public interest law. I feel strongly about making a difference.",
+              "scene": "session_0",
+              "evidence_id": "7edd6441f5f746eb9265fce32ebf1107",
+              "timestamp": "2026-06-09T02:21:25.114546"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:25.114546",
+          "last_accessed": "2026-06-09T02:21:25.337973"
+        }
+      },
+      "unit_id": "f3b81947ad7a41a2b706604349ee8ed1",
+      "timestamp": "2026-06-09T02:21:25.114582",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.337970",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "communication_style_preference",
+      "value": "prefer debates over formal presentations",
+      "context": "I realized I prefer engaging in debates rather than formal presentations.",
+      "profile_type": "style",
+      "stability_score": 0.8933436690290759,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.7999999999999999,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I realized I prefer engaging in debates rather than formal presentations.",
+          "scene": "session_0",
+          "evidence_id": "bc6fa3018ec74c5584d64d9e7013fb7a",
+          "timestamp": "2026-06-09T02:21:25.114552"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "prefer debates over formal presentations",
+          "context": "I realized I prefer engaging in debates rather than formal presentations.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7999999999999999,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I realized I prefer engaging in debates rather than formal presentations.",
+              "scene": "session_0",
+              "evidence_id": "bc6fa3018ec74c5584d64d9e7013fb7a",
+              "timestamp": "2026-06-09T02:21:25.114552"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:21:25.114552",
+          "last_accessed": "2026-06-09T02:21:25.338143"
+        }
+      },
+      "unit_id": "e18ae4943fa8447abc958d020e27605c",
+      "timestamp": "2026-06-09T02:21:25.115021",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.338140",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "communication_style",
+      "value": "prefers constructive dialogue over confrontation",
+      "context": "stepped away from debate clubs due to confrontational nature, values mutual respect and collaboration",
+      "profile_type": "style",
+      "stability_score": 0.8619199177191409,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stepped away from debate clubs due to confrontational nature, values mutual respect and collaboration",
+          "scene": "session_1",
+          "evidence_id": "1c65cfd6c9ea4b16b1e5f0463b9de9f9",
+          "timestamp": "2026-06-09T02:21:25.122750"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers constructive dialogue over confrontation",
+          "context": "stepped away from debate clubs due to confrontational nature, values mutual respect and collaboration",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stepped away from debate clubs due to confrontational nature, values mutual respect and collaboration",
+              "scene": "session_1",
+              "evidence_id": "1c65cfd6c9ea4b16b1e5f0463b9de9f9",
+              "timestamp": "2026-06-09T02:21:25.122750"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:21:25.122750",
+          "last_accessed": "2026-06-09T02:21:25.338371"
+        }
+      },
+      "unit_id": "82f4563ec78e424580090c25c5114bca",
+      "timestamp": "2026-06-09T02:21:25.131167",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.338368",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "value_ethics",
+      "value": "ethics should be central in legal discussions",
+      "context": "expressed belief that ethics is often overlooked and needs to be a central topic",
+      "profile_type": "general",
+      "stability_score": 0.9466228869570305,
+      "confidence_score": 0.7,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "expressed belief that ethics is often overlooked and needs to be a central topic",
+          "scene": "session_1",
+          "evidence_id": "8bac5019099d4a708cf25ddb396b45a1",
+          "timestamp": "2026-06-09T02:21:25.122755"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "ethics should be central in legal discussions",
+          "context": "expressed belief that ethics is often overlooked and needs to be a central topic",
+          "confidence_score": 0.7,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "expressed belief that ethics is often overlooked and needs to be a central topic",
+              "scene": "session_1",
+              "evidence_id": "8bac5019099d4a708cf25ddb396b45a1",
+              "timestamp": "2026-06-09T02:21:25.122755"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 21,
+          "last_seen": "2026-06-09T02:21:25.122755",
+          "last_accessed": "2026-06-09T02:21:25.338563"
+        }
+      },
+      "unit_id": "4281fb9590c24a50b894d8bf53f9f307",
+      "timestamp": "2026-06-09T02:21:25.134461",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 21,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.338560",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "skill_development_goal",
+      "value": "improving persuasive and argumentative skills through debate club",
+      "context": "rejoined local debate club to hone persuasive skills",
+      "profile_type": "goal",
+      "stability_score": 0.7875574665855113,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "rejoined local debate club to hone persuasive skills",
+          "scene": "session_2",
+          "evidence_id": "1b2c060bf8c740f1bd61a6eecc36546f",
+          "timestamp": "2026-06-09T02:21:25.140680"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "improving persuasive and argumentative skills through debate club",
+          "context": "rejoined local debate club to hone persuasive skills",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "rejoined local debate club to hone persuasive skills",
+              "scene": "session_2",
+              "evidence_id": "1b2c060bf8c740f1bd61a6eecc36546f",
+              "timestamp": "2026-06-09T02:21:25.140680"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 16,
+          "last_seen": "2026-06-09T02:21:25.140680",
+          "last_accessed": "2026-06-09T02:21:25.338756"
+        }
+      },
+      "unit_id": "59113ab212a44bb186d0e00d8efd89bf",
+      "timestamp": "2026-06-09T02:21:25.149052",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 16,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.338753",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_genre_preference",
+      "value": "thought-provoking dramas and animated features",
+      "context": "I used to love action-packed thrillers, but now I find myself intrigued by more thought-provoking dramas or animated features that tell a deeper story.",
+      "profile_type": "preference",
+      "stability_score": 0.7927515824881199,
+      "confidence_score": 0.85,
+      "scene": "session_3",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I used to love action-packed thrillers, but now I find myself intrigued by more thought-provoking dramas or animated features that tell a deeper story.",
+          "scene": "session_3",
+          "evidence_id": "634567b32adc46819bf82556f25bfbab",
+          "timestamp": "2026-06-09T02:21:25.154380"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "thought-provoking dramas and animated features",
+          "context": "I used to love action-packed thrillers, but now I find myself intrigued by more thought-provoking dramas or animated features that tell a deeper story.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I used to love action-packed thrillers, but now I find myself intrigued by more thought-provoking dramas or animated features that tell a deeper story.",
+              "scene": "session_3",
+              "evidence_id": "634567b32adc46819bf82556f25bfbab",
+              "timestamp": "2026-06-09T02:21:25.154380"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:21:25.154380",
+          "last_accessed": "2026-06-09T02:21:25.338980"
+        }
+      },
+      "unit_id": "7f5f8c723410473887324bbb3125f31e",
+      "timestamp": "2026-06-09T02:21:25.161489",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.338977",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_engagement_social",
+      "value": "enjoys discussing films in groups, writing reviews, and hosting watch parties",
+      "context": "I joined an online film discussion group; I wrote a review for a recent blockbuster; I hosted an online movie watch party with my family.",
+      "profile_type": "interest",
+      "stability_score": 0.782128306569338,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I joined an online film discussion group; I wrote a review for a recent blockbuster; I hosted an online movie watch party with my family.",
+          "scene": "session_3",
+          "evidence_id": "616e14ddad5e4dac8ba2f0a8d6f6b099",
+          "timestamp": "2026-06-09T02:21:25.154383"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "enjoys discussing films in groups, writing reviews, and hosting watch parties",
+          "context": "I joined an online film discussion group; I wrote a review for a recent blockbuster; I hosted an online movie watch party with my family.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I joined an online film discussion group; I wrote a review for a recent blockbuster; I hosted an online movie watch party with my family.",
+              "scene": "session_3",
+              "evidence_id": "616e14ddad5e4dac8ba2f0a8d6f6b099",
+              "timestamp": "2026-06-09T02:21:25.154383"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 13,
+          "last_seen": "2026-06-09T02:21:25.154383",
+          "last_accessed": "2026-06-09T02:21:25.339254"
+        }
+      },
+      "unit_id": "571092bc48de40188a28dad08f67e3ed",
+      "timestamp": "2026-06-09T02:21:25.170129",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 13,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.339251",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "movie_preference_seasonal",
+      "value": "taste shifts with mood, time, season",
+      "context": "User stated that movie preferences shift dramatically with mood, time, and season, e.g., comedies in summer, dramas in fall.",
+      "profile_type": "preference",
+      "stability_score": 0.7622200378213108,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User stated that movie preferences shift dramatically with mood, time, and season, e.g., comedies in summer, dramas in fall.",
+          "scene": "session_4",
+          "evidence_id": "7022ececd1034b5b8e711ccbbcb3c150",
+          "timestamp": "2026-06-09T02:21:25.205617"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "taste shifts with mood, time, season",
+          "context": "User stated that movie preferences shift dramatically with mood, time, and season, e.g., comedies in summer, dramas in fall.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User stated that movie preferences shift dramatically with mood, time, and season, e.g., comedies in summer, dramas in fall.",
+              "scene": "session_4",
+              "evidence_id": "7022ececd1034b5b8e711ccbbcb3c150",
+              "timestamp": "2026-06-09T02:21:25.205617"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:25.205617",
+          "last_accessed": "2026-06-09T02:21:25.339440"
+        }
+      },
+      "unit_id": "f6b58d1389484d3dafcf16424799cd6e",
+      "timestamp": "2026-06-09T02:21:25.214739",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.339437",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_marathon_attitude",
+      "value": "prefers shorter viewing sessions, finds marathons exhausting",
+      "context": "User expressed that movie marathons feel draining physically and mentally, preferring breaks.",
+      "profile_type": "style",
+      "stability_score": 0.7657410552062734,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User expressed that movie marathons feel draining physically and mentally, preferring breaks.",
+          "scene": "session_4",
+          "evidence_id": "e6f50c28c31141aeafa1b40066efe88e",
+          "timestamp": "2026-06-09T02:21:25.205620"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers shorter viewing sessions, finds marathons exhausting",
+          "context": "User expressed that movie marathons feel draining physically and mentally, preferring breaks.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User expressed that movie marathons feel draining physically and mentally, preferring breaks.",
+              "scene": "session_4",
+              "evidence_id": "e6f50c28c31141aeafa1b40066efe88e",
+              "timestamp": "2026-06-09T02:21:25.205620"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:25.205620",
+          "last_accessed": "2026-06-09T02:21:25.339648"
+        }
+      },
+      "unit_id": "cd58635d6dfc4cdca8e881a8cde94a9e",
+      "timestamp": "2026-06-09T02:21:25.223381",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.339645",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_discussion_style",
+      "value": "enjoys casual, personal conversations with friends about films",
+      "context": "User prefers sharing opinions casually with friends rather than formal critique groups, finding it more genuine and engaging.",
+      "profile_type": "style",
+      "stability_score": 0.8637609231259418,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User prefers sharing opinions casually with friends rather than formal critique groups, finding it more genuine and engaging.",
+          "scene": "session_4",
+          "evidence_id": "8d616742274c4a41bbbd9c02cfc4e5b4",
+          "timestamp": "2026-06-09T02:21:25.205625"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "enjoys casual, personal conversations with friends about films",
+          "context": "User prefers sharing opinions casually with friends rather than formal critique groups, finding it more genuine and engaging.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User prefers sharing opinions casually with friends rather than formal critique groups, finding it more genuine and engaging.",
+              "scene": "session_4",
+              "evidence_id": "8d616742274c4a41bbbd9c02cfc4e5b4",
+              "timestamp": "2026-06-09T02:21:25.205625"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 8,
+          "last_seen": "2026-06-09T02:21:25.205625",
+          "last_accessed": "2026-06-09T02:21:25.339880"
+        }
+      },
+      "unit_id": "2db9314dddd249909d698bc939e6047f",
+      "timestamp": "2026-06-09T02:21:25.244442",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 8,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.339877",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "legal_ethics_interest",
+      "value": "Launched a personal website dedicated to discussing legal ethics and reform",
+      "context": "I'm excited to share that I launched a personal website dedicated to discussing various aspects of legal ethics and reform",
+      "profile_type": "interest",
+      "stability_score": 0.8261217840910846,
+      "confidence_score": 0.9,
+      "scene": "session_5",
+      "quality_score": 0.9333333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I'm excited to share that I launched a personal website dedicated to discussing various aspects of legal ethics and reform",
+          "scene": "session_5",
+          "evidence_id": "da46d9a9c90a4ef6b8f63b02758f9c9c",
+          "timestamp": "2026-06-09T02:21:25.296271"
+        }
+      ],
+      "scene_branches": {
+        "session_5": {
+          "scene": "session_5",
+          "value": "Launched a personal website dedicated to discussing legal ethics and reform",
+          "context": "I'm excited to share that I launched a personal website dedicated to discussing various aspects of legal ethics and reform",
+          "confidence_score": 0.9,
+          "quality_score": 0.9333333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I'm excited to share that I launched a personal website dedicated to discussing various aspects of legal ethics and reform",
+              "scene": "session_5",
+              "evidence_id": "da46d9a9c90a4ef6b8f63b02758f9c9c",
+              "timestamp": "2026-06-09T02:21:25.296271"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 2,
+          "last_seen": "2026-06-09T02:21:25.296271",
+          "last_accessed": "2026-06-09T02:21:25.335073"
+        }
+      },
+      "unit_id": "0de5191d6bd849e28282da8b2e45c78e",
+      "timestamp": "2026-06-09T02:21:25.312069",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 2,
+      "seen_session_ids": [
+        "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_5"
+      ],
+      "last_accessed": "2026-06-09T02:21:25.335071",
+      "last_evolved": "2026-06-09T02:21:25.339964",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "7edd6441f5f746eb9265fce32ebf1107": {
+      "source": "llm_deepseek",
+      "content": "I explored options to pursue a legal career in public interest law. I feel strongly about making a difference.",
+      "scene": "session_0",
+      "evidence_id": "7edd6441f5f746eb9265fce32ebf1107",
+      "timestamp": "2026-06-09T02:21:25.114546"
+    },
+    "bc6fa3018ec74c5584d64d9e7013fb7a": {
+      "source": "llm_deepseek",
+      "content": "I realized I prefer engaging in debates rather than formal presentations.",
+      "scene": "session_0",
+      "evidence_id": "bc6fa3018ec74c5584d64d9e7013fb7a",
+      "timestamp": "2026-06-09T02:21:25.114552"
+    },
+    "11f2e0bad5b5424197e0e29dadcb3028": {
+      "source": "llm_deepseek",
+      "content": "I've decided to avoid writing legal fiction as it felt unfulfilling.",
+      "scene": "session_0",
+      "evidence_id": "11f2e0bad5b5424197e0e29dadcb3028",
+      "timestamp": "2026-06-09T02:21:25.114555"
+    },
+    "78d56a1982344d738b43bc053e002ea9": {
+      "source": "llm_deepseek",
+      "content": "I've been thinking about starting a peer group to expand my professional network",
+      "scene": "session_0",
+      "evidence_id": "78d56a1982344d738b43bc053e002ea9",
+      "timestamp": "2026-06-09T02:21:25.114557"
+    },
+    "b0022abee2dc4e2893de72c82b220f3f": {
+      "source": "llm_deepseek",
+      "content": "participated in a mock trial competition to refine my legal skills",
+      "scene": "session_0",
+      "evidence_id": "b0022abee2dc4e2893de72c82b220f3f",
+      "timestamp": "2026-06-09T02:21:25.114560"
+    },
+    "1c875fc658324e3893d8572338cb7786": {
+      "source": "llm_deepseek",
+      "content": "withdrew from legal book club due to lack of practical focus, prefers direct engagement with practitioners",
+      "scene": "session_1",
+      "evidence_id": "1c875fc658324e3893d8572338cb7786",
+      "timestamp": "2026-06-09T02:21:25.122744"
+    },
+    "f47ee36ae42f4eb2b55f72dc48f0c7ad": {
+      "source": "llm_deepseek",
+      "content": "enrolled in weekend ADR course and finds it fascinating, emphasizes collaboration",
+      "scene": "session_1",
+      "evidence_id": "f47ee36ae42f4eb2b55f72dc48f0c7ad",
+      "timestamp": "2026-06-09T02:21:25.122748"
+    },
+    "1c65cfd6c9ea4b16b1e5f0463b9de9f9": {
+      "source": "llm_deepseek",
+      "content": "stepped away from debate clubs due to confrontational nature, values mutual respect and collaboration",
+      "scene": "session_1",
+      "evidence_id": "1c65cfd6c9ea4b16b1e5f0463b9de9f9",
+      "timestamp": "2026-06-09T02:21:25.122750"
+    },
+    "8bac5019099d4a708cf25ddb396b45a1": {
+      "source": "llm_deepseek",
+      "content": "expressed belief that ethics is often overlooked and needs to be a central topic",
+      "scene": "session_1",
+      "evidence_id": "8bac5019099d4a708cf25ddb396b45a1",
+      "timestamp": "2026-06-09T02:21:25.122755"
+    },
+    "91b5364da849404e82ae159db9655e5a": {
+      "source": "llm_deepseek",
+      "content": "stepped away from legal aid due to bureaucratic processes, wants direct engagement with community",
+      "scene": "session_2",
+      "evidence_id": "91b5364da849404e82ae159db9655e5a",
+      "timestamp": "2026-06-09T02:21:25.140674"
+    },
+    "1b2c060bf8c740f1bd61a6eecc36546f": {
+      "source": "llm_deepseek",
+      "content": "rejoined local debate club to hone persuasive skills",
+      "scene": "session_2",
+      "evidence_id": "1b2c060bf8c740f1bd61a6eecc36546f",
+      "timestamp": "2026-06-09T02:21:25.140680"
+    },
+    "634567b32adc46819bf82556f25bfbab": {
+      "source": "llm_deepseek",
+      "content": "I used to love action-packed thrillers, but now I find myself intrigued by more thought-provoking dramas or animated features that tell a deeper story.",
+      "scene": "session_3",
+      "evidence_id": "634567b32adc46819bf82556f25bfbab",
+      "timestamp": "2026-06-09T02:21:25.154380"
+    },
+    "616e14ddad5e4dac8ba2f0a8d6f6b099": {
+      "source": "llm_deepseek",
+      "content": "I joined an online film discussion group; I wrote a review for a recent blockbuster; I hosted an online movie watch party with my family.",
+      "scene": "session_3",
+      "evidence_id": "616e14ddad5e4dac8ba2f0a8d6f6b099",
+      "timestamp": "2026-06-09T02:21:25.154383"
+    },
+    "d8a9a7dbb0814472aab5ca4daae6e493": {
+      "source": "llm_deepseek",
+      "content": "found the film history class tedious and unengaging; started a film appreciation course but it moved too slowly",
+      "scene": "session_3",
+      "evidence_id": "d8a9a7dbb0814472aab5ca4daae6e493",
+      "timestamp": "2026-06-09T02:21:25.154386"
+    },
+    "9ec7c776362d4cfb8b1c94c70081c616": {
+      "source": "llm_deepseek",
+      "content": "I did try filming a short skit before, but I found it too stressful and uninteresting.",
+      "scene": "session_3",
+      "evidence_id": "9ec7c776362d4cfb8b1c94c70081c616",
+      "timestamp": "2026-06-09T02:21:25.154388"
+    },
+    "4ee676b006d64104a704c5f330d99817": {
+      "source": "llm_deepseek",
+      "content": "I decided to enhance my collection with some rare movie memorabilia I found at a fair.",
+      "scene": "session_3",
+      "evidence_id": "4ee676b006d64104a704c5f330d99817",
+      "timestamp": "2026-06-09T02:21:25.154391"
+    },
+    "7022ececd1034b5b8e711ccbbcb3c150": {
+      "source": "llm_deepseek",
+      "content": "User stated that movie preferences shift dramatically with mood, time, and season, e.g., comedies in summer, dramas in fall.",
+      "scene": "session_4",
+      "evidence_id": "7022ececd1034b5b8e711ccbbcb3c150",
+      "timestamp": "2026-06-09T02:21:25.205617"
+    },
+    "e6f50c28c31141aeafa1b40066efe88e": {
+      "source": "llm_deepseek",
+      "content": "User expressed that movie marathons feel draining physically and mentally, preferring breaks.",
+      "scene": "session_4",
+      "evidence_id": "e6f50c28c31141aeafa1b40066efe88e",
+      "timestamp": "2026-06-09T02:21:25.205620"
+    },
+    "2b462711cd3641989146fc4463366fd7": {
+      "source": "llm_deepseek",
+      "content": "User mentioned reignited passion for writing film reviews and starting a blog.",
+      "scene": "session_4",
+      "evidence_id": "2b462711cd3641989146fc4463366fd7",
+      "timestamp": "2026-06-09T02:21:25.205623"
+    },
+    "8d616742274c4a41bbbd9c02cfc4e5b4": {
+      "source": "llm_deepseek",
+      "content": "User prefers sharing opinions casually with friends rather than formal critique groups, finding it more genuine and engaging.",
+      "scene": "session_4",
+      "evidence_id": "8d616742274c4a41bbbd9c02cfc4e5b4",
+      "timestamp": "2026-06-09T02:21:25.205625"
+    },
+    "3fd7c759de6245878632fbc1cf59dff3": {
+      "source": "llm_deepseek",
+      "content": "User reported thoroughly enjoying a foreign film, which was a positive surprise after past difficulties with foreign cinema.",
+      "scene": "session_4",
+      "evidence_id": "3fd7c759de6245878632fbc1cf59dff3",
+      "timestamp": "2026-06-09T02:21:25.205627"
+    },
+    "3441a5ed3c3e4d4bb829fa29b03d1eee": {
+      "source": "llm_deepseek",
+      "content": "User picked up a director biography and finds it captivating, providing insight into filmmaking challenges and artistic vision.",
+      "scene": "session_4",
+      "evidence_id": "3441a5ed3c3e4d4bb829fa29b03d1eee",
+      "timestamp": "2026-06-09T02:21:25.205630"
+    },
+    "da46d9a9c90a4ef6b8f63b02758f9c9c": {
+      "source": "llm_deepseek",
+      "content": "I'm excited to share that I launched a personal website dedicated to discussing various aspects of legal ethics and reform",
+      "scene": "session_5",
+      "evidence_id": "da46d9a9c90a4ef6b8f63b02758f9c9c",
+      "timestamp": "2026-06-09T02:21:25.296271"
+    },
+    "e339d2da1b0148e09d221412f9b8a7e6": {
+      "source": "llm_deepseek",
+      "content": "returning to volunteering at a legal aid clinic and organizing a networking event for law students and practitioners to focus on social justice issues",
+      "scene": "session_5",
+      "evidence_id": "e339d2da1b0148e09d221412f9b8a7e6",
+      "timestamp": "2026-06-09T02:21:25.296275"
+    }
+  },
+  "current_session": "session_5",
+  "current_session_id": "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255_session_5",
+  "config_id": "decay_0.25x",
+  "context_hash": "d4a1f9dcaab3b0eb522c4a7e1521a05eed6b02ca443f0ee9331df07306511255",
+  "num_sessions": 6
+}

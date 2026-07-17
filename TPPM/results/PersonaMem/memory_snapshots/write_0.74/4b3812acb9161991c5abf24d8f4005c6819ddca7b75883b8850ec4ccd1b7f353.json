@@ -1,0 +1,848 @@
+{
+  "config": {
+    "write_threshold": 0.74,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.58,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "language_learning_goal",
+      "value": "beginner's Spanish course for travel",
+      "context": "Enrolled in a beginner's Spanish course to enhance communication during future travels.",
+      "profile_type": "goal",
+      "stability_score": 0.5999999844681252,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Enrolled in a beginner's Spanish course to enhance communication during future travels.",
+          "scene": "session_1",
+          "evidence_id": "f9dc3b267cad41f8a78b83eb842a3cc7",
+          "timestamp": "2026-06-09T02:20:25.246431"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "beginner's Spanish course for travel",
+          "context": "Enrolled in a beginner's Spanish course to enhance communication during future travels.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Enrolled in a beginner's Spanish course to enhance communication during future travels.",
+              "scene": "session_1",
+              "evidence_id": "f9dc3b267cad41f8a78b83eb842a3cc7",
+              "timestamp": "2026-06-09T02:20:25.246431"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:25.246431",
+          "last_accessed": "2026-06-09T02:20:25.320967"
+        }
+      },
+      "unit_id": "9dd142ce790d449da63fa3fe24062fe3",
+      "timestamp": "2026-06-09T02:20:25.247628",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.320964",
+      "last_evolved": "2026-06-09T02:20:25.322185",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "financial_blogging_interest",
+      "value": "personal finance blogging",
+      "context": "I've always liked personal finance blogging... now it feels like I can really make a difference",
+      "profile_type": "interest",
+      "stability_score": 0.599999992375,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've always liked personal finance blogging... now it feels like I can really make a difference",
+          "scene": "session_3",
+          "evidence_id": "d5f1bc6944a149b8925515c2217c7335",
+          "timestamp": "2026-06-09T02:20:25.281387"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "personal finance blogging",
+          "context": "I've always liked personal finance blogging... now it feels like I can really make a difference",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've always liked personal finance blogging... now it feels like I can really make a difference",
+              "scene": "session_3",
+              "evidence_id": "d5f1bc6944a149b8925515c2217c7335",
+              "timestamp": "2026-06-09T02:20:25.281387"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 10,
+          "last_seen": "2026-06-09T02:20:25.281387",
+          "last_accessed": "2026-06-09T02:20:25.321073"
+        }
+      },
+      "unit_id": "d06a30d0ca6447b8b0ee07885a9a5ed9",
+      "timestamp": "2026-06-09T02:20:25.285581",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 10,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321070",
+      "last_evolved": "2026-06-09T02:20:25.322185",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "travel_planning_mode",
+      "value": "meticulous planner who creates detailed itineraries and vision boards",
+      "context": "spent time creating a detailed itinerary for Italy trip and a vision board for future travel",
+      "profile_type": "style",
+      "stability_score": 0.7580303034430899,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "spent time creating a detailed itinerary for Italy trip and a vision board for future travel",
+          "scene": "session_0",
+          "evidence_id": "69103bb3c2db456c96448407babc7009",
+          "timestamp": "2026-06-09T02:20:25.243852"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "meticulous planner who creates detailed itineraries and vision boards",
+          "context": "spent time creating a detailed itinerary for Italy trip and a vision board for future travel",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "spent time creating a detailed itinerary for Italy trip and a vision board for future travel",
+              "scene": "session_0",
+              "evidence_id": "69103bb3c2db456c96448407babc7009",
+              "timestamp": "2026-06-09T02:20:25.243852"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:25.243852",
+          "last_accessed": "2026-06-09T02:20:25.321206"
+        }
+      },
+      "unit_id": "090e33747a9e4edf845b1731fcb01f12",
+      "timestamp": "2026-06-09T02:20:25.243888",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321203",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "culinary_adventure_interest",
+      "value": "loves authentic local food experiences, cooking classes, and food tours",
+      "context": "booked a cooking class in Thailand, planned a food tour in Lisbon, enjoys trying local cuisines",
+      "profile_type": "interest",
+      "stability_score": 0.7384752325930685,
+      "confidence_score": 0.9,
+      "scene": "session_0",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "booked a cooking class in Thailand, planned a food tour in Lisbon, enjoys trying local cuisines",
+          "scene": "session_0",
+          "evidence_id": "1fdcac6a47fb427e818143ffa2530460",
+          "timestamp": "2026-06-09T02:20:25.243859"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "loves authentic local food experiences, cooking classes, and food tours",
+          "context": "booked a cooking class in Thailand, planned a food tour in Lisbon, enjoys trying local cuisines",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "booked a cooking class in Thailand, planned a food tour in Lisbon, enjoys trying local cuisines",
+              "scene": "session_0",
+              "evidence_id": "1fdcac6a47fb427e818143ffa2530460",
+              "timestamp": "2026-06-09T02:20:25.243859"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 25,
+          "last_seen": "2026-06-09T02:20:25.243859",
+          "last_accessed": "2026-06-09T02:20:25.321334"
+        }
+      },
+      "unit_id": "e5a8b232885643918b09e3861ecaa07d",
+      "timestamp": "2026-06-09T02:20:25.244550",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 25,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321331",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "packing_style",
+      "value": "minimalist for travel and daily life",
+      "context": "Packed for a spontaneous trip using minimalist approach; wants to embrace minimalism in daily life.",
+      "profile_type": "style",
+      "stability_score": 0.7473336788106381,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.7666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Packed for a spontaneous trip using minimalist approach; wants to embrace minimalism in daily life.",
+          "scene": "session_1",
+          "evidence_id": "c21db7fffd994f038e8c29fd777df434",
+          "timestamp": "2026-06-09T02:20:25.246435"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "minimalist for travel and daily life",
+          "context": "Packed for a spontaneous trip using minimalist approach; wants to embrace minimalism in daily life.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Packed for a spontaneous trip using minimalist approach; wants to embrace minimalism in daily life.",
+              "scene": "session_1",
+              "evidence_id": "c21db7fffd994f038e8c29fd777df434",
+              "timestamp": "2026-06-09T02:20:25.246435"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:25.246435",
+          "last_accessed": "2026-06-09T02:20:25.321471"
+        }
+      },
+      "unit_id": "a016640891aa40eebf3054ffe2b6ec64",
+      "timestamp": "2026-06-09T02:20:25.249162",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321468",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "journaling_preference",
+      "value": "prefers journaling over travel blogging for personal reflection",
+      "context": "Stopped travel blog to focus on journaling, finding it more intimate and fulfilling.",
+      "profile_type": "preference",
+      "stability_score": 0.7217824936151086,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Stopped travel blog to focus on journaling, finding it more intimate and fulfilling.",
+          "scene": "session_1",
+          "evidence_id": "2dd9aa9ff2cd484688f399727523c995",
+          "timestamp": "2026-06-09T02:20:25.246441"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers journaling over travel blogging for personal reflection",
+          "context": "Stopped travel blog to focus on journaling, finding it more intimate and fulfilling.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Stopped travel blog to focus on journaling, finding it more intimate and fulfilling.",
+              "scene": "session_1",
+              "evidence_id": "2dd9aa9ff2cd484688f399727523c995",
+              "timestamp": "2026-06-09T02:20:25.246441"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 20,
+          "last_seen": "2026-06-09T02:20:25.246441",
+          "last_accessed": "2026-06-09T02:20:25.321599"
+        }
+      },
+      "unit_id": "704a4a15d91e4c2cba5fc93e0ed59b9f",
+      "timestamp": "2026-06-09T02:20:25.250957",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 20,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321596",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "itinerary_planning_style",
+      "value": "meticulously detailed group trips including hidden gems, history, culture, and cuisine",
+      "context": "Designed an intricate itinerary for a group trip to explore local hidden gems, including lesser-known parks and quaint cafes.",
+      "profile_type": "style",
+      "stability_score": 0.8248925589936604,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Designed an intricate itinerary for a group trip to explore local hidden gems, including lesser-known parks and quaint cafes.",
+          "scene": "session_2",
+          "evidence_id": "b86b3300907a48b8b143bdfb25e32ca9",
+          "timestamp": "2026-06-09T02:20:25.255422"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "meticulously detailed group trips including hidden gems, history, culture, and cuisine",
+          "context": "Designed an intricate itinerary for a group trip to explore local hidden gems, including lesser-known parks and quaint cafes.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Designed an intricate itinerary for a group trip to explore local hidden gems, including lesser-known parks and quaint cafes.",
+              "scene": "session_2",
+              "evidence_id": "b86b3300907a48b8b143bdfb25e32ca9",
+              "timestamp": "2026-06-09T02:20:25.255422"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:20:25.255422",
+          "last_accessed": "2026-06-09T02:20:25.321762"
+        }
+      },
+      "unit_id": "863a771a1403445e86b0a1f8471f2671",
+      "timestamp": "2026-06-09T02:20:25.259145",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321759",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_documentation_preference",
+      "value": "travel journal for free-form reflections over scrapbooks or vision boards",
+      "context": "Abandoned scrapbook idea as frustrating, opted for travel journal allowing spontaneous thoughts.",
+      "profile_type": "preference",
+      "stability_score": 0.7167382350262892,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.9,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Abandoned scrapbook idea as frustrating, opted for travel journal allowing spontaneous thoughts.",
+          "scene": "session_2",
+          "evidence_id": "2ad9723c10434d9e96a2d8e7bc6dc3bd",
+          "timestamp": "2026-06-09T02:20:25.255425"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "travel journal for free-form reflections over scrapbooks or vision boards",
+          "context": "Abandoned scrapbook idea as frustrating, opted for travel journal allowing spontaneous thoughts.",
+          "confidence_score": 0.9,
+          "quality_score": 0.9,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Abandoned scrapbook idea as frustrating, opted for travel journal allowing spontaneous thoughts.",
+              "scene": "session_2",
+              "evidence_id": "2ad9723c10434d9e96a2d8e7bc6dc3bd",
+              "timestamp": "2026-06-09T02:20:25.255425"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:20:25.255425",
+          "last_accessed": "2026-06-09T02:20:25.321879"
+        }
+      },
+      "unit_id": "cf313219754f415980ff8e30f2ada6b9",
+      "timestamp": "2026-06-09T02:20:25.262446",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.321877",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "culinary_exploration_interest",
+      "value": "passionate about food tours, local dishes, and uncovering stories behind cuisine",
+      "context": "Planned a food tour with popular spots and hidden local eateries, eager to explore flavors and stories.",
+      "profile_type": "interest",
+      "stability_score": 0.7200082376080683,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Planned a food tour with popular spots and hidden local eateries, eager to explore flavors and stories.",
+          "scene": "session_2",
+          "evidence_id": "a963bae7b6cc420bae5e59f68296eeae",
+          "timestamp": "2026-06-09T02:20:25.255428"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "passionate about food tours, local dishes, and uncovering stories behind cuisine",
+          "context": "Planned a food tour with popular spots and hidden local eateries, eager to explore flavors and stories.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Planned a food tour with popular spots and hidden local eateries, eager to explore flavors and stories.",
+              "scene": "session_2",
+              "evidence_id": "a963bae7b6cc420bae5e59f68296eeae",
+              "timestamp": "2026-06-09T02:20:25.255428"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:20:25.255428",
+          "last_accessed": "2026-06-09T02:20:25.322008"
+        }
+      },
+      "unit_id": "981485878893469193749842d08aad46",
+      "timestamp": "2026-06-09T02:20:25.266838",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.322005",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_event_leadership",
+      "value": "organizes group retreats focusing on bonding, relaxation, and inclusive activities",
+      "context": "Successfully organized a weekend retreat for friends with activities for both thrill-seekers and those wanting to unwind, fostering bonding.",
+      "profile_type": "style",
+      "stability_score": 0.8248925636864548,
+      "confidence_score": 0.85,
+      "scene": "session_2",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Successfully organized a weekend retreat for friends with activities for both thrill-seekers and those wanting to unwind, fostering bonding.",
+          "scene": "session_2",
+          "evidence_id": "55f84aca545c476e9fdf8656b9b5b7c0",
+          "timestamp": "2026-06-09T02:20:25.255430"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "organizes group retreats focusing on bonding, relaxation, and inclusive activities",
+          "context": "Successfully organized a weekend retreat for friends with activities for both thrill-seekers and those wanting to unwind, fostering bonding.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Successfully organized a weekend retreat for friends with activities for both thrill-seekers and those wanting to unwind, fostering bonding.",
+              "scene": "session_2",
+              "evidence_id": "55f84aca545c476e9fdf8656b9b5b7c0",
+              "timestamp": "2026-06-09T02:20:25.255430"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 14,
+          "last_seen": "2026-06-09T02:20:25.255430",
+          "last_accessed": "2026-06-09T02:20:25.322155"
+        }
+      },
+      "unit_id": "f8245d34f0ff4cab9b0f7aefc5bcc1ac",
+      "timestamp": "2026-06-09T02:20:25.273431",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 14,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.322152",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "travel_style_preference",
+      "value": "immersive_local_experiences",
+      "context": "Focuses on immersive experiences to connect with local culture; seeks hidden gems and authentic interactions.",
+      "profile_type": "style",
+      "stability_score": 0.8086315453774189,
+      "confidence_score": 0.85,
+      "scene": "session_4",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Focuses on immersive experiences to connect with local culture; seeks hidden gems and authentic interactions.",
+          "scene": "session_4",
+          "evidence_id": "35e1963fac774b0dba8ad82c1ac86be3",
+          "timestamp": "2026-06-09T02:20:25.300377"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "immersive_local_experiences",
+          "context": "Focuses on immersive experiences to connect with local culture; seeks hidden gems and authentic interactions.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Focuses on immersive experiences to connect with local culture; seeks hidden gems and authentic interactions.",
+              "scene": "session_4",
+              "evidence_id": "35e1963fac774b0dba8ad82c1ac86be3",
+              "timestamp": "2026-06-09T02:20:25.300377"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:25.300377",
+          "last_accessed": "2026-06-09T02:20:25.320633"
+        }
+      },
+      "unit_id": "ab2b59341282428faec33c2689e49b36",
+      "timestamp": "2026-06-09T02:20:25.305500",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.320631",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_travel_style",
+      "value": "offline_group_discussions",
+      "context": "Stepped back from online forums; prefers real-life travel discussions with friends for authenticity.",
+      "profile_type": "preference",
+      "stability_score": 0.7058605926455367,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Stepped back from online forums; prefers real-life travel discussions with friends for authenticity.",
+          "scene": "session_4",
+          "evidence_id": "18c829fb476e4017a98101c9d92170c7",
+          "timestamp": "2026-06-09T02:20:25.300380"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "offline_group_discussions",
+          "context": "Stepped back from online forums; prefers real-life travel discussions with friends for authenticity.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Stepped back from online forums; prefers real-life travel discussions with friends for authenticity.",
+              "scene": "session_4",
+              "evidence_id": "18c829fb476e4017a98101c9d92170c7",
+              "timestamp": "2026-06-09T02:20:25.300380"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:25.300380",
+          "last_accessed": "2026-06-09T02:20:25.320745"
+        }
+      },
+      "unit_id": "d6ce4ef7326f42c0878a38d836763e48",
+      "timestamp": "2026-06-09T02:20:25.310514",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.320743",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "planning_habit",
+      "value": "proactive_thorough_researcher",
+      "context": "Meticulously researches countries, attends webinars on insurance, collects brochures for planning.",
+      "profile_type": "style",
+      "stability_score": 0.85667102095045,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.8833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Meticulously researches countries, attends webinars on insurance, collects brochures for planning.",
+          "scene": "session_4",
+          "evidence_id": "edc72bb5b4bf450ea7d4f75a7bc3e8ad",
+          "timestamp": "2026-06-09T02:20:25.300383"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "proactive_thorough_researcher",
+          "context": "Meticulously researches countries, attends webinars on insurance, collects brochures for planning.",
+          "confidence_score": 0.9,
+          "quality_score": 0.8833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Meticulously researches countries, attends webinars on insurance, collects brochures for planning.",
+              "scene": "session_4",
+              "evidence_id": "edc72bb5b4bf450ea7d4f75a7bc3e8ad",
+              "timestamp": "2026-06-09T02:20:25.300383"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 3,
+          "last_seen": "2026-06-09T02:20:25.300383",
+          "last_accessed": "2026-06-09T02:20:25.320852"
+        }
+      },
+      "unit_id": "7a393b7c7b52403087e94b1d2013174c",
+      "timestamp": "2026-06-09T02:20:25.316044",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 3,
+      "seen_session_ids": [
+        "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:25.320850",
+      "last_evolved": "2026-06-09T02:20:25.322209",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "69103bb3c2db456c96448407babc7009": {
+      "source": "llm_deepseek",
+      "content": "spent time creating a detailed itinerary for Italy trip and a vision board for future travel",
+      "scene": "session_0",
+      "evidence_id": "69103bb3c2db456c96448407babc7009",
+      "timestamp": "2026-06-09T02:20:25.243852"
+    },
+    "1fdcac6a47fb427e818143ffa2530460": {
+      "source": "llm_deepseek",
+      "content": "booked a cooking class in Thailand, planned a food tour in Lisbon, enjoys trying local cuisines",
+      "scene": "session_0",
+      "evidence_id": "1fdcac6a47fb427e818143ffa2530460",
+      "timestamp": "2026-06-09T02:20:25.243859"
+    },
+    "f9dc3b267cad41f8a78b83eb842a3cc7": {
+      "source": "llm_deepseek",
+      "content": "Enrolled in a beginner's Spanish course to enhance communication during future travels.",
+      "scene": "session_1",
+      "evidence_id": "f9dc3b267cad41f8a78b83eb842a3cc7",
+      "timestamp": "2026-06-09T02:20:25.246431"
+    },
+    "c21db7fffd994f038e8c29fd777df434": {
+      "source": "llm_deepseek",
+      "content": "Packed for a spontaneous trip using minimalist approach; wants to embrace minimalism in daily life.",
+      "scene": "session_1",
+      "evidence_id": "c21db7fffd994f038e8c29fd777df434",
+      "timestamp": "2026-06-09T02:20:25.246435"
+    },
+    "2dd9aa9ff2cd484688f399727523c995": {
+      "source": "llm_deepseek",
+      "content": "Stopped travel blog to focus on journaling, finding it more intimate and fulfilling.",
+      "scene": "session_1",
+      "evidence_id": "2dd9aa9ff2cd484688f399727523c995",
+      "timestamp": "2026-06-09T02:20:25.246441"
+    },
+    "b86b3300907a48b8b143bdfb25e32ca9": {
+      "source": "llm_deepseek",
+      "content": "Designed an intricate itinerary for a group trip to explore local hidden gems, including lesser-known parks and quaint cafes.",
+      "scene": "session_2",
+      "evidence_id": "b86b3300907a48b8b143bdfb25e32ca9",
+      "timestamp": "2026-06-09T02:20:25.255422"
+    },
+    "2ad9723c10434d9e96a2d8e7bc6dc3bd": {
+      "source": "llm_deepseek",
+      "content": "Abandoned scrapbook idea as frustrating, opted for travel journal allowing spontaneous thoughts.",
+      "scene": "session_2",
+      "evidence_id": "2ad9723c10434d9e96a2d8e7bc6dc3bd",
+      "timestamp": "2026-06-09T02:20:25.255425"
+    },
+    "a963bae7b6cc420bae5e59f68296eeae": {
+      "source": "llm_deepseek",
+      "content": "Planned a food tour with popular spots and hidden local eateries, eager to explore flavors and stories.",
+      "scene": "session_2",
+      "evidence_id": "a963bae7b6cc420bae5e59f68296eeae",
+      "timestamp": "2026-06-09T02:20:25.255428"
+    },
+    "55f84aca545c476e9fdf8656b9b5b7c0": {
+      "source": "llm_deepseek",
+      "content": "Successfully organized a weekend retreat for friends with activities for both thrill-seekers and those wanting to unwind, fostering bonding.",
+      "scene": "session_2",
+      "evidence_id": "55f84aca545c476e9fdf8656b9b5b7c0",
+      "timestamp": "2026-06-09T02:20:25.255430"
+    },
+    "d5f1bc6944a149b8925515c2217c7335": {
+      "source": "llm_deepseek",
+      "content": "I've always liked personal finance blogging... now it feels like I can really make a difference",
+      "scene": "session_3",
+      "evidence_id": "d5f1bc6944a149b8925515c2217c7335",
+      "timestamp": "2026-06-09T02:20:25.281387"
+    },
+    "35e1963fac774b0dba8ad82c1ac86be3": {
+      "source": "llm_deepseek",
+      "content": "Focuses on immersive experiences to connect with local culture; seeks hidden gems and authentic interactions.",
+      "scene": "session_4",
+      "evidence_id": "35e1963fac774b0dba8ad82c1ac86be3",
+      "timestamp": "2026-06-09T02:20:25.300377"
+    },
+    "18c829fb476e4017a98101c9d92170c7": {
+      "source": "llm_deepseek",
+      "content": "Stepped back from online forums; prefers real-life travel discussions with friends for authenticity.",
+      "scene": "session_4",
+      "evidence_id": "18c829fb476e4017a98101c9d92170c7",
+      "timestamp": "2026-06-09T02:20:25.300380"
+    },
+    "edc72bb5b4bf450ea7d4f75a7bc3e8ad": {
+      "source": "llm_deepseek",
+      "content": "Meticulously researches countries, attends webinars on insurance, collects brochures for planning.",
+      "scene": "session_4",
+      "evidence_id": "edc72bb5b4bf450ea7d4f75a7bc3e8ad",
+      "timestamp": "2026-06-09T02:20:25.300383"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353_session_4",
+  "config_id": "write_0.74",
+  "context_hash": "4b3812acb9161991c5abf24d8f4005c6819ddca7b75883b8850ec4ccd1b7f353",
+  "num_sessions": 5
+}

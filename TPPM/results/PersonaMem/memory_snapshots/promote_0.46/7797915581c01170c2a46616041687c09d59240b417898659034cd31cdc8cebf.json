@@ -1,0 +1,1458 @@
+{
+  "config": {
+    "write_threshold": 0.68,
+    "context_threshold": 0.62,
+    "promote_threshold": 0.46,
+    "promotion_min_sessions": 1,
+    "distill_stability_threshold": 0.82,
+    "distill_quality_threshold": 0.76,
+    "distill_session_threshold": 3,
+    "write_weights": [
+      0.25,
+      0.3,
+      0.25,
+      0.2
+    ],
+    "promote_weights": [
+      0.1,
+      0.1,
+      0.05,
+      0.7,
+      0.05
+    ],
+    "retrieve_weights": [
+      0.35,
+      0.2,
+      0.15,
+      0.2,
+      0.1
+    ],
+    "decay_lambdas": {
+      "goal": 0.1,
+      "interest": 0.07,
+      "style": 0.04,
+      "background": 0.04,
+      "preference": 0.05,
+      "general": 0.05
+    },
+    "positive_reinforcement": 0.08,
+    "negative_penalty": 0.12,
+    "working_decay": 0.015,
+    "short_term_decay": 0.03
+  },
+  "working_memory": [],
+  "short_term_memory": [
+    {
+      "attribute": "preference_movie_trivia",
+      "value": "finds movie trivia exhilarating",
+      "context": "I've been diving into movie trivia, and it's been quite exhilarating lately.",
+      "profile_type": "preference",
+      "stability_score": 0.4999999560024325,
+      "confidence_score": 0.75,
+      "scene": "session_0",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been diving into movie trivia, and it's been quite exhilarating lately.",
+          "scene": "session_0",
+          "evidence_id": "cdeb9ef9220d4421bd6ca50a90b8eee8",
+          "timestamp": "2026-06-09T02:20:41.357914"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "finds movie trivia exhilarating",
+          "context": "I've been diving into movie trivia, and it's been quite exhilarating lately.",
+          "confidence_score": 0.75,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been diving into movie trivia, and it's been quite exhilarating lately.",
+              "scene": "session_0",
+              "evidence_id": "cdeb9ef9220d4421bd6ca50a90b8eee8",
+              "timestamp": "2026-06-09T02:20:41.357914"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 31,
+          "last_seen": "2026-06-09T02:20:41.357914",
+          "last_accessed": "2026-06-09T02:20:41.609325"
+        }
+      },
+      "unit_id": "aa20ec3e75434a258ba4fb47b42a3aa9",
+      "timestamp": "2026-06-09T02:20:41.359215",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 31,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.609322",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "foreign_film_interest",
+      "value": "enjoys foreign films and cultural exploration",
+      "context": "User attended a screening of an award-winning foreign film and loved it, feeling it broadened horizons and sparked desire to explore more world cinema.",
+      "profile_type": "interest",
+      "stability_score": 0.49999995732118235,
+      "confidence_score": 0.75,
+      "scene": "session_1",
+      "quality_score": 0.75,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User attended a screening of an award-winning foreign film and loved it, feeling it broadened horizons and sparked desire to explore more world cinema.",
+          "scene": "session_1",
+          "evidence_id": "9098ad41e30c45e2b8d3a6346c8c832c",
+          "timestamp": "2026-06-09T02:20:41.361867"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "enjoys foreign films and cultural exploration",
+          "context": "User attended a screening of an award-winning foreign film and loved it, feeling it broadened horizons and sparked desire to explore more world cinema.",
+          "confidence_score": 0.75,
+          "quality_score": 0.75,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User attended a screening of an award-winning foreign film and loved it, feeling it broadened horizons and sparked desire to explore more world cinema.",
+              "scene": "session_1",
+              "evidence_id": "9098ad41e30c45e2b8d3a6346c8c832c",
+              "timestamp": "2026-06-09T02:20:41.361867"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:41.361867",
+          "last_accessed": "2026-06-09T02:20:41.609534"
+        }
+      },
+      "unit_id": "6335d6df04304aae9b65d6233a4ad263",
+      "timestamp": "2026-06-09T02:20:41.366810",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.609531",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "review_writing_style",
+      "value": "prefers personal reflections over formal movie reviews",
+      "context": "User decided to stop writing formal movie reviews and only jot down personal reflections to avoid restraint and enjoy films more genuinely.",
+      "profile_type": "style",
+      "stability_score": 0.4999999609229182,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User decided to stop writing formal movie reviews and only jot down personal reflections to avoid restraint and enjoy films more genuinely.",
+          "scene": "session_1",
+          "evidence_id": "9cdc833b46d34fcfbfc85544dfc4539a",
+          "timestamp": "2026-06-09T02:20:41.361876"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers personal reflections over formal movie reviews",
+          "context": "User decided to stop writing formal movie reviews and only jot down personal reflections to avoid restraint and enjoy films more genuinely.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User decided to stop writing formal movie reviews and only jot down personal reflections to avoid restraint and enjoy films more genuinely.",
+              "scene": "session_1",
+              "evidence_id": "9cdc833b46d34fcfbfc85544dfc4539a",
+              "timestamp": "2026-06-09T02:20:41.361876"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:41.361876",
+          "last_accessed": "2026-06-09T02:20:41.609718"
+        }
+      },
+      "unit_id": "8ad2473c9a9f4ba1859e3ea9938df1e0",
+      "timestamp": "2026-06-09T02:20:41.387556",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.609715",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "film_festival_volunteering_interest",
+      "value": "enjoys volunteering at film festivals to experience behind-the-scenes action and community spirit",
+      "context": "volunteered at a local film festival and found it a vibrant celebration",
+      "profile_type": "interest",
+      "stability_score": 0.3999999715193066,
+      "confidence_score": 0.6,
+      "scene": "session_2",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "volunteered at a local film festival and found it a vibrant celebration",
+          "scene": "session_2",
+          "evidence_id": "d040a1265ffd448a883ac3c6d18c040b",
+          "timestamp": "2026-06-09T02:20:41.402191"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "enjoys volunteering at film festivals to experience behind-the-scenes action and community spirit",
+          "context": "volunteered at a local film festival and found it a vibrant celebration",
+          "confidence_score": 0.6,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "volunteered at a local film festival and found it a vibrant celebration",
+              "scene": "session_2",
+              "evidence_id": "d040a1265ffd448a883ac3c6d18c040b",
+              "timestamp": "2026-06-09T02:20:41.402191"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:41.402191",
+          "last_accessed": "2026-06-09T02:20:41.609902"
+        }
+      },
+      "unit_id": "4d39e68fd82a42e8ad6aea99085f69f6",
+      "timestamp": "2026-06-09T02:20:41.407579",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.609899",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "stage_fright_experience",
+      "value": "experienced intense stage fright during community theater performance, leading to stepping back from acting",
+      "context": "stepped back from community theater after stage fright during first performance",
+      "profile_type": "general",
+      "stability_score": 0.49999996548663317,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "stepped back from community theater after stage fright during first performance",
+          "scene": "session_2",
+          "evidence_id": "82137e65a5a54f81bea7e2477f55fce8",
+          "timestamp": "2026-06-09T02:20:41.402194"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "experienced intense stage fright during community theater performance, leading to stepping back from acting",
+          "context": "stepped back from community theater after stage fright during first performance",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "stepped back from community theater after stage fright during first performance",
+              "scene": "session_2",
+              "evidence_id": "82137e65a5a54f81bea7e2477f55fce8",
+              "timestamp": "2026-06-09T02:20:41.402194"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:41.402194",
+          "last_accessed": "2026-06-09T02:20:41.610100"
+        }
+      },
+      "unit_id": "bdac0937503a4893a83516958421c403",
+      "timestamp": "2026-06-09T02:20:41.413843",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.610097",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "online_film_forum_participation",
+      "value": "joined an online film forum and finds it refreshing for engaging discussions",
+      "context": "joined an online film forum recently and enjoys the community",
+      "profile_type": "interest",
+      "stability_score": 0.4999999703453134,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "joined an online film forum recently and enjoys the community",
+          "scene": "session_2",
+          "evidence_id": "d9966b62590a40a6a3329d02dc384920",
+          "timestamp": "2026-06-09T02:20:41.402204"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "joined an online film forum and finds it refreshing for engaging discussions",
+          "context": "joined an online film forum recently and enjoys the community",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "joined an online film forum recently and enjoys the community",
+              "scene": "session_2",
+              "evidence_id": "d9966b62590a40a6a3329d02dc384920",
+              "timestamp": "2026-06-09T02:20:41.402204"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:41.402204",
+          "last_accessed": "2026-06-09T02:20:41.610297"
+        }
+      },
+      "unit_id": "8178ed5750304938b2b59115fefb2771",
+      "timestamp": "2026-06-09T02:20:41.441830",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.610294",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    },
+    {
+      "attribute": "book_event_preference",
+      "value": "prefers authentic, non-commercial literary events over commercialized ones",
+      "context": "Attended an immersive book-inspired event but found it 'saturated with commercial undertones' and left disheartened; wishes for events focusing on love of literature.",
+      "profile_type": "preference",
+      "stability_score": 0.49999997852447964,
+      "confidence_score": 0.6,
+      "scene": "session_3",
+      "quality_score": 0.6666666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Attended an immersive book-inspired event but found it 'saturated with commercial undertones' and left disheartened; wishes for events focusing on love of literature.",
+          "scene": "session_3",
+          "evidence_id": "790d499fd82a4239a1f48dec3adf5cdf",
+          "timestamp": "2026-06-09T02:20:41.460103"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "prefers authentic, non-commercial literary events over commercialized ones",
+          "context": "Attended an immersive book-inspired event but found it 'saturated with commercial undertones' and left disheartened; wishes for events focusing on love of literature.",
+          "confidence_score": 0.6,
+          "quality_score": 0.6666666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Attended an immersive book-inspired event but found it 'saturated with commercial undertones' and left disheartened; wishes for events focusing on love of literature.",
+              "scene": "session_3",
+              "evidence_id": "790d499fd82a4239a1f48dec3adf5cdf",
+              "timestamp": "2026-06-09T02:20:41.460103"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:20:41.460103",
+          "last_accessed": "2026-06-09T02:20:41.610515"
+        }
+      },
+      "unit_id": "22164dd62787438d956bb85b0ceb5b70",
+      "timestamp": "2026-06-09T02:20:41.488941",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.610512",
+      "last_evolved": "2026-06-09T02:20:41.612644",
+      "memory_level": "short_term"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "attribute": "interest_classic_films",
+      "value": "enjoys classic films",
+      "context": "I've been really into classic films lately.",
+      "profile_type": "interest",
+      "stability_score": 0.6680063439227126,
+      "confidence_score": 0.8,
+      "scene": "session_0",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I've been really into classic films lately.",
+          "scene": "session_0",
+          "evidence_id": "a0fcb8fae6ba4e279d209e8de2118d66",
+          "timestamp": "2026-06-09T02:20:41.357904"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "enjoys classic films",
+          "context": "I've been really into classic films lately.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I've been really into classic films lately.",
+              "scene": "session_0",
+              "evidence_id": "a0fcb8fae6ba4e279d209e8de2118d66",
+              "timestamp": "2026-06-09T02:20:41.357904"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 31,
+          "last_seen": "2026-06-09T02:20:41.357904",
+          "last_accessed": "2026-06-09T02:20:41.610608"
+        }
+      },
+      "unit_id": "403f246593814eabae48adf2ae5ce731",
+      "timestamp": "2026-06-09T02:20:41.357941",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 31,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.610606",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "interest_foreign_films",
+      "value": "loves foreign films from France, Italy, Japan",
+      "context": "I explored international cinema recently and absolutely fell in love with foreign films, particularly those from countries like France, Italy, and Japan.",
+      "profile_type": "interest",
+      "stability_score": 0.6680063441125461,
+      "confidence_score": 0.85,
+      "scene": "session_0",
+      "quality_score": 0.85,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "I explored international cinema recently and absolutely fell in love with foreign films, particularly those from countries like France, Italy, and Japan.",
+          "scene": "session_0",
+          "evidence_id": "382f5d606e8243ecbf354f0fdecbe9ec",
+          "timestamp": "2026-06-09T02:20:41.357911"
+        }
+      ],
+      "scene_branches": {
+        "session_0": {
+          "scene": "session_0",
+          "value": "loves foreign films from France, Italy, Japan",
+          "context": "I explored international cinema recently and absolutely fell in love with foreign films, particularly those from countries like France, Italy, and Japan.",
+          "confidence_score": 0.85,
+          "quality_score": 0.85,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "I explored international cinema recently and absolutely fell in love with foreign films, particularly those from countries like France, Italy, and Japan.",
+              "scene": "session_0",
+              "evidence_id": "382f5d606e8243ecbf354f0fdecbe9ec",
+              "timestamp": "2026-06-09T02:20:41.357911"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 31,
+          "last_seen": "2026-06-09T02:20:41.357911",
+          "last_accessed": "2026-06-09T02:20:41.610814"
+        }
+      },
+      "unit_id": "4af6cf9b1cd64ee1bf791edde7d1a40a",
+      "timestamp": "2026-06-09T02:20:41.358415",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 31,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_0"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.610812",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "documentary_viewing_preference",
+      "value": "prefers lighter fictional content over heavy documentaries",
+      "context": "User unsubscribed from documentary channels because they felt overwhelmed and affected mood negatively, wanting to focus on fictional narratives for escapism.",
+      "profile_type": "preference",
+      "stability_score": 0.6399093643804246,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7833333333333332,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User unsubscribed from documentary channels because they felt overwhelmed and affected mood negatively, wanting to focus on fictional narratives for escapism.",
+          "scene": "session_1",
+          "evidence_id": "ee57b05bd6004045bc6f2928919a3a0f",
+          "timestamp": "2026-06-09T02:20:41.361865"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers lighter fictional content over heavy documentaries",
+          "context": "User unsubscribed from documentary channels because they felt overwhelmed and affected mood negatively, wanting to focus on fictional narratives for escapism.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333332,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User unsubscribed from documentary channels because they felt overwhelmed and affected mood negatively, wanting to focus on fictional narratives for escapism.",
+              "scene": "session_1",
+              "evidence_id": "ee57b05bd6004045bc6f2928919a3a0f",
+              "timestamp": "2026-06-09T02:20:41.361865"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:41.361865",
+          "last_accessed": "2026-06-09T02:20:41.611038"
+        }
+      },
+      "unit_id": "503129e33d05414dad7c62dcb2c968ab",
+      "timestamp": "2026-06-09T02:20:41.363678",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.611036",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "filmmaking_experimentation",
+      "value": "experiments with short filmmaking techniques on weekends",
+      "context": "User started experimenting with short filmmaking, learning camera angles and lighting, editing footage, considering sharing on social media.",
+      "profile_type": "interest",
+      "stability_score": 0.6735419545633133,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User started experimenting with short filmmaking, learning camera angles and lighting, editing footage, considering sharing on social media.",
+          "scene": "session_1",
+          "evidence_id": "6e653b8d68cd422cbd512eeae4cd0112",
+          "timestamp": "2026-06-09T02:20:41.361869"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "experiments with short filmmaking techniques on weekends",
+          "context": "User started experimenting with short filmmaking, learning camera angles and lighting, editing footage, considering sharing on social media.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User started experimenting with short filmmaking, learning camera angles and lighting, editing footage, considering sharing on social media.",
+              "scene": "session_1",
+              "evidence_id": "6e653b8d68cd422cbd512eeae4cd0112",
+              "timestamp": "2026-06-09T02:20:41.361869"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:41.361869",
+          "last_accessed": "2026-06-09T02:20:41.611262"
+        }
+      },
+      "unit_id": "0d007874eb3b4a1582d68e36381541c9",
+      "timestamp": "2026-06-09T02:20:41.370354",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.611259",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "social_gathering_style",
+      "value": "prefers relaxed, non-competitive gatherings",
+      "context": "User hosted a cozy movie night instead of a marathon, and stepped back from competitive trivia games, valuing casual enjoyment over competition.",
+      "profile_type": "style",
+      "stability_score": 0.8325479972996931,
+      "confidence_score": 0.85,
+      "scene": "session_1",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User hosted a cozy movie night instead of a marathon, and stepped back from competitive trivia games, valuing casual enjoyment over competition.",
+          "scene": "session_1",
+          "evidence_id": "3623cb1d1e8644b1aacad4ee36add9e5",
+          "timestamp": "2026-06-09T02:20:41.361872"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers relaxed, non-competitive gatherings",
+          "context": "User hosted a cozy movie night instead of a marathon, and stepped back from competitive trivia games, valuing casual enjoyment over competition.",
+          "confidence_score": 0.85,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User hosted a cozy movie night instead of a marathon, and stepped back from competitive trivia games, valuing casual enjoyment over competition.",
+              "scene": "session_1",
+              "evidence_id": "3623cb1d1e8644b1aacad4ee36add9e5",
+              "timestamp": "2026-06-09T02:20:41.361872"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:41.361872",
+          "last_accessed": "2026-06-09T02:20:41.611444"
+        }
+      },
+      "unit_id": "805456bc8d2f485d84dd593bd6def9b2",
+      "timestamp": "2026-06-09T02:20:41.374908",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.611441",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_discussion_style",
+      "value": "prefers deep thematic discussion over trivia",
+      "context": "User led discussion on philosophical themes in a movie, finds casual conversations about themes and artistry more enjoyable than trivia.",
+      "profile_type": "style",
+      "stability_score": 0.7473336292754001,
+      "confidence_score": 0.8,
+      "scene": "session_1",
+      "quality_score": 0.7833333333333333,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "User led discussion on philosophical themes in a movie, finds casual conversations about themes and artistry more enjoyable than trivia.",
+          "scene": "session_1",
+          "evidence_id": "2c3fafe2cc4e4153b1f91ed67cfa3f09",
+          "timestamp": "2026-06-09T02:20:41.361874"
+        }
+      ],
+      "scene_branches": {
+        "session_1": {
+          "scene": "session_1",
+          "value": "prefers deep thematic discussion over trivia",
+          "context": "User led discussion on philosophical themes in a movie, finds casual conversations about themes and artistry more enjoyable than trivia.",
+          "confidence_score": 0.8,
+          "quality_score": 0.7833333333333333,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "User led discussion on philosophical themes in a movie, finds casual conversations about themes and artistry more enjoyable than trivia.",
+              "scene": "session_1",
+              "evidence_id": "2c3fafe2cc4e4153b1f91ed67cfa3f09",
+              "timestamp": "2026-06-09T02:20:41.361874"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 26,
+          "last_seen": "2026-06-09T02:20:41.361874",
+          "last_accessed": "2026-06-09T02:20:41.611662"
+        }
+      },
+      "unit_id": "debec750cb0444baa6de4e4352680fff",
+      "timestamp": "2026-06-09T02:20:41.380311",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 26,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_1"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.611660",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "movie_poster_collecting_hobby",
+      "value": "actively collects vintage and contemporary movie posters from flea markets and art shows",
+      "context": "started collecting vintage and contemporary movie posters, inspired by a friend's collection",
+      "profile_type": "interest",
+      "stability_score": 0.5984205471962858,
+      "confidence_score": 0.8,
+      "scene": "session_2",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "started collecting vintage and contemporary movie posters, inspired by a friend's collection",
+          "scene": "session_2",
+          "evidence_id": "99573f7e4fc14628bfcc6443de41dee5",
+          "timestamp": "2026-06-09T02:20:41.402197"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "actively collects vintage and contemporary movie posters from flea markets and art shows",
+          "context": "started collecting vintage and contemporary movie posters, inspired by a friend's collection",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "started collecting vintage and contemporary movie posters, inspired by a friend's collection",
+              "scene": "session_2",
+              "evidence_id": "99573f7e4fc14628bfcc6443de41dee5",
+              "timestamp": "2026-06-09T02:20:41.402197"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:41.402197",
+          "last_accessed": "2026-06-09T02:20:41.611852"
+        }
+      },
+      "unit_id": "afe22df5dd994fb281cf9e6062f48d0f",
+      "timestamp": "2026-06-09T02:20:41.421101",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.611850",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "scriptwriting_goal",
+      "value": "currently focusing on writing movie scripts instead of practicing filmmaking techniques",
+      "context": "decided to take a break from filmmaking to focus on scriptwriting",
+      "profile_type": "goal",
+      "stability_score": 0.5534335540599796,
+      "confidence_score": 0.9,
+      "scene": "session_2",
+      "quality_score": 0.8666666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "decided to take a break from filmmaking to focus on scriptwriting",
+          "scene": "session_2",
+          "evidence_id": "e4304f4543c945929a83e098efedd4ca",
+          "timestamp": "2026-06-09T02:20:41.402199"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "currently focusing on writing movie scripts instead of practicing filmmaking techniques",
+          "context": "decided to take a break from filmmaking to focus on scriptwriting",
+          "confidence_score": 0.9,
+          "quality_score": 0.8666666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "decided to take a break from filmmaking to focus on scriptwriting",
+              "scene": "session_2",
+              "evidence_id": "e4304f4543c945929a83e098efedd4ca",
+              "timestamp": "2026-06-09T02:20:41.402199"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:41.402199",
+          "last_accessed": "2026-06-09T02:20:41.611994"
+        }
+      },
+      "unit_id": "aea33d689dab4b73b6ec752ee2469cd4",
+      "timestamp": "2026-06-09T02:20:41.427021",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.611992",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_music_curation_style",
+      "value": "enjoys curating playlists of favorite film songs to share with friends for social gatherings",
+      "context": "created a playlist of songs from favorite films to share at a gathering",
+      "profile_type": "style",
+      "stability_score": 0.6475084453985995,
+      "confidence_score": 0.7,
+      "scene": "session_2",
+      "quality_score": 0.7000000000000001,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "created a playlist of songs from favorite films to share at a gathering",
+          "scene": "session_2",
+          "evidence_id": "58a62e510f5a40cea10cfcb2e97c8b0e",
+          "timestamp": "2026-06-09T02:20:41.402201"
+        }
+      ],
+      "scene_branches": {
+        "session_2": {
+          "scene": "session_2",
+          "value": "enjoys curating playlists of favorite film songs to share with friends for social gatherings",
+          "context": "created a playlist of songs from favorite films to share at a gathering",
+          "confidence_score": 0.7,
+          "quality_score": 0.7000000000000001,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "created a playlist of songs from favorite films to share at a gathering",
+              "scene": "session_2",
+              "evidence_id": "58a62e510f5a40cea10cfcb2e97c8b0e",
+              "timestamp": "2026-06-09T02:20:41.402201"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 18,
+          "last_seen": "2026-06-09T02:20:41.402201",
+          "last_accessed": "2026-06-09T02:20:41.612201"
+        }
+      },
+      "unit_id": "94530907f40646bd8847a062a7712c4f",
+      "timestamp": "2026-06-09T02:20:41.434937",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 18,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_2"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.612198",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "literary_community_engagement",
+      "value": "actively participates in multiple literary communities (blog, book club, podcast, reading challenges)",
+      "context": "Started a blog, joined a book club, attended author signings, participated in online reading challenges, started a podcast about books and literary trends.",
+      "profile_type": "interest",
+      "stability_score": 0.6858464461530566,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8333333333333334,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started a blog, joined a book club, attended author signings, participated in online reading challenges, started a podcast about books and literary trends.",
+          "scene": "session_3",
+          "evidence_id": "ebc59742733741c9baef91c232992272",
+          "timestamp": "2026-06-09T02:20:41.460099"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "actively participates in multiple literary communities (blog, book club, podcast, reading challenges)",
+          "context": "Started a blog, joined a book club, attended author signings, participated in online reading challenges, started a podcast about books and literary trends.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8333333333333334,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started a blog, joined a book club, attended author signings, participated in online reading challenges, started a podcast about books and literary trends.",
+              "scene": "session_3",
+              "evidence_id": "ebc59742733741c9baef91c232992272",
+              "timestamp": "2026-06-09T02:20:41.460099"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:20:41.460099",
+          "last_accessed": "2026-06-09T02:20:41.612423"
+        }
+      },
+      "unit_id": "44bd74c59fa84a80a89b5dd247bcec15",
+      "timestamp": "2026-06-09T02:20:41.473516",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.612420",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "content_creation_goal",
+      "value": "aims to connect with fellow readers and share literary insights through blog and podcast",
+      "context": "Started a blog for book reviews and literary discussions; started a podcast talking about books and trends to connect with fellow book lovers.",
+      "profile_type": "goal",
+      "stability_score": 0.5674318824981702,
+      "confidence_score": 0.8,
+      "scene": "session_3",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started a blog for book reviews and literary discussions; started a podcast talking about books and trends to connect with fellow book lovers.",
+          "scene": "session_3",
+          "evidence_id": "28377a39aa304c3091c82063aa066cc1",
+          "timestamp": "2026-06-09T02:20:41.460108"
+        }
+      ],
+      "scene_branches": {
+        "session_3": {
+          "scene": "session_3",
+          "value": "aims to connect with fellow readers and share literary insights through blog and podcast",
+          "context": "Started a blog for book reviews and literary discussions; started a podcast talking about books and trends to connect with fellow book lovers.",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started a blog for book reviews and literary discussions; started a podcast talking about books and trends to connect with fellow book lovers.",
+              "scene": "session_3",
+              "evidence_id": "28377a39aa304c3091c82063aa066cc1",
+              "timestamp": "2026-06-09T02:20:41.460108"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 12,
+          "last_seen": "2026-06-09T02:20:41.460108",
+          "last_accessed": "2026-06-09T02:20:41.612595"
+        }
+      },
+      "unit_id": "a82ba42718aa4ce79ffbc73eb76b95e8",
+      "timestamp": "2026-06-09T02:20:41.503325",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 12,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_3"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.612592",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_club_organizer",
+      "value": "initiated and runs a weekly movie marathon social club",
+      "context": "Started a small social club focused on weekly movie marathons",
+      "profile_type": "style",
+      "stability_score": 0.8086315212509291,
+      "confidence_score": 0.9,
+      "scene": "session_4",
+      "quality_score": 0.9166666666666666,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Started a small social club focused on weekly movie marathons",
+          "scene": "session_4",
+          "evidence_id": "4fe1ca2e04a84fb2bb3624ad6e3160d3",
+          "timestamp": "2026-06-09T02:20:41.519679"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "initiated and runs a weekly movie marathon social club",
+          "context": "Started a small social club focused on weekly movie marathons",
+          "confidence_score": 0.9,
+          "quality_score": 0.9166666666666666,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Started a small social club focused on weekly movie marathons",
+              "scene": "session_4",
+              "evidence_id": "4fe1ca2e04a84fb2bb3624ad6e3160d3",
+              "timestamp": "2026-06-09T02:20:41.519679"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:41.519679",
+          "last_accessed": "2026-06-09T02:20:41.608433"
+        }
+      },
+      "unit_id": "f4030e3c59ee43168d07e68eb0cc5574",
+      "timestamp": "2026-06-09T02:20:41.528171",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.608431",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "documentary_appreciation",
+      "value": "subscribed to documentary service and analyzes historical narratives",
+      "context": "Subscribed to a documentary streaming service and discovered a love for historical films, analyzing storytelling techniques",
+      "profile_type": "interest",
+      "stability_score": 0.5994362599107916,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.6999999999999998,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Subscribed to a documentary streaming service and discovered a love for historical films, analyzing storytelling techniques",
+          "scene": "session_4",
+          "evidence_id": "7984e209c1404014a9dbc97274d54c01",
+          "timestamp": "2026-06-09T02:20:41.519682"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "subscribed to documentary service and analyzes historical narratives",
+          "context": "Subscribed to a documentary streaming service and discovered a love for historical films, analyzing storytelling techniques",
+          "confidence_score": 0.7,
+          "quality_score": 0.6999999999999998,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Subscribed to a documentary streaming service and discovered a love for historical films, analyzing storytelling techniques",
+              "scene": "session_4",
+              "evidence_id": "7984e209c1404014a9dbc97274d54c01",
+              "timestamp": "2026-06-09T02:20:41.519682"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:41.519682",
+          "last_accessed": "2026-06-09T02:20:41.608590"
+        }
+      },
+      "unit_id": "320e80084f0341c99ebeb4d4255e3fd3",
+      "timestamp": "2026-06-09T02:20:41.542002",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.608588",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "film_education_background",
+      "value": "completed a course on international film history",
+      "context": "Took a course on international film history, deepening understanding of different cinematic styles",
+      "profile_type": "background",
+      "stability_score": 0.9047104715424223,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8166666666666668,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Took a course on international film history, deepening understanding of different cinematic styles",
+          "scene": "session_4",
+          "evidence_id": "1d46640010f84d8d8cc9a99a6716e0cb",
+          "timestamp": "2026-06-09T02:20:41.519685"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "completed a course on international film history",
+          "context": "Took a course on international film history, deepening understanding of different cinematic styles",
+          "confidence_score": 0.8,
+          "quality_score": 0.8166666666666668,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Took a course on international film history, deepening understanding of different cinematic styles",
+              "scene": "session_4",
+              "evidence_id": "1d46640010f84d8d8cc9a99a6716e0cb",
+              "timestamp": "2026-06-09T02:20:41.519685"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:41.519685",
+          "last_accessed": "2026-06-09T02:20:41.608743"
+        }
+      },
+      "unit_id": "b048a08a4def484291de87ea9877fdf5",
+      "timestamp": "2026-06-09T02:20:41.553489",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.608741",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "adaptation_analysis_style",
+      "value": "joins literary film groups to analyze adaptations, comparing literature and visual storytelling",
+      "context": "Became part of a literary film group that specifically focuses on adaptations, enhancing analytical skills",
+      "profile_type": "style",
+      "stability_score": 0.6164736516907646,
+      "confidence_score": 0.7,
+      "scene": "session_4",
+      "quality_score": 0.7166666666666667,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Became part of a literary film group that specifically focuses on adaptations, enhancing analytical skills",
+          "scene": "session_4",
+          "evidence_id": "575596a218f04e3d9436aff9442e1bf4",
+          "timestamp": "2026-06-09T02:20:41.519687"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "joins literary film groups to analyze adaptations, comparing literature and visual storytelling",
+          "context": "Became part of a literary film group that specifically focuses on adaptations, enhancing analytical skills",
+          "confidence_score": 0.7,
+          "quality_score": 0.7166666666666667,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Became part of a literary film group that specifically focuses on adaptations, enhancing analytical skills",
+              "scene": "session_4",
+              "evidence_id": "575596a218f04e3d9436aff9442e1bf4",
+              "timestamp": "2026-06-09T02:20:41.519687"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:41.519687",
+          "last_accessed": "2026-06-09T02:20:41.608982"
+        }
+      },
+      "unit_id": "3757c134808b4cf9b088a375c11fbfd4",
+      "timestamp": "2026-06-09T02:20:41.568460",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.608980",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    },
+    {
+      "attribute": "discussion_preference",
+      "value": "prefers constructive, friendly discussions over hostile debates",
+      "context": "Left an online film forum due to constant negativity and hostility, shifted to constructive discussions with friends",
+      "profile_type": "preference",
+      "stability_score": 0.705860585621247,
+      "confidence_score": 0.8,
+      "scene": "session_4",
+      "quality_score": 0.8000000000000002,
+      "evidence": [
+        {
+          "source": "llm_deepseek",
+          "content": "Left an online film forum due to constant negativity and hostility, shifted to constructive discussions with friends",
+          "scene": "session_4",
+          "evidence_id": "7aa0ec2f01194879ae540c9b488b8bee",
+          "timestamp": "2026-06-09T02:20:41.519690"
+        }
+      ],
+      "scene_branches": {
+        "session_4": {
+          "scene": "session_4",
+          "value": "prefers constructive, friendly discussions over hostile debates",
+          "context": "Left an online film forum due to constant negativity and hostility, shifted to constructive discussions with friends",
+          "confidence_score": 0.8,
+          "quality_score": 0.8000000000000002,
+          "evidence": [
+            {
+              "source": "llm_deepseek",
+              "content": "Left an online film forum due to constant negativity and hostility, shifted to constructive discussions with friends",
+              "scene": "session_4",
+              "evidence_id": "7aa0ec2f01194879ae540c9b488b8bee",
+              "timestamp": "2026-06-09T02:20:41.519690"
+            }
+          ],
+          "reinforcement_count": 1,
+          "contradiction_count": 0,
+          "access_count": 7,
+          "last_seen": "2026-06-09T02:20:41.519690",
+          "last_accessed": "2026-06-09T02:20:41.609180"
+        }
+      },
+      "unit_id": "458ac1a6e1e047d9bcf624e3aa75f3dd",
+      "timestamp": "2026-06-09T02:20:41.582757",
+      "session_count": 1,
+      "reinforcement_count": 1,
+      "contradiction_count": 0,
+      "access_count": 7,
+      "seen_session_ids": [
+        "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_4"
+      ],
+      "last_accessed": "2026-06-09T02:20:41.609178",
+      "last_evolved": "2026-06-09T02:20:41.612681",
+      "memory_level": "long_term"
+    }
+  ],
+  "evidence_store": {
+    "a0fcb8fae6ba4e279d209e8de2118d66": {
+      "source": "llm_deepseek",
+      "content": "I've been really into classic films lately.",
+      "scene": "session_0",
+      "evidence_id": "a0fcb8fae6ba4e279d209e8de2118d66",
+      "timestamp": "2026-06-09T02:20:41.357904"
+    },
+    "382f5d606e8243ecbf354f0fdecbe9ec": {
+      "source": "llm_deepseek",
+      "content": "I explored international cinema recently and absolutely fell in love with foreign films, particularly those from countries like France, Italy, and Japan.",
+      "scene": "session_0",
+      "evidence_id": "382f5d606e8243ecbf354f0fdecbe9ec",
+      "timestamp": "2026-06-09T02:20:41.357911"
+    },
+    "cdeb9ef9220d4421bd6ca50a90b8eee8": {
+      "source": "llm_deepseek",
+      "content": "I've been diving into movie trivia, and it's been quite exhilarating lately.",
+      "scene": "session_0",
+      "evidence_id": "cdeb9ef9220d4421bd6ca50a90b8eee8",
+      "timestamp": "2026-06-09T02:20:41.357914"
+    },
+    "ee57b05bd6004045bc6f2928919a3a0f": {
+      "source": "llm_deepseek",
+      "content": "User unsubscribed from documentary channels because they felt overwhelmed and affected mood negatively, wanting to focus on fictional narratives for escapism.",
+      "scene": "session_1",
+      "evidence_id": "ee57b05bd6004045bc6f2928919a3a0f",
+      "timestamp": "2026-06-09T02:20:41.361865"
+    },
+    "9098ad41e30c45e2b8d3a6346c8c832c": {
+      "source": "llm_deepseek",
+      "content": "User attended a screening of an award-winning foreign film and loved it, feeling it broadened horizons and sparked desire to explore more world cinema.",
+      "scene": "session_1",
+      "evidence_id": "9098ad41e30c45e2b8d3a6346c8c832c",
+      "timestamp": "2026-06-09T02:20:41.361867"
+    },
+    "6e653b8d68cd422cbd512eeae4cd0112": {
+      "source": "llm_deepseek",
+      "content": "User started experimenting with short filmmaking, learning camera angles and lighting, editing footage, considering sharing on social media.",
+      "scene": "session_1",
+      "evidence_id": "6e653b8d68cd422cbd512eeae4cd0112",
+      "timestamp": "2026-06-09T02:20:41.361869"
+    },
+    "3623cb1d1e8644b1aacad4ee36add9e5": {
+      "source": "llm_deepseek",
+      "content": "User hosted a cozy movie night instead of a marathon, and stepped back from competitive trivia games, valuing casual enjoyment over competition.",
+      "scene": "session_1",
+      "evidence_id": "3623cb1d1e8644b1aacad4ee36add9e5",
+      "timestamp": "2026-06-09T02:20:41.361872"
+    },
+    "2c3fafe2cc4e4153b1f91ed67cfa3f09": {
+      "source": "llm_deepseek",
+      "content": "User led discussion on philosophical themes in a movie, finds casual conversations about themes and artistry more enjoyable than trivia.",
+      "scene": "session_1",
+      "evidence_id": "2c3fafe2cc4e4153b1f91ed67cfa3f09",
+      "timestamp": "2026-06-09T02:20:41.361874"
+    },
+    "9cdc833b46d34fcfbfc85544dfc4539a": {
+      "source": "llm_deepseek",
+      "content": "User decided to stop writing formal movie reviews and only jot down personal reflections to avoid restraint and enjoy films more genuinely.",
+      "scene": "session_1",
+      "evidence_id": "9cdc833b46d34fcfbfc85544dfc4539a",
+      "timestamp": "2026-06-09T02:20:41.361876"
+    },
+    "d040a1265ffd448a883ac3c6d18c040b": {
+      "source": "llm_deepseek",
+      "content": "volunteered at a local film festival and found it a vibrant celebration",
+      "scene": "session_2",
+      "evidence_id": "d040a1265ffd448a883ac3c6d18c040b",
+      "timestamp": "2026-06-09T02:20:41.402191"
+    },
+    "82137e65a5a54f81bea7e2477f55fce8": {
+      "source": "llm_deepseek",
+      "content": "stepped back from community theater after stage fright during first performance",
+      "scene": "session_2",
+      "evidence_id": "82137e65a5a54f81bea7e2477f55fce8",
+      "timestamp": "2026-06-09T02:20:41.402194"
+    },
+    "99573f7e4fc14628bfcc6443de41dee5": {
+      "source": "llm_deepseek",
+      "content": "started collecting vintage and contemporary movie posters, inspired by a friend's collection",
+      "scene": "session_2",
+      "evidence_id": "99573f7e4fc14628bfcc6443de41dee5",
+      "timestamp": "2026-06-09T02:20:41.402197"
+    },
+    "e4304f4543c945929a83e098efedd4ca": {
+      "source": "llm_deepseek",
+      "content": "decided to take a break from filmmaking to focus on scriptwriting",
+      "scene": "session_2",
+      "evidence_id": "e4304f4543c945929a83e098efedd4ca",
+      "timestamp": "2026-06-09T02:20:41.402199"
+    },
+    "58a62e510f5a40cea10cfcb2e97c8b0e": {
+      "source": "llm_deepseek",
+      "content": "created a playlist of songs from favorite films to share at a gathering",
+      "scene": "session_2",
+      "evidence_id": "58a62e510f5a40cea10cfcb2e97c8b0e",
+      "timestamp": "2026-06-09T02:20:41.402201"
+    },
+    "d9966b62590a40a6a3329d02dc384920": {
+      "source": "llm_deepseek",
+      "content": "joined an online film forum recently and enjoys the community",
+      "scene": "session_2",
+      "evidence_id": "d9966b62590a40a6a3329d02dc384920",
+      "timestamp": "2026-06-09T02:20:41.402204"
+    },
+    "ebc59742733741c9baef91c232992272": {
+      "source": "llm_deepseek",
+      "content": "Started a blog, joined a book club, attended author signings, participated in online reading challenges, started a podcast about books and literary trends.",
+      "scene": "session_3",
+      "evidence_id": "ebc59742733741c9baef91c232992272",
+      "timestamp": "2026-06-09T02:20:41.460099"
+    },
+    "790d499fd82a4239a1f48dec3adf5cdf": {
+      "source": "llm_deepseek",
+      "content": "Attended an immersive book-inspired event but found it 'saturated with commercial undertones' and left disheartened; wishes for events focusing on love of literature.",
+      "scene": "session_3",
+      "evidence_id": "790d499fd82a4239a1f48dec3adf5cdf",
+      "timestamp": "2026-06-09T02:20:41.460103"
+    },
+    "28377a39aa304c3091c82063aa066cc1": {
+      "source": "llm_deepseek",
+      "content": "Started a blog for book reviews and literary discussions; started a podcast talking about books and trends to connect with fellow book lovers.",
+      "scene": "session_3",
+      "evidence_id": "28377a39aa304c3091c82063aa066cc1",
+      "timestamp": "2026-06-09T02:20:41.460108"
+    },
+    "4fe1ca2e04a84fb2bb3624ad6e3160d3": {
+      "source": "llm_deepseek",
+      "content": "Started a small social club focused on weekly movie marathons",
+      "scene": "session_4",
+      "evidence_id": "4fe1ca2e04a84fb2bb3624ad6e3160d3",
+      "timestamp": "2026-06-09T02:20:41.519679"
+    },
+    "7984e209c1404014a9dbc97274d54c01": {
+      "source": "llm_deepseek",
+      "content": "Subscribed to a documentary streaming service and discovered a love for historical films, analyzing storytelling techniques",
+      "scene": "session_4",
+      "evidence_id": "7984e209c1404014a9dbc97274d54c01",
+      "timestamp": "2026-06-09T02:20:41.519682"
+    },
+    "1d46640010f84d8d8cc9a99a6716e0cb": {
+      "source": "llm_deepseek",
+      "content": "Took a course on international film history, deepening understanding of different cinematic styles",
+      "scene": "session_4",
+      "evidence_id": "1d46640010f84d8d8cc9a99a6716e0cb",
+      "timestamp": "2026-06-09T02:20:41.519685"
+    },
+    "575596a218f04e3d9436aff9442e1bf4": {
+      "source": "llm_deepseek",
+      "content": "Became part of a literary film group that specifically focuses on adaptations, enhancing analytical skills",
+      "scene": "session_4",
+      "evidence_id": "575596a218f04e3d9436aff9442e1bf4",
+      "timestamp": "2026-06-09T02:20:41.519687"
+    },
+    "7aa0ec2f01194879ae540c9b488b8bee": {
+      "source": "llm_deepseek",
+      "content": "Left an online film forum due to constant negativity and hostility, shifted to constructive discussions with friends",
+      "scene": "session_4",
+      "evidence_id": "7aa0ec2f01194879ae540c9b488b8bee",
+      "timestamp": "2026-06-09T02:20:41.519690"
+    }
+  },
+  "current_session": "session_4",
+  "current_session_id": "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf_session_4",
+  "config_id": "promote_0.46",
+  "context_hash": "7797915581c01170c2a46616041687c09d59240b417898659034cd31cdc8cebf",
+  "num_sessions": 5
+}
