@@ -45,7 +45,8 @@ class TPMConfig:
     """Configurable TPM coefficients."""
 
     write_threshold: float = 0.68
-    context_threshold: float = 0.62
+    # θ_ctx（论文附录）：候选与已有画像的语义相似度低于该阈值 → 创建新情境分支
+    branch_threshold: float = 0.62
     promote_threshold: float = 0.72
     promotion_min_sessions: int = 2
     distill_stability_threshold: float = 0.82
@@ -53,7 +54,7 @@ class TPMConfig:
     distill_session_threshold: int = 3
     write_weights: tuple[float, float, float, float] = (0.25, 0.3, 0.25, 0.2)
     promote_weights: tuple[float, float, float, float, float] = (0.35, 0.2, 0.15, 0.25, 0.2)
-    # (rel, stability, ctx, fresh, confidence) — 论文主文式(16)
+    # (Rel, si, Ctx, Fresh, qi) — 论文主文式(15)
     retrieve_weights: tuple[float, float, float, float, float] = (0.35, 0.2, 0.15, 0.2, 0.1)
     decay_lambdas: dict[str, float] = field(
         default_factory=lambda: {
@@ -69,7 +70,7 @@ class TPMConfig:
     working_decay: float = 0.015
     short_term_decay: float = 0.03
     # --- 论文主文对齐新增（Task 1）---
-    conflict_context_threshold: float = 0.62   # δ_ctx：情境重叠阈值
+    conflict_context_threshold: float = 0.62   # δ_ctx（主文）：冲突判定的情境重叠阈值，与 θ_ctx 同值不同义
     conflict_value_threshold: float = 0.35     # 极性分歧阈值
     T_fresh: float = 168.0                      # Fresh 衰减时间常数（小时）
     history_window: int = 3                     # 历史感知窗口 N
@@ -210,7 +211,7 @@ class TemporalProfileMemory:
         return {
             "config": {
                 "write_threshold": self.config.write_threshold,
-                "context_threshold": self.config.context_threshold,
+                "branch_threshold": self.config.branch_threshold,
                 "promote_threshold": self.config.promote_threshold,
                 "promotion_min_sessions": self.config.promotion_min_sessions,
                 "distill_stability_threshold": self.config.distill_stability_threshold,
@@ -245,7 +246,10 @@ class TemporalProfileMemory:
         default_config = TPMConfig()
         config = TPMConfig(
             write_threshold=config_data.get("write_threshold", default_config.write_threshold),
-            context_threshold=config_data.get("context_threshold", default_config.context_threshold),
+            # 旧存档键 context_threshold 回退兼容
+            branch_threshold=config_data.get(
+                "branch_threshold", config_data.get("context_threshold", default_config.branch_threshold)
+            ),
             promote_threshold=config_data.get("promote_threshold", default_config.promote_threshold),
             promotion_min_sessions=config_data.get("promotion_min_sessions", default_config.promotion_min_sessions),
             distill_stability_threshold=config_data.get(
@@ -376,7 +380,7 @@ class TemporalProfileMemory:
                 context=candidate.context,
                 slot=candidate.slot,
                 memory_type=candidate.memory_type,
-                stability_score=candidate.stability,
+                stability_score=candidate.stability_b,
                 confidence_score=candidate.confidence,
                 scene=candidate.scene,
                 quality_score=candidate.quality_score,
@@ -427,7 +431,8 @@ class TemporalProfileMemory:
             if score > best_score:
                 best_score = score
                 best_unit = unit
-        if best_score >= self.config.context_threshold:
+        # 论文附录 θ_ctx：相似度 ≥ θ_ctx → 融合进已有单元；低于 θ_ctx → 返回 None 新建单元/分支
+        if best_score >= self.config.branch_threshold:
             return best_unit
         return None
 
@@ -464,17 +469,18 @@ class TemporalProfileMemory:
         promote_weights = self.config.promote_weights
         kept_short_term: list[ProfileMemoryUnit] = []
         for unit in self.short_term_memory:
-            # 显式度 X（论文式12 的 β2 因子；原 evidence_strength，对齐主文命名）
-            explicitness = min(1.0, len(unit.evidence) / 4.0)
-            usage_strength = min(1.0, unit.access_count / 3.0)
-            reinforcement_strength = min(1.0, unit.reinforcement_count / 4.0)
-            contradiction_strength = min(1.0, unit.contradiction_count / 3.0)
+            # 论文式(11): Πi(t) = β1·Ri + β2·Xi + β3·Ui + β4·Si − β5·Ci
+            repetition = min(1.0, unit.reinforcement_count / 4.0)         # Ri：重复频率
+            explicitness_x = min(1.0, len(unit.evidence) / 4.0)           # Xi：表达显式度
+            utility_u = min(1.0, unit.access_count / 3.0)                 # Ui：支持效用
+            stability_s = unit.stability_score                            # Si：跨时间稳定性
+            contradiction_c = min(1.0, unit.contradiction_count / 3.0)    # Ci：冲突强度
             score = (
-                promote_weights[0] * reinforcement_strength
-                + promote_weights[1] * explicitness
-                + promote_weights[2] * usage_strength
-                + promote_weights[3] * unit.stability_score
-                - promote_weights[4] * contradiction_strength
+                promote_weights[0] * repetition
+                + promote_weights[1] * explicitness_x
+                + promote_weights[2] * utility_u
+                + promote_weights[3] * stability_s
+                - promote_weights[4] * contradiction_c
             )
             if score >= self.config.promote_threshold and unit.session_count >= self.config.promotion_min_sessions:
                 unit.memory_level = "long_term"
@@ -484,7 +490,7 @@ class TemporalProfileMemory:
         self.short_term_memory = kept_short_term
 
     def _retrieve_score(self, query_norm: str, unit: ProfileMemoryUnit, scene: str) -> float:
-        # 论文主文式(16): Score = η1·Rel + η2·stability + η3·Ctx + η4·Fresh + η5·confidence
+        # 论文主文式(15): Score = η1·Rel + η2·si + η3·Ctx + η4·Fresh + η5·qi
         branch = unit.scene_view(scene)
         rel = max(
             _similarity(query_norm, branch.value),
@@ -502,7 +508,7 @@ class TemporalProfileMemory:
             + w2 * unit.stability_score
             + w3 * ctx
             + w4 * fresh
-            + w5 * unit.confidence_score
+            + w5 * branch.confidence_score  # qi：抽取置信度（分支级原始抽取置信，非跨分支融合值）
         )
 
     def _fuse_candidate(
@@ -520,8 +526,9 @@ class TemporalProfileMemory:
             confidence_score=candidate.confidence,
             quality_score=candidate.quality_score,
         )
-        # 论文主文式(10/11)+δ_ctx：情境重叠 ρ>δ_ctx 且值相似度<δ_val 且同属性 -> 冲突；
+        # 论文主文：情境重叠 ρ>δ_ctx 且值相似度<δ_val 且同属性 -> 冲突更新；
         # 情境不重叠 -> 条件分支（ensure_branch 已按 scene 建分支）。
+        # 注意：δ_ctx（conflict_context_threshold）与分支阈值 θ_ctx（branch_threshold）同值不同义。
         context_overlap = _similarity(candidate.context, unit.context)
         value_similarity = (
             _similarity(candidate.value, branch.value) if (candidate.value and branch.value) else 0.0
@@ -550,7 +557,7 @@ class TemporalProfileMemory:
         unit.session_count = max(1, len(unit.seen_session_ids) or unit.session_count)
         unit.confidence_score = _clamp(0.6 * unit.confidence_score + 0.4 * candidate.confidence)
         unit.quality_score = _clamp(0.55 * unit.quality_score + 0.45 * candidate.quality_score)
-        observed_stability = candidate.stability + self.config.positive_reinforcement * min(
+        observed_stability = candidate.stability_b + self.config.positive_reinforcement * min(
             1.0, branch.reinforcement_count / 3.0
         )
         if contradiction:
@@ -786,9 +793,9 @@ class TPMMemoryManager:
             memory_type=memory_type,
             scene=category or "general",
             confidence=0.9,
-            stability=0.72,
-            explicitness=0.96,
-            relevance=1.0,
-            utility=0.95,
+            stability_b=0.72,
+            explicitness_e=0.96,
+            relevance_r=1.0,
+            utility_u=0.95,
             source="manual_note",
         )

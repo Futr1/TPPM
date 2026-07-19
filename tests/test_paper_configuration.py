@@ -23,7 +23,8 @@ from tppm.core.memory import TPMConfig
 PAPER_BASELINE = {
     "write_threshold": 0.68,
     "promote_threshold": 0.72,
-    "context_threshold": 0.62,
+    "branch_threshold": 0.62,
+    "conflict_context_threshold": 0.62,
     "promotion_min_sessions": 2,
     "write_weights": (0.25, 0.30, 0.25, 0.20),
     "retrieve_weights": (0.35, 0.20, 0.15, 0.20, 0.10),
@@ -41,8 +42,13 @@ class TestTPMConfigDefaults:
     def test_default_promote_threshold(self):
         assert TPMConfig().promote_threshold == PAPER_BASELINE["promote_threshold"]
 
-    def test_default_context_threshold(self):
-        assert TPMConfig().context_threshold == PAPER_BASELINE["context_threshold"]
+    def test_default_branch_threshold(self):
+        """θ_ctx（论文附录）：低于该阈值 → 创建新情境分支。"""
+        assert TPMConfig().branch_threshold == PAPER_BASELINE["branch_threshold"]
+
+    def test_default_conflict_context_threshold(self):
+        """δ_ctx（论文主文）：冲突判定的情境重叠阈值，与 θ_ctx 同值不同义。"""
+        assert TPMConfig().conflict_context_threshold == PAPER_BASELINE["conflict_context_threshold"]
 
     def test_default_promotion_min_sessions(self):
         assert TPMConfig().promotion_min_sessions == PAPER_BASELINE["promotion_min_sessions"]
@@ -66,7 +72,8 @@ class TestTPMSettingsDefaults:
         tpm = TPMConfig()
         assert settings.write_threshold == tpm.write_threshold
         assert settings.promote_threshold == tpm.promote_threshold
-        assert settings.context_threshold == tpm.context_threshold
+        assert settings.branch_threshold == tpm.branch_threshold
+        assert settings.conflict_context_threshold == tpm.conflict_context_threshold
         assert settings.promotion_min_sessions == tpm.promotion_min_sessions
 
     def test_settings_write_weights_match(self):
@@ -96,7 +103,8 @@ class TestAblationYAMLBaseline:
         assert ablation_yaml["baseline"]["promote_threshold"] == PAPER_BASELINE["promote_threshold"]
 
     def test_baseline_context_threshold(self, ablation_yaml):
-        assert ablation_yaml["baseline"]["context_threshold"] == PAPER_BASELINE["context_threshold"]
+        """消融 YAML 沿用论文附录键名 context_threshold（θ_ctx），数值与代码 branch_threshold 一致。"""
+        assert ablation_yaml["baseline"]["context_threshold"] == PAPER_BASELINE["branch_threshold"]
 
     def test_baseline_promotion_min_sessions(self, ablation_yaml):
         assert ablation_yaml["baseline"]["promotion_min_sessions"] == PAPER_BASELINE["promotion_min_sessions"]

@@ -74,10 +74,10 @@ def test_llm_profile_extractor_parses_structured_candidates():
                           "memory_type": "trait",
                           "scene": "coding",
                           "confidence": 0.92,
-                          "stability": 0.8,
-                          "relevance": 1.0,
-                          "explicitness": 0.95,
-                          "utility": 0.94,
+                          "stability_b": 0.8,
+                          "relevance_r": 1.0,
+                          "explicitness_e": 0.95,
+                          "utility_u": 0.94,
                           "source": "llm_qwen"
                         }
                       ]
@@ -97,6 +97,8 @@ def test_llm_profile_extractor_parses_structured_candidates():
     assert candidates[0].slot == "cognitive"
     assert candidates[0].memory_type == "trait"
     assert candidates[0].scene == "coding"
+    assert candidates[0].relevance_r == 1.0
+    assert candidates[0].stability_b == 0.8
 
 
 def test_tpm_scene_branches_and_session_count_are_explicit():
@@ -114,9 +116,9 @@ def test_tpm_scene_branches_and_session_count_are_explicit():
                 memory_type="trait",
                 scene="coding",
                 confidence=0.92,
-                stability=0.84,
-                explicitness=0.95,
-                utility=0.93,
+                stability_b=0.84,
+                explicitness_e=0.95,
+                utility_u=0.93,
             )
         ],
         scene="coding",
@@ -135,9 +137,9 @@ def test_tpm_scene_branches_and_session_count_are_explicit():
                 memory_type="trait",
                 scene="research",
                 confidence=0.9,
-                stability=0.82,
-                explicitness=0.94,
-                utility=0.9,
+                stability_b=0.82,
+                explicitness_e=0.94,
+                utility_u=0.9,
             )
         ],
         scene="research",
@@ -163,9 +165,9 @@ def test_tpm_scene_branches_and_session_count_are_explicit():
                 memory_type="trait",
                 scene="coding",
                 confidence=0.91,
-                stability=0.85,
-                explicitness=0.95,
-                utility=0.92,
+                stability_b=0.85,
+                explicitness_e=0.95,
+                utility_u=0.92,
             )
         ],
         scene="coding",
@@ -325,7 +327,7 @@ max_steps: 10
 workspace_dir: ./ws
 tpm:
   write_threshold: 0.7
-  context_threshold: 0.6
+  branch_threshold: 0.6
   conflict_context_threshold: 0.55
   conflict_value_threshold: 0.3
   T_fresh: 96.0
@@ -339,11 +341,13 @@ tools:
     config = Config.from_yaml(cfg_path)
     assert config.tpm.T_fresh == 96.0
     assert config.tpm.history_window == 5
+    assert config.tpm.branch_threshold == 0.6
     assert config.tpm.conflict_context_threshold == 0.55
 
     tpm_config = build_tpm_config(config.tpm)
     assert tpm_config.T_fresh == 96.0
     assert tpm_config.history_window == 5
+    assert tpm_config.branch_threshold == 0.6
     assert tpm_config.conflict_value_threshold == 0.3
     # weights round-trip list -> tuple
     assert isinstance(tpm_config.write_weights, tuple)
@@ -351,6 +355,29 @@ tools:
     # decay_lambdas omitted in yaml -> falls back to TPMConfig defaults
     from tppm.core.memory import TPMConfig
     assert tpm_config.decay_lambdas == TPMConfig().decay_lambdas
+
+
+def test_tpm_config_yaml_legacy_context_threshold_maps_to_branch_threshold(tmp_path):
+    """旧配置键 context_threshold 仍可读入，映射为 branch_threshold。"""
+    from tppm.config import Config, build_tpm_config
+
+    yaml_text = """
+api_key: "local"
+provider: "openai"
+model: "deepseek-v4-flash"
+max_steps: 10
+workspace_dir: ./ws
+tpm:
+  context_threshold: 0.6
+tools:
+  enable_note: true
+"""
+    cfg_path = tmp_path / "config.yaml"
+    cfg_path.write_text(yaml_text, encoding="utf-8")
+
+    config = Config.from_yaml(cfg_path)
+    tpm_config = build_tpm_config(config.tpm)
+    assert tpm_config.branch_threshold == 0.6
 
 
 def test_tpm_manager_exposes_history_window_from_config():
@@ -374,11 +401,26 @@ def test_tpm_config_roundtrips_new_fields_through_to_dict():
     data = memory.to_dict()
     assert data["config"]["T_fresh"] == 72.0
     assert data["config"]["history_window"] == 4
+    assert data["config"]["branch_threshold"] == TPMConfig().branch_threshold
     assert data["config"]["conflict_context_threshold"] == TPMConfig().conflict_context_threshold
 
     restored = TemporalProfileMemory.from_dict(data)
     assert restored.config.T_fresh == 72.0
     assert restored.config.history_window == 4
+    assert restored.config.branch_threshold == TPMConfig().branch_threshold
+
+
+def test_tpm_config_from_dict_reads_legacy_context_threshold_key():
+    """旧存档 config 里的 context_threshold 键回退映射到 branch_threshold。"""
+    from tppm.core.memory import TemporalProfileMemory
+
+    memory = TemporalProfileMemory()
+    data = memory.to_dict()
+    del data["config"]["branch_threshold"]
+    data["config"]["context_threshold"] = 0.55
+
+    restored = TemporalProfileMemory.from_dict(data)
+    assert restored.config.branch_threshold == 0.55
 
 
 def test_profile_candidate_from_legacy_profile_type_migrates_to_dual_fields():
@@ -398,8 +440,10 @@ def test_profile_candidate_from_legacy_profile_type_migrates_to_dual_fields():
     })
     assert candidate.slot == "cognitive"
     assert candidate.memory_type == "trait"
-    assert candidate.relevance == 1.0
-    assert candidate.utility == 0.9
+    assert candidate.relevance_r == 1.0
+    assert candidate.explicitness_e == 0.9
+    assert candidate.utility_u == 0.9
+    assert candidate.stability_b == 0.8
     assert not hasattr(candidate, "profile_type")
 
 
@@ -587,7 +631,7 @@ def test_fuse_candidate_conflict_on_overlapping_context_divergent_value():
     seed = ProfileCandidate(
         attribute="hobby", value="我喜欢跑步", context="聊到周末运动安排",
         slot="behavior", memory_type="trait", scene="general",
-        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+        confidence=0.8, stability_b=0.7, explicitness_e=0.9, utility_u=0.8,
     )
     unit = memory._align_or_create(seed, session_id="s1")
 
@@ -595,7 +639,7 @@ def test_fuse_candidate_conflict_on_overlapping_context_divergent_value():
     contra = ProfileCandidate(
         attribute="hobby", value="我讨厌看书", context="聊到周末运动安排",
         slot="behavior", memory_type="trait", scene="general",
-        confidence=0.85, stability=0.7, explicitness=0.9, utility=0.8,
+        confidence=0.85, stability_b=0.7, explicitness_e=0.9, utility_u=0.8,
     )
     ev1 = EvidenceItem(source="test", content=contra.context, scene="general")
     memory._fuse_candidate(unit, contra, ev1, session_id="s1")
@@ -611,7 +655,7 @@ def test_fuse_candidate_branches_when_context_does_not_overlap():
     seed = ProfileCandidate(
         attribute="hobby", value="我喜欢跑步", context="聊到周末运动安排",
         slot="behavior", memory_type="trait", scene="general",
-        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+        confidence=0.8, stability_b=0.7, explicitness_e=0.9, utility_u=0.8,
     )
     unit = memory._align_or_create(seed, session_id="s1")
     base_contradiction = unit.contradiction_count
@@ -620,7 +664,7 @@ def test_fuse_candidate_branches_when_context_does_not_overlap():
     variant = ProfileCandidate(
         attribute="hobby", value="我讨厌看书", context="聊到工作日的阅读习惯",
         slot="behavior", memory_type="trait", scene="work",
-        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+        confidence=0.8, stability_b=0.7, explicitness_e=0.9, utility_u=0.8,
     )
     ev2 = EvidenceItem(source="test", content=variant.context, scene="work")
     memory._fuse_candidate(unit, variant, ev2, session_id="s1")
@@ -639,13 +683,13 @@ def test_fuse_candidate_uses_configurable_thresholds():
     seed = ProfileCandidate(
         attribute="hobby", value="我喜欢跑步", context="聊到周末运动安排",
         slot="behavior", memory_type="trait", scene="general",
-        confidence=0.8, stability=0.7, explicitness=0.9, utility=0.8,
+        confidence=0.8, stability_b=0.7, explicitness_e=0.9, utility_u=0.8,
     )
     unit = memory._align_or_create(seed, session_id="s1")
     contra = ProfileCandidate(
         attribute="hobby", value="我讨厌看书", context="聊到周末运动安排",
         slot="behavior", memory_type="trait", scene="general",
-        confidence=0.85, stability=0.7, explicitness=0.9, utility=0.8,
+        confidence=0.85, stability_b=0.7, explicitness_e=0.9, utility_u=0.8,
     )
     ev = EvidenceItem(source="test", content=contra.context, scene="general")
     memory._fuse_candidate(unit, contra, ev, session_id="s1")
@@ -713,8 +757,8 @@ def test_llm_extractor_prompt_requests_dual_fields():
     user_msg = payload["messages"][-1]["content"]
     assert "slot" in user_msg
     assert "memory_type" in user_msg
-    assert "relevance" in user_msg
-    assert "utility" in user_msg
+    assert "relevance_r" in user_msg
+    assert "utility_u" in user_msg
     assert "risk" in user_msg  # 心理/风险导向提示
 
 

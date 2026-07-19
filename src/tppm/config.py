@@ -58,7 +58,10 @@ class TPMSettings(BaseModel):
     """
 
     write_threshold: float = 0.68
-    context_threshold: float = 0.62
+    # θ_ctx（论文附录）：相似度低于该阈值 → 创建新情境分支
+    branch_threshold: float = 0.62
+    # deprecated：branch_threshold 的旧配置键；显式设置且未设 branch_threshold 时生效
+    context_threshold: float | None = None
     promote_threshold: float = 0.72
     promotion_min_sessions: int = 2
     conflict_context_threshold: float = 0.62
@@ -76,13 +79,17 @@ class TPMSettings(BaseModel):
 
 
 def build_tpm_config(settings: TPMSettings) -> "TPMConfig":
-    """把 pydantic TPMSettings 转成 tpm.memory.TPMConfig（list→tuple）。"""
-    from .tpm.memory import TPMConfig
+    """把 pydantic TPMSettings 转成 core.memory.TPMConfig（list→tuple）。"""
+    from .core.memory import TPMConfig
 
     defaults = TPMConfig()
+    # 旧键 context_threshold 兼容：仅当未显式设置 branch_threshold 时生效
+    branch_threshold = settings.branch_threshold
+    if settings.context_threshold is not None and "branch_threshold" not in settings.model_fields_set:
+        branch_threshold = settings.context_threshold
     return TPMConfig(
         write_threshold=settings.write_threshold,
-        context_threshold=settings.context_threshold,
+        branch_threshold=branch_threshold,
         promote_threshold=settings.promote_threshold,
         promotion_min_sessions=settings.promotion_min_sessions,
         conflict_context_threshold=settings.conflict_context_threshold,

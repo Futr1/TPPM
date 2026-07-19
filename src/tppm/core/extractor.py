@@ -73,10 +73,10 @@ class RegexProfileExtractor(ProfileExtractor):
                         memory_type=memory_type,
                         scene=scene,
                         confidence=confidence,
-                        stability=stability,
-                        explicitness=0.92,
-                        relevance=1.0,
-                        utility=0.9,
+                        stability_b=stability,
+                        explicitness_e=0.92,
+                        relevance_r=0.8,
+                        utility_u=0.9,
                     )
                 )
 
@@ -136,10 +136,10 @@ class LLMProfileExtractor(ProfileExtractor):
                     "memory_type": "affect|stressor|coping|support|trait",
                     "scene": scene,
                     "confidence": 0.0,
-                    "stability": 0.0,
-                    "relevance": 1.0,
-                    "explicitness": 0.0,
-                    "utility": 0.0,
+                    "stability_b": 0.0,
+                    "relevance_r": 1.0,
+                    "explicitness_e": 0.0,
+                    "utility_u": 0.0,
                     "source": "llm_extractor",
                 }
             ]
@@ -165,8 +165,9 @@ class LLMProfileExtractor(ProfileExtractor):
             "若不确定，可只给 slot，系统会按默认回填 memory_type。\n"
             "3. 只保留与用户心理画像相关的事实：情绪状态、压力源、应对方式、社会支持、行为节律、稳定信念、风险信号。\n"
             "4. 忽略助手行为、工具输出请求、无意义寒暄。\n"
-            "5. relevance/utility/explicitness/confidence/stability 取 [0,1] 数值；"
-            "relevance 衡量与用户持久画像的相关性，utility 衡量对支持的实用性。\n"
+            "5. relevance_r/explicitness_e/utility_u/stability_b/confidence 取 [0,1] 数值（论文式(7) 四因子）；"
+            "relevance_r 衡量心理相关性（与用户持久画像的相关程度），explicitness_e 衡量表达显式度，"
+            "utility_u 衡量未来效用，stability_b 衡量持续性估计。\n"
             "6. risk 信号（自伤/自杀等）必须置 slot=risk 并提高 confidence。\n"
             "7. 无可用候选时返回 {\"candidates\": []}。\n\n"
             f"输出 JSON schema 示例：\n{json.dumps(schema_hint, ensure_ascii=False)}"
@@ -235,10 +236,18 @@ class LLMProfileExtractor(ProfileExtractor):
                     memory_type=memory_type,
                     scene=str(item.get("scene") or scene).strip() or scene,
                     confidence=self._clamp(item.get("confidence"), default=0.72),
-                    stability=self._clamp(item.get("stability"), default=self._default_stability(slot)),
-                    relevance=self._clamp(item.get("relevance", item.get("recency")), default=1.0),
-                    explicitness=self._clamp(item.get("explicitness"), default=0.8),
-                    utility=self._clamp(item.get("utility", item.get("user_relevance")), default=0.82),
+                    stability_b=self._clamp(
+                        item.get("stability_b", item.get("stability")), default=self._default_stability(slot)
+                    ),
+                    relevance_r=self._clamp(
+                        item.get("relevance_r", item.get("relevance", item.get("recency"))), default=0.8
+                    ),
+                    explicitness_e=self._clamp(
+                        item.get("explicitness_e", item.get("explicitness")), default=0.8
+                    ),
+                    utility_u=self._clamp(
+                        item.get("utility_u", item.get("utility", item.get("user_relevance"))), default=0.82
+                    ),
                     source=str(item.get("source") or "llm_qwen").strip() or "llm_qwen",
                 )
             )

@@ -86,27 +86,28 @@ class ProfileCandidate:
     memory_type: str
     scene: str = "general"
     confidence: float = 0.7
-    stability: float = 0.5
-    relevance: float = 1.0
-    explicitness: float = 0.7
-    utility: float = 0.75
+    # 论文式(7) 写入门控四因子（LLM 评估）：r 心理相关性 / e 表达显式度 / u 未来效用 / b 持续性估计
+    stability_b: float = 0.5
+    relevance_r: float = 1.0
+    explicitness_e: float = 0.7
+    utility_u: float = 0.75
     source: str = "user_utterance"
     timestamp: str = field(default_factory=lambda: utc_now().isoformat())
 
     def write_score(self, weights: tuple[float, float, float, float]) -> float:
-        """Compute the write score (论文式8: φ = α1·r + α2·e + α3·u + α4·b)."""
+        """Compute the write score (论文式(7): φ = α1·r + α2·e + α3·u + α4·b)."""
         alpha1, alpha2, alpha3, alpha4 = weights
         return (
-            alpha1 * self.relevance
-            + alpha2 * self.explicitness
-            + alpha3 * self.utility
-            + alpha4 * self.stability
+            alpha1 * self.relevance_r
+            + alpha2 * self.explicitness_e
+            + alpha3 * self.utility_u
+            + alpha4 * self.stability_b
         )
 
     @property
     def quality_score(self) -> float:
         """Quality proxy used by explicit TPM rules."""
-        return (self.confidence + self.explicitness + self.utility) / 3.0
+        return (self.confidence + self.explicitness_e + self.utility_u) / 3.0
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -120,13 +121,19 @@ class ProfileCandidate:
         elif "memory_type" not in payload:
             payload["memory_type"] = default_memory_type(payload["slot"])
         payload.pop("profile_type", None)
-        # 重命名因子向后兼容
-        if "relevance" not in payload and "recency" in payload:
-            payload["relevance"] = payload.pop("recency")
-        if "utility" not in payload and "user_relevance" in payload:
-            payload["utility"] = payload.pop("user_relevance")
-        payload.pop("recency", None)
-        payload.pop("user_relevance", None)
+        # 式(7) 四因子重命名后的向后兼容：
+        # 新键 r/e/u/b ← 上一版 relevance/explicitness/utility/stability ← 更早 recency/user_relevance
+        rename_map = {
+            "relevance_r": ("relevance", "recency"),
+            "explicitness_e": ("explicitness",),
+            "utility_u": ("utility", "user_relevance"),
+            "stability_b": ("stability",),
+        }
+        for new_key, old_keys in rename_map.items():
+            for old_key in old_keys:
+                if new_key not in payload and old_key in payload:
+                    payload[new_key] = payload[old_key]
+                payload.pop(old_key, None)
         return cls(**payload)
 
 
