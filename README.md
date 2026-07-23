@@ -18,7 +18,7 @@ TPPM is evaluated on PersonaMem (dynamic profile modeling), LoCoMo (long-range d
 ## Framework Overview
 
 <p align="center">
-  <img src="assets/tppm_architecture.png" alt="TPPM Architecture" width="95%">
+  <img src="assets/tppm_architecture.png" alt="TPPM Architecture" width="100%">
 </p>
 <p align="center">
   <em>TPPM architecture overview. Psychological signals are extracted from dialogue, filtered through write gating, and organized across three temporal tiers via alignment, contextual branching, state–trait consolidation, and type-conditioned decay. Profile-aware retrieval selects relevant memories for context-conditioned generation.</em>
